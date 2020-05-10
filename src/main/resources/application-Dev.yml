@@ -1,0 +1,7 @@
+
+spring:
+  datasource:
+    username: bookspf
+    password: bookspf
+    url: jdbc:mysql://localhost:3306/Bookspf?useSSl=false&serverTimezone=UTC
+    
