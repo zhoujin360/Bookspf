@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LoginMapper {
 	
-	@Select("select uid form login where username=#{username}")
+	@Select("select uid from login where username=#{username}")
 	public Integer findUid(String username);
 	
-	@Select("select password form login where username=#{username}")
+	@Select("select password from login where username=#{username}")
 	public String findPassword(String username);
 }

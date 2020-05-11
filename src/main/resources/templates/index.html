@@ -7,10 +7,15 @@
     <title>图书销售平台-Bookspf</title>
     <link rel="stylesheet" href="css/base.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
-
+    <div id="tt">
+        <input type="text" v-model="username" @keyup.enter="findUid">
+        <span>{{mes}}</span>
+    </div>
+    <script type="text/javascript" src="js/test.js"></script>
 </body>
 
 </html>
