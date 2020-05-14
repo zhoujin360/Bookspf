@@ -4,22 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../static/js/jquery.min.js"></script>
     <title>注册-Bookspf</title>
-    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="../static/css/base.css">
     <script src="../static/js/testregister.js"></script>
+
 </head>
 
 <body>
     <div id="box">
         <form action="" id="regForm">
-            用户名:<input type="text" id="username"><br>
-            密码:<input type="password" name="" id="password"><br>
+            用户名:<input type="text" id="reg_username"><br>
+            密码:<input type="password" name="" id="reg_password"><br>
             Email:<input type="email" name="" id="email"><br>
-            手机号:<input type="text" id="realname"><br>
+            真实姓名:<input type="text" id="realname"><br>
+            电话号码:<input type="tel" name="" id="phone"><br>
             <input type="radio" name="gender" value="male">男
             <input type="radio" name="gender" value="female">女<br>
             <input type="date" id="birthday" name="birthday" placeholder="年/月/日"><br>
-            <input type="submit" value="提交">
+            <input type="submit" value="提交" id="reg_sub">
         </form>
     </div>
 </body>
