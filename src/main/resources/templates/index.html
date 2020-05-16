@@ -13,10 +13,15 @@
 <body>
     <div id="box">
         <div id="top">
-            <a href="#" id="log">登录</a>
-            <a href="#" id="reg">注册</a>
+            <a href="/login" id="log">登录</a>
+            <a href="/register" id="reg">注册</a>
+        </div>
+        <div id="tt">
+            <input type="text" v-model="username" @keyup.enter="findUser">
+            <span v-model="mes"></span>
         </div>
     </div>
+    <script src="js/test.js"></script>
 </body>
 
 </html>

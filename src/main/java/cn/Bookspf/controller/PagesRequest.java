@@ -21,7 +21,7 @@ public class PagesRequest {
 		return "register";
 	}
 	
-	//注册页
+	//登录页
 	@RequestMapping("/login")
 	public String login (Model model) {
 			
