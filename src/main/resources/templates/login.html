@@ -5,19 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>登录-Bookspf</title>
-    <link rel="stylesheet" href="../static/css/base.css">
-    <script src="../static/js/jquery.min.js"></script>
-    <script src="../static/js/testlogin.js"></script>
+    <link rel="stylesheet" href="css/base.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/jquery.min.js"></script>
 </head>
 
 <body>
     <div id="box">
-        <form action="" id="logForm">
-            账号:<input type="text" id="log_account" placeholder="用户名"><br>
-            密码:<input type="password" id="log_password"><br>
-            <input type="submit" value="提交" id="log_sub">
+        <form action="" id="loginForm" @submit.prevent="submit">
+            账号:<input type="text" v-model="username"><br> 密码:
+            <input type="password" v-model="password"><br>
+            <input type="submit" value="提交">
         </form>
     </div>
+    <script src="js/testlogin.js"></script>
 </body>
 
 </html>

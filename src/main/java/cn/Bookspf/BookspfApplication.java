@@ -10,5 +10,4 @@ public class BookspfApplication {
 		SpringApplication.run(BookspfApplication.class, args);
 	}
 	
-	
 }

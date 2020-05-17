@@ -96,5 +96,13 @@ public class DBUser {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	@Override
+	public String toString() {
+		return "DBUser [uid=" + uid + ", username=" + username + ", password=" + password + ", admin=" + admin
+				+ ", email=" + email + ", balance=" + balance + ", realname=" + realname + ", phone=" + phone
+				+ ", address=" + address + "]";
 	}	
+	
 }

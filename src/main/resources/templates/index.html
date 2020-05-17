@@ -13,15 +13,12 @@
 <body>
     <div id="box">
         <div id="top">
-            <a href="/login" id="log">登录</a>
-            <a href="/register" id="reg">注册</a>
-        </div>
-        <div id="tt">
-            <input type="text" v-model="username" @keyup.enter="findUser">
-            <span v-model="mes"></span>
+            <a href="/login" id="log" th:if="${session.userToken == null}">登录</a>
+            <a href="/register" id="reg" th:if="${session.userToken == null}">注册</a>
+            <a href="#" th:if="${session.userToken != null}" th:text="${session.username}"></a>
         </div>
     </div>
-    <script src="js/test.js"></script>
+
 </body>
 
 </html>

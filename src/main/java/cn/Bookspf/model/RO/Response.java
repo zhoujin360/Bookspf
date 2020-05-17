@@ -4,6 +4,12 @@ public class Response {
 	private boolean status;
 	private String mes;
 	
+	public Response() {}
+	public Response(boolean status,String mes) {
+		this.status=status;
+		this.mes=mes;
+	}
+	
 	public boolean isStatus() {
 		return status;
 	}

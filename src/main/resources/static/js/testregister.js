@@ -64,8 +64,6 @@ var register = new Vue({
             }).then(function(response) {
                 console.log(response);
             })
-
-
         }
     }
 });
