@@ -40,7 +40,7 @@ public class AxiosRequest {
 	
 	@PostMapping("/login")
 	public Response login (@RequestBody User request) {
-		String username=request.getUsername();
+		String username = request.getUsername();
 		String password = request.getPassword();
 		DBUser user=userMapper.getUserOfUsername(username);
 		if(user==null) return new Response(false,"用户名错误");
@@ -48,6 +48,14 @@ public class AxiosRequest {
 		httpsession.setAttribute("userToken", user.getUid());
 		httpsession.setAttribute("username", user.getUsername());
 		httpsession.setMaxInactiveInterval(60*60);
+		return new Response(true,"登陆成功");
+	}
+	
+	@PostMapping("/login123")
+	public Response login123 (@RequestBody User request) {
+		
+		
+		
 		return new Response(true,"登陆成功");
 	}
 }
