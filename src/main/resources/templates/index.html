@@ -13,6 +13,9 @@
 <body>
     <div id="box">
         <div id="top">
+            <div id="logo"></div>
+            <a href="" id="index">首页</a>
+            <a href="" id="classif">分类</a>
             <a href="/login" id="log" th:if="${session.userToken == null}">登录</a>
             <a href="/register" id="reg" th:if="${session.userToken == null}">注册</a>
             <a href="#" th:if="${session.userToken != null}" th:text="${session.username}"></a>
