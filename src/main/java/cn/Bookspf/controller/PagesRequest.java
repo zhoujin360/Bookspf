@@ -57,4 +57,10 @@ public class PagesRequest {
 		model.addAttribute("address",user.getAddress());
 		return "account";
 	}
+	
+	//登录页
+	@RequestMapping("/orders")
+	public String order () {
+		return new Validator(httpSession).isLogin()?"orders":"login";
+	}
 }

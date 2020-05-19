@@ -3,13 +3,13 @@ var order = new Vue({
     data: {
         orderList: []
     },
-    methods: {
-        getOrders() {
+    mounted: (
+        function() {
             var that = this;
             axios.post("/orders")
                 .then(response => {
-                    console.log(response);
+                    that.orderList = response.data.orders;
                 })
         }
-    }
+    )
 });
