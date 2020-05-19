@@ -1,3 +1,4 @@
+/* top栏 */
 #top {
     height: 60px;
     background-color: skyblue;
@@ -15,8 +16,121 @@
 #top #index {
     margin-left: 450px;
     text-align: center;
-    background-color: pink;
+}
+#top #log {
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #cccccc;
+    font-size: 12px;
+}
+#top #reg {
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #cccccc;
+    font-size: 12px;
 }
 #top #userinfo {
     margin-left: 100px;
 }
+/* 轮播图 */
+#rotation {
+    width: 100%;
+    height: 330px;
+    background-color: pink;
+    text-align: center;
+}
+#rotation .book_img {
+    position: relative;
+    width:  400px;
+    height: 330px;
+}
+#rotation .img_last {
+    position: absolute;
+    top: 170px;
+    left: 300px;
+}
+#rotation .img_next {
+    position: absolute;
+    top: 170px;
+    right: 300px;   
+}
+/* 出版图书板块 */
+#publish #publish_title {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+#publish #publish_body {
+    width: 100%;
+    height: 497px;
+    background-color: pink;
+}
+#publish #recommend_list {
+    float: left;
+    width: 838px;
+    height: 100%;
+    padding: 33px;
+    background-color: purple;
+}
+/* 推荐列表左侧 */
+#recommend_list #list_left {
+    float: left;
+    width: 410px;
+    height: 100%;
+    background-color: pink;
+}
+#list_left #left_title {
+    width: 100%;
+    height: 200px;
+    padding: 20px;
+    background-color: skyblue;
+}
+#left_title h4 {
+    font-size: 18px;
+    font-weight: 400;
+}
+#left_title h6 {
+    font-size: 12px;
+    font-weight: 400;
+}
+#left_body img {
+    margin: 80px 150px;
+    width: 120px;
+
+}
+/* 推荐列表右侧 */
+#recommend_list #list_right {
+    float: left;
+    width: 358px;
+    height: 100%;
+    background-color: orange;
+}
+#list_right ul li {
+    float: left;
+    width: 178px;
+    height: 215px;
+    border: 1px solid #ccc;
+    background-color: pink;
+}
+#right_body img {
+    margin-top: 24px;
+    margin-left: 24px;
+    width: 100px;
+}
+#right_title {
+    margin-top: 10px;
+    margin-left: 24px;
+}
+/* 畅销版 */
+#ranking_list {
+    float: left;
+    width: 362px;
+    height: 100%;
+    padding: 33px;
+    background-color: orange; 
+}
+
