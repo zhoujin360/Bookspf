@@ -1,0 +1,22 @@
+#top {
+    height: 60px;
+    background-color: skyblue;
+    font-size: 14px;
+    line-height: 50px;
+}
+#top a {
+    height: 40px;
+    margin-left: 20px;
+    display: inline-block;
+}
+#top a:hover {
+    border-bottom: 2px solid red;
+}
+#top #index {
+    margin-left: 450px;
+    text-align: center;
+    background-color: pink;
+}
+#top #userinfo {
+    margin-left: 100px;
+}

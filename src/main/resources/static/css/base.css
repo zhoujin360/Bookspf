@@ -63,3 +63,8 @@ body{
 .clearfix{
     *zoom:1;
 }
+
+.type_page {
+    width: 1200px;
+    margin: 0 auto;
+}
