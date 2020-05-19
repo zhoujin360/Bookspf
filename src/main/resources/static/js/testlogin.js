@@ -24,9 +24,9 @@ window.addEventListener("load", function () {
         }
         return flag;
     }
-    logForm.onsubmit = function () {
-        return checkUsername() && checkPassword();
-    }
+    // logForm.onsubmit = function () {
+    //     return checkUsername() && checkPassword();
+    // }
 
     username.onblur = function () {
         checkUsername();
