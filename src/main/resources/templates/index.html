@@ -18,7 +18,6 @@
             <a href="" id="classif">分类</a>
             <a href="/login" id="log" th:if="${session.userToken == null}">登录</a>
             <a href="/register" id="reg" th:if="${session.userToken == null}">注册</a>
-            <a href="" th:text="${session.userToken}"></a>
             <a href="" th:if="${session.userToken != null}" th:text="${session.username}"></a>
             <a href="/account">用户信息</a>
             <a href="">我的订单</a>

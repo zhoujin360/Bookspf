@@ -2,7 +2,8 @@ window.addEventListener("load", function () {
     var logForm = document.querySelector("#logForm");
     var password = document.querySelector("#log_password");
     var username = document.querySelector('#log_account');
-    //校验用户名
+    var err_msg = document.querySelector("#err_msg");
+    //校验密码
     function checkPassword() {
         var reg_password = /^\w{6,20}$/;
         var flag = reg_password.test(password.value);
@@ -10,10 +11,11 @@ window.addEventListener("load", function () {
             password.style.border = "";
         } else {
             password.style.border = "1px solid red";
+            err_msg.innerHTML = "请输入正确的密码<br/>";
         }
         return flag;
     }
-    //校验密码
+    //校验用户名
     function checkUsername() {
         var reg_username = /^\w{3,10}$/
         var flag = reg_username.test(username.value);
@@ -21,6 +23,7 @@ window.addEventListener("load", function () {
             username.style.border = "";
         } else {
             username.style.border = "1px solid red";
+            err_msg.innerHTML = "请输入正确的用户名<br/>";
         }
         return flag;
     }

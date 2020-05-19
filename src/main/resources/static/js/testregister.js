@@ -3,6 +3,7 @@ window.addEventListener("load", function () {
     var password = document.querySelector("#reg_password");
     var email = document.querySelector("#email");
     var regForm = document.querySelector("#regForm");
+    var err_msg = document.querySelector("#err_msg");
     //校验用户名
     function checkUsername() {
         var reg_username = /^\w{3,10}$/
@@ -11,6 +12,7 @@ window.addEventListener("load", function () {
             username.style.border = "";
         } else {
             username.style.border = "1px solid red";
+            err_msg.innerHTML = "请输入正确的用户名<br/>";
         }
         return flag;
     }
@@ -22,6 +24,7 @@ window.addEventListener("load", function () {
             password.style.border = "";
         } else {
             password.style.border = "1px solid red";
+            err_msg.innerHTML = "请输入正确的密码<br/>";
         }
         return flag;
     }
@@ -33,6 +36,7 @@ window.addEventListener("load", function () {
             email.style.border = "";
         } else {
             email.style.border = "1px solid red";
+            err_msg.innerHTML = "请输入正确的邮箱<br/>";
         }
         return flag;
     }
@@ -46,7 +50,7 @@ window.addEventListener("load", function () {
     }
 
     password.onblur = function () {
-        checkPassword();
+        checkPassowrd();
     }
 
     email.onblur = function () {
