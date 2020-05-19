@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>图书销售平台-Bookspf</title>
     <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/index.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
@@ -18,7 +19,7 @@
             <a href="" id="classif">分类</a>
             <a href="/login" id="log" th:if="${session.userToken == null}">登录</a>
             <a href="/register" id="reg" th:if="${session.userToken == null}">注册</a>
-            <select name="" id="">
+            <select name="" id="userinfo">
                 <option value="">
                     <a href="" th:if="${session.userToken != null}" th:text="${session.username}"></a>
                 </option>
