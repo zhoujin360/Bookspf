@@ -12,17 +12,9 @@ import cn.Bookspf.model.DTO.User;
 @Repository
 public interface UserMapper {
 	
-	//获取Uid Of Username
-	@Select("select uid from user where username=#{username}")
-	public Integer getUid(String username);
-	
-	//获取Uid Of Uid
-	@Select("select uid from user where uid=#{uid}")
-	public Integer findUid(Integer uid);
-	
-	//获取密码 Of Username
-	@Select("select password from user where username=#{username}")
-	public String getPassword(String username);
+	//获取User Of Uid
+	@Select("select * from user where uid=#{uid}")
+	public DBUser getUserOfUid(Integer uid);
 	
 	//获取User Of Username
 	@Select("select * from user where username=#{username}")
@@ -35,4 +27,18 @@ public interface UserMapper {
 	//插入用户
 	@Insert("insert into user(uid,username,password,email) values(#{uid},#{username},#{password},#{email})")
 	public void insertUser(User user);
+	
+	//获取Uid Of Username
+	@Select("select uid from user where username=#{username}")
+	public Integer getUid(String username);
+	
+	//获取Uid Of Uid
+	@Select("select uid from user where uid=#{uid}")
+	public Integer findUid(Integer uid);
+	
+	//获取密码 Of Username
+	@Select("select password from user where username=#{username}")
+	public String getPassword(String username);
+	
+	
 }
