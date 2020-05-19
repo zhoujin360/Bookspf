@@ -56,10 +56,11 @@ window.addEventListener("load", function () {
 
 var register = new Vue({
     el: "#regForm",
-    date: {
+    data: {
         username: "",
         password: "",
-        email: ""
+        email: "",
+        msg: ""
     },
     methods: {
         submit: function () {
@@ -70,7 +71,12 @@ var register = new Vue({
                 email: that.email
             }).then(function (response) {
                 console.log(response);
+                if (!response.data.status) {
+                    that.msg = response.data.mes + "<br/>";
+
+                }
             })
-        }
+        },
+
     }
 });

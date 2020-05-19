@@ -20,8 +20,29 @@
             <a href="/register" id="reg" th:if="${session.userToken == null}">注册</a>
             <a href="#" th:if="${session.userToken != null}" th:text="${session.username}"></a>
         </div>
-    </div>
+        <div id="rotation">
+            <img :src="imgArr[index]" @load="rotation" alt="">
+            <a href="javascript:;" @click="last" v-if="index>0"><img src="img/prev.png" alt=""></a>
+            <a href="javascript:;" @click="next" v-if="index<imgArr.length-1"><img src="img/next.png" alt=""></a>
+        </div>
+        <div id="publish">
+            <h1>出版图书</h1>
+            <div id="recommend_list">
+                <div id="list_left">左</div>
+                <div id="list_right">右</div>
+            </div>
+            <div id="ranking_list">
+                <ul>
+                    <li>西游记</li>
+                    <li>红楼梦</li>
+                </ul>
+            </div>
+        </div>
 
+
+
+    </div>
+    <script src="js/index.js"></script>
 </body>
 
 </html>

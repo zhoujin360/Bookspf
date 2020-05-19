@@ -1,6 +1,6 @@
 window.addEventListener("load", function () {
     var logForm = document.querySelector("#logForm");
-    var password = document.querySelector("log_password");
+    var password = document.querySelector("#log_password");
     var username = document.querySelector('#log_account');
     //校验用户名
     function checkPassword() {
@@ -24,9 +24,9 @@ window.addEventListener("load", function () {
         }
         return flag;
     }
-    // logForm.onsubmit = function () {
-    //     return checkUsername() && checkPassword();
-    // }
+    logForm.onsubmit = function () {
+        return checkUsername() && checkPassword();
+    }
 
     username.onblur = function () {
         checkUsername();
@@ -41,7 +41,7 @@ window.addEventListener("load", function () {
 
 var login = new Vue({
     el: "#loginForm",
-    date: {
+    data: {
         username: "",
         password: "",
         msg: ""
@@ -54,6 +54,10 @@ var login = new Vue({
                 password: that.password
             }).then(function (response) {
                 console.log(response);
+                if (!response.data.status) {
+                    that.msg = response.data.mes + "<br/>";
+                }
+
             })
         }
     }
