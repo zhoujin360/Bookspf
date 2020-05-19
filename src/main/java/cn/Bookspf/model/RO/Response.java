@@ -1,8 +1,8 @@
 package cn.Bookspf.model.RO;
 
 public class Response {
-	private boolean status;
-	private String mes;
+	protected boolean status;
+	protected String mes;
 	
 	public Response() {}
 	public Response(boolean status,String mes) {

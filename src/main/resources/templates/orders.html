@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的订单-Bookspf</title>
+    <link rel="stylesheet" href="css/base.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="orders">
+        <div v-for="item in orderList">
+            <div>
+                <span>{{item.orderid}}</span>
+                <span>{{item.createtime}}</span>
+                <span>{{item.paytime}}</span>
+            </div>
+        </div>
+    </div>
+    <script src="js/testorder.js"></script>
+</body>
+
+</html>
