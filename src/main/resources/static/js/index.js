@@ -21,7 +21,7 @@ var index = new Vue({
         next: function () {
             this.index++;
         },
-        //轮播图切换
+        // 轮播图切换
         rotation: function () {
             setInterval(() => {
                 this.index++;
