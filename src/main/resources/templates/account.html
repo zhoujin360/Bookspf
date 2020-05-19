@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人信息-Bookspf</title>
+    <link rel="stylesheet" href="css/base.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        div span:first-child {
+            display: inline-block;
+            width: 6em;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div>
+            <span>UID：</span>
+            <span th:text="${uid}"></span>
+        </div>
+        <div>
+            <span>用户名：</span>
+            <span th:text="${username}"></span>
+        </div>
+        <div>
+            <span>余额：</span>
+            <span th:text="${balance}"></span>
+        </div>
+        <div>
+            <span>邮箱：</span>
+            <span th:text="${email}"></span>
+        </div>
+        <div>
+            <span>手机号码：</span>
+            <span th:text="${phone}"></span>
+        </div>
+        <div>
+            <span>真实姓名：</span>
+            <span th:text="${realname}"></span>
+        </div>
+        <div>
+            <span>地址：</span>
+            <span th:text="${address}"></span>
+        </div>
+    </div>
+
+</body>
+
+</html>

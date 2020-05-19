@@ -1,17 +1,23 @@
 package cn.Bookspf.controller;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Validation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import cn.Bookspf.mapper.UserMapper;
 import cn.Bookspf.model.DO.DBUser;
 import cn.Bookspf.model.DTO.User;
 import cn.Bookspf.model.RO.Response;
 import cn.Bookspf.utils.Generator;
+import cn.Bookspf.utils.Validator;
 
 @RestController
 public class AxiosRequest {
@@ -51,11 +57,5 @@ public class AxiosRequest {
 		return new Response(true,"登陆成功");
 	}
 	
-	@PostMapping("/login123")
-	public Response login123 (@RequestBody User request) {
-		
-		
-		
-		return new Response(true,"登陆成功");
-	}
+
 }
