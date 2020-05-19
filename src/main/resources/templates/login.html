@@ -14,8 +14,8 @@
 <body>
     <div id="box">
         <form action="" id="loginForm" @submit.prevent="submit">
-            账号:<input type="text" v-model="username"><br> 密码:
-            <input type="password" v-model="password"><br>
+            <span>账号:</span><input type="text" v-model="username"><br>
+            <span>密码:</span><input type="password" v-model="password"><br>
             <input type="submit" value="提交">
         </form>
     </div>
