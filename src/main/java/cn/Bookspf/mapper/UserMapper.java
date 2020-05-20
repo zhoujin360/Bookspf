@@ -30,15 +30,18 @@ public interface UserMapper {
 	
 	//获取Uid Of Username
 	@Select("select uid from user where username=#{username}")
-	public Integer getUid(String username);
+	public int getUid(String username);
 	
 	//获取Uid Of Uid
 	@Select("select uid from user where uid=#{uid}")
-	public Integer findUid(Integer uid);
+	public int findUid(int uid);
 	
-	//获取密码 Of Username
+	//获取Password Of Username
 	@Select("select password from user where username=#{username}")
 	public String getPassword(String username);
 	
+	//获取Admin Of Uid
+	@Select("select admin from user where uid=#{uid}")
+	public int getAdmin(int uid);
 	
 }
