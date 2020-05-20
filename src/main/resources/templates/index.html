@@ -19,37 +19,79 @@
             <a href="" id="classif">分类</a>
             <a href="/login" id="log" th:if="${session.userToken == null}">登录</a>
             <a href="/register" id="reg" th:if="${session.userToken == null}">注册</a>
-            <select name="" id="userinfo">
-                <option value="">
-                    <a href="" th:if="${session.userToken != null}" th:text="${session.username}"></a>
-                </option>
-                <option value="">
-                    <a href="">用户信息</a>
-                </option>
-                <option value="">
-                    <a href="">我的订单</a>
-                </option>
-                <option value="">
-                    <a href="">退出</a>
-                </option>
-            </select>
+            <a href="" th:if="${session.userToken != null}" th:text="${session.username}"></a>
+            <a href="" id="userinfo" th:if="${session.userToken != null}">用户信息</a>
+            <a href="" id="my_order" th:if="${session.userToken != null}">我的订单</a>
+            <a href="" id="exit" th:if="${session.userToken != null}">退出</a>
         </div>
         <div id="rotation">
-            <img :src="imgArr[index]" @load="rotation" alt="">
-            <a href="javascript:;" @click="last" v-if="index>0"><img src="img/prev.png" alt=""></a>
-            <a href="javascript:;" @click="next" v-if="index<imgArr.length-1"><img src="img/next.png" alt=""></a>
+            <img :src="imgArr[index]" @load="rotation" alt="" class="book_img">
+            <a href="javascript:;" @click="last" v-if="index>0" class="img_last"><img src="img/prev.png" alt=""></a>
+            <a href="javascript:;" @click="next" v-if="index<imgArr.length-1" class="img_next"><img src="img/next.png"
+                    alt=""></a>
         </div>
         <div id="publish">
-            <h1>出版图书</h1>
-            <div id="recommend_list">
-                <div id="list_left">左</div>
-                <div id="list_right">右</div>
+            <div id="publish_title">
+                <h1>出版图书</h1>
             </div>
-            <div id="ranking_list">
-                <ul>
-                    <li>西游记</li>
-                    <li>红楼梦</li>
-                </ul>
+            <div id="publish_body">
+                <div id="recommend_list">
+                    <div id="list_left">
+                        <div id="left_title">
+                            <h4>橙红年代</h4>
+                            <h6>作者: AABB</h6>
+                        </div>
+                        <div id="left_body">
+                            <img src="img/1.jpg" alt="">
+                        </div>
+                    </div>
+                    <div id="list_right">
+                        <ul>
+                            <li>
+                                <div id="right_body">
+                                    <img src="img/1.jpg" alt="">
+                                </div>
+                                <div id="right_title">
+                                    <h4>橙红年代</h4>
+                                    <h6>作者: AABB</h6>
+                                </div>
+                            </li>
+                            <li>
+                                <div id="right_body">
+                                    <img src="img/1.jpg" alt="">
+                                </div>
+                                <div id="right_title">
+                                    <h4>橙红年代</h4>
+                                    <h6>作者: AABB</h6>
+                                </div>
+                            </li>
+                            <li>
+                                <div id="right_body">
+                                    <img src="img/1.jpg" alt="">
+                                </div>
+                                <div id="right_title">
+                                    <h4>橙红年代</h4>
+                                    <h6>作者: AABB</h6>
+                                </div>
+                            </li>
+                            <li>
+                                <div id="right_body">
+                                    <img src="img/1.jpg" alt="">
+                                </div>
+                                <div id="right_title">
+                                    <h4>橙红年代</h4>
+                                    <h6>作者: AABB</h6>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="ranking_list">
+                    <ul>
+                        <li>西游记</li>
+                        <li>红楼梦</li>
+                    </ul>
+                </div>
             </div>
         </div>
 

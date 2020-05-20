@@ -28,7 +28,7 @@ var index = new Vue({
                 if (this.index == 7) {
                     this.index = 0;
                 }
-            }, 2000);
+            }, 50000000);
         }
     }
 
