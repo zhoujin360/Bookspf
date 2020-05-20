@@ -34,7 +34,7 @@ public interface UserMapper {
 	
 	//获取Uid Of Uid
 	@Select("select uid from user where uid=#{uid}")
-	public int findUid(int uid);
+	public Integer findUid(Integer uid);
 	
 	//获取Password Of Username
 	@Select("select password from user where username=#{username}")
