@@ -1,0 +1,122 @@
+body {
+    backface-visibility: #FFFFFF;
+}
+/* 空白预留区域 */
+#blank_space {
+    float: left;
+    width: 200px;
+    height: 300px;
+    margin-top: 100px;
+    background-color: #EFEDE9;
+}
+/* 订单信息 */
+#cart_information {
+    float: left;
+    width: 800px;
+    margin: 100px;
+    margin-bottom: 30px;
+}
+/* 订单标题 */
+#cart_title {
+    width: 850px;
+    height: 50px;
+    box-shadow: 2px 2px 1px 1px rgba(0,0,0,0.1);
+    background-color: #FFF;
+}
+#cart_title span {
+    display: inline-block;
+    width: 166px;
+    height: 50px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 50px;
+    color: #212121;
+    background-color: #FFF;
+}
+/* 订单列表 */
+#cart_list li {
+    float: left;
+    width: 850px;
+    height: 40px;
+    /* border-bottom: 1px solid #ccc; */
+    background-color: #FFFFFF;
+    margin-top: 3px;
+}
+#cart_list li:hover {
+    background-color: #F7F7F7;
+}
+#cart_list li span {
+    display: inline-block;
+    width: 164px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+#cart_list li a {
+    display: inline-block;
+    width: 164px;
+    height: 50px;
+    text-align: center;
+    padding-left: 15px; 
+    line-height: 50px;
+}
+#cart_list li #num {
+    display: inline-block;
+    width: 164px;
+    height: 50px;
+    text-align: center;
+    line-height: 20px;
+    
+}
+#cart_list li #book_num {
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    line-height: 26px;
+    font-weight: 700;
+}
+#cart_list #num label {
+    cursor: pointer;
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    line-height: 26px;
+    background-color: #fff;
+}
+/* 购物车操作模块 */
+#cart_operate {
+    float: left;
+    width: 850px;
+    height: 80px;
+    background-color: #F7F7F7;
+    border-radius: 4px;
+    margin-left: 100px;
+}
+#shoppingCart #total {
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    margin-left: 500px;
+    margin-top: 20px;
+    margin-right: 60px;
+}
+#total h1 {
+    display: inline-block;
+    margin-left: 10px;
+    color: #FF2832;
+    font-weight: 400;
+}
+#shoppingCart #buy {
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+    background-color: #FF2832;
+    text-align: center;
+    line-height: 30px;
+}

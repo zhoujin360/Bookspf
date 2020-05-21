@@ -14,7 +14,9 @@
 <body>
     <div id="box" class="type_page">
         <div id="top">
-            <div id="logo"></div>
+            <div id="logo">
+                <a href="#">aaaaaaaaaaaaaaaaaaaaaaaaa</a>
+            </div>
             <a href="" id="index">首页</a>
             <a href="" id="classif">分类</a>
             <a href="/login" id="log" th:if="${session.userToken == null}">登录</a>
@@ -25,10 +27,27 @@
             <a href="" id="exit" th:if="${session.userToken != null}">退出</a>
         </div>
         <div id="rotation">
-            <img :src="imgArr[index]" @load="rotation" alt="" class="book_img">
-            <a href="javascript:;" @click="last" v-if="index>0" class="img_last"><img src="img/prev.png" alt=""></a>
-            <a href="javascript:;" @click="next" v-if="index<imgArr.length-1" class="img_next"><img src="img/next.png"
-                    alt=""></a>
+            <ul class="cont">
+                <li class="item active"><img src="img/1.jpg" alt=""></li>
+                <li class="item"><img src="img/2.jpg" alt=""></li>
+                <li class="item"><img src="img/3.jpg" alt=""></li>
+                <li class="item"><img src="img/4.jpg" alt=""></li>
+                <li class="item"><img src="img/5.jpg" alt=""></li>
+                <li class="item"><img src="img/10.jpg" alt=""></li>
+                <li class="item"><img src="img/13.jpg" alt=""></li>
+            </ul>
+            <div id="left"><img src="img/prev.png" alt=""></div>
+            <div id="right"><img src="img/next.png" alt=""></div>
+            <ul class="dot">
+                <li class="point active" data-index="0"></li>
+                <li class="point" data-index="1"></li>
+                <li class="point" data-index="2"></li>
+                <li class="point" data-index="3"></li>
+                <li class="point" data-index="4"></li>
+                <li class="point" data-index="5"></li>
+                <li class="point" data-index="6"></li>
+                <li class="point" data-index="7"></li>
+            </ul>
         </div>
         <div id="publish">
             <div id="publish_title">
@@ -40,6 +59,7 @@
                         <div id="left_title">
                             <h4>橙红年代</h4>
                             <h6>作者: AABB</h6>
+                            <p>dahsdashdksahdjkshajdsadsadsa </p>
                         </div>
                         <div id="left_body">
                             <img src="img/1.jpg" alt="">

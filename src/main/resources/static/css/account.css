@@ -10,10 +10,18 @@
 #userinfo div{
     width: 800px;
     height: 40px;
-    background-color: FFFFFF;
+    background-color: #FFFFFF;
     margin:30px auto;
     border-radius: 20px;
     line-height: 40px;
     text-align: center;
+    font-size: 14px;
+    color: #212121;
 }
-
+#userinfo div:hover {
+    background-color: #F7F7F7;
+}
+#userinfo #tips {
+    color: #B79E9E;
+    font-size: 12px;
+}
