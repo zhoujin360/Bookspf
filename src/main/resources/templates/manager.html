@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图书管理员-Bookspf</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/manager.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="actionBlock" class="actionHidden" onclick="action('block')"></div>
+    <div id="top">
+        <div id="logo">
+            <span>管理系统后台</span>
+        </div>
+    </div>
+    <div id="nav">
+        <div id="welcome">
+            <div id="name">CShisan</div>
+            <div class="wcword">欢迎您回来</div>
+        </div>
+        <div id="navitems">
+            <div class="item" @click="rotateT(1)">
+                <span>图书</span>
+                <p :class="isShow==1?'rotate90':'norotate'">﹤</p>
+            </div>
+            <div onclick="isMain('bookInfo')" :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
+                图书信息修改
+            </div>
+            <div onclick="isMain('sortInfo')" :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
+                图书分类信息管理
+            </div>
+            <div onclick="isMain('orderReview')" :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
+                订单审核
+            </div>
+            <div class="item" @click="rotateT(2)">
+                <span>出入库</span>
+                <p :class="isShow==2?'rotate90':'norotate'">﹤</p>
+            </div>
+            <div onclick="isMain('saleInfo')" :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
+                销售记录查看
+            </div>
+            <div onclick="isMain('purchaseInfo')" :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
+                进货记录管理
+            </div>
+            <div onclick="isMain('stockInfo')" :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
+                库存记录管理
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div id="bookInfo" class="mainItemHidden">
+            <div class="searchBox">
+                <div id="action" onclick="action('addBook')">
+                    <span><a href="#">添加图书</a></span>
+                </div>
+            </div>
+            <div id="List">
+                <div class="listInfo">
+                    <span>BID</span>
+                    <span>图书名</span>
+                    <span>分类名</span>
+                    <span>作者</span>
+                    <span>图书价格</span>
+                    <span>是否上架</span>
+                    <span>描述</span>
+                </div>
+                <div class="listItem">
+                    <span>9394</span>
+                    <span>CShisan</span>
+                    <span>陈十三</span>
+                    <span>陈十三</span>
+                    <span>陈十三</span>
+                    <span>是</span>
+                    <span class="description">陈十三陈十三陈十三陈十三陈十三陈十三陈十三陈十三陈十三陈十三</span>
+                    <span class="alter"><a href="#" onclick="action('alterBook')">修改</a></span>
+                    <span class="delete"><a href="#">删除</a></span>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="sortInfo" class="mainItemHidden">
+            <div class="searchBox">
+                <div id="action" onclick="action('addSort')">
+                    <span><a href="#">添加分类</a></span>
+                </div>
+            </div>
+            <div id="List">
+                <div class="listInfo">
+                    <span>分类ID</span>
+                    <span>分类名</span>
+                </div>
+                <div class="listItem">
+                    <span>9394</span>
+                    <span>CShisan</span>
+                    <span class="alter"><a href="#" onclick="action('alterSort')">修改</a></span>
+                    <span class="delete"><a href="#">删除</a></span>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="orderReview" class="mainItemHidden">
+            <div class="searchBox">
+                <div id="action" onclick="action('addBook')">
+                    <span><a href="#">搜索</a></span>
+                </div>
+                <div class="search">
+                    <div class="searchTop">
+                        <span>通过订单ID搜索</span>
+                        <span>通过用户名称搜索</span>
+                        <span>通过订单创建时间搜索</span>
+                    </div>
+                    <div class="searchBar">
+                        <span>
+                            <input type="text">
+                        </span>
+                        <span>
+                            <input type="text">
+                        </span>
+                        <span>
+                            <input type="datetime-local">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div id="List">
+                <div class="listInfo">
+                    <span>订单ID</span>
+                    <span>用户ID</span>
+                    <span>订单创建时间</span>
+                    <span>订单支付时间</span>
+                    <span>总价</span>
+                </div>
+                <div class="listItem">
+                    <span>9394</span>
+                    <span>CShisan</span>
+                    <span>陈十三</span>
+                    <span>陈十三</span>
+                    <span>陈十三</span>
+                    <span class="check"><a href="#" onclick="action('checkOrder')">查看订单</a></span>
+                    <span class="delete"><a href="#">删除</a></span>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="saleInfo" class="mainItemHidden">
+            <div class="searchBox">
+                <div id="action" onclick="action('addBook')">
+                    <span><a href="#">搜索</a></span>
+                </div>
+                <div class="search">
+                    <div class="searchTop">
+                        <span>通过销售ID搜索</span>
+                        <span>通过ISBN搜索</span>
+                        <span>通过销售时间搜索</span>
+                    </div>
+                    <div class="searchBar">
+                        <span>
+                            <input type="text">
+                        </span>
+                        <span>
+                            <input type="text">
+                        </span>
+                        <span>
+                            <input type="datetime-local">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div id="List">
+                <div class="listInfo">
+                    <span>销售ID</span>
+                    <span>ISBN</span>
+                    <span>销售时间</span>
+                    <span>操作员</span>
+                </div>
+                <div class="listItem">
+                    <span>9394</span>
+                    <span>CShisan</span>
+                    <span>陈十三</span>
+                    <span>陈十三</span>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div id="purchaseInfo" class="mainItemHidden">
+            <div class="searchBox">
+                <div id="action" onclick="action('addPurchase')">
+                    <span><a href="#">添加记录</a></span>
+                </div>
+                <div id="action" onclick="action('addBook')">
+                    <span><a href="#">搜索</a></span>
+                </div>
+                <div class="search">
+                    <div class="searchTop">
+                        <span>通过进货记录ID搜索</span>
+                        <span>通过进货时间搜索</span>
+                    </div>
+                    <div class="searchBar">
+                        <span>
+                            <input type="text">
+                        </span>
+                        <span>
+                            <input type="datetime-local">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div id="List">
+                <div class="listInfo">
+                    <span>进货记录ID</span>
+                    <span>数量</span>
+                    <span>总价</span>
+                    <span>进货时间</span>
+                    <span>操作员 </span>
+                </div>
+                <div class="listItem">
+                    <span>9394</span>
+                    <span>CShisan</span>
+                    <span>陈十三</span>
+                    <span>陈十三</span>
+                    <span>陈十三</span>
+                    <span class="check"><a href="#" onclick="action('checkPurchase')">查看记录</a></span>
+                    <span class="delete"><a href="#">删除</a></span>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="stockInfo" class="mainItemHidden">
+            <div class="searchBox">
+                <div id="action" onclick="action('addBook')">
+                    <span><a href="#">搜索</a></span>
+                </div>
+                <div class="search">
+                    <div class="searchTop">
+                        <span>通过进货记录ID搜索</span>
+                        <span>通过记录时间搜索</span>
+                    </div>
+                    <div class="searchBar">
+                        <span>
+                            <input type="text">
+                        </span>
+                        <span>
+                            <input type="datetime-local">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div id="List">
+                <div class="listInfo">
+                    <span>库存记录ID</span>
+                    <span>记录时间</span>
+                    <span>出/入库</span>
+                    <span>操作员 </span>
+                </div>
+                <div class="listItem">
+                    <span>9394</span>
+                    <span>CShisan</span>
+                    <span>陈十三</span>
+                    <span>陈十三</span>
+                    <span class="check"><a href="#" onclick="action('checkStock')">查看记录</a></span>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="bookWindow">
+        <div id="addBook" class="window actionHidden">
+            <div class="tips">添加图书</div>
+            <form action="#">
+                <div id="bid">
+                    <span>图书编号</span>：
+                    <input type="text">
+                </div>
+                <div id="bookname">
+                    <span>图书名</span>：
+                    <input type="text">
+                </div>
+                <div id="sortname">
+                    <span>分类名</span>：
+                    <input type="text">
+                </div>
+                <div id="author">
+                    <span>作者</span>：
+                    <input type="password">
+                </div>
+                <div id="description">
+                    <span>描述</span>：
+                    <input type="password">
+                </div>
+                <div id="bookprice">
+                    <span>图书价格</span>：
+                    <input type="password">
+                </div>
+                <div id="added">
+                    <span>是否上架(0否/1是)</span>：
+                    <input type="password">
+                </div>
+                <div id="errmes">错误信息</div>
+                <input id="submit" type="submit" value="确认添加">
+            </form>
+        </div>
+        <div id="alterBook" class="window actionHidden">
+            <div class="tips">修改图书信息</div>
+            <form action="#">
+                <div id="bid">
+                    <span>图书编号</span>：
+                    <input type="text">
+                </div>
+                <div id="bookname">
+                    <span>图书名</span>：
+                    <input type="text">
+                </div>
+                <div id="sortname">
+                    <span>分类名</span>：
+                    <input type="text">
+                </div>
+                <div id="author">
+                    <span>作者</span>：
+                    <input type="password">
+                </div>
+                <div id="description">
+                    <span>描述</span>：
+                    <input type="password">
+                </div>
+                <div id="bookprice">
+                    <span>图书价格</span>：
+                    <input type="password">
+                </div>
+                <div id="added">
+                    <span>是否上架(0否/1是)</span>：
+                    <input type="password">
+                </div>
+                <div id="errmes">错误信息</div>
+                <input id="submit" type="submit" value="确认修改">
+            </form>
+        </div>
+    </div>
+
+    <div class="sortWindow">
+        <div id="addSort" class="window actionHidden">
+            <div class="tips">添加分类</div>
+            <form action="#">
+                <div id="sortid">
+                    <span>分类编号</span>：
+                    <input type="text">
+                </div>
+                <div id="sortname">
+                    <span>分类名</span>：
+                    <input type="text">
+                </div>
+                <div id="errmes">错误信息</div>
+                <input id="submit" type="submit" value="确认添加">
+            </form>
+        </div>
+        <div id="alterSort" class="window actionHidden">
+            <div class="tips">修改分类信息</div>
+            <form action="#">
+                <div id="sortid">
+                    <span>分类编号</span>：
+                    <input type="text">
+                </div>
+                <div id="sortname">
+                    <span>分类名</span>：
+                    <input type="text">
+                </div>
+                <div id="errmes">错误信息</div>
+                <input id="submit" type="submit" value="确认修改">
+            </form>
+        </div>
+    </div>
+
+    <div class="orderWindow">
+        <div id="checkOrder" class="window actionHidden">
+            <div class="tips">
+                <span>订单ID：21335476565</span>
+            </div>
+            <div class="orderInfo">
+                <div>
+                    <span>图书ID：2</span>
+                    <span>ISBN：1265437658876</span>
+                    <span>图书价格：55元</span>
+                </div>
+                <div>
+                    <span>图书ID：2</span>
+                    <span>ISBN：1265437658876</span>
+                    <span>图书价格：55元</span>
+                </div>
+                <div>
+                    <span>图书ID：2</span>
+                    <span>ISBN：1265437658876</span>
+                    <span>图书价格：55元</span>
+                </div>
+                <div>
+                    <span>图书ID：2</span>
+                    <span>ISBN：1265437658876</span>
+                    <span>图书价格：55元</span>
+                </div>
+                <div>
+                    <span>图书ID：2</span>
+                    <span>ISBN：1265437658876</span>
+                    <span>图书价格：55元</span>
+                </div>
+                <div>
+                    <span>图书ID：2</span>
+                    <span>ISBN：1265437658876</span>
+                    <span>图书价格：55元</span>
+                </div>
+                <div>
+                    <span>图书ID：2</span>
+                    <span>ISBN：1265437658876</span>
+                    <span>图书价格：55元</span>
+                </div>
+                <div>
+                    <span>图书ID：2</span>
+                    <span>ISBN：1265437658876</span>
+                    <span>图书价格：55元</span>
+                </div>
+                <div>
+                    <span>图书ID：2</span>
+                    <span>ISBN：1265437658876</span>
+                    <span>图书价格：55元</span>
+                </div>
+                <div>
+                    <span>图书ID：2</span>
+                    <span>ISBN：1265437658876</span>
+                    <span>图书价格：55元</span>
+                </div>
+            </div>
+            <span class="added">是否已经支付：是</span>
+            <span class="total">总价：456元</span>
+            <div>
+                <input id="pass" type="submit" value="通过审核">
+                <input id="nopass" type="submit" value="不通过">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="purchaseWindow">
+        <div id="checkPurchase" class="window actionHidden">
+            <div class="tips">
+                <span>进货记录ID：21335476565</span>
+            </div>
+            <div class="purchaseInfo">
+                <div>
+                    <span>图书名：三国演义</span>
+                    <span>ISBN：1265437658876</span>
+                    <span>图书价格：55元</span>
+                </div>
+                <div>
+                    <span>图书名：三国演义</span>
+                    <span>ISBN：1265437658876</span>
+                    <span>图书价格：55元</span>
+                </div>
+                <div>
+                    <span>图书名：三国演义</span>
+                    <span>ISBN：1265437658876</span>
+                    <span>图书价格：55元</span>
+                </div>
+                <div>
+                    <span>图书名：三国演义</span>
+                    <span>ISBN：1265437658876</span>
+                    <span>图书价格：55元</span>
+                </div>
+                <div>
+                    <span>图书名：三国演义</span>
+                    <span>ISBN：1265437658876</span>
+                    <span>图书价格：55元</span>
+                </div>
+                <div>
+                    <span>图书名：三国演义</span>
+                    <span>ISBN：1265437658876</span>
+                    <span>图书价格：55元</span>
+                </div>
+                <div>
+                    <span>图书名：三国演义</span>
+                    <span>ISBN：1265437658876</span>
+                    <span>图书价格：55元</span>
+                </div>
+                <div>
+                    <span>图书名：三国演义</span>
+                    <span>ISBN：1265437658876</span>
+                    <span>图书价格：55元</span>
+                </div>
+                <div>
+                    <span>图书名：三国演义</span>
+                    <span>ISBN：1265437658876</span>
+                    <span>图书价格：55元</span>
+                </div>
+                <div>
+                    <span>图书名：三国演义</span>
+                    <span>ISBN：1265437658876</span>
+                    <span>图书价格：55元</span>
+                </div>
+            </div>
+            <span class="total">总价：456元</span>
+        </div>
+
+        <div id="addPurchase" class="window actionHidden">
+            <div class="tips">添加记录</div>
+            <form action="#">
+                <div id="purchaseid">
+                    <span>进货记录ID</span>：
+                    <input type="text">
+                </div>
+                <div id="bookPurchase"> </div>
+                <div id="errmes">错误信息</div>
+                <input id="addPurchaseBtn" onclick="addBookPurchaseItem()" type="button" value="+">
+                <input id="addPurchasesubmit" type="submit" value="确认添加">
+            </form>
+        </div>
+    </div>
+
+    <div class="stockWindow">
+        <div id="checkStock" class="window actionHidden">
+            <div class="tips">
+                <span>库存ID：21335476565</span>
+            </div>
+            <div class="stockInfo">
+                <div>
+                    <span>图书ID：2</span>
+                    <span>ISBN：1265437658876</span>
+                </div>
+                <div>
+                    <span>图书ID：2</span>
+                    <span>ISBN：1265437658876</span>
+                </div>
+                <div>
+                    <span>图书ID：2</span>
+                    <span>ISBN：1265437658876</span>
+                </div>
+                <div>
+                    <span>图书ID：2</span>
+                    <span>ISBN：1265437658876</span>
+                </div>
+                <div>
+                    <span>图书ID：2</span>
+                    <span>ISBN：1265437658876</span>
+                </div>
+                <div>
+                    <span>图书ID：2</span>
+                    <span>ISBN：1265437658876</span>
+                </div>
+                <div>
+                    <span>图书ID：2</span>
+                    <span>ISBN：1265437658876</span>
+                </div>
+                <div>
+                    <span>图书ID：2</span>
+                    <span>ISBN：1265437658876</span>
+                </div>
+                <div>
+                    <span>图书ID：2</span>
+                    <span>ISBN：1265437658876</span>
+                </div>
+                <div>
+                    <span>图书ID：2</span>
+                    <span>ISBN：1265437658876</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="js/manager.js"></script>
+</body>
+
+</html>

@@ -37,12 +37,34 @@ a{
 a:hover{
     color:#c81623;
 }
-/* 按钮和input改变字体样式
+/* 按钮和input改变字体样式 清除边框*/
 button,input{
-    清除边框
      border: 0;
-    outline: none;
-} */
+	 outline: none;
+} 
+
+*::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 6px;
+    /*高宽分别对应横竖滚动条的尺寸*/
+    height: 4px;
+    scrollbar-arrow-color: red;
+}
+
+*::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+    scrollbar-arrow-color: red;
+}
+
+*::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.1);
+}
 
 body{
     /* CSS3抗锯齿形(文字放大会有锯齿)  让文字显示更清晰 */
