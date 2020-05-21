@@ -1,0 +1,19 @@
+/* 头像 */
+#head_sculpture {
+    width: 100px;
+    height: 100px;
+    background-color: pink;
+    margin: 20px auto;
+    border-radius: 50%;
+}
+/* 用户信息 */
+#userinfo div{
+    width: 800px;
+    height: 40px;
+    background-color: FFFFFF;
+    margin:30px auto;
+    border-radius: 20px;
+    line-height: 40px;
+    text-align: center;
+}
+
