@@ -1,0 +1,112 @@
+/* 空白预留区域 */
+#blank_space {
+    float: left;
+    width: 200px;
+    height: 300px;
+    background-color: pink;
+    margin-top: 100px;
+}
+/* 预留查询条件位置 */
+#search {
+    float: left;
+    width: 800px;
+    height: 130px;
+    background-color: pink;
+    margin: 40px 60px;
+}
+/* 订单信息 */
+#order_information {
+    float: left;
+    width: 800px;
+    /* height: 100px; */
+    background-color: pink;
+    margin: 5px 60px;
+}
+/* 订单标题 */
+#order_title {
+    width: 800px;
+    height: 50px;
+    background-color: #FFF;
+}
+#order_title span {
+    display: inline-block;
+    width: 166px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    background-color: skyblue;
+}
+
+/* 订单列表 */
+#order_list li {
+    float: left;
+    width: 800px;
+    height: 40px;
+    border-bottom: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: skyblue;
+    margin-top: 3px;
+}
+#order_list li span {
+    display: inline-block;
+    width: 164px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+#order_list #check_order {
+    width: 80px;
+    height: 50px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+/* 订单详情 */
+#order_detailed {
+    float: left;
+    width: 800px;
+    /* height: 100px; */
+    background-color: pink;
+    margin: 5px 60px;
+}
+
+#order_detailed #order_title {
+    width: 800px;
+    height: 50px;
+    background-color: #FFF;
+}
+#order_detailed #order_title span {
+    display: inline-block;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    background-color: skyblue;
+}
+#order_detailed #order_list li {
+    float: left;
+    width: 800px;
+    height: 40px;
+    border-bottom: 1px solid #ccc;
+    border-radius: 10px;
+    margin-top: 3px;
+    background-color: skyblue;
+}
+#order_detailed #order_list li span {
+    display: inline-block;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+#order_detailed #total {
+    float: right;
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    background-color: orange;
+    text-align: center;
+    line-height: 30px;
+    margin-top: 20px;
+}
+
+

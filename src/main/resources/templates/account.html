@@ -5,50 +5,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>个人信息-Bookspf</title>
-    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css\base.css">
+    <link rel="stylesheet" href="css\account.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <style>
-        div span:first-child {
-            display: inline-block;
-            width: 6em;
-            text-align: center;
-        }
-    </style>
+
 </head>
 
 <body>
-    <div id="box">
-        <div>
-            <span>UID：</span>
-            <span th:text="${uid}"></span>
+    <div id="box" class="type_page">
+        <!-- 头像 -->
+        <div id="head_sculpture">
+            1
         </div>
-        <div>
-            <span>用户名：</span>
-            <span th:text="${username}"></span>
-        </div>
-        <div>
-            <span>余额：</span>
-            <span th:text="${balance}"></span>
-        </div>
-        <div>
-            <span>邮箱：</span>
-            <span th:text="${email}"></span>
-        </div>
-        <div>
-            <span>手机号码：</span>
-            <span th:text="${phone}"></span>
-        </div>
-        <div>
-            <span>真实姓名：</span>
-            <span th:text="${realname}"></span>
-        </div>
-        <div>
-            <span>地址：</span>
-            <span th:text="${address}"></span>
+        <div id="userinfo">
+            <div>
+                <span>UID：</span>
+                <span th:text="${uid}">20138</span>
+            </div>
+            <div>
+                <span>用户名：</span>
+                <span th:text="${username}">nzy</span>
+            </div>
+            <div>
+                <span>余额：</span>
+                <span th:text="${balance}">1000</span>
+                <a href="#" id="recharge">充值</a>
+            </div>
+            <div>
+                <span>Tips:以下信息将作为购书寄送地址,请认真填写,以确保正确性</span>
+            </div>
+            <div>
+                <span>邮箱：</span>
+                <span th:text="${email}">6942320321@qq.com</span>
+            </div>
+            <div>
+                <span>手机号码：</span>
+                <span th:text="${phone}">1333333333</span>
+            </div>
+            <div>
+                <span>真实姓名：</span>
+                <span th:text="${realname}">某某某</span>
+            </div>
+            <div>
+                <span>收货地址：</span>
+                <span th:text="${address}">四川</span>
+            </div>
         </div>
     </div>
-
 </body>
 
 </html>

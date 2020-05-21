@@ -37,12 +37,12 @@ a{
 a:hover{
     color:#c81623;
 }
-/* 按钮和input改变字体样式
+/* 按钮和input改变字体样式 */
 button,input{
-    清除边框
+    /* 清除边框 */
      border: 0;
     outline: none;
-} */
+}
 
 body{
     /* CSS3抗锯齿形(文字放大会有锯齿)  让文字显示更清晰 */

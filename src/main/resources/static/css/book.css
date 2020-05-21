@@ -1,0 +1,90 @@
+/* 图书内容部分 */
+#book_content {
+    width: 100%;
+    height: 330px;
+    background-color: pink;
+    margin-top: 30px;
+}
+#book_img {
+    float: left;
+    width: 280px;
+    height: 100%;
+    background: orange;
+    border-right: 1px solid #ccc;
+}
+#book_title {
+    float: left;
+    width: 920px;
+    height: 110px;
+    /* margin-left: 60px; */
+    background-color: skyblue;
+    padding: 22px;
+    border-bottom: 1px solid #ccc;
+}
+#book_price {
+    float: left;
+    width: 920px;
+    height: 110px;
+    /* margin-left: 60px; */
+    padding: 22px;
+    background-color:  #fff;
+    border-bottom: 1px solid #ccc;
+}
+#book_price span {
+    float: right;
+    font-size: 16px;
+}
+#book_service {
+    float: left;
+    width: 920px;
+    height: 110px;
+    padding: 22px;
+    /* margin-left: 60px; */
+    background-color: #ccc;
+}
+#book_service #book_num {
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    font-size: 16px;
+    line-height: 50px;
+    text-align: center;
+    /* background-color: #fff; */
+}
+#book_service #add_shoppingcar {
+    float: right;
+    width: 100px;
+    height: 40px;
+    margin-left: 10px;
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+}
+#book_service #buy {
+    float: right;
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+}
+/* 书本描述 */
+#book_evaluate {
+    width: 100%;
+    height: 200px;
+    margin-top: 30px;
+    background-color: #ccc;
+    padding: 15px 40px 15px 40px;
+}
+#book_evaluate #title {
+    width: 100%;
+    height: 40px;
+    background-color: pink;
+}
+#book_evaluate #body {
+    width: 100%;
+    height: 110px;
+    margin-top: 10px;
+    background-color: #fff;
+    font-size: 14px;
+}
