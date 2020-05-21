@@ -40,7 +40,11 @@ public class PagesRequest {
 	//登录页
 	@RequestMapping("/login")
 	public String login () {
-		return new Validator(httpSession).isLogin()?"index":"login";
+		if(!new Validator(httpSession).isLogin()) return "login";
+		int admin = userMapper.getAdmin((int) httpSession.getAttribute("userToken"));
+		if(admin==2) return "index";
+		if(admin==1) return "manager";
+		return "superManager";
 	}
 	
 	//账户页面
@@ -58,9 +62,9 @@ public class PagesRequest {
 		return "account";
 	}
 	
-	//登录页
+	//订单页
 	@RequestMapping("/orders")
-	public String order () {
+	public String order () {	
 		return new Validator(httpSession).isLogin()?"orders":"login";
 	}
 }

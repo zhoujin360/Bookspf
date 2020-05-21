@@ -1,0 +1,260 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 6px;
+    /*高宽分别对应横竖滚动条的尺寸*/
+    height: 4px;
+    scrollbar-arrow-color: red;
+}
+
+*::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+    scrollbar-arrow-color: red;
+}
+
+*::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+a {
+    text-decoration: none;
+    text-align: center;
+}
+
+body {
+    min-width: 1920px;
+    background-color: rgb(221, 221, 221);
+}
+
+#actionBlock {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.actionShow {
+    display: block;
+    z-index: 1;
+}
+
+.actionHidden {
+    display: none;
+}
+
+#top {
+    padding-left: 50px;
+    height: 60px;
+    background-color: rgb(29, 32, 39);
+    color: #fff;
+    line-height: 60px;
+    font-size: 20px;
+}
+
+#nav {
+    position: absolute;
+    width: 350px;
+    height: calc(100% - 60px);
+    border-radius: 0 0 30px 0;
+    background-color: rgb(61, 70, 77);
+}
+
+#welcome {
+    margin: auto;
+    margin-top: 20px;
+    width: 96%;
+    height: 200px;
+    border-radius: 10px;
+    background-color: rgb(41, 45, 54);
+    color: #fff;
+    text-align: center;
+    transition: all 1s;
+}
+
+#welcome:hover {
+    color: aquamarine;
+}
+
+#name {
+    padding-top: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 50px;
+}
+
+.wcword {
+    margin-top: 20px;
+    font-size: 25px;
+}
+
+#navitems {
+    margin-top: 30px;
+}
+
+#navitems div {
+    cursor: pointer;
+}
+
+.norotate {
+    transition: all 1s;
+}
+
+.rotate90 {
+    transform: rotate(-90deg);
+    transition: all 1s;
+}
+
+.itemShow {
+    height: 45px;
+    transition: all 0.5s;
+    opacity: 1
+}
+
+.itemHidden {
+    height: 0;
+    transition: all 0.5s;
+    opacity: 0
+}
+
+#navitems p {
+    display: inline-block;
+    margin-left: 80px;
+}
+
+#mgAdmins {
+    padding-left: 1.5em;
+    height: 50px;
+    background-color: rgb(41, 45, 54);
+    color: #ccc;
+    line-height: 50px;
+    font-size: 20px;
+}
+
+#mgAdminsItem {
+    padding-left: 3em;
+    background-color: #ccc;
+    color: #000;
+    font-size: 18px;
+    line-height: 45px;
+}
+
+.main {
+    position: absolute;
+    top: 65px;
+    left: 365px;
+    width: 1160px;
+    height: 650px;
+    border-radius: 10px;
+    background-color: rgb(41, 45, 54);
+}
+
+#action a {
+    display: block;
+    margin: 60px 38px 0;
+    width: 6em;
+    height: 30px;
+    background-color: rgb(152, 241, 100);
+    border-radius: 5px;
+    color: #fff;
+    line-height: 30px;
+}
+
+#action a:hover {
+    color: #000;
+}
+
+#addAdmin {
+    position: absolute;
+    left: calc(50% - 250px);
+    top: calc(50% - 160px);
+    width: 500px;
+    height: 320px;
+    border-radius: 10px;
+    background-color: rgb(61, 70, 77);
+    color: #ccc;
+    text-align: center;
+}
+
+#addAdmin .tips {
+    margin: 30px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+#addAdmin div {
+    margin: 10px;
+}
+
+#addAdmin span {
+    display: inline-block;
+    width: 6em;
+}
+
+#addAdmin input {
+    width: 250px;
+    height: 25px;
+    list-style: none;
+    border: 0;
+    border-radius: 5px;
+}
+
+#addAdmin #submit {
+    width: 250px;
+    height: 30px;
+}
+
+#managerList {
+    margin: auto;
+    margin-top: 20px;
+    padding: 20px 0;
+    width: 1130px;
+    height: 470px;
+    border-radius: 10px;
+    background-color: #ccc;
+    overflow: auto;
+}
+
+#managerList div {
+    margin: 15px 0 auto 20px;
+    padding: 5px 10px;
+    width: 1030px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #fff;
+    line-height: 30px;
+}
+
+#managerList div:first-child {
+    margin-top: 0;
+}
+
+#managerList div span {
+    margin: 10px;
+}
+
+#managerList div span:nth-child(odd) {
+    margin-left: 60px;
+}
+
+#managerList div span.delete {
+    margin-left: 250px;
+}
+
+.delete a {
+    display: inline-block;
+    margin: 1px;
+    width: 3em;
+    height: 28px;
+    border-radius: 5px;
+    background-color: rgb(247, 64, 64);
+}

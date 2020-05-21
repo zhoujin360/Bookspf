@@ -56,10 +56,11 @@ var login = new Vue({
                 username: that.username,
                 password: that.password
             }).then(function (response) {
-                console.log(response);
-                if (!response.data.status) {
-                    that.msg = response.data.mes + "<br/>";
-                }
+                if (response.data.status) {
+                   window.location.reload() ;
+                }else{
+					that.msg = response.data.mes;
+				}
 
             })
         }
