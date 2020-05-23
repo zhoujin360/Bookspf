@@ -15,7 +15,7 @@
     <div id="actionBlock" class="actionHidden" onclick="action('block')"></div>
     <div id="top">
         <div id="logo">
-            <span>管理系统后台</span>
+            <span>图书售书管理系统后台</span>
         </div>
     </div>
     <div id="nav">
@@ -28,10 +28,10 @@
                 <span>图书</span>
                 <p :class="isShow==1?'rotate90':'norotate'">﹤</p>
             </div>
-            <div onclick="isMain('bookInfo')" :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
-                图书信息修改
+            <div onclick="isMain('bookInfo');externalGetBookList();" :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
+                图书信息管理
             </div>
-            <div onclick="isMain('sortInfo')" :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('sortInfo');externalGetSortList();" :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
                 图书分类信息管理
             </div>
             <div onclick="isMain('orderReview')" :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
@@ -59,26 +59,30 @@
                     <span><a href="#">添加图书</a></span>
                 </div>
             </div>
-            <div id="List">
+            <div class="List">
                 <div class="listInfo">
-                    <span>BID</span>
+                    <span>图书ID</span>
                     <span>图书名</span>
-                    <span>分类名</span>
+                    <span>分类ID</span>
                     <span>作者</span>
                     <span>图书价格</span>
+                    <span>图书数量</span>
                     <span>是否上架</span>
                     <span>描述</span>
                 </div>
-                <div class="listItem">
-                    <span>9394</span>
-                    <span>CShisan</span>
-                    <span>陈十三</span>
-                    <span>陈十三</span>
-                    <span>陈十三</span>
-                    <span>是</span>
-                    <span class="description">陈十三陈十三陈十三陈十三陈十三陈十三陈十三陈十三陈十三陈十三</span>
-                    <span class="alter"><a href="#" onclick="action('alterBook')">修改</a></span>
-                    <span class="delete"><a href="#">删除</a></span>
+                <div id="bookList">
+                    <div class="listItem" v-for="item in books">
+                        <span>{{item.bid}}</span>
+                        <span>{{item.bookname}}</span>
+                        <span>{{item.sortid}}</span>
+                        <span>{{item.author}}</span>
+                        <span>{{item.bookprice}}</span>
+                        <span>{{item.number}}</span>
+                        <span v-text="item.added==0?'否':'是'"></span>
+                        <span class="description">{{item.description}}</span>
+                        <span class="alter"><a href="#" onclick="action('alterBook')">修改</a></span>
+                        <span class="delete"><a href="#">删除</a></span>
+                    </div>
                 </div>
 
             </div>
@@ -90,16 +94,17 @@
                     <span><a href="#">添加分类</a></span>
                 </div>
             </div>
-            <div id="List">
+            <div class="List">
                 <div class="listInfo">
                     <span>分类ID</span>
                     <span>分类名</span>
                 </div>
-                <div class="listItem">
-                    <span>9394</span>
-                    <span>CShisan</span>
-                    <span class="alter"><a href="#" onclick="action('alterSort')">修改</a></span>
-                    <span class="delete"><a href="#">删除</a></span>
+                <div id="sortList">
+                    <div class="listItem" v-for="item in sorts">
+                        <span>{{item.sortid}}</span>
+                        <span>{{item.sortname}}</span>
+                        <span class="delete"><a href="#" @click="deleteSort(item.sortid)">删除</a></span>
+                    </div>
                 </div>
 
             </div>
@@ -129,7 +134,7 @@
                     </div>
                 </div>
             </div>
-            <div id="List">
+            <div class="List">
                 <div class="listInfo">
                     <span>订单ID</span>
                     <span>用户ID</span>
@@ -174,7 +179,7 @@
                     </div>
                 </div>
             </div>
-            <div id="List">
+            <div class="List">
                 <div class="listInfo">
                     <span>销售ID</span>
                     <span>ISBN</span>
@@ -215,7 +220,7 @@
                     </div>
                 </div>
             </div>
-            <div id="List">
+            <div class="List">
                 <div class="listInfo">
                     <span>进货记录ID</span>
                     <span>数量</span>
@@ -256,7 +261,7 @@
                     </div>
                 </div>
             </div>
-            <div id="List">
+            <div class="List">
                 <div class="listInfo">
                     <span>库存记录ID</span>
                     <span>记录时间</span>
@@ -310,7 +315,7 @@
                     <input type="password">
                 </div>
                 <div id="errmes">错误信息</div>
-                <input id="submit" type="submit" value="确认添加">
+                <input id="addBookBtn" class="windowBtn" type="submit" value="确认添加">
             </form>
         </div>
         <div id="alterBook" class="window actionHidden">
@@ -353,17 +358,19 @@
     <div class="sortWindow">
         <div id="addSort" class="window actionHidden">
             <div class="tips">添加分类</div>
-            <form action="#">
+            <form @submit.prevent="submit">
                 <div id="sortid">
                     <span>分类编号</span>：
-                    <input type="text">
+                    <input type="text" v-model="sortid">
                 </div>
                 <div id="sortname">
                     <span>分类名</span>：
-                    <input type="text">
+                    <input type="text" v-model="sortname">
                 </div>
-                <div id="errmes">错误信息</div>
-                <input id="submit" type="submit" value="确认添加">
+                <div class="errmes">
+                    <span v-show="isShow" :class="errmesColor?'errmesGreen':'errmesRed'">{{errmes}}</span>
+                </div>
+                <input id="addSortBtn" class="windowBtn" type="submit" value="确认添加">
             </form>
         </div>
         <div id="alterSort" class="window actionHidden">

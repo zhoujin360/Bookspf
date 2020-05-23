@@ -7,6 +7,23 @@ a {
     text-align: center;
 }
 
+.errmes {
+    height: 20px;
+}
+
+.errmes span {
+    width: 20em;
+    font-size: 12px;
+}
+
+.errmesRed {
+    color: red;
+}
+
+.errmesGreen {
+    color: rgb(152, 241, 100);
+}
+
 #actionBlock {
     position: absolute;
     width: 100%;
@@ -156,6 +173,7 @@ a {
     border-radius: 5px;
     color: #fff;
     line-height: 30px;
+    transition: color 0.5s;
 }
 
 #action a:hover {
@@ -195,9 +213,15 @@ a {
     border-radius: 5px;
 }
 
-.window #submit {
-    width: 250px;
+.window .windowBtn {
+    width: 12em;
     height: 30px;
+    text-indent: 0;
+    transition: all 0.5s;
+}
+
+.window .windowBtn:hover {
+    background-color: rgb(152, 241, 100);
 }
 
 #addSort,
@@ -292,7 +316,7 @@ a {
     width: 12em;
 }
 
-#List {
+.List {
     margin: auto;
     margin-top: 20px;
     padding: 20px 0;
@@ -303,7 +327,8 @@ a {
     overflow: auto;
 }
 
-#List div {
+.List .listInfo,
+.List .listItem {
     margin: 15px 0 auto 20px;
     padding: 5px 10px;
     width: 1030px;
@@ -313,23 +338,24 @@ a {
     line-height: 30px;
 }
 
-#List div:first-child {
+.List .listInfo {
     margin-top: 0;
 }
 
-#List div span {
+.List .listInfo span,
+.List .listItem span {
     display: inline-block;
     margin: 0;
-    width: 7em;
+    width: 6em;
     text-align: center;
     Vertical-align: middle;
 }
 
-#List div span:nth-child(odd) {
-    margin-left: 10px;
+.List div span:nth-child(odd) {
+    margin-left: 5px;
 }
 
-#List div .description {
+.List .listItem .description {
     width: 15em;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -337,13 +363,13 @@ a {
     white-space: nowrap;
 }
 
-#List div span.delete,
-#List div span.alter,
-#List div span.check {
+.List div span.delete,
+.List div span.alter,
+.List div span.check {
     margin-left: 30px;
 }
 
-#List div span.check {
+.List div span.check {
     margin-left: 200px;
 }
 
@@ -351,16 +377,19 @@ a {
     font-weight: 700;
 }
 
-#sortInfo #List div span,
-#saleInfo #List div span {
+#sortInfo .List div span {
+    width: 20em;
+}
+
+#saleInfo .List div span {
     width: 15em;
 }
 
-#purchaseInfo #List div span {
+#purchaseInfo .List div span {
     width: 8em;
 }
 
-#stockInfo #List div span {
+#stockInfo .List div span {
     width: 10em;
 }
 

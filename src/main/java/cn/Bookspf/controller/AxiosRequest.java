@@ -13,12 +13,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import cn.Bookspf.mapper.BookMapper;
 import cn.Bookspf.mapper.OrderMapper;
+import cn.Bookspf.mapper.SortMapper;
 import cn.Bookspf.mapper.UserMapper;
 import cn.Bookspf.model.DO.DBUser;
+import cn.Bookspf.model.DTO.Book;
+import cn.Bookspf.model.DTO.Sort;
 import cn.Bookspf.model.DTO.User;
+import cn.Bookspf.model.RO.BookResponse;
 import cn.Bookspf.model.RO.OrderResponse;
 import cn.Bookspf.model.RO.Response;
+import cn.Bookspf.model.RO.SortResponse;
 import cn.Bookspf.model.RO.UserResponse;
 import cn.Bookspf.utils.Generator;
 import cn.Bookspf.utils.Validator;
@@ -28,13 +34,17 @@ public class AxiosRequest {
 	HttpSession httpSession;
 	Validator validator;
 	UserMapper userMapper;
+	BookMapper bookMapper;
+	SortMapper sortMapper;
 	OrderMapper orderMapper;
 	
 	@Autowired
-	public AxiosRequest(HttpSession httpSession,UserMapper userMapper,OrderMapper orderMapper) {
+	public AxiosRequest(HttpSession httpSession,UserMapper userMapper,BookMapper bookMapper,SortMapper sortMapper,OrderMapper orderMapper) {
 		this.httpSession=httpSession;
 		this.validator=new Validator(httpSession);
 		this.userMapper=userMapper;
+		this.bookMapper=bookMapper;
+		this.sortMapper=sortMapper;
 		this.orderMapper=orderMapper;
 	}
 	
@@ -80,8 +90,7 @@ public class AxiosRequest {
 	public Response getManagerList() {
 		if(!validator.isLogin()) return new Response(false,"请登录再操作");
 		if(validator.isIdentity(userMapper)!=0) return new Response(false,"请登录超级管理员帐号");
-		UserResponse userResponse=new UserResponse(userMapper.getUserNoPasswordOfAdmin(1));
-		return userResponse;
+		return new UserResponse(userMapper.getUserNoPasswordOfAdmin(1));
 	}
 	
 	@PostMapping("/deleteAdmin")
@@ -103,6 +112,46 @@ public class AxiosRequest {
 		return new Response(true,"添加成功");
 	}
 	
+	@GetMapping("/getBookList")
+	public Response getBookList() {
+		if(!validator.isLogin()) return new Response(false,"请登录再操作");
+		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
+		return new BookResponse(bookMapper.getBooks());
+	}
+	
+	@PostMapping("/addBook")
+	public Response addBook(@RequestBody Book request) {
+		if(!validator.isLogin()) return new Response(false,"请登录再操作");
+		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
+		request.setHot(0);
+		request.setNumber(0);
+		if(request.getDescription()!=null)bookMapper.addBook(request);
+		else bookMapper.addBookNoDescription(request);
+		return new Response(true,"添加成功");
+	}
+	
+	@GetMapping("/getSortList")
+	public Response getSortList() {
+		if(!validator.isLogin()) return new Response(false,"请登录再操作");
+		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
+		return new SortResponse(sortMapper.getSorts());
+	}
+	
+	@PostMapping("/addSort")
+	public Response addSort(@RequestBody Sort request) {
+		if(!validator.isLogin()) return new Response(false,"请登录再操作");
+		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
+		sortMapper.addSort(request);
+		return new Response(true,"添加成功");
+	}
+	
+	@PostMapping("/deleteSort")
+	public Response deleteSort(@RequestBody Sort request) {
+		if(!validator.isLogin()) return new Response(false,"请登录再操作");
+		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
+		sortMapper.deleteSort(request.getSortid());
+		return new Response(true,"删除成功");
+	}
 	
 	
 	@PostMapping("/orders")

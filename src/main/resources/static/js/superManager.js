@@ -72,7 +72,6 @@ var getManagerList = new Vue({
         },
         deleteAdmin(uid) {
             var that = this;
-            alert(uid);
             axios.post("/deleteAdmin", {
                 uid: uid
             }).then(response => {
