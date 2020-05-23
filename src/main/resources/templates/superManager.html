@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" xmlns="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -12,15 +12,16 @@
 </head>
 
 <body>
-    <div id="actionBlock" class="actionHidden" onclick="action()"></div>
+    <div id="actionBlock" class="actionHidden" onclick="action('block')"></div>
     <div id="top">
         <div id="logo">
-            <span>管理系统后台</span>
+            <span>图书售书管理系统后台</span>
         </div>
+        <div id="logout"><a href="#" @click="logout">退出</a></div>
     </div>
     <div id="nav">
         <div id="welcome">
-            <div id="name">CShisan</div>
+            <div id="name">[[${user.username}]]</div>
             <div class="wcword">欢迎您回来</div>
         </div>
         <div id="navitems">
@@ -28,134 +29,58 @@
                 <span>操作管理员信息</span>
                 <p :class="isShow?'rotate90':'norotate'">﹤</p>
             </div>
-            <div :class="isShow?'itemShow':'itemHidden'" id="mgAdminsItem">
+            <div onclick="isMain();externalGetManagerList();" :class="isShow?'itemShow':'itemHidden'" id="mgAdminsItem">
                 管理员信息列表
             </div>
         </div>
     </div>
     <div class="main">
-        <div class="actionFather">
-            <div id="action" onclick="action()">
-                <span><a href="#">添加管理员</a></span>
+        <div id="managerInfo" class="mainItemHidden">
+            <div class="actionFather">
+                <div id="action">
+                    <span><a href="#" onclick="action('addAdmin')" @click="getManagerList">添加管理员</a></span>
+                </div>
+            </div>
+            <div id="managerList">
+                <div class="managerListItem" v-for="item in managers">
+                    <div>
+                        <span>UID：{{item.uid}}</span>
+                        <span>用户名：{{item.username}}</span>
+                        <span>邮箱：{{item.email}}</span>
+                        <span>真实姓名：{{item.realname}}</span>
+                        <span class="delete" @click="deleteAdmin(item.uid)"><a href="#">删除</a></span>
+                    </div>
+                </div>
             </div>
         </div>
-        <div id="managerList">
-            <div>
-                <span>UID：</span>
-                <span>9394</span>
-                <span>用户名：</span>
-                <span>CShisan</span>
-                <span>真实姓名：</span>
-                <span>陈十三</span>
-                <span class="delete"><a href="#">删除</a></span>
-            </div>
-            <div>
-                <span>UID：</span>
-                <span>9394</span>
-                <span>用户名：</span>
-                <span>CShisan</span>
-                <span>真实姓名：</span>
-                <span>陈十三</span>
-                <span class="delete"><a href="#">删除</a></span>
-            </div>
-            <div>
-                <span>UID：</span>
-                <span>9394</span>
-                <span>用户名：</span>
-                <span>CShisan</span>
-                <span>真实姓名：</span>
-                <span>陈十三</span>
-                <span class="delete"><a href="#">删除</a></span>
-            </div>
-            <div>
-                <span>UID：</span>
-                <span>9394</span>
-                <span>用户名：</span>
-                <span>CShisan</span>
-                <span>真实姓名：</span>
-                <span>陈十三</span>
-                <span class="delete"><a href="#">删除</a></span>
-            </div>
-            <div>
-                <span>UID：</span>
-                <span>9394</span>
-                <span>用户名：</span>
-                <span>CShisan</span>
-                <span>真实姓名：</span>
-                <span>陈十三</span>
-                <span class="delete"><a href="#">删除</a></span>
-            </div>
-            <div>
-                <span>UID：</span>
-                <span>9394</span>
-                <span>用户名：</span>
-                <span>CShisan</span>
-                <span>真实姓名：</span>
-                <span>陈十三</span>
-                <span class="delete"><a href="#">删除</a></span>
-            </div>
-            <div>
-                <span>UID：</span>
-                <span>9394</span>
-                <span>用户名：</span>
-                <span>CShisan</span>
-                <span>真实姓名：</span>
-                <span>陈十三</span>
-                <span class="delete"><a href="#">删除</a></span>
-            </div>
-            <div>
-                <span>UID：</span>
-                <span>9394</span>
-                <span>用户名：</span>
-                <span>CShisan</span>
-                <span>真实姓名：</span>
-                <span>陈十三</span>
-                <span class="delete"><a href="#">删除</a></span>
-            </div>
-            <div>
-                <span>UID：</span>
-                <span>9394</span>
-                <span>用户名：</span>
-                <span>CShisan</span>
-                <span>真实姓名：</span>
-                <span>陈十三</span>
-                <span class="delete"><a href="#">删除</a></span>
-            </div>
-            <div>
-                <span>UID：</span>
-                <span>9394</span>
-                <span>用户名：</span>
-                <span>CShisan</span>
-                <span>真实姓名：</span>
-                <span>陈十三</span>
-                <span class="delete"><a href="#">删除</a></span>
-            </div>
-
-        </div>
-
-
     </div>
     <div id="addAdmin" class="actionHidden">
         <div class="tips">添加管理员信息</div>
-        <form action="#">
+        <form @submit.prevent="submit">
             <div id="uid">
                 <span>UID：</span>
-                <input type="text">
+                <input type="text" v-model="uid">
             </div>
             <div id="username">
                 <span>用户名：</span>
-                <input type="text">
-            </div>
-            <div id="realname">
-                <span>真实姓名：</span>
-                <input type="text">
+                <input type="text" v-model="username">
             </div>
             <div id="password">
                 <span>密码：</span>
-                <input type="password">
+                <input type="password" v-model="password">
             </div>
-            <div id="errmes">错误信息</div>
-            <input id="submit" type="submit" value="确认添加">
+            <div id="email">
+                <span>邮箱：</span>
+                <input type="text" v-model="email">
+            </div>
+            <div id="realname">
+                <span>真实姓名：</span>
+                <input type="text" v-model="realname">
+            </div>
+            <div class="errmes">
+                <span v-show="isShow" :class="errmesColor?'errmesGreen':'errmesRed'">{{errmes}}</span>
+            </div>
+            <input id="addAdminBtn" type="submit" value="确认添加">
         </form>
     </div>
 

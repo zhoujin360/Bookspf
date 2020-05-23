@@ -19,32 +19,33 @@ import cn.Bookspf.model.DO.DBUser;
 import cn.Bookspf.model.DTO.User;
 import cn.Bookspf.model.RO.OrderResponse;
 import cn.Bookspf.model.RO.Response;
+import cn.Bookspf.model.RO.UserResponse;
 import cn.Bookspf.utils.Generator;
 import cn.Bookspf.utils.Validator;
 
 @RestController
 public class AxiosRequest {
 	HttpSession httpSession;
+	Validator validator;
 	UserMapper userMapper;
 	OrderMapper orderMapper;
-	
 	
 	@Autowired
 	public AxiosRequest(HttpSession httpSession,UserMapper userMapper,OrderMapper orderMapper) {
 		this.httpSession=httpSession;
+		this.validator=new Validator(httpSession);
 		this.userMapper=userMapper;
 		this.orderMapper=orderMapper;
 	}
 	
 	@PostMapping("/register")
 	public Response register (@RequestBody User request) {
-		String username=request.getUsername();
-		String email = request.getEmail();
-		if(userMapper.getUserOfUsername(username) != null) return new Response(false,"用户名已存在");
-		if(userMapper.getUserOfEmail(email)!=null) return new Response(false,"邮箱已注册");
+		String status =validator.isSame(userMapper, request);
+		if(!"成功".equals(status)) return new Response(false,status);
 		Integer uid = Generator.generateUid();
 		if(userMapper.findUid(uid)!=null) uid+=1;
 		request.setUid(uid);
+		request.setAdmin(2);
 		userMapper.insertUser(request);
 		return new Response(true,"注册成功");
 	}
@@ -62,9 +63,51 @@ public class AxiosRequest {
 		return new Response(true,"登陆成功");
 	}
 	
+	@PostMapping("/logout")
+	public void logout () {
+		httpSession.removeAttribute("userToken");
+		httpSession.invalidate();
+	}
+	
+	@PostMapping("/superManager")
+	public Response superManager () {
+		if(!validator.isLogin()) return new Response(false,"请登录再操作");
+		DBUser user=userMapper.getUserOfUid((int) httpSession.getAttribute("userToken"));
+		return new Response(true,"success");
+	}
+	
+	@GetMapping("/getManagerList")
+	public Response getManagerList() {
+		if(!validator.isLogin()) return new Response(false,"请登录再操作");
+		if(validator.isIdentity(userMapper)!=0) return new Response(false,"请登录超级管理员帐号");
+		UserResponse userResponse=new UserResponse(userMapper.getUserNoPasswordOfAdmin(1));
+		return userResponse;
+	}
+	
+	@PostMapping("/deleteAdmin")
+	public Response deleteAdmin(@RequestBody User request) {
+		if(!validator.isLogin()) return new Response(false,"请登录再操作");
+		if(validator.isIdentity(userMapper)!=0) return new Response(false,"请登录超级管理员帐号");
+		userMapper.deleteAdmin(request.getUid());
+		return new Response(true,"删除成功");
+	}
+	
+	@PostMapping("/addAdmin")
+	public Response addAdmin(@RequestBody User request) {
+		if(!validator.isLogin()) return new Response(false,"请登录再操作");
+		if(validator.isIdentity(userMapper)!=0) return new Response(false,"请登录超级管理员帐号");
+		String status =validator.isSame(userMapper, request);
+		if(!"成功".equals(status)) return new Response(false,status);
+		request.setAdmin(1);
+		userMapper.insertManager(request);
+		return new Response(true,"添加成功");
+	}
+	
+	
+	
 	@PostMapping("/orders")
 	public Response orders() {
-		if(!new Validator(httpSession).isLogin()) return new Response(false,"请登录再操作");
+		if(!validator.isLogin()) return new Response(false,"请登录再操作");
 		int uid = (int) httpSession.getAttribute("userToken");
 		return new OrderResponse(true,"获取成功",orderMapper.getOrders(uid));
 	}

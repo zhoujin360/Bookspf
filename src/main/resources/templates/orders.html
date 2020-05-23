@@ -11,16 +11,64 @@
 </head>
 
 <body>
-    <div id="orders">
-        <div v-for="item in orderList">
-            <div>
-                <span>{{item.orderid}}</span>
-                <span>{{item.createtime}}</span>
-                <span>{{item.paytime}}</span>
+    <div id="box" class="type_page">
+        <div id="blank_space">预留区域</div>
+        <div id="search">查询预留区域</div>
+        <div id="order">
+            <div id="order_information" v-if="!flag">
+                <div id="order_title">
+                    <span>订单id</span>
+                    <span>订单创建时间</span>
+                    <span>订单支付时间</span>
+                    <span>总价</span>
+                </div>
+                <div id="order_list">
+                    <ul>
+                        <li>
+                            <span>dasdsa</span>
+                            <span>2019-3-3</span>
+                            <span>10230-3-2</span>
+                            <span>166</span>
+                            <span id="check_order" @click="showDetailed">查看订单</span>
+                        </li>
+                        <li>
+                            <span>dasdsa</span>
+                            <span>2019-3-3</span>
+                            <span>10230-3-2</span>
+                            <span>166</span>
+                            <span id="check_order" @click="showDetailed">查看订单</span>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 订单详情div 点了之后才显示 -->
+            <div id="order_detailed" v-if="flag">
+                <div id="order_title">
+                    <span>bid</span>
+                    <span>书名</span>
+                    <span>ISBN</span>
+                    <span>单价</span>
+                    <span>数量</span>
+                </div>
+                <div id="order_list">
+                    <ul>
+                        <li>
+                            <span>dasdsa</span>
+                            <span><a href="book.html">束名</a></span>
+                            <span>10230-3-2</span>
+                            <span>166</span>
+                            <span>1</span>
+                        </li>
+
+
+                    </ul>
+                </div>
+                <span id="total">总价: 10</span>
             </div>
         </div>
     </div>
-    <script src="js/testorder.js"></script>
+    <script src="js/testorders.js"></script>
 </body>
 
 </html>

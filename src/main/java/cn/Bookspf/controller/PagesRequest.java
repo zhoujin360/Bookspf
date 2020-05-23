@@ -10,61 +10,84 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.Bookspf.mapper.UserMapper;
 import cn.Bookspf.model.DO.DBUser;
+import cn.Bookspf.model.RO.UserResponse;
 import cn.Bookspf.utils.Validator;
 
 @Controller
 public class PagesRequest {
 	HttpSession httpSession;
 	UserMapper userMapper;
+	Validator validator;
 	
 	
 	@Autowired
 	public PagesRequest(HttpSession httpSession,UserMapper userMapper) {
 		this.httpSession=httpSession;
 		this.userMapper=userMapper;
+		this.validator=new Validator(httpSession);
 	}
 	
 	
+	public void setModelUser(Model model) {
+		int uid = (int) httpSession.getAttribute("userToken");
+		DBUser user=userMapper.getUserOfUid(uid);
+		model.addAttribute("user", user);
+	}
+	
 	//主页
 	@RequestMapping({"/","/index"})
-	public String index () {
-		return "index";
+	public String index (Model model) {
+		if(!validator.isLogin())return "index";
+		setModelUser(model);
+		return validator.isIdentity(userMapper, "index");
 	}
 	
 	//注册页
 	@RequestMapping("/register")
-	public String register () {
-		return new Validator(httpSession).isLogin()?"index":"register";
+	public String register (Model model) {
+		if(!validator.isLogin())return "register";
+		setModelUser(model);
+		return validator.isIdentity(userMapper, "index");
 	}
 	
 	//登录页
 	@RequestMapping("/login")
-	public String login () {
-		if(!new Validator(httpSession).isLogin()) return "login";
-		int admin = userMapper.getAdmin((int) httpSession.getAttribute("userToken"));
-		if(admin==2) return "index";
-		if(admin==1) return "manager";
-		return "superManager";
+	public String login (Model model) {
+		if(!validator.isLogin())return "login";
+		setModelUser(model);
+		return validator.isIdentity(userMapper, "index");
+	}
+	
+	//超级管理员
+	@RequestMapping("/superManager")
+	public String superManager(Model model) {
+		if(!validator.isLogin())return "login";
+		setModelUser(model);
+		return validator.isIdentity(userMapper, "superManager");
+	}
+	
+	//图书管理员
+	@RequestMapping("/manager")
+	public String manager(Model model) {
+		if(!validator.isLogin())return "login";
+		setModelUser(model);
+		return validator.isIdentity(userMapper, "manager");
 	}
 	
 	//账户页面
 	@RequestMapping("/account/{id}")
 	public String account (@PathVariable("id") Integer id,Model model) {
-		if(!new Validator(httpSession).isLogin()) return "login";
+		if(!validator.isLogin())return "login";
 		DBUser user=userMapper.getUserOfUid(id);
-		model.addAttribute("uid",user.getUid());
-		model.addAttribute("username",user.getUsername());
-		model.addAttribute("balance",user.getBalance());
-		model.addAttribute("email",user.getEmail());
-		model.addAttribute("phone",user.getPhone());
-		model.addAttribute("realname",user.getRealname());
-		model.addAttribute("address",user.getAddress());
-		return "account";
+		model.addAttribute("user", user);
+		return validator.isIdentity(userMapper, "account");
 	}
 	
 	//订单页
 	@RequestMapping("/orders")
-	public String order () {	
-		return new Validator(httpSession).isLogin()?"orders":"login";
+	public String order (Model model) {	
+		if(!validator.isLogin())return "login";
+		setModelUser(model);
+		return validator.isIdentity(userMapper, "orders");
 	}
 }

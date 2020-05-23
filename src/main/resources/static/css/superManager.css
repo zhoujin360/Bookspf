@@ -3,8 +3,34 @@ body {
     background-color: rgb(221, 221, 221);
 }
 
-a{
-	text-align: center;
+a {
+    text-align: center;
+}
+
+#logo {
+    display: inline-block;
+    width: 200px;
+}
+
+#logout {
+    display: inline-block;
+    margin: auto;
+    margin-left: 1200px;
+    width: 2em;
+    height: 30px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+#logout a {
+    color: #ccc;
+    transition: color 0.5s;
+}
+
+#logout a:hover {
+    color: rgb(255, 143, 51);
 }
 
 #actionBlock {
@@ -129,6 +155,14 @@ a{
     background-color: rgb(41, 45, 54);
 }
 
+.mainItemShow {
+    display: block;
+}
+
+.mainItemHidden {
+    display: none;
+}
+
 #action a {
     display: block;
     margin: 60px 38px 0;
@@ -147,9 +181,9 @@ a{
 #addAdmin {
     position: absolute;
     left: calc(50% - 250px);
-    top: calc(50% - 160px);
+    top: calc(50% - 180px);
     width: 500px;
-    height: 320px;
+    height: 360px;
     border-radius: 10px;
     background-color: rgb(61, 70, 77);
     color: #ccc;
@@ -179,9 +213,33 @@ a{
     border-radius: 5px;
 }
 
-#addAdmin #submit {
-    width: 250px;
+.errmes {
+    height: 20px;
+}
+
+#addAdmin .errmes span {
+    width: 20em;
+    font-size: 12px;
+}
+
+#addAdmin .errmesRed {
+    color: red;
+}
+
+#addAdmin .errmesGreen {
+    color: rgb(152, 241, 100);
+}
+
+#addAdmin #addAdminBtn {
+    width: 150px;
     height: 30px;
+    text-indent: 0;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+#addAdmin #addAdminBtn:hover {
+    background-color: rgb(152, 241, 100);
 }
 
 #managerList {
@@ -195,8 +253,11 @@ a{
     overflow: auto;
 }
 
-#managerList div {
+#managerList .managerListItem {
     margin: 15px 0 auto 20px;
+}
+
+#managerList .managerListItem div {
     padding: 5px 10px;
     width: 1030px;
     height: 40px;
@@ -205,20 +266,26 @@ a{
     line-height: 30px;
 }
 
-#managerList div:first-child {
+#managerList .managerListItem div:first-child {
     margin-top: 0;
 }
 
-#managerList div span {
-    margin: 10px;
+#managerList .managerListItem div span {
+    display: inline-block;
+    margin-left: 5px;
 }
 
-#managerList div span:nth-child(odd) {
-    margin-left: 60px;
+#managerList .managerListItem div span:nth-child(-n+2) {
+    width: 12em;
 }
 
-#managerList div span.delete {
-    margin-left: 250px;
+#managerList .managerListItem div span:nth-child(n+3) {
+    width: 20em;
+}
+
+#managerList .managerListItem div span.delete {
+    margin-left: 20px;
+    width: 3em;
 }
 
 .delete a {
