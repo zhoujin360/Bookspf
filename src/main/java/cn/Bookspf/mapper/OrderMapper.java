@@ -12,8 +12,17 @@ import cn.Bookspf.model.DO.DBOrder;
 @Repository
 public interface OrderMapper {
 	
-	@Select("select * from orders where uid=#{uid}")
-	public ArrayList<DBOrder> getOrders(int uid);
+	
+	//查询所有订单的统计信息
+	@Select("select distinct orderid,uid,createtime,paytime from orders")
+	public ArrayList<DBOrder> getOrders();
 	
 	
+	//查询所有订单的总价
+	@Select("select sum(bookprice) from orders group by orderid")
+	public ArrayList<Integer> getOrderPrice();
+	
+	//查询某个订单信息
+	@Select("select * from orders where orderid=#{orderid}")
+	public ArrayList<DBOrder> getOrderOfOrderid(long orderid);
 }
