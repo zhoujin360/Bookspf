@@ -7,6 +7,32 @@ a {
     text-align: center;
 }
 
+#logo {
+    display: inline-block;
+    width: 200px;
+}
+
+#logout {
+    display: inline-block;
+    margin: auto;
+    margin-left: 1200px;
+    width: 2em;
+    height: 30px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+#logout a {
+    color: #ccc;
+    transition: color 0.5s;
+}
+
+#logout a:hover {
+    color: rgb(255, 143, 51);
+}
+
 .errmes {
     height: 20px;
 }
@@ -239,14 +265,14 @@ a {
 #checkPurchase,
 #checkStock {
     left: calc(50% - 275px);
-    top: calc(50% - 230px);
+    top: calc(50% - 175px);
     width: 550px;
-    height: 460px;
+    height: 350px;
 }
 
-#checkOrder .orderInfo div,
-#checkPurchase .purchaseInfo div,
-#checkStock .stockInfo div {
+#checkOrder .orders div,
+#checkPurchase .purchases div,
+#checkStock .stocks div {
     margin: 0 auto 10px;
     width: 95%;
     height: 25px;
@@ -255,16 +281,15 @@ a {
     color: #000;
 }
 
-.orderInfo,
-.purchaseInfo,
+.orders,
+.purchases,
 #bookPurchase,
-.stockInfo {
-    height: 280px;
+.stocks {
+    height: 150px;
     overflow: auto;
 }
 
-#checkOrder .added,
-#checkOrder .total,
+#checkOrder .paid,
 #checkPurchase .total {
     color: red;
     font-weight: 700;
@@ -273,6 +298,7 @@ a {
 #checkOrder #pass {
     width: 6em;
     background-color: rgb(131, 238, 70);
+    text-indent: 0;
     transition: background-color 0.5s;
 }
 
@@ -280,6 +306,7 @@ a {
     margin-left: 60px;
     width: 6em;
     background-color: rgb(245, 84, 84);
+    text-indent: 0;
     transition: background-color 0.5s;
 }
 
@@ -314,6 +341,16 @@ a {
 
 .bookPurchaseItem input:nth-child(6) {
     width: 12em;
+}
+
+#addPurchaseBtn {
+    width: 2em;
+    background-color: rgb(131, 238, 70);
+    transition: background-color 0.5s;
+}
+
+#addPurchaseBtn:hover {
+    background-color: rgb(108, 212, 47);
 }
 
 .List {
@@ -355,6 +392,11 @@ a {
     margin-left: 5px;
 }
 
+.List .listInfo .time,
+.List .listItem .time {
+    width: 15em;
+}
+
 .List .listItem .description {
     width: 15em;
     overflow: hidden;
@@ -375,6 +417,14 @@ a {
 
 .listInfo {
     font-weight: 700;
+}
+
+#orderInfo .List div span:first-child {
+    width: 10em;
+}
+
+#orderInfo .List div span.check {
+    margin-left: 100px;
 }
 
 #sortInfo .List div span {
@@ -462,14 +512,4 @@ a {
     height: 25px;
     border-radius: 5px;
     text-indent: 1em;
-}
-
-#addPurchaseBtn {
-    width: 2em;
-    background-color: rgb(131, 238, 70);
-    transition: background-color 0.5s;
-}
-
-#addPurchaseBtn:hover {
-    background-color: rgb(108, 212, 47);
 }
