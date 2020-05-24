@@ -12,29 +12,66 @@
 </head>
 
 <body>
-    <div id="box" class="type_page">
+    <div id="bg"></div>
+    <div id="box">
         <div id="top">
-            <div id="logo">
-                <a href="#">aaaaaaaaaaaaaaaaaaaaaaaaa</a>
+            <div id="nav" class="type_page">
+                <div id="logo">
+                    <a href="#">aaaaaaaaaaaaaaaaaaaaaaaaa</a>
+                </div>
+                <a href="" id="index">首页</a>
+                <a href="" id="classif">分类</a>
+                <a href="/login" id="log" th:if="${session.userToken == null}">登录</a>
+                <a href="/register" id="reg" th:if="${session.userToken == null}">注册</a>
+                <a href="" th:if="${session.userToken != null}" th:text="${session.username}"></a>
+                <a href="" id="my_order" th:if="${session.userToken != null}">我的订单</a>
+                <a href="" id="exit" th:if="${session.userToken != null}">退出</a>
             </div>
-            <a href="" id="index">首页</a>
-            <a href="" id="classif">分类</a>
-            <a href="/login" id="log" th:if="${session.userToken == null}">登录</a>
-            <a href="/register" id="reg" th:if="${session.userToken == null}">注册</a>
-            <a href="" th:if="${session.userToken != null}" th:text="${session.username}"></a>
-            <a href="" id="userinfo" th:if="${session.userToken != null}">用户信息</a>
-            <a href="" id="my_order" th:if="${session.userToken != null}">我的订单</a>
-            <a href="" id="exit" th:if="${session.userToken != null}">退出</a>
         </div>
-        <div id="rotation">
+        <div id="rotation" class="type_page">
             <ul class="cont">
-                <li class="item active"><img src="img/1.jpg" alt=""></li>
-                <li class="item"><img src="img/2.jpg" alt=""></li>
-                <li class="item"><img src="img/3.jpg" alt=""></li>
-                <li class="item"><img src="img/4.jpg" alt=""></li>
-                <li class="item"><img src="img/5.jpg" alt=""></li>
-                <li class="item"><img src="img/10.jpg" alt=""></li>
-                <li class="item"><img src="img/13.jpg" alt=""></li>
+                <li class="item active">
+                    <a href="#"> <img src="img/1.jpg" alt=""></a>
+                    <a href="#"> <img src="img/1.jpg" alt=""></a>
+                    <a href="#"> <img src="img/1.jpg" alt=""></a>
+                    <a href="#"> <img src="img/1.jpg" alt=""></a>
+                </li>
+                <li class="item">
+                    <a href="#"><img src="img/2.jpg" alt=""></a>
+                    <a href="#"><img src="img/2.jpg" alt=""></a>
+                    <a href="#"><img src="img/2.jpg" alt=""></a>
+                    <a href="#"><img src="img/2.jpg" alt=""></a>
+                </li>
+                <li class="item">
+                    <a href="#"><img src="img/3.jpg" alt=""></a>
+                    <a href="#"><img src="img/3.jpg" alt=""></a>
+                    <a href="#"><img src="img/3.jpg" alt=""></a>
+                    <a href="#"><img src="img/3.jpg" alt=""></a>
+                </li>
+                <li class="item">
+                    <a href="#"><img src="img/4.jpg" alt=""></a>
+                    <a href="#"><img src="img/4.jpg" alt=""></a>
+                    <a href="#"><img src="img/4.jpg" alt=""></a>
+                    <a href="#"><img src="img/4.jpg" alt=""></a>
+                </li>
+                <li class="item">
+                    <a href="#"><img src="img/5.jpeg" alt=""></a>
+                    <a href="#"><img src="img/5.jpeg" alt=""></a>
+                    <a href="#"><img src="img/5.jpeg" alt=""></a>
+                    <a href="#"><img src="img/5.jpeg" alt=""></a>
+                </li>
+                <li class="item">
+                    <a href="#"><img src="img/10.jpg" alt=""></a>
+                    <a href="#"><img src="img/10.jpg" alt=""></a>
+                    <a href="#"><img src="img/10.jpg" alt=""></a>
+                    <a href="#"><img src="img/10.jpg" alt=""></a>
+                </li>
+                <li class="item">
+                    <a href="#"><img src="img/13.jpg" alt=""></a>
+                    <a href="#"><img src="img/13.jpg" alt=""></a>
+                    <a href="#"><img src="img/13.jpg" alt=""></a>
+                    <a href="#"><img src="img/13.jpg" alt=""></a>
+                </li>
             </ul>
             <div id="left"><img src="img/prev.png" alt=""></div>
             <div id="right"><img src="img/next.png" alt=""></div>
@@ -46,10 +83,9 @@
                 <li class="point" data-index="4"></li>
                 <li class="point" data-index="5"></li>
                 <li class="point" data-index="6"></li>
-                <li class="point" data-index="7"></li>
             </ul>
         </div>
-        <div id="publish">
+        <div id="publish" class="type_page">
             <div id="publish_title">
                 <h1>出版图书</h1>
             </div>
@@ -57,49 +93,69 @@
                 <div id="recommend_list">
                     <div id="list_left">
                         <div id="left_title">
-                            <h4>橙红年代</h4>
+                            <a href="#">
+                                <h4>橙红年代</h4>
+                            </a>
                             <h6>作者: AABB</h6>
                             <p>dahsdashdksahdjkshajdsadsadsa </p>
                         </div>
                         <div id="left_body">
-                            <img src="img/1.jpg" alt="">
+                            <a href="#">
+                                <img src="img/1.jpg" alt="">
+                            </a>
                         </div>
                     </div>
                     <div id="list_right">
                         <ul>
                             <li>
                                 <div id="right_body">
-                                    <img src="img/1.jpg" alt="">
+                                    <a href="#">
+                                        <img src="img/1.jpg" alt="">
+                                    </a>
                                 </div>
                                 <div id="right_title">
-                                    <h4>橙红年代</h4>
+                                    <a href="#">
+                                        <h4>橙红年代</h4>
+                                    </a>
                                     <h6>作者: AABB</h6>
                                 </div>
                             </li>
                             <li>
                                 <div id="right_body">
-                                    <img src="img/1.jpg" alt="">
+                                    <a href="#">
+                                        <img src="img/1.jpg" alt="">
+                                    </a>
                                 </div>
                                 <div id="right_title">
-                                    <h4>橙红年代</h4>
+                                    <a href="#">
+                                        <h4>橙红年代</h4>
+                                    </a>
                                     <h6>作者: AABB</h6>
                                 </div>
                             </li>
                             <li>
                                 <div id="right_body">
-                                    <img src="img/1.jpg" alt="">
+                                    <a href="#">
+                                        <img src="img/1.jpg" alt="">
+                                    </a>
                                 </div>
                                 <div id="right_title">
-                                    <h4>橙红年代</h4>
+                                    <a href="#">
+                                        <h4>橙红年代</h4>
+                                    </a>
                                     <h6>作者: AABB</h6>
                                 </div>
                             </li>
                             <li>
                                 <div id="right_body">
-                                    <img src="img/1.jpg" alt="">
+                                    <a href="#">
+                                        <img src="img/1.jpg" alt="">
+                                    </a>
                                 </div>
                                 <div id="right_title">
-                                    <h4>橙红年代</h4>
+                                    <a href="#">
+                                        <h4>橙红年代</h4>
+                                    </a>
                                     <h6>作者: AABB</h6>
                                 </div>
                             </li>
@@ -107,10 +163,73 @@
                     </div>
                 </div>
                 <div id="ranking_list">
-                    <ul>
-                        <li>西游记</li>
-                        <li>红楼梦</li>
-                    </ul>
+                    <div id="rank_title">
+                        <h1>排行榜</h1>
+                    </div>
+                    <div id="rank_body">
+                        <ul>
+                            <li>
+                                <span>1</span>
+                                <a href="#">
+                                    <h4>大秦帝国</h4>
+                                </a>
+                            </li>
+                            <li>
+                                <span>1</span>
+                                <a href="#">
+                                    <h4>大秦帝国</h4>
+                                </a>
+                            </li>
+                            <li>
+                                <span>1</span>
+                                <a href="#">
+                                    <h4>大秦帝国</h4>
+                                </a>
+                            </li>
+                            <li>
+                                <span>1</span>
+                                <a href="#">
+                                    <h4>大秦帝国</h4>
+                                </a>
+                            </li>
+                            <li>
+                                <span>1</span>
+                                <a href="#">
+                                    <h4>大秦帝国</h4>
+                                </a>
+                            </li>
+                            <li>
+                                <span>1</span>
+                                <a href="#">
+                                    <h4>大秦帝国</h4>
+                                </a>
+                            </li>
+                            <li>
+                                <span>1</span>
+                                <a href="#">
+                                    <h4>大秦帝国</h4>
+                                </a>
+                            </li>
+                            <li>
+                                <span>1</span>
+                                <a href="#">
+                                    <h4>大秦帝国</h4>
+                                </a>
+                            </li>
+                            <li>
+                                <span>1</span>
+                                <a href="#">
+                                    <h4>大秦帝国</h4>
+                                </a>
+                            </li>
+                            <li>
+                                <span>1</span>
+                                <a href="#">
+                                    <h4>大秦帝国</h4>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

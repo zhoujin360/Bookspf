@@ -58,7 +58,7 @@ public class AxiosRequest {
 		request.setAdmin(2);
 		userMapper.insertUser(request);
 		return new Response(true,"注册成功");
-	}
+	} 
 	
 	@PostMapping("/login")
 	public Response login (@RequestBody User request) {
