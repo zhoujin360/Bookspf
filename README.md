@@ -1,14 +1,16 @@
 # Bookspf
 Book sales platform
-图书销售平台
 
-项目技术:
-	表现层:			Html+Css+JavaScript+Vue
-	业务逻辑层:	SpringBoot+Thymeleaf
-	持久化层:		Mysql
+ 图书销售平台
+
+ 项目技术:
+        表现层:			Html+Css+JavaScript+Vue
+        业务逻辑层:	SpringBoot+Thymeleaf
+        持久化层:		Mysql
 	
 
-项目:
+ 项目:
+	
 	1.命名风格:
 		见名知意, 采用英文或英文缩写命名
 		tips: 可进行谷歌翻译, 在类名能见名知意下尽可能缩短名称长度
