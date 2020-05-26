@@ -104,6 +104,15 @@ function action(str) {
 
 /*************************************************/
 
+
+
+
+
+
+
+/*************************************************/
+
+
 //获得图书信息列表
 var getBookList = new Vue({
     el: "#bookList",
@@ -128,6 +137,16 @@ function externalGetBookList() {
 /*************************************************/
 
 //添加图书暂时不做   还没想好怎么做
+
+/*************************************************/
+
+
+
+
+
+
+
+
 
 /*************************************************/
 
@@ -211,6 +230,16 @@ var addSort = new Vue({
 
 /*************************************************/
 
+
+
+
+
+
+
+
+
+/*************************************************/
+
 //获取订单信息列表
 var getOrderList = new Vue({
     el: "#orderList",
@@ -218,13 +247,37 @@ var getOrderList = new Vue({
         orders: []
     },
     methods: {
-        getOrderList() {
+        getOrderList(index, str) {
             var that = this;
-            axios.get("/getOrderList")
-                .then(response => {
-                    console.log(response);
+            if (index == 0) {
+                axios.post("/getOrderList", {
+                    index: 0,
+                    str: str
+                }).then(response => {
                     that.orders = response.data.orders;
                 })
+            } else if (index == 1) {
+                axios.post("/getOrderList", {
+                    index: 1,
+                    str: str
+                }).then(response => {
+                    that.orders = response.data.orders;
+                })
+            } else if (index == 2) {
+                axios.post("/getOrderList", {
+                    index: 2,
+                    str: str
+                }).then(response => {
+                    that.orders = response.data.orders;
+                })
+            } else if (index == 3) {
+                axios.post("/getOrderList", {
+                    index: 3,
+                    str: str
+                }).then(response => {
+                    that.orders = response.data.orders;
+                })
+            }
         },
         externalCheckOrder(orderid) {
             checkOrder.checkOrder(orderid);
@@ -232,9 +285,29 @@ var getOrderList = new Vue({
     }
 });
 
-function externalGetOrderList() {
-    getOrderList.getOrderList();
+function externalGetOrderList(index, str) {
+    getOrderList.getOrderList(index, str);
 }
+
+/*************************************************/
+
+//搜索订单
+var orderSearch = new Vue({
+    el: "#orderSearch",
+    data: {
+        orderid: '',
+        uid: '',
+        createtime: ''
+    },
+    methods: {
+        orderSearch() {
+            if (this.orderid != '') externalGetOrderList(1, this.orderid);
+            else if (this.uid != '') externalGetOrderList(2, this.uid);
+            else if (this.createtime != '') externalGetOrderList(3, this.createtime);
+            else externalGetOrderList(0, "");
+        }
+    }
+});
 
 /*************************************************/
 
@@ -262,6 +335,17 @@ var checkOrder = new Vue({
 
 /*************************************************/
 
+
+
+
+
+
+
+
+
+
+/*************************************************/
+
 //获取销售记录列表
 var getSaleList = new Vue({
     el: "#saleList",
@@ -269,20 +353,170 @@ var getSaleList = new Vue({
         sales: []
     },
     methods: {
-        getSaleList() {
+        getSaleList(index, str) {
             var that = this;
-            axios.get("/getSaleList")
-                .then(response => {
-                    console.log(response);
+            if (index == 0) {
+                axios.post("/getSaleList", {
+                    index: 0,
+                    str: str
+                }).then(response => {
                     that.sales = response.data.sales;
                 })
+            } else if (index == 1) {
+                axios.post("/getSaleList", {
+                    index: 1,
+                    str: str
+                }).then(response => {
+                    that.sales = response.data.sales;
+                })
+            } else if (index == 2) {
+                axios.post("/getSaleList", {
+                    index: 2,
+                    str: str
+                }).then(response => {
+                    that.sales = response.data.sales;
+                })
+            } else if (index == 3) {
+                axios.post("/getSaleList", {
+                    index: 3,
+                    str: str
+                }).then(response => {
+                    that.sales = response.data.sales;
+                })
+            }
         }
     }
 });
 
-function externalGetSaleList() {
-    getSaleList.getSaleList();
+function externalGetSaleList(index, str) {
+    getSaleList.getSaleList(index, str);
 }
+
+/*************************************************/
+
+//搜索销售记录
+var saleSearch = new Vue({
+    el: "#saleSearch",
+    data: {
+        saleid: '',
+        isbn: '',
+        saletime: ''
+    },
+    methods: {
+        saleSearch() {
+            if (this.saleid != '') externalGetSaleList(1, this.saleid);
+            else if (this.isbn != '') externalGetSaleList(2, this.isbn);
+            else if (this.saletime != '') externalGetSaleList(3, this.saletime);
+            else externalGetSaleList(0, "");
+        }
+    }
+});
+
+/*************************************************/
+
+
+
+
+
+
+
+
+
+/*************************************************/
+
+//获取进货记录列表
+var getPurchaseList = new Vue({
+    el: "#purchaseList",
+    data: {
+        purchases: []
+    },
+    methods: {
+        getPurchaseList(index, str) {
+            var that = this;
+            if (index == 0) {
+                axios.post("/getPurchaseList", {
+                    index: 0,
+                    str: str
+                }).then(response => {
+                    that.purchases = response.data.purchases;
+                })
+            } else if (index == 1) {
+                axios.post("/getPurchaseList", {
+                    index: 1,
+                    str: str
+                }).then(response => {
+                    that.purchases = response.data.purchases;
+                })
+            } else if (index == 2) {
+                axios.post("/getPurchaseList", {
+                    index: 2,
+                    str: str
+                }).then(response => {
+                    that.purchases = response.data.purchases;
+                })
+            }
+        },
+        externalCheckPurchase(purchaseid) {
+            checkPurchase.checkPurchase(purchaseid);
+        }
+    }
+});
+
+function externalGetPurchaseList(index, str) {
+    getPurchaseList.getPurchaseList(index, str);
+}
+
+/*************************************************/
+
+//搜索进货记录
+var purchaseSearch = new Vue({
+    el: "#purchaseSearch",
+    data: {
+        purchaseid: '',
+        purchasetime: ''
+    },
+    methods: {
+        purchaseSearch() {
+            if (this.purchaseid != '') externalGetPurchaseList(1, this.purchaseid);
+            else if (this.purchasetime != '') externalGetPurchaseList(2, this.purchasetime);
+            else externalGetPurchaseList(0, "");
+        }
+    }
+});
+
+/*************************************************/
+
+//查看进货详情
+var checkPurchase = new Vue({
+    el: "#checkPurchase",
+    data: {
+        purchaseid: '',
+        purchasesinfo: []
+    },
+    methods: {
+        checkPurchase(purchaseid) {
+            var that = this;
+            axios.post("/checkPurchase", {
+                purchaseid: purchaseid
+            }).then(response => {
+                that.purchaseid = response.data.purchasesinfo[0].purchaseid;
+                that.purchasesinfo = response.data.purchasesinfo;
+            })
+        }
+    }
+});
+
+/*************************************************/
+
+
+
+
+
+
+
+
+
+
 
 /*************************************************/
 
@@ -293,24 +527,132 @@ var getStockList = new Vue({
         stocks: []
     },
     methods: {
-        getStockList() {
+        getStockList(index, str) {
             var that = this;
-            axios.get("/getStockList")
-                .then(response => {
-                    console.log(response);
+            if (index == 0) {
+                axios.post("/getStockList", {
+                    index: 0,
+                    str: str
+                }).then(response => {
                     that.stocks = response.data.stocks;
                 })
+            } else if (index == 1) {
+                axios.post("/getStockList", {
+                    index: 1,
+                    str: str
+                }).then(response => {
+                    that.stocks = response.data.stocks;
+                })
+            } else if (index == 2) {
+                axios.post("/getStockList", {
+                    index: 2,
+                    str: str
+                }).then(response => {
+                    that.stocks = response.data.stocks;
+                })
+            }
+        },
+        externalCheckStock(stockid) {
+            checkStock.checkStock(stockid);
         }
     }
 });
 
-function externalGetStockList() {
-    getStockList.getStockList();
+function externalGetStockList(index, str) {
+    getStockList.getStockList(index, str);
 }
-
 
 /*************************************************/
-function addBookPurchaseItem() {
-    let add = document.getElementById("bookPurchase");
-    add.innerHTML += "<div class='bookPurchaseItem'><span>图书ID</span>：<input type='text'><span>进货价格</span>：<input type='text'><span>ISBN</span>：<input type='text'></div>"
-}
+
+//搜索库存记录
+var stockSearch = new Vue({
+    el: "#stockSearch",
+    data: {
+        stockid: '',
+        stocktime: ''
+    },
+    methods: {
+        stockSearch() {
+            if (this.stockid != '') externalGetStockList(1, this.stockid);
+            else if (this.stocktime != '') externalGetStockList(2, this.stocktime);
+            else externalGetStockList(0, "");
+        }
+    }
+});
+
+/*************************************************/
+
+
+//查看库存详情
+var checkStock = new Vue({
+    el: "#checkStock",
+    data: {
+        stockid: '',
+        stocksinfo: []
+    },
+    methods: {
+        checkStock(stockid) {
+            var that = this;
+            axios.post("/checkStock", {
+                stockid: stockid
+            }).then(response => {
+                that.stockid = response.data.stocks[0].stockid;
+                that.stocksinfo = response.data.stocks;
+            })
+        }
+    }
+});
+
+/*************************************************/
+
+
+
+
+
+
+
+
+
+
+//添加进货记录
+var addPurchase = new Vue({
+    el: "#addPurchase",
+    data: {
+        purchaseid: '',
+        bid: '',
+        isbn: '',
+        purchaseprice: '',
+        purchasetime: '',
+        errmes: '',
+        errmesColor: false,
+        isShow: false
+    },
+    methods: {
+        submit: function() {
+            var that = this;
+            axios.post("/addPurchase", {
+                purchaseid: that.purchaseid,
+                bid: that.bid,
+                isbn: that.isbn,
+                purchaseprice: that.purchaseprice,
+                purchasetime: that.purchasetime
+            }).then(response => {
+                if (response.data.status) {
+                    that.purchaseid = '';
+                    that.bid = '';
+                    that.isbn = '';
+                    that.purchaseprice = '';
+                    that.purchasetime = '';
+                    that.isShow = true;
+                    that.errmesColor = true;
+                    that.errmes = response.data.mes;
+                    getPurchaseList.getPurchaseList(0, "");
+                } else {
+                    that.isShow = true;
+                    that.errmesColor = false;
+                    that.errmes = response.data.mes;
+                }
+            })
+        }
+    }
+});

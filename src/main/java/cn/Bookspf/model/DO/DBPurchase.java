@@ -10,9 +10,8 @@ public class DBPurchase {
 	private Integer bid;
 	private String isbn;
 	private Integer purchaseprice;
-	private String operator;
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-	private Date purchasetime;
+	private Integer operator;
+	private String purchasetime;
 	public long getId() {
 		return id;
 	}
@@ -43,19 +42,20 @@ public class DBPurchase {
 	public void setPurchaseprice(Integer purchaseprice) {
 		this.purchaseprice = purchaseprice;
 	}
-	public String getOperator() {
+
+	public Integer getOperator() {
 		return operator;
 	}
-	public void setOperator(String operator) {
+
+	public void setOperator(Integer operator) {
 		this.operator = operator;
 	}
-	public Date getPurchasetime() {
+
+	public String getPurchasetime() {
 		return purchasetime;
 	}
-	public void setPurchasetime(Date purchasetime) {
+
+	public void setPurchasetime(String purchasetime) {
 		this.purchasetime = purchasetime;
 	}
-	
-	
-	
 }

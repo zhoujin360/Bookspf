@@ -325,32 +325,20 @@ a {
     line-height: 25px;
 }
 
+#addPurchase {
+    top: calc(50% - 190px);
+    height: 380px;
+}
+
 #bookPurchase {
     margin: 0;
     margin-top: 30px;
-    height: 200px;
+    height: 185px;
 }
 
-.bookPurchaseItem span {
-    width: 5em;
-}
-
-.bookPurchaseItem input:nth-child(-n+5) {
-    width: 3em;
-}
-
-.bookPurchaseItem input:nth-child(6) {
-    width: 12em;
-}
-
-#addPurchaseBtn {
-    width: 2em;
-    background-color: rgb(131, 238, 70);
-    transition: background-color 0.5s;
-}
-
-#addPurchaseBtn:hover {
-    background-color: rgb(108, 212, 47);
+#addPurchasesubmit {
+    text-indent: 0;
+    width: 8em;
 }
 
 .List {
@@ -437,6 +425,14 @@ a {
 
 #purchaseInfo .List div span {
     width: 8em;
+}
+
+#purchaseInfo .List .time {
+    width: 15em;
+}
+
+#purchaseInfo .List .check {
+    margin-left: 100px;
 }
 
 #stockInfo .List div span {

@@ -10,8 +10,7 @@ public class DBSale {
 	private Integer bid;
 	private String isbn;
 	private String operator;
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-	private Date saletime;
+	private String saletime;
 	public long getId() {
 		return id;
 	}
@@ -42,14 +41,12 @@ public class DBSale {
 	public void setOperator(String operator) {
 		this.operator = operator;
 	}
-	public Date getSaletime() {
+
+	public String getSaletime() {
 		return saletime;
 	}
-	public void setSaletime(Date saletime) {
+
+	public void setSaletime(String saletime) {
 		this.saletime = saletime;
 	}
-	
-	
-	
-	
 }

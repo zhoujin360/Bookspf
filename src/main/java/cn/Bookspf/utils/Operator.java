@@ -7,16 +7,15 @@ import java.util.Iterator;
 import cn.Bookspf.mapper.OrderMapper;
 import cn.Bookspf.model.DO.DBOrder;
 import cn.Bookspf.model.DTO.OrderStatistics;
+import cn.Bookspf.model.DTO.PurchaseStatistics;
 
 public class Operator {
 	
 	public Operator() {}
 	
-	//所有查询订单的统计信息
-	public ArrayList<OrderStatistics> getOrders(OrderMapper orderMapper){
+	//查询订单的统计信息
+	public ArrayList<OrderStatistics> getOrders(ArrayList<DBOrder> order,ArrayList<Integer> price){
 		ArrayList<OrderStatistics> orders= new ArrayList<OrderStatistics>();
-		ArrayList<DBOrder> order = orderMapper.getOrders();
-		ArrayList<Integer> price = orderMapper.getOrderPrice();
 		for(int i=0;i<order.size();i++) {
 			OrderStatistics temp=new OrderStatistics();
 			temp.setOrderid(order.get(i).getOrderid());
@@ -28,6 +27,13 @@ public class Operator {
 		}
 		return orders;
 	}
-	
+
+
+	//查询进货的统计信息
+	public ArrayList<PurchaseStatistics> getPurchases(){
+		ArrayList<PurchaseStatistics> purchases=new ArrayList<PurchaseStatistics>();
+
+		return  purchases;
+	}
 	
 }

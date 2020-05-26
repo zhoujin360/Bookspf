@@ -10,8 +10,7 @@ public class DBStock {
 	private Integer bid;
 	private String isbn;
 	private Integer comeout;
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-	private Date stocktime;
+	private String stocktime;
 	public long getId() {
 		return id;
 	}
@@ -42,11 +41,12 @@ public class DBStock {
 	public void setComeout(Integer comeout) {
 		this.comeout = comeout;
 	}
-	public Date getStocktime() {
+
+	public String getStocktime() {
 		return stocktime;
 	}
-	public void setStocktime(Date stocktime) {
+
+	public void setStocktime(String stocktime) {
 		this.stocktime = stocktime;
 	}
-	
 }

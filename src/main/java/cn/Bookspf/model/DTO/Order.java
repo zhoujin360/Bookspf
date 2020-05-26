@@ -12,10 +12,8 @@ public class Order {
 	private String isbn;
 	private Double bookprice;
 	private Integer paid;
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-	private Date createtime;
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-	private Date paytime;
+	private String createtime;
+	private String paytime;
 	public long getId() {
 		return id;
 	}
@@ -58,18 +56,20 @@ public class Order {
 	public void setPaid(Integer paid) {
 		this.paid = paid;
 	}
-	public Date getCreatetime() {
+
+	public String getCreatetime() {
 		return createtime;
 	}
-	public void setCreatetime(Date createtime) {
+
+	public void setCreatetime(String createtime) {
 		this.createtime = createtime;
 	}
-	public Date getPaytime() {
+
+	public String getPaytime() {
 		return paytime;
 	}
-	public void setPaytime(Date paytime) {
+
+	public void setPaytime(String paytime) {
 		this.paytime = paytime;
 	}
-	
-	
 }
