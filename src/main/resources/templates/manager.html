@@ -29,26 +29,32 @@
                 <span>图书</span>
                 <p :class="isShow==1?'rotate90':'norotate'">﹤</p>
             </div>
-            <div onclick="isMain('bookInfo');externalGetBookList();" :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('bookInfo');externalGetBookList();"
+                :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
                 图书信息管理
             </div>
-            <div onclick="isMain('sortInfo');externalGetSortList();" :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('sortInfo');externalGetSortList();"
+                :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
                 图书分类信息管理
             </div>
-            <div onclick="isMain('orderReview');externalGetOrderList(0,'');" :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('orderReview');externalGetOrderList(0,'');"
+                :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
                 订单审核
             </div>
             <div class="item" @click="rotateT(2)">
                 <span>出入库</span>
                 <p :class="isShow==2?'rotate90':'norotate'">﹤</p>
             </div>
-            <div onclick="isMain('saleInfo');externalGetSaleList(0,'');" :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('saleInfo');externalGetSaleList(0,'');"
+                :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
                 销售记录查看
             </div>
-            <div onclick="isMain('purchaseInfo');externalGetPurchaseList(0, '')" :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('purchaseInfo');externalGetPurchaseList(0, '')"
+                :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
                 进货记录管理
             </div>
-            <div onclick="isMain('stockInfo');externalGetStockList(0,'');" :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('stockInfo');externalGetStockList(0,'');"
+                :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
                 库存记录管理
             </div>
         </div>
@@ -150,7 +156,8 @@
                         <span class="time">{{item.createtime}}</span>
                         <span class="time">{{item.paytime}}</span>
                         <span>{{item.total}}</span>
-                        <span class="check"><a href="#" @click="externalCheckOrder(item.orderid)" onclick="action('checkOrder')" >查看订单</a></span>
+                        <span class="check"><a href="#" @click="externalCheckOrder(item.orderid)"
+                                onclick="action('checkOrder')">查看订单</a></span>
                     </div>
                 </div>
 
@@ -241,7 +248,8 @@
                         <span>{{item.total}}</span>
                         <span class="time">{{item.purchasetime}}</span>
                         <span>{{item.operator}}</span>
-                        <span class="check"><a href="#" @click="externalCheckPurchase(item.purchaseid)" onclick="action('checkPurchase')">查看记录</a></span>
+                        <span class="check"><a href="#" @click="externalCheckPurchase(item.purchaseid)"
+                                onclick="action('checkPurchase')">查看记录</a></span>
                         <span class="delete"><a href="#">删除</a></span>
                     </div>
                 </div>
@@ -280,7 +288,8 @@
                         <span>{{item.stockid}}</span>
                         <span>{{item.comeout}}</span>
                         <span class="time">{{item.stocktime}}</span>
-                        <span class="check"><a href="#" @click="externalCheckStock(item.stockid)" onclick="action('checkStock')" >查看记录</a></span>
+                        <span class="check"><a href="#" @click="externalCheckStock(item.stockid)"
+                                onclick="action('checkStock')">查看记录</a></span>
                     </div>
                 </div>
 
