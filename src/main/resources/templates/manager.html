@@ -29,32 +29,26 @@
                 <span>图书</span>
                 <p :class="isShow==1?'rotate90':'norotate'">﹤</p>
             </div>
-            <div onclick="isMain('bookInfo');externalGetBookList();"
-                :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('bookInfo');externalGetBookList();" :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
                 图书信息管理
             </div>
-            <div onclick="isMain('sortInfo');externalGetSortList();"
-                :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('sortInfo');externalGetSortList();" :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
                 图书分类信息管理
             </div>
-            <div onclick="isMain('orderReview');externalGetOrderList(0,'');"
-                :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('orderReview');externalGetOrderList(0,'');" :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
                 订单审核
             </div>
             <div class="item" @click="rotateT(2)">
                 <span>出入库</span>
                 <p :class="isShow==2?'rotate90':'norotate'">﹤</p>
             </div>
-            <div onclick="isMain('saleInfo');externalGetSaleList(0,'');"
-                :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('saleInfo');externalGetSaleList(0,'');" :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
                 销售记录查看
             </div>
-            <div onclick="isMain('purchaseInfo');externalGetPurchaseList(0, '')"
-                :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('purchaseInfo');externalGetPurchaseList(0, '')" :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
                 进货记录管理
             </div>
-            <div onclick="isMain('stockInfo');externalGetStockList(0,'');"
-                :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('stockInfo');externalGetStockList(0,'');" :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
                 库存记录管理
             </div>
         </div>
@@ -317,19 +311,19 @@
                 </div>
                 <div id="author">
                     <span>作者</span>：
-                    <input type="password">
+                    <input type="text">
                 </div>
                 <div id="description">
                     <span>描述</span>：
-                    <input type="password">
+                    <input type="text">
                 </div>
                 <div id="bookprice">
                     <span>图书价格</span>：
-                    <input type="password">
+                    <input type="text">
                 </div>
                 <div id="added">
                     <span>是否上架(0否/1是)</span>：
-                    <input type="password">
+                    <input type="text">
                 </div>
                 <div id="errmes">错误信息</div>
                 <input id="addBookBtn" class="windowBtn" type="submit" value="确认添加">
@@ -352,19 +346,19 @@
                 </div>
                 <div id="author">
                     <span>作者</span>：
-                    <input type="password">
+                    <input type="text">
                 </div>
                 <div id="description">
                     <span>描述</span>：
-                    <input type="password">
+                    <input type="text">
                 </div>
                 <div id="bookprice">
                     <span>图书价格</span>：
-                    <input type="password">
+                    <input type="text">
                 </div>
                 <div id="added">
                     <span>是否上架(0否/1是)</span>：
-                    <input type="password">
+                    <input type="text">
                 </div>
                 <div id="errmes">错误信息</div>
                 <input id="submit" type="submit" value="确认修改">
