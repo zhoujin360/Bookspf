@@ -23,53 +23,32 @@
                 <a href="" id="classif">分类</a>
                 <a href="/login" id="log" th:if="${session.userToken == null}">登录</a>
                 <a href="/register" id="reg" th:if="${session.userToken == null}">注册</a>
-                <a href="" th:if="${session.userToken != null}" th:text="${session.username}"></a>
-                <a href="" id="my_order" th:if="${session.userToken != null}">我的订单</a>
-                <a href="" id="exit" th:if="${session.userToken != null}">退出</a>
+                <a th:href="@{/account/{user}(user=${session.userToken})}" th:if="${session.userToken != null}" th:text="${session.username}"></a>
+                <a href="/orders" id="my_order" th:if="${session.userToken != null}">我的订单</a>
+                <a href="/logout" id="exit" th:if="${session.userToken != null}">退出</a>
             </div>
         </div>
         <div id="rotation" class="type_page">
             <ul class="cont">
                 <li class="item active">
                     <a href="#"> <img src="img/1.jpg" alt=""></a>
-                    <a href="#"> <img src="img/1.jpg" alt=""></a>
-                    <a href="#"> <img src="img/1.jpg" alt=""></a>
-                    <a href="#"> <img src="img/1.jpg" alt=""></a>
                 </li>
                 <li class="item">
-                    <a href="#"><img src="img/2.jpg" alt=""></a>
-                    <a href="#"><img src="img/2.jpg" alt=""></a>
-                    <a href="#"><img src="img/2.jpg" alt=""></a>
                     <a href="#"><img src="img/2.jpg" alt=""></a>
                 </li>
                 <li class="item">
                     <a href="#"><img src="img/3.jpg" alt=""></a>
-                    <a href="#"><img src="img/3.jpg" alt=""></a>
-                    <a href="#"><img src="img/3.jpg" alt=""></a>
-                    <a href="#"><img src="img/3.jpg" alt=""></a>
                 </li>
                 <li class="item">
-                    <a href="#"><img src="img/4.jpg" alt=""></a>
-                    <a href="#"><img src="img/4.jpg" alt=""></a>
-                    <a href="#"><img src="img/4.jpg" alt=""></a>
                     <a href="#"><img src="img/4.jpg" alt=""></a>
                 </li>
                 <li class="item">
                     <a href="#"><img src="img/5.jpeg" alt=""></a>
-                    <a href="#"><img src="img/5.jpeg" alt=""></a>
-                    <a href="#"><img src="img/5.jpeg" alt=""></a>
-                    <a href="#"><img src="img/5.jpeg" alt=""></a>
                 </li>
                 <li class="item">
                     <a href="#"><img src="img/10.jpg" alt=""></a>
-                    <a href="#"><img src="img/10.jpg" alt=""></a>
-                    <a href="#"><img src="img/10.jpg" alt=""></a>
-                    <a href="#"><img src="img/10.jpg" alt=""></a>
                 </li>
                 <li class="item">
-                    <a href="#"><img src="img/13.jpg" alt=""></a>
-                    <a href="#"><img src="img/13.jpg" alt=""></a>
-                    <a href="#"><img src="img/13.jpg" alt=""></a>
                     <a href="#"><img src="img/13.jpg" alt=""></a>
                 </li>
             </ul>
