@@ -1,26 +1,36 @@
 /* top栏 */
+
 #top {
     height: 60px;
     background-color: #FFFFFF;
     font-size: 14px;
     line-height: 50px;
 }
+
 #top #logo {
     display: inline-block;
 }
+
+#top #logo a:hover {
+    border-bottom: 0 solid;
+}
+
 #top a {
     height: 40px;
     margin-left: 30px;
     display: inline-block;
 }
+
 #top a:hover {
     border-bottom: 2px solid red;
 }
+
 #top #index {
     margin-left: 450px;
     text-align: center;
     margin-left: 200px;
 }
+
 #top #log {
     width: 60px;
     height: 30px;
@@ -31,9 +41,11 @@
     font-size: 12px;
     transition: all .5s;
 }
+
 #log:hover {
     transform: translateY(2px);
 }
+
 #top #reg {
     width: 60px;
     height: 30px;
@@ -43,56 +55,54 @@
     border-radius: 6px;
     font-size: 12px;
     transition: all .5s;
-
 }
+
 #reg:hover {
     transform: translateY(2px);
 }
+
 #top #userinfo {
     margin-left: 100px;
 }
+
+
 /* 轮播图 */
+
 #rotation {
     width: 100%;
     height: 330px;
     text-align: center;
     margin-top: 6px;
 }
-#bg {
-    position: absolute;
-    top: 64px;
-    width: 100%;
-    height: 330px;
-    background-color: pink;
-    z-index: 1;
-    background: url("../img/bg.gif") no-repeat;
-}
+
 .cont {
-    margin: 0 auto;
-    width:  400px;
+    margin: auto;
+    padding: 30px 200px;
     height: 330px;
 }
+
 .cont li {
-    cursor: pointer;
-    position: absolute;
-    top: 150px;
-    left: 380px;
-    width:  800px;
+    display: none;
+    margin: auto;
+    padding: 30px;
+    width: 200px;
     height: 200px;
+    cursor: pointer;
 }
+
 .cont img {
-    float: left;
-    position: relative;
-    width:  150px;
-    margin-left: 40px;
+    width: 150px;
     transition: all .5s;
 }
+
 .cont img:hover {
-    transform: translateY(4px);
+    transform: translateX(4px);
 }
+
 .item.active {
-    z-index: 50;
+    display: block;
 }
+
 #left {
     cursor: pointer;
     position: absolute;
@@ -102,9 +112,11 @@
     color: #fff;
     transition: all 0.5s;
 }
+
 #left:hover {
     transform: translateY(5px);
 }
+
 #right {
     cursor: pointer;
     position: absolute;
@@ -113,9 +125,11 @@
     z-index: 99;
     transition: all 0.5s;
 }
+
 #right:hover {
     transform: translateY(5px);
 }
+
 .dot {
     position: absolute;
     top: 350px;
@@ -124,32 +138,40 @@
     display: flex;
     z-index: 99;
 }
+
 .dot .point {
     cursor: pointer;
     width: 8px;
     height: 8px;
     margin: 6px;
-    background-color: rgba(0,0,0,.8);
+    background-color: rgba(0, 0, 0, .8);
     border-radius: 50%;
 }
+
 .point.active {
-    background-color: rgba(255,255,255,0.6);
+    background-color: rgba(255, 255, 255, 0.6);
 }
+
+
 /* 出版图书板块 */
+
 #publish #publish_title {
     margin-top: 30px;
     margin-bottom: 30px;
     text-align: center;
 }
+
 #publish_title h1 {
     font-size: 26px;
     font-weight: 400;
     color: #212121;
 }
+
 #publish #publish_body {
     width: 100%;
     height: 497px;
 }
+
 #publish #recommend_list {
     float: left;
     width: 838px;
@@ -158,44 +180,55 @@
     background-color: #FFFFFF;
     border-right: 1px solid #F0F0F0;
 }
+
+
 /* 推荐列表左侧 */
+
 #recommend_list #list_left {
     float: left;
     width: 410px;
     height: 100%;
     background-color: #FFFFFF;
 }
+
 #list_left #left_title {
     width: 100%;
     height: 200px;
     padding: 20px;
     background-color: #FFFFFF;
 }
+
 #left_title h4 {
     font-size: 18px;
     font-weight: 400;
 }
+
 #left_title h6 {
     color: #B9B9B9;
     font-size: 12px;
     font-weight: 400;
 }
+
 #left_title p {
     color: #B9B9B9;
     margin-top: 20px;
 }
+
 #left_body img {
     margin: 80px 200px;
     width: 120px;
-
 }
+
+
 /* 推荐列表右侧 */
+
 #recommend_list #list_right {
     float: left;
     width: 358px;
     height: 100%;
     background-color: #FFFFFF;
 }
+
 #list_right ul li {
     float: left;
     width: 178px;
@@ -204,49 +237,61 @@
     border-bottom: 1px solid #F0F0F0;
     background-color: #FFFFFF;
 }
+
 #list_right li:hover {
     background-color: #F7F7F7;
 }
+
 #right_body img {
     margin-top: 24px;
     margin-left: 24px;
     width: 100px;
 }
+
 #right_title {
     color: #212121;
     font-weight: 400;
     margin-top: 10px;
     margin-left: 24px;
 }
+
 #right_title h4 {
     font-weight: 400;
 }
+
 #right_title h6 {
     color: #B9B9B9;
 }
+
+
 /* 排行榜 */
+
 #ranking_list {
     float: left;
     width: 362px;
     height: 100%;
     padding: 33px;
-    background-color: #FFFFFF; 
+    background-color: #FFFFFF;
 }
+
 #rank_title h1 {
     color: #212121;
     font-weight: 400;
 }
+
 #rank_body {
     margin-top: 15px;
 }
+
 #rank_body li {
     height: 30px;
     margin-top: 10px;
 }
+
 #rank_body li:hover {
     background-color: #F7F7F7;
-        
 }
+
 #rank_body span {
     display: inline-block;
     width: 20px;
@@ -254,6 +299,7 @@
     color: #A1A1A1;
     text-align: center;
 }
+
 #rank_body h4 {
     display: inline-block;
     width: 240px;
@@ -261,8 +307,9 @@
     font-weight: 400;
     color: #A1A1A1;
     margin-left: 20px;
-    border-bottom: 1px solid #F0F0F0; 
+    border-bottom: 1px solid #F0F0F0;
 }
+
 #rank_body h4:hover {
     color: #212121;
 }

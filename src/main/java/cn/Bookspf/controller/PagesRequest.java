@@ -78,6 +78,7 @@ public class PagesRequest {
 	@RequestMapping("/account/{id}")
 	public String account (@PathVariable("id") Integer id,Model model) {
 		if(!validator.isLogin())return "login";
+		if(!validator.isAccount(id)) return "404";
 		DBUser user=userMapper.getUserOfUid(id);
 		model.addAttribute("user", user);
 		return validator.isIdentity(userMapper, "account");

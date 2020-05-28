@@ -8,16 +8,16 @@ import cn.Bookspf.model.DTO.*;
 import cn.Bookspf.model.RO.*;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import cn.Bookspf.utils.Operator;
 import cn.Bookspf.utils.Validator;
+import org.springframework.web.multipart.MultipartFile;
 
+
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.prefs.Preferences;
 
 @RestController
 public class ManagerRequest {
@@ -72,6 +72,32 @@ public class ManagerRequest {
 		if(request.getDescription()!=null)bookMapper.addBook(request);
 		else bookMapper.addBookNoDescription(request);
 		return new Response(true,"添加成功");
+	}
+
+	//上传图书图片
+	@PostMapping("/uploadBookimg")
+	public Response uploadBookimg(@RequestParam("file") MultipartFile file){
+		if(!validator.isLogin()) return new Response(false,"请登录再操作");
+		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
+		if(file==null) return new Response(false,"上传失败");
+		Integer bid=20;
+		System.out.println(1);
+		String oldFileName=file.getOriginalFilename();
+		String fileType=oldFileName.substring(oldFileName.indexOf("."));
+		System.out.println(fileType);
+		if(!".jpg".equals(fileType)) return new Response(false,"文件格式错误");
+		System.out.println(2);
+		String newFilename=bid+fileType;
+		try{
+			System.out.println(3);
+			new File("F:/Web/Bookspf-图书售书平台/bookimg/").mkdirs();
+			file.transferTo(new File("F:/Web/Bookspf-图书售书平台/bookimg/"+newFilename));
+			System.out.println(4);
+		}catch (IOException e){
+			System.out.println(5);
+			return new Response(false,"上传失败");
+		}
+		return new Response(true,"上传成功");
 	}
 	
 	//获取分类信息列表
@@ -165,8 +191,6 @@ public class ManagerRequest {
 		}
 		return saleResponse;
 	}
-
-
 
 	//获取进货信息列表
 	@PostMapping("/getPurchaseList")

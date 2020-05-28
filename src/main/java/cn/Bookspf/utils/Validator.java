@@ -30,6 +30,14 @@ public class Validator {
 		else if(admin==1)return "manager";
 		else return "superManager";
 	}
+
+	//验证用户
+	public boolean isAccount(int id){
+		System.out.println(id);
+		System.out.println(httpSession.getAttribute("userToken"));
+		if(((int) httpSession.getAttribute("userToken"))!=id) return false;
+		return true;
+	}
 	
 	//验证是否有相同用户
 	public String isSame(UserMapper userMapper,User request) {
