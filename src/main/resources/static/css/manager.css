@@ -11,7 +11,7 @@ a {
     display: inline-block;
     width: 200px;
 }
-
+/* 退出按钮 */
 #logout {
     display: inline-block;
     margin: auto;
@@ -33,6 +33,8 @@ a {
     color: rgb(255, 143, 51);
 }
 
+
+/* 测试用结束 */
 .errmes {
     height: 20px;
 }
@@ -74,7 +76,7 @@ a {
     line-height: 60px;
     font-size: 20px;
 }
-
+/* 导航栏区域 */
 #nav {
     position: absolute;
     width: 350px;
@@ -127,7 +129,7 @@ a {
     transform: rotate(-90deg);
     transition: all 1s;
 }
-
+/* 是否显示 */
 .itemShow {
     height: 45px;
     transition: all 0.5s;
@@ -167,12 +169,15 @@ a {
     line-height: 45px;
 }
 
+/* 图书信息模块 */
 .main {
     position: absolute;
     top: 65px;
     left: 365px;
-    width: 1160px;
-    height: 650px;
+    /* width: 1160px; */
+    width: calc(100% - 355px);
+    /* height: 650px; */
+    height: calc(100% - 65px);
     border-radius: 10px;
     background-color: rgb(61, 70, 77);
 }
@@ -340,23 +345,26 @@ a {
     text-indent: 0;
     width: 8em;
 }
-
+/* 图书列表 */
 .List {
     margin: auto;
     margin-top: 20px;
     padding: 20px 0;
-    width: 1130px;
+    /* width: 1130px; */
+    width: calc(100% - 65px);
     height: 500px;
+    /* height: calc(100% - 0px); */
     border-radius: 10px;
     background-color: #ccc;
     overflow: auto;
 }
-
+/* 列表标题栏 */
 .List .listInfo,
 .List .listItem {
     margin: 15px 0 auto 20px;
     padding: 5px 10px;
-    width: 1030px;
+    /* width: 1030px; */
+    width: calc(100% - 65px);
     height: 40px;
     border-radius: 10px;
     background-color: #fff;
@@ -438,7 +446,7 @@ a {
 #stockInfo .List div span {
     width: 10em;
 }
-
+/* 删除添加按钮 */
 .delete a,
 .alter a,
 .check a {
@@ -465,12 +473,13 @@ a {
 .check a:hover {
     background-color: rgb(108, 212, 47);
 }
-
+/* 搜索栏 */
 .searchBox {
     margin: auto;
     margin-top: 20px;
     padding: 20px 0;
-    width: 1130px;
+    /* width: 1130px; */
+    width: calc(100% - 65px);
     height: 100px;
     border-radius: 10px;
     background-color: rgb(41, 45, 54);

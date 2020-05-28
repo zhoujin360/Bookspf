@@ -5,7 +5,7 @@ var rotate90 = new Vue({
         isShow: 0
     },
     methods: {
-        rotateT: function(index) {
+        rotateT: function (index) {
             if (this.isShow == index) this.isShow = 0;
             else this.isShow = index;
         }
@@ -20,7 +20,7 @@ var logout = new Vue({
     methods: {
         logout() {
             axios.post("/logout")
-                .then(function() {
+                .then(function () {
                     window.location.reload();
                 })
         }
@@ -140,13 +140,119 @@ function externalGetBookList() {
 
 /*************************************************/
 
-
-
-
-
-
-
-
+//验证图书信息管理模块
+var bid = document.querySelector("#bid").querySelector("input")
+var bookname = document.querySelector("#bookname").querySelector("input");
+var sortname = document.querySelector("#sortname").querySelector("input");
+var author = document.querySelector("#author").querySelector("input");
+var description = document.querySelector("#description").querySelector("input");
+var bookprice = document.querySelector("#bookprice").querySelector("input");
+var added = document.querySelector("#added").querySelector("input");
+var errmes = document.querySelector("#errmes");
+// 验证图书编号
+function checkISBN() {
+    var reg = /^[0-9]{13}$/
+    var flag = reg.test(bid.value);
+    if (flag) {
+        bid.style.border = "";
+        errmes.innerHTML = "";
+    } else {
+        bid.style.border = "2px solid red";
+        errmes.innerHTML = "请输入13位纯数字的图书编号";
+    }
+    return flag;
+}
+//验证书名
+function checkBookName() {
+    if (bookname.value == "") {
+        bookname.style.border = "2px solid red";
+        errmes.innerHTML = "请输入图书名";
+    } else {
+        bookname.style.boder = "";
+        errmes.innerHTML = "";
+    }
+    return bookname.value == "" ? false : true;
+}
+//验证分类名
+function checkSortName() {
+    if (sortname.value == "") {
+        sortname.style.border = "2px solid red";
+        errmes.innerHTML = "请输入分类名";
+    } else {
+        sortname.style.border = "";
+        errmes.innerHTML = "";
+    }
+    return sortname.value = "" ? false : true;
+}
+//验证作者
+function checkAuthor() {
+    if (author.value == "") {
+        author.style.border = "2px solid red";
+        errmes.innerHTML = "请输入分类名";
+    } else {
+        author.style.border = "";
+        errmes.innerHTML = "";
+    }
+    return author.value = "" ? false : true;
+}
+//验证描述
+function checkDescription() {
+    if (sortname.value == "") {
+        description.style.border = "2px solid red";
+        errmes.innerHTML = "请输入分类名";
+    } else {
+        description.style.border = "";
+        errmes.innerHTML = "";
+    }
+    return description.value = "" ? false : true;
+}
+//验证图书价格
+function checkBookPrice() {
+    var reg = /^[0-9.]+$/
+    var flag = reg.test(bookprice.value);
+    if (flag) {
+        bookprice.style.border = "";
+        errmes.innerHTML = "";
+    } else {
+        bookprice.style.border = "2px solid red";
+        errmes.innerHTML = "请输入书的价格";
+    }
+    return flag;
+}
+//验证是否上架
+function checkAdded() {
+    var reg = /^[01]{1}$/
+    var flag = reg.test(added.value);
+    if (flag) {
+        added.style.border = "";
+        errmes.innerHTML = "";
+    } else {
+        added.style.border = "2px solid red";
+        errmes.innerHTML = "请输入是否上架价格";
+    }
+    return flag;
+}
+bid.onblur = function () {
+    checkISBN();
+}
+bookname.onblur = function () {
+    checkBookName();
+}
+sortname.onblur = function () {
+    checkSortName();
+}
+author.onblur = function () {
+    checkAuthor();
+}
+bookprice.onblur = function () {
+    checkBookPrice();
+}
+description.onblur = function () {
+    checkDescription();
+}
+added.onblur = function () {
+    checkAdded();
+}
 
 /*************************************************/
 
@@ -194,7 +300,7 @@ var addSort = new Vue({
         isShow: false
     },
     methods: {
-        submit: function() {
+        submit: function () {
             var that = this;
             if (that.sortid == '' || that.sortid.length < 1 || isNaN(that.sortid)) {
                 that.errmes = "分类ID必须为正整数";
@@ -613,7 +719,7 @@ var checkStock = new Vue({
 
 
 
-
+/*************************************************/
 //添加进货记录
 var addPurchase = new Vue({
     el: "#addPurchase",
@@ -628,7 +734,7 @@ var addPurchase = new Vue({
         isShow: false
     },
     methods: {
-        submit: function() {
+        submit: function () {
             var that = this;
             axios.post("/addPurchase", {
                 purchaseid: that.purchaseid,
