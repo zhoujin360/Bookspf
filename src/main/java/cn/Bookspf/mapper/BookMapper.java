@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import cn.Bookspf.model.DO.DBBook;
+import cn.Bookspf.model.DO.DBSort;
 import cn.Bookspf.model.DTO.Book;
 
 @Mapper
@@ -39,5 +40,13 @@ public interface BookMapper {
 	@Update("update book set number=#{number} where bid=#{bid}")
 	public Integer updateBookNumber(Integer bid,Integer number);
 
+	
+	//查询排行榜
+	@Select("select * from book order by hot desc limit 0,10")
+	public ArrayList<DBBook> getRankList(); 
+	
+	//获取发布的图书
+	@Select("select * from book limit 0,5")
+	public ArrayList<DBBook> getPublishBook(); 
 
 }

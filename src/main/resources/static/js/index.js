@@ -1,3 +1,4 @@
+// 轮播图模块
 var leftBtn = document.getElementById("left");
 var rightBtn = document.getElementById("right");
 var cont = document.querySelector(".cont");
@@ -46,7 +47,6 @@ cont.onmouseout = function () {
         right.onclick();
     }, 4000)
 }
-
 for (var i = 0; i < points.length; i++) {
     points[i].addEventListener('click', function () {
         var ponintIndex = this.getAttribute("data-index");
@@ -54,3 +54,38 @@ for (var i = 0; i < points.length; i++) {
         goIndex();
     })
 }
+//轮播图结束
+var app = new Vue({
+    el: "#box",
+    data: {
+        publishbook: [],
+        publishbookList: [],
+        rankList: []
+    },
+    mounted() {
+        this.getPublishBook();
+        this.getRankList();
+    },
+    methods: {
+        //获取排行版
+        getRankList: function () {
+            var that = this;
+            axios.get("/getRankList").then(
+                function (response) {
+                    that.rankList = response.data.books;
+                }, function (err) {
+
+                }
+            )
+        },
+        //获取出版图书
+        getPublishBook: function () {
+            var that = this;
+            axios.get("/getPublishBook").then(
+                function (response) {
+                    that.publishbook = response.data.books[4];
+                    that.publishbookList = response.data.books;
+                }, function (err) { })
+        }
+    }
+})

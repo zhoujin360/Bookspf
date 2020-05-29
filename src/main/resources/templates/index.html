@@ -22,7 +22,8 @@
                 <a href="" id="classif">分类</a>
                 <a href="/login" id="log" th:if="${session.userToken == null}">登录</a>
                 <a href="/register" id="reg" th:if="${session.userToken == null}">注册</a>
-                <a th:href="@{/account/{user}(user=${session.userToken})}" th:if="${session.userToken != null}" th:text="${session.username}"></a>
+                <a th:href="@{/account/{user}(user=${session.userToken})}" th:if="${session.userToken != null}"
+                    th:text="${session.username}" id="username"></a>
                 <a href="/orders" id="my_order" th:if="${session.userToken != null}">我的订单</a>
                 <a href="/logout" id="exit" th:if="${session.userToken != null}">退出</a>
             </div>
@@ -46,10 +47,10 @@
                     <a href="#"><img src="bookimg/5.jpeg" alt=""></a>
                 </li>
                 <li class="item">
-                    <a href="#"><img src="bookimg/10.jpg" alt=""></a>
+                    <a href="#"><img src="bookimg/6.jpg" alt=""></a>
                 </li>
                 <li class="item">
-                    <a href="#"><img src="bookimg/13.jpg" alt=""></a>
+                    <a href="#"><img src="bookimg/7.jpg" alt=""></a>
                 </li>
             </ul>
             <div id="right"><img src="img/next.png" alt=""></div>
@@ -72,20 +73,21 @@
                     <div id="list_left">
                         <div id="left_title">
                             <a href="#">
-                                <h4>橙红年代</h4>
+                                <h4>{{ publishbook.bookname }}</h4>
                             </a>
-                            <h6>作者: AABB</h6>
-                            <p>dahsdashdksahdjkshajdsadsadsa </p>
+                            <h6>作者: {{ publishbook.author }}</h6>
+                            <p>{{ publishbook.description }}</p>
                         </div>
                         <div id="left_body">
                             <a href="#">
                                 <img src="bookimg/1.jpg" alt="">
+
                             </a>
                         </div>
                     </div>
                     <div id="list_right">
                         <ul>
-                            <li>
+                            <li v-for="(publishbook,index) in publishbookList" v-if="index<4">
                                 <div id="right_body">
                                     <a href="#">
                                         <img src="bookimg/1.jpg" alt="">
@@ -93,48 +95,9 @@
                                 </div>
                                 <div id="right_title">
                                     <a href="#">
-                                        <h4>橙红年代</h4>
+                                        <h4>{{ publishbook.bookname }}</h4>
                                     </a>
-                                    <h6>作者: AABB</h6>
-                                </div>
-                            </li>
-                            <li>
-                                <div id="right_body">
-                                    <a href="#">
-                                        <img src="bookimg/1.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div id="right_title">
-                                    <a href="#">
-                                        <h4>橙红年代</h4>
-                                    </a>
-                                    <h6>作者: AABB</h6>
-                                </div>
-                            </li>
-                            <li>
-                                <div id="right_body">
-                                    <a href="#">
-                                        <img src="bookimg/1.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div id="right_title">
-                                    <a href="#">
-                                        <h4>橙红年代</h4>
-                                    </a>
-                                    <h6>作者: AABB</h6>
-                                </div>
-                            </li>
-                            <li>
-                                <div id="right_body">
-                                    <a href="#">
-                                        <img src="bookimg/1.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div id="right_title">
-                                    <a href="#">
-                                        <h4>橙红年代</h4>
-                                    </a>
-                                    <h6>作者: AABB</h6>
+                                    <h6>作者: {{ publishbook.author }}</h6>
                                 </div>
                             </li>
                         </ul>
@@ -142,68 +105,15 @@
                 </div>
                 <div id="ranking_list">
                     <div id="rank_title">
+                        <label><img src="img/ranklist.png" alt=""></label>
                         <h1>排行榜</h1>
                     </div>
                     <div id="rank_body">
                         <ul>
-                            <li>
-                                <span>1</span>
+                            <li v-for="(item,index) in rankList">
+                                <span>{{ index+1 }}</span>
                                 <a href="#">
-                                    <h4>大秦帝国</h4>
-                                </a>
-                            </li>
-                            <li>
-                                <span>1</span>
-                                <a href="#">
-                                    <h4>大秦帝国</h4>
-                                </a>
-                            </li>
-                            <li>
-                                <span>1</span>
-                                <a href="#">
-                                    <h4>大秦帝国</h4>
-                                </a>
-                            </li>
-                            <li>
-                                <span>1</span>
-                                <a href="#">
-                                    <h4>大秦帝国</h4>
-                                </a>
-                            </li>
-                            <li>
-                                <span>1</span>
-                                <a href="#">
-                                    <h4>大秦帝国</h4>
-                                </a>
-                            </li>
-                            <li>
-                                <span>1</span>
-                                <a href="#">
-                                    <h4>大秦帝国</h4>
-                                </a>
-                            </li>
-                            <li>
-                                <span>1</span>
-                                <a href="#">
-                                    <h4>大秦帝国</h4>
-                                </a>
-                            </li>
-                            <li>
-                                <span>1</span>
-                                <a href="#">
-                                    <h4>大秦帝国</h4>
-                                </a>
-                            </li>
-                            <li>
-                                <span>1</span>
-                                <a href="#">
-                                    <h4>大秦帝国</h4>
-                                </a>
-                            </li>
-                            <li>
-                                <span>1</span>
-                                <a href="#">
-                                    <h4>大秦帝国</h4>
+                                    <h4>{{ item.bookname }}</h4>
                                 </a>
                             </li>
                         </ul>
