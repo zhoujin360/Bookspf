@@ -79,17 +79,25 @@ public class PagesRequest {
 	public String account (@PathVariable("id") Integer id,Model model) {
 		if(!validator.isLogin())return "login";
 		if(!validator.isAccount(id)) return "404";
-		DBUser user=userMapper.getUserOfUid(id);
-		model.addAttribute("user", user);
+		setModelUser(model);
 		return validator.isIdentity(userMapper, "account");
 	}
 	
 	//订单页
 	@RequestMapping("/orders/{id}")
-	public String order (@PathVariable("id") Integer id,Model model) {
+	public String orders (@PathVariable("id") Integer id,Model model) {
 		if(!validator.isLogin())return "login";
 		if(!validator.isAccount(id)) return "404";
 		setModelUser(model);
 		return validator.isIdentity(userMapper, "orders");
+	}
+
+	//购物车页
+	@RequestMapping("/shopcar/{id}")
+	public String shopcar (@PathVariable("id") Integer id,Model model) {
+		if(!validator.isLogin())return "login";
+		if(!validator.isAccount(id)) return "404";
+		setModelUser(model);
+		return validator.isIdentity(userMapper, "shopcar");
 	}
 }

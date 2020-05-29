@@ -22,34 +22,34 @@
                 <a href="" id="classif">分类</a>
                 <a href="/login" id="log" th:if="${session.userToken == null}">登录</a>
                 <a href="/register" id="reg" th:if="${session.userToken == null}">注册</a>
-                <a th:href="@{/account/{user}(user=${session.userToken})}" th:if="${session.userToken != null}" th:text="${session.username}" id="username"></a>
-                <a href="/orders" id="my_order" th:if="${session.userToken != null}">我的订单</a>
-                <a href="/logout" id="exit" th:if="${session.userToken != null}">退出</a>
+                <a th:href="@{/account/{user}(user=${session.userToken})}" th:if="${session.userToken != null}" id="username">[[${session.username}]]</a>
+                <a th:href="@{/orders/{user}(user=${session.userToken})}" th:if="${session.userToken != null}" id="my_order">我的订单</a>
+                <a href="/logout" th:if="${session.userToken != null}">退出</a>
             </div>
         </div>
         <div id="rotation" class="type_page" style="background: url('img/bg.gif') no-repeat;">
             <div id="left"><img src="img/prev.png" alt=""></div>
             <ul class="cont">
                 <li class="item active">
-                    <a href="#"> <img src="bookimg/1.png"></a>
+                    <a href="javascript:;"> <img src="bookimg/1.png"></a>
                 </li>
                 <li class="item">
-                    <a href="#"><img src="bookimg/2.png"></a>
+                    <a href="javascript:;"><img src="bookimg/2.png"></a>
                 </li>
                 <li class="item">
-                    <a href="#"><img src="bookimg/3.png"></a>
+                    <a href="javascript:;"><img src="bookimg/3.png"></a>
                 </li>
                 <li class="item">
-                    <a href="#"><img src="bookimg/4.png"></a>
+                    <a href="javascript:;"><img src="bookimg/4.png"></a>
                 </li>
                 <li class="item">
-                    <a href="#"><img src="bookimg/5.png"></a>
+                    <a href="javascript:;"><img src="bookimg/5.png"></a>
                 </li>
                 <li class="item">
-                    <a href="#"><img src="bookimg/9.png"></a>
+                    <a href="javascript:;"><img src="bookimg/9.png"></a>
                 </li>
                 <li class="item">
-                    <a href="#"><img src="bookimg/10.png"></a>
+                    <a href="javascript:;"><img src="bookimg/10.png"></a>
                 </li>
             </ul>
             <div id="right"><img src="img/next.png"></div>
@@ -71,14 +71,14 @@
                 <div id="recommend_list">
                     <div id="list_left">
                         <div id="left_title">
-                            <a href="#">
+                            <a href="javascript:;">
                                 <h4>{{ publishbook.bookname }}</h4>
                             </a>
                             <h6>作者: {{ publishbook.author }}</h6>
                             <p>{{ publishbook.description }}</p>
                         </div>
                         <div id="left_body">
-                            <a href="#">
+                            <a href="javascript:;">
                                 <img src="bookimg/1.png">
                             </a>
                         </div>
@@ -87,12 +87,12 @@
                         <ul>
                             <li v-for="(publishbook,index) in publishbookList" v-if="index<4">
                                 <div id="right_body">
-                                    <a href="#">
+                                    <a href="javascript:;">
                                         <img src="bookimg/5.png">
                                     </a>
                                 </div>
                                 <div id="right_title">
-                                    <a href="#">
+                                    <a href="javascript:;">
                                         <h4>{{ publishbook.bookname }}</h4>
                                     </a>
                                     <h6>作者: {{ publishbook.author }}</h6>
@@ -110,7 +110,7 @@
                         <ul>
                             <li v-for="(item,index) in rankList">
                                 <span>{{ index+1 }}</span>
-                                <a href="#">
+                                <a href="javascript:;">
                                     <h4>{{ item.bookname }}</h4>
                                 </a>
                             </li>
