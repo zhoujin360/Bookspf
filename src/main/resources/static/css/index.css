@@ -219,10 +219,17 @@
 /* 推荐列表左侧 */
 
 #recommend_list #list_left {
+    position: relative;
     float: left;
     width: 410px;
     height: 100%;
     background-color: #FFFFFF;
+}
+
+#list_left #suggestImg {
+    position: absolute;
+    top: -32px;
+    left: -32px;
 }
 
 #list_left #left_title {
@@ -231,6 +238,7 @@
     padding: 20px;
     background-color: #FFFFFF;
 }
+
 
 #left_title h4 {
     font-size: 18px;

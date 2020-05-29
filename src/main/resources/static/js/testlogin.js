@@ -10,7 +10,7 @@ window.addEventListener("load", function () {
         if (flag) {
             password.style.border = "";
         } else {
-            password.style.border = "1px solid red";
+            password.style.borderBottom = "3px solid #F26552";
             err_msg.innerHTML = "请输入正确的密码<br/>";
         }
         return flag;
@@ -22,7 +22,7 @@ window.addEventListener("load", function () {
         if (flag) {
             username.style.border = "";
         } else {
-            username.style.border = "1px solid red";
+            username.style.borderBottom = "3px solid #F26552";
             err_msg.innerHTML = "请输入正确的用户名<br/>";
         }
         return flag;
@@ -57,10 +57,10 @@ var login = new Vue({
                 password: that.password
             }).then(function (response) {
                 if (response.data.status) {
-                   window.location.reload() ;
-                }else{
-					that.msg = response.data.mes;
-				}
+                    window.location.reload();
+                } else {
+                    that.msg = response.data.mes;
+                }
 
             })
         }

@@ -1,0 +1,98 @@
+body {
+    background-color: #FFFFFF;
+}
+#box {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    width: 600px;
+    height: 600px;
+    /* background-color: pink; */
+}
+/* 头像模块 */
+#characters {
+    position: absolute;
+    top: 50px;
+    left: 250px;
+    width: 90px;
+    height: 90px;
+    /* background-color: orange; */
+    border-radius: 45px;
+}
+#characters img {
+    width: 88px;
+}
+/* 提示模块 */
+#tips {
+    position: absolute;
+    top: 160px;
+    width: 600px;
+    height: 80px;
+    text-align: center;
+    /* background-color: orange; */
+}
+#tips h1 {
+    color: #989898;
+    font-size: 40px;
+}
+#tips h4 {
+    color: #989898;
+    font-weight: 400;
+}
+/* 表单区域 */
+#loginForm {
+    position: absolute;
+    top: 240px;
+    width: 100%;
+    height: 360px;
+    text-align: center;
+    /* background-color: skyblue; */
+}
+#log_account {
+    width: 350px;
+    height: 35px;
+    margin-top: 20px;
+    border-bottom: 3px solid #DCDCDC;
+}
+#log_account:focus {
+    border-bottom: 3px solid #69B4FE;
+}
+#accountImg img {
+    position: absolute;
+    top: 25px;
+    width: 20px;
+}
+#log_password {
+    width: 350px;
+    height: 35px;
+    margin-top: 20px;
+    border-bottom: 3px solid #DCDCDC;
+}
+
+#log_password:focus {
+    border-bottom: 3px solid #69B4FE;
+}
+#passwordImg img {
+    position: absolute;
+    top: 80px;
+    width: 15px;
+}
+/* 错误信息模块 */
+#err_msg {
+    display: inline-block;
+    width: 350px;
+    height: 30px;
+    margin-top: 30px;
+    line-height: 30px;
+    color: #F26552;
+    /* background-color: pink; */
+}
+/* 提交按钮模块 */
+#sb {
+    width: 350px;
+    height: 40px;
+    color: #F0F6FC;
+    border-radius: 20px;
+    margin-top: 10px;
+    background-color: #65B3FA;
+}
