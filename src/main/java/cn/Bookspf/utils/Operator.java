@@ -1,5 +1,7 @@
 package cn.Bookspf.utils;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -8,6 +10,8 @@ import cn.Bookspf.mapper.OrderMapper;
 import cn.Bookspf.model.DO.DBOrder;
 import cn.Bookspf.model.DTO.OrderStatistics;
 import cn.Bookspf.model.DTO.PurchaseStatistics;
+import cn.Bookspf.model.RO.Response;
+import org.springframework.web.multipart.MultipartFile;
 
 public class Operator {
 	
@@ -35,5 +39,22 @@ public class Operator {
 
 		return  purchases;
 	}
-	
+
+
+	//上传图书图片
+	public boolean uploadBookimg(MultipartFile file,Integer bid) throws IOException {
+		String oldFileName=file.getOriginalFilename();
+		String fileType=oldFileName.substring(oldFileName.indexOf("."));
+		if(!".png".equals(fileType)) return false;
+		String newFilename=bid+fileType;
+		new File("F:/Web/Bookspf-图书售书平台/bookimg/").mkdirs();
+		file.transferTo(new File("F:/Web/Bookspf-图书售书平台/bookimg/"+newFilename));
+		return true;
+	}
+
+	//删除图书图片
+	public void deleteBookimg(Integer bid) throws IOException {
+		String filename=bid+".png";
+		new File("F:/Web/Bookspf-图书售书平台/bookimg/"+filename).delete();
+	}
 }

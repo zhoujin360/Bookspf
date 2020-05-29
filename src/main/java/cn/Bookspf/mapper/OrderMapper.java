@@ -19,7 +19,11 @@ public interface OrderMapper {
 
 	//查询某个订单信息
 	@Select("select distinct orderid,uid,createtime,paytime from orders where orderid=#{orderid}")
-	public ArrayList<DBOrder> getOrderOfOrderid(long orderid);
+	public ArrayList<DBOrder> getOrderOfOrderid(Long orderid);
+
+	//查询某个订单详情
+	@Select("select  orderid,bid,isbn,bookprice from orders where orderid=#{orderid}")
+	public ArrayList<DBOrder> getOrderinfoOfOrderid(Long orderid);
 
 	//查询某个订单信息
 	@Select("select distinct orderid,uid,createtime,paytime from orders where uid=#{uid}")

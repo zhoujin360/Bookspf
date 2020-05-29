@@ -85,9 +85,10 @@ public class PagesRequest {
 	}
 	
 	//订单页
-	@RequestMapping("/orders")
-	public String order (Model model) {	
+	@RequestMapping("/orders/{id}")
+	public String order (@PathVariable("id") Integer id,Model model) {
 		if(!validator.isLogin())return "login";
+		if(!validator.isAccount(id)) return "404";
 		setModelUser(model);
 		return validator.isIdentity(userMapper, "orders");
 	}

@@ -10,6 +10,20 @@ public class Book {
 	private Double bookprice;
 	private Integer added;
 	private Integer number;
+
+	public Book(){}
+	public Book(Integer bid, String bookname, Integer hot, Integer sortid, String author, String description, Double bookprice, Integer added, Integer number) {
+		this.bid = bid;
+		this.bookname = bookname;
+		this.hot = hot;
+		this.sortid = sortid;
+		this.author = author;
+		this.description = description;
+		this.bookprice = bookprice;
+		this.added = added;
+		this.number = number;
+	}
+
 	public Integer getBid() {
 		return bid;
 	}

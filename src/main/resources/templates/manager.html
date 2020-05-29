@@ -53,6 +53,7 @@
             </div>
         </div>
     </div>
+
     <div class="main">
         <div id="bookInfo" class="mainItemHidden">
             <div class="searchBox">
@@ -81,8 +82,8 @@
                         <span>{{item.number}}</span>
                         <span v-text="item.added==0?'否':'是'"></span>
                         <span class="description">{{item.description}}</span>
-                        <span class="alter"><a href="#" onclick="action('alterBook')">修改</a></span>
-                        <span class="delete"><a href="#">删除</a></span>
+                        <span class="alter"><a href="#" @click="setBid(item.bid)" onclick="action('alterBook')">修改</a></span>
+                        <span class="delete"><a href="#" @click="deleteBook(item.bid)">删除</a></span>
                     </div>
                 </div>
 
@@ -124,14 +125,14 @@
                     </div>
                     <div class="searchBar">
                         <span>
-                            <input type="text" v-model="orderid">
-                        </span>
+                                <input type="text" v-model="orderid">
+                            </span>
                         <span>
-                            <input type="text" v-model="uid">
-                        </span>
+                                <input type="text" v-model="uid">
+                            </span>
                         <span>
-                            <input type="datetime-local" v-model="createtime">
-                        </span>
+                                <input type="datetime-local" v-model="createtime">
+                            </span>
                     </div>
                 </div>
             </div>
@@ -151,7 +152,7 @@
                         <span class="time">{{item.paytime}}</span>
                         <span>{{item.total}}</span>
                         <span class="check"><a href="#" @click="externalCheckOrder(item.orderid)"
-                                onclick="action('checkOrder')">查看订单</a></span>
+                                    onclick="action('checkOrder')">查看订单</a></span>
                     </div>
                 </div>
 
@@ -171,14 +172,14 @@
                     </div>
                     <div class="searchBar">
                         <span>
-                            <input type="text" v-model="saleid">
-                        </span>
+                                <input type="text" v-model="saleid">
+                            </span>
                         <span>
-                            <input type="text" v-model="isbn">
-                        </span>
+                                <input type="text" v-model="isbn">
+                            </span>
                         <span>
-                            <input type="datetime-local" v-model="saletime">
-                        </span>
+                                <input type="datetime-local" v-model="saletime">
+                            </span>
                     </div>
                 </div>
             </div>
@@ -219,11 +220,11 @@
                     </div>
                     <div class="searchBar">
                         <span>
-                            <input type="text" v-model="purchaseid">
-                        </span>
+                                <input type="text" v-model="purchaseid">
+                            </span>
                         <span>
-                            <input type="datetime-local" v-model="purchasetime">
-                        </span>
+                                <input type="datetime-local" v-model="purchasetime">
+                            </span>
                     </div>
                 </div>
             </div>
@@ -243,8 +244,8 @@
                         <span class="time">{{item.purchasetime}}</span>
                         <span>{{item.operator}}</span>
                         <span class="check"><a href="#" @click="externalCheckPurchase(item.purchaseid)"
-                                onclick="action('checkPurchase')">查看记录</a></span>
-                        <span class="delete"><a href="#">删除</a></span>
+                                    onclick="action('checkPurchase')">查看记录</a></span>
+                        <span class="delete"><a href="#" @click="deletePurchase(item.purchaseid)">删除</a></span>
                     </div>
                 </div>
 
@@ -263,11 +264,11 @@
                     </div>
                     <div class="searchBar">
                         <span>
-                            <input type="text" v-model="stockid">
-                        </span>
+                                <input type="text" v-model="stockid">
+                            </span>
                         <span>
-                            <input type="datetime-local" v-model="stocktime">
-                        </span>
+                                <input type="datetime-local" v-model="stocktime">
+                            </span>
                     </div>
                 </div>
             </div>
@@ -283,7 +284,7 @@
                         <span>{{item.comeout}}</span>
                         <span class="time">{{item.stocktime}}</span>
                         <span class="check"><a href="#" @click="externalCheckStock(item.stockid)"
-                                onclick="action('checkStock')">查看记录</a></span>
+                                    onclick="action('checkStock')">查看记录</a></span>
                     </div>
                 </div>
 
@@ -293,75 +294,93 @@
     </div>
 
 
+
+
     <div class="bookWindow">
         <div id="addBook" class="window actionHidden">
             <div class="tips">添加图书</div>
-            <form action="#">
+            <form @submit.prevent="submit">
                 <div id="bid">
-                    <span>图书编号</span>：
-                    <input type="text">
+                    <span>图书ID</span>：
+                    <input type="text" v-model="bid">
                 </div>
                 <div id="bookname">
                     <span>图书名</span>：
-                    <input type="text">
+                    <input type="text" v-model="bookname">
                 </div>
-                <div id="sortname">
-                    <span>分类名</span>：
-                    <input type="text">
+                <div id="sortid">
+                    <span>分类ID</span>：
+                    <input type="text" v-model="sortid">
                 </div>
                 <div id="author">
                     <span>作者</span>：
-                    <input type="text">
+                    <input type="text" v-model="author">
                 </div>
                 <div id="description">
                     <span>描述</span>：
-                    <input type="text">
+                    <input type="text" v-model="description">
                 </div>
                 <div id="bookprice">
                     <span>图书价格</span>：
-                    <input type="text">
+                    <input type="text" v-model="bookprice">
                 </div>
                 <div id="added">
                     <span>是否上架(0否/1是)</span>：
-                    <input type="text">
+                    <input type="text" v-model="added">
                 </div>
-                <div id="errmes">错误信息</div>
+                <div class="bookimg">
+                    <span>图书图片</span>：
+                    <a href="javascript:;" class="a-upload">
+                        <input type="file" accept="image/png" @change="fileChange($event)"> 上传图书图片
+                    </a>
+                </div>
+                <div class="errmes">
+                    <span v-show="isShow" :class="errmesColor?'errmesGreen':'errmesRed'">{{errmes}}</span>
+                </div>
                 <input id="addBookBtn" class="windowBtn" type="submit" value="确认添加">
             </form>
         </div>
         <div id="alterBook" class="window actionHidden">
             <div class="tips">修改图书信息</div>
-            <form action="#">
+            <form @submit.prevent="submit">
                 <div id="bid">
-                    <span>图书编号</span>：
-                    <input type="text">
+                    <span>图书ID</span>：
+                    <span class="alterBookbid">{{bid}}</span>
                 </div>
                 <div id="bookname">
                     <span>图书名</span>：
-                    <input type="text">
+                    <input type="text" v-model="bookname">
                 </div>
-                <div id="sortname">
-                    <span>分类名</span>：
-                    <input type="text">
+                <div id="sortid">
+                    <span>分类ID</span>：
+                    <input type="text" v-model="sortid">
                 </div>
                 <div id="author">
                     <span>作者</span>：
-                    <input type="text">
+                    <input type="text" v-model="author">
                 </div>
                 <div id="description">
                     <span>描述</span>：
-                    <input type="text">
+                    <input type="text" v-model="description">
                 </div>
                 <div id="bookprice">
                     <span>图书价格</span>：
-                    <input type="text">
+                    <input type="text" v-model="bookprice">
                 </div>
                 <div id="added">
                     <span>是否上架(0否/1是)</span>：
-                    <input type="text">
+                    <input type="text" v-model="added">
                 </div>
-                <div id="errmes">错误信息</div>
-                <input id="submit" type="submit" value="确认修改">
+                <div class="bookimg">
+                    <span>图书图片</span>：
+                    <a href="javascript:;" class="a-upload">
+                        <input type="file" accept="image/png" @change="fileChange($event)"> 上传图书图片
+                    </a>
+                </div>
+                <div class="errmes">
+                    <span v-show="isShow" :class="errmesColor?'errmesGreen':'errmesRed'">{{errmes}}</span>
+                </div>
+                <input id="alterBookBtn" class="windowBtn" type="submit" value="确认修改">
             </form>
         </div>
     </div>

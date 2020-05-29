@@ -5,7 +5,7 @@ var rotate90 = new Vue({
         isShow: 0
     },
     methods: {
-        rotateT: function (index) {
+        rotateT: function(index) {
             if (this.isShow == index) this.isShow = 0;
             else this.isShow = index;
         }
@@ -20,7 +20,7 @@ var logout = new Vue({
     methods: {
         logout() {
             axios.post("/logout")
-                .then(function () {
+                .then(function() {
                     window.location.reload();
                 })
         }
@@ -126,6 +126,19 @@ var getBookList = new Vue({
                 .then(response => {
                     that.books = response.data.books;
                 })
+        },
+        deleteBook(bid) {
+            var that = this;
+            axios.post("/deleteBook", {
+                bid: bid
+            }).then(response => {
+                if (response.data.status) {
+                    getBookList.getBookList();
+                }
+            })
+        },
+        setBid(bid) {
+            alterBook.setBid(bid);
         }
     }
 });
@@ -136,7 +149,135 @@ function externalGetBookList() {
 
 /*************************************************/
 
-//添加图书暂时不做   还没想好怎么做
+//添加图书
+
+var addBook = new Vue({
+    el: "#addBook",
+    data: {
+        bid: '',
+        bookname: '',
+        sortid: '',
+        author: '',
+        description: '',
+        bookprice: '',
+        added: '',
+        bookimg: '',
+        imgevent: '',
+        isUpFile: false,
+        errmes: '',
+        errmesColor: false,
+        isShow: false
+    },
+    methods: {
+        submit: function() {
+            var that = this;
+            let config = { headers: { "Content-Type": "multipart/form-data" } };
+            this.bookimg = this.imgevent.target.files[0];
+            this.isUpFile = true;
+            let param = new FormData();
+            param.append("file", that.bookimg);
+            param.append("bid", that.bid);
+            param.append("bookname", that.bookname);
+            param.append("sortid", that.sortid);
+            param.append("author", that.author);
+            param.append("description", that.description);
+            param.append("bookprice", that.bookprice);
+            param.append("added", that.added);
+            axios.post("/addBook", param, config).then(response => {
+                if (response.data.status) {
+                    that.bid = '';
+                    that.bookname = '';
+                    that.sortid = '';
+                    that.author = '';
+                    that.description = '';
+                    that.bookprice = '';
+                    that.added = '';
+                    that.imgevent.target.files[0] = '';
+                    that.isShow = true;
+                    that.errmesColor = true;
+                    that.errmes = response.data.mes;
+                    getBookList.getBookList();
+                } else {
+                    that.isShow = true;
+                    that.errmesColor = false;
+                    that.errmes = response.data.mes;
+                }
+            })
+        },
+        fileChange(event) {
+            this.imgevent = event;
+        }
+    }
+})
+
+
+
+//修改图书
+
+var alterBook = new Vue({
+    el: "#alterBook",
+    data: {
+        bid: '',
+        bookname: '',
+        sortid: '',
+        author: '',
+        description: '',
+        bookprice: '',
+        added: '',
+        bookimg: '',
+        imgevent: '',
+        isUpFile: false,
+        errmes: '',
+        errmesColor: false,
+        isShow: false
+    },
+    methods: {
+        submit: function() {
+            var that = this;
+            let config = { headers: { "Content-Type": "multipart/form-data" } };
+            this.bookimg = this.imgevent.target.files[0];
+            this.isUpFile = true;
+            let param = new FormData();
+            param.append("file", that.bookimg);
+            param.append("bid", that.bid);
+            param.append("bookname", that.bookname);
+            param.append("sortid", that.sortid);
+            param.append("author", that.author);
+            param.append("description", that.description);
+            param.append("bookprice", that.bookprice);
+            param.append("added", that.added);
+            axios.post("/alterBook", param, config).then(response => {
+                if (response.data.status) {
+                    that.bookname = '';
+                    that.sortid = '';
+                    that.author = '';
+                    that.description = '';
+                    that.bookprice = '';
+                    that.added = '';
+                    that.imgevent.target.files[0] = '';
+                    that.isShow = true;
+                    that.errmesColor = true;
+                    that.errmes = response.data.mes;
+                    getBookList.getBookList();
+                } else {
+                    that.isShow = true;
+                    that.errmesColor = false;
+                    that.errmes = response.data.mes;
+                }
+            })
+        },
+        fileChange(event) {
+            this.imgevent = event;
+        },
+        setBid(bid) {
+            this.bid = bid;
+        }
+    }
+})
+
+function externalBookSetBid(bid) {
+
+}
 
 /*************************************************/
 
@@ -150,14 +291,14 @@ var bookprice = document.querySelector("#bookprice").querySelector("input");
 var added = document.querySelector("#added").querySelector("input");
 var errmes = document.querySelector("#errmes");
 // 验证图书编号
-function checkISBN() {
+/*function checkISBN() {
     var reg = /^[0-9]{13}$/
     var flag = reg.test(bid.value);
     if (flag) {
-        bid.style.border = "";
+        isbn.style.border = "";
         errmes.innerHTML = "";
     } else {
-        bid.style.border = "2px solid red";
+        isbn.style.border = "1px solid red";
         errmes.innerHTML = "请输入13位纯数字的图书编号";
     }
     return flag;
@@ -165,7 +306,7 @@ function checkISBN() {
 //验证书名
 function checkBookName() {
     if (bookname.value == "") {
-        bookname.style.border = "2px solid red";
+        bookname.style.border = "1px solid red";
         errmes.innerHTML = "请输入图书名";
     } else {
         bookname.style.boder = "";
@@ -176,7 +317,7 @@ function checkBookName() {
 //验证分类名
 function checkSortName() {
     if (sortname.value == "") {
-        sortname.style.border = "2px solid red";
+        sortname.style.border = "1px solid red";
         errmes.innerHTML = "请输入分类名";
     } else {
         sortname.style.border = "";
@@ -187,7 +328,7 @@ function checkSortName() {
 //验证作者
 function checkAuthor() {
     if (author.value == "") {
-        author.style.border = "2px solid red";
+        author.style.border = "1px solid red";
         errmes.innerHTML = "请输入分类名";
     } else {
         author.style.border = "";
@@ -198,7 +339,7 @@ function checkAuthor() {
 //验证描述
 function checkDescription() {
     if (sortname.value == "") {
-        description.style.border = "2px solid red";
+        description.style.border = "1px solid red";
         errmes.innerHTML = "请输入分类名";
     } else {
         description.style.border = "";
@@ -214,7 +355,7 @@ function checkBookPrice() {
         bookprice.style.border = "";
         errmes.innerHTML = "";
     } else {
-        bookprice.style.border = "2px solid red";
+        bookprice.style.border = "1px solid red";
         errmes.innerHTML = "请输入书的价格";
     }
     return flag;
@@ -227,32 +368,32 @@ function checkAdded() {
         added.style.border = "";
         errmes.innerHTML = "";
     } else {
-        added.style.border = "2px solid red";
+        added.style.border = "1px solid red";
         errmes.innerHTML = "请输入是否上架价格";
     }
     return flag;
 }
-bid.onblur = function () {
+bid.onblur = function() {
     checkISBN();
 }
-bookname.onblur = function () {
+bookname.onblur = function() {
     checkBookName();
 }
-sortname.onblur = function () {
+sortname.onblur = function() {
     checkSortName();
 }
-author.onblur = function () {
+author.onblur = function() {
     checkAuthor();
 }
-bookprice.onblur = function () {
+bookprice.onblur = function() {
     checkBookPrice();
 }
-description.onblur = function () {
+description.onblur = function() {
     checkDescription();
 }
-added.onblur = function () {
+added.onblur = function() {
     checkAdded();
-}
+}*/
 
 /*************************************************/
 
@@ -300,7 +441,7 @@ var addSort = new Vue({
         isShow: false
     },
     methods: {
-        submit: function () {
+        submit: function() {
             var that = this;
             if (that.sortid == '' || that.sortid.length < 1 || isNaN(that.sortid)) {
                 that.errmes = "分类ID必须为正整数";
@@ -562,6 +703,16 @@ var getPurchaseList = new Vue({
                 })
             }
         },
+        deletePurchase(purchaseid) {
+            var that = this;
+            axios.post("/deletePurchase", {
+                purchaseid: purchaseid
+            }).then(response => {
+                if (response.data.status) {
+                    getPurchaseList.getPurchaseList(0, "");
+                }
+            })
+        },
         externalCheckPurchase(purchaseid) {
             checkPurchase.checkPurchase(purchaseid);
         }
@@ -734,7 +885,7 @@ var addPurchase = new Vue({
         isShow: false
     },
     methods: {
-        submit: function () {
+        submit: function() {
             var that = this;
             axios.post("/addPurchase", {
                 purchaseid: that.purchaseid,

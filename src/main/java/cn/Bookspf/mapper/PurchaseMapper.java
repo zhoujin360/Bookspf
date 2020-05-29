@@ -3,6 +3,7 @@ package cn.Bookspf.mapper;
 import cn.Bookspf.model.DO.DBPurchase;
 import cn.Bookspf.model.DTO.Purchase;
 import cn.Bookspf.model.DTO.PurchaseStatistics;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -19,6 +20,10 @@ public interface PurchaseMapper {
     @Insert("insert into purchase(purchaseid,bid,isbn,purchaseprice,purchasetime,operator) "+
             "values(#{purchaseid},#{bid},#{isbn},#{purchaseprice},#{purchasetime},#{operator})")
     public void insertPurchase(Purchase purchase);
+
+    //删除记录
+    @Delete("delete from purchase where purchaseid=#{purchaseid}")
+    public void deletePurchase(Long purchaseid);
 
     //查询进货统计
     @Select("select purchaseid,count(purchaseid) number,sum(purchaseprice) total,purchasetime,operator " +

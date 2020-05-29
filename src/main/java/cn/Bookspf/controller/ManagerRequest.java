@@ -64,42 +64,62 @@ public class ManagerRequest {
 	
 	//添加图书
 	@PostMapping("/addBook")
-	public Response addBook(@RequestBody Book request) {
-		if(!validator.isLogin()) return new Response(false,"请登录再操作");
-		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
-		request.setHot(0);
-		request.setNumber(0);
-		if(request.getDescription()!=null)bookMapper.addBook(request);
-		else bookMapper.addBookNoDescription(request);
-		return new Response(true,"添加成功");
-	}
-
-	//上传图书图片
-	@PostMapping("/uploadBookimg")
-	public Response uploadBookimg(@RequestParam("file") MultipartFile file){
+	public Response addBook(@RequestParam("file") MultipartFile file,
+							@RequestParam("bid") Integer bid,
+							@RequestParam("bookname") String bookname,
+							@RequestParam("sortid") Integer sortid,
+							@RequestParam("author") String author,
+							@RequestParam("description") String description,
+							@RequestParam("bookprice") Double bookprice,
+							@RequestParam("added") Integer added) {
 		if(!validator.isLogin()) return new Response(false,"请登录再操作");
 		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
 		if(file==null) return new Response(false,"上传失败");
-		Integer bid=20;
-		System.out.println(1);
-		String oldFileName=file.getOriginalFilename();
-		String fileType=oldFileName.substring(oldFileName.indexOf("."));
-		System.out.println(fileType);
-		if(!".jpg".equals(fileType)) return new Response(false,"文件格式错误");
-		System.out.println(2);
-		String newFilename=bid+fileType;
+		if (bookMapper.findBid(bid)!=null)return new Response(false,"图书编号已存在");
 		try{
-			System.out.println(3);
-			new File("F:/Web/Bookspf-图书售书平台/bookimg/").mkdirs();
-			file.transferTo(new File("F:/Web/Bookspf-图书售书平台/bookimg/"+newFilename));
-			System.out.println(4);
-		}catch (IOException e){
-			System.out.println(5);
-			return new Response(false,"上传失败");
-		}
-		return new Response(true,"上传成功");
+			if(!operator.uploadBookimg(file,bid))return new Response(false,"上传图片失败");
+		}catch (IOException e){}
+		Book request =new Book(bid,bookname,0,sortid,author,description,bookprice, added,0);
+		bookMapper.addBook(request);
+		return new Response(true,"添加成功");
 	}
-	
+
+	//添加图书
+	@PostMapping("/alterBook")
+	public Response alterBook(@RequestParam("file") MultipartFile file,
+							@RequestParam("bid") Integer bid,
+							@RequestParam("bookname") String bookname,
+							@RequestParam("sortid") Integer sortid,
+							@RequestParam("author") String author,
+							@RequestParam("description") String description,
+							@RequestParam("bookprice") Double bookprice,
+							@RequestParam("added") Integer added) {
+		if(!validator.isLogin()) return new Response(false,"请登录再操作");
+		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
+		if(file==null) return new Response(false,"上传图片失败");
+		try{
+			if(!operator.uploadBookimg(file,bid))return new Response(false,"上传图片失败");
+		}catch (IOException e){ return new Response(false,"上传图片失败");}
+		Book request =new Book(bid,bookname,0,sortid,author,description,bookprice, added,0);
+		bookMapper.alterBook(request);
+		return new Response(true,"修改成功");
+	}
+
+	//删除图书
+	@PostMapping("/deleteBook")
+	public Response deleteBook(@RequestBody Book request) {
+		if(!validator.isLogin()) return new Response(false,"请登录再操作");
+		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
+		Integer bid=request.getBid();
+		try { operator.deleteBookimg(bid); } catch (IOException e){ return new Response(true,"删除失败"); }
+		bookMapper.deleteBook(bid);
+		return new Response(true,"删除成功");
+	}
+
+
+
+
+
 	//获取分类信息列表
 	@GetMapping("/getSortList")
 	public Response getSortList() {
@@ -164,9 +184,12 @@ public class ManagerRequest {
 		if(!validator.isLogin()) return new Response(false,"请登录再操作");
 		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
 		OrderResponse orderResponse=new OrderResponse();
-		orderResponse.setOrdersinfo(orderMapper.getOrderOfOrderid(request.getOrderid()));
+		orderResponse.setOrdersinfo(orderMapper.getOrderinfoOfOrderid(request.getOrderid()));
 		return orderResponse;
 	}
+
+
+
 	
 	//获取销售信息列表
 	@PostMapping("/getSaleList")
@@ -236,6 +259,15 @@ public class ManagerRequest {
 		bookMapper.updateBookNumber(request.getBid(),number);
 		purchaseMapper.insertPurchase(request);
 		return new Response(true,"添加成功");
+	}
+
+	//删除进货记录
+	@PostMapping("/deletePurchase")
+	public Response deletePurchase(@RequestBody Purchase request) {
+		if(!validator.isLogin()) return new Response(false,"请登录再操作");
+		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
+		purchaseMapper.deletePurchase(request.getPurchaseid());
+		return new Response(true,"删除成功");
 	}
 
 
