@@ -13,10 +13,13 @@
 
 <body>
     <div id="box" class="type_page">
-
+        <div id="characters"></div>
+        <div id="tips"></div>
         <form action="" id="loginForm" @submit.prevent="submit">
-            <span>账号:</span><input type="text" v-model="username" id="log_account"><br>
-            <span>密码:</span><input type="password" v-model="password" id="log_password"><br>
+            <!-- <span>账号:</span> -->
+            <input type="text" v-model="username" id="log_account"><br>
+            <!-- <span>密码:</span> -->
+            <input type="password" v-model="password" id="log_password"><br>
             <span v-html="msg" id="err_msg"></span>
             <input type="submit" value="提交">
         </form>
