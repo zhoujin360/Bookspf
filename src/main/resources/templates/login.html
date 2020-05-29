@@ -14,24 +14,24 @@
 <body>
     <div id="box" class="type_page">
         <div id="characters">
-            <img src="img/characters.png" alt="">
+            <img src="img/characters.png">
         </div>
         <div id="tips">
             <h1>WELCOME</h1>
             <h4>Username(Please enter a Username)</h4>
         </div>
-        <form action="" id="loginForm" @submit.prevent="submit">
+        <form id="loginForm" @submit.prevent="submit">
             <!-- <span>账号:</span> -->
-            <label id="accountImg"><img src="img/account.png" alt=""></label>
+            <label id="accountImg"><img src="img/account.png"></label>
             <input type="text" placeholder="   Account" v-model="username" id="log_account"><br>
             <!-- <span>密码:</span> -->
-            <label id="passwordImg"><img src="img/password.png" alt=""></label>
+            <label id="passwordImg"><img src="img/password.png"></label>
             <input type="password" placeholder="   Password" v-model="password" id="log_password"><br>
             <span v-html="msg" id="err_msg"></span>
             <input type="submit" value="LOGIN" id="sb">
         </form>
     </div>
-    <script src="js/testlogin.js"></script>
+    <script src="js/login.js"></script>
 </body>
 
 </html>

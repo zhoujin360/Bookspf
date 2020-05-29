@@ -82,7 +82,7 @@
     position: absolute;
     top: 10px;
     right: 330px;
-}  
+}
 
 #top #my_order {
     position: absolute;
@@ -95,8 +95,6 @@
     top: 10px;
     right: 200px;
 }
-
-
 
 
 /* 轮播图 */
@@ -130,7 +128,7 @@
 }
 
 .cont img:hover {
-    transform: translateX(4px);
+    transform: translateY(-4px);
 }
 
 .item.active {
@@ -148,7 +146,7 @@
 }
 
 #left:hover {
-    transform: translateY(5px);
+    transform: translateY(-5px);
 }
 
 #right {
@@ -161,7 +159,7 @@
 }
 
 #right:hover {
-    transform: translateY(5px);
+    transform: translateY(-5px);
 }
 
 .dot {
@@ -239,7 +237,6 @@
     background-color: #FFFFFF;
 }
 
-
 #left_title h4 {
     font-size: 18px;
     font-weight: 400;
@@ -258,7 +255,7 @@
     margin-top: 20px;
     overflow: hidden;
     text-overflow: ellipsis;
-     /* 弹性伸缩盒子模型显示 */
+    /* 弹性伸缩盒子模型显示 */
     display: -webkit-box;
     /* 限制在一个块元素显示的文本的行数 */
     -webkit-line-clamp: 5;
@@ -341,9 +338,11 @@
     top: 30px;
     left: 30px;
 }
+
 #rank_title label img {
     width: 40px;
 }
+
 #rank_body {
     margin-top: 15px;
 }
