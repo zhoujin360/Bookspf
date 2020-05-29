@@ -22,8 +22,7 @@
                 <a href="" id="classif">分类</a>
                 <a href="/login" id="log" th:if="${session.userToken == null}">登录</a>
                 <a href="/register" id="reg" th:if="${session.userToken == null}">注册</a>
-                <a th:href="@{/account/{user}(user=${session.userToken})}" th:if="${session.userToken != null}"
-                    th:text="${session.username}" id="username"></a>
+                <a th:href="@{/account/{user}(user=${session.userToken})}" th:if="${session.userToken != null}" th:text="${session.username}" id="username"></a>
                 <a href="/orders" id="my_order" th:if="${session.userToken != null}">我的订单</a>
                 <a href="/logout" id="exit" th:if="${session.userToken != null}">退出</a>
             </div>
@@ -32,28 +31,28 @@
             <div id="left"><img src="img/prev.png" alt=""></div>
             <ul class="cont">
                 <li class="item active">
-                    <a href="#"> <img src="bookimg/1.jpg" alt=""></a>
+                    <a href="#"> <img src="bookimg/1.png"></a>
                 </li>
                 <li class="item">
-                    <a href="#"><img src="bookimg/2.jpg" alt=""></a>
+                    <a href="#"><img src="bookimg/2.png"></a>
                 </li>
                 <li class="item">
-                    <a href="#"><img src="bookimg/3.jpg" alt=""></a>
+                    <a href="#"><img src="bookimg/3.png"></a>
                 </li>
                 <li class="item">
-                    <a href="#"><img src="bookimg/4.jpg" alt=""></a>
+                    <a href="#"><img src="bookimg/4.png"></a>
                 </li>
                 <li class="item">
-                    <a href="#"><img src="bookimg/5.jpeg" alt=""></a>
+                    <a href="#"><img src="bookimg/5.png"></a>
                 </li>
                 <li class="item">
-                    <a href="#"><img src="bookimg/6.jpg" alt=""></a>
+                    <a href="#"><img src="bookimg/9.png"></a>
                 </li>
                 <li class="item">
-                    <a href="#"><img src="bookimg/7.jpg" alt=""></a>
+                    <a href="#"><img src="bookimg/10.png"></a>
                 </li>
             </ul>
-            <div id="right"><img src="img/next.png" alt=""></div>
+            <div id="right"><img src="img/next.png"></div>
             <ul class="dot">
                 <li class="point active" data-index="0"></li>
                 <li class="point" data-index="1"></li>
@@ -80,8 +79,7 @@
                         </div>
                         <div id="left_body">
                             <a href="#">
-                                <img src="bookimg/1.jpg" alt="">
-
+                                <img src="bookimg/1.png">
                             </a>
                         </div>
                     </div>
@@ -90,7 +88,7 @@
                             <li v-for="(publishbook,index) in publishbookList" v-if="index<4">
                                 <div id="right_body">
                                     <a href="#">
-                                        <img src="bookimg/1.jpg" alt="">
+                                        <img src="bookimg/5.png">
                                     </a>
                                 </div>
                                 <div id="right_title">
@@ -105,7 +103,7 @@
                 </div>
                 <div id="ranking_list">
                     <div id="rank_title">
-                        <label><img src="img/ranklist.png" alt=""></label>
+                        <label><img src="img/ranklist.png"></label>
                         <h1>排行榜</h1>
                     </div>
                     <div id="rank_body">

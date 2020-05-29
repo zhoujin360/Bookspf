@@ -53,7 +53,7 @@ a {
     height: 20px;
 }
 
-.errmes span {
+.window .errmes span {
     width: 20em;
     font-size: 12px;
 }

@@ -255,8 +255,9 @@ public class ManagerRequest {
 		request.setPurchasetime(request.getPurchasetime().replace("T"," "));
 		if(purchaseMapper.findPurchaseid(request.getPurchaseid()).size()!=0) return new Response(false,"进货ID重复");
 		if(purchaseMapper.findIsbn(request.getIsbn())!=null) return new Response(false,"ISBN重复");
-		Integer number=bookMapper.getBookNumber(request.getBid())+1;
-		bookMapper.updateBookNumber(request.getBid(),number);
+		Integer number=bookMapper.getBookNumber(request.getBid());
+		if(number==null)return new Response(false,"请先添加对应的图书,再进行操作");
+		bookMapper.updateBookNumber(request.getBid(),number+1);
 		purchaseMapper.insertPurchase(request);
 		return new Response(true,"添加成功");
 	}
