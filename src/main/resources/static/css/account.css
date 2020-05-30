@@ -1,27 +1,124 @@
-/* 头像 */
-#head_sculpture {
-    width: 100px;
-    height: 100px;
-    background-color: pink;
-    margin: 20px auto;
-    border-radius: 50%;
-}
-/* 用户信息 */
-#userinfo div{
+#box {
+    position: relative;
+    top: 60px;
     width: 800px;
-    height: 40px;
-    background-color: #FFFFFF;
-    margin:30px auto;
+    height: 600px;
     border-radius: 20px;
-    line-height: 40px;
-    text-align: center;
-    font-size: 14px;
-    color: #212121;
 }
-#userinfo div:hover {
-    background-color: #F7F7F7;
+/* 修改按钮样式 */
+.updateBtn {
+    cursor: pointer;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+    line-height: 26px;
+    border-radius: 6px;
+    color: #F5F5F5;
+    text-align: center;
+    margin-left: 20px;
+    background-color: #8BC34A;
+}
+.updateBtn:hover {
+    color: #EC771B;
+}
+/* 详细信息模块 */
+#information {
+    position: absolute;
+    top: 6px;
+    left: 190px;
+    color: #505050;
+}
+/* 头像模块 */
+#head_sculpture {
+    width: 400px;
+    height: 600px;
+    background-color: #F5F5F5;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}
+#head_sculpture #characters {
+    position: absolute;
+    top: 110px;
+    left: 110px;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+}
+#characters img {
+    width: 200px;
+}
+#head_sculpture #email {
+    position: absolute;
+    bottom: 180px;
+    left: 140px;
+    height: 40px;
+}
+/* 基本信息模块 */
+#basicInfo {
+    position: absolute;
+    top: 0;
+    left: 400px;
+    width: 400px;
+    height: 250px;
+    padding-left: 10px;
+    border-top-right-radius: 20px;
+    background-color: #FFFFFF;
+}
+#basicInfo #basicTitle {
+    width: 380px;
+    height: 60px;
+    font-size: 14px;
+    border-bottom: 1px solid #F0F0F0;
+    line-height: 90px;
+}
+#basicInfo span {
+    display: inline-block;
+    width: 60px;
+    height: 20px;
+    margin-left: 20px;
+    margin-top: 26px;
+}
+#basicInfo #recharge {
+    cursor: pointer;
+    margin-left: 100px;
+}
+/* 个人信息模块 */
+#userinfo {
+    position: absolute;
+    top: 250px;
+    left: 400px;
+    width: 400px;
+    height: 350px;
+    background-color: #FFFFFF;
+    border-bottom-right-radius: 20px;
+    padding-left: 10px;
+}
+#userinfo #userinfoTitle {
+    width: 380px;
+    border-bottom: 1px solid #F0F0F0;
+    font-size: 14px;
+}
+#userinfo span {
+    display: inline-block;
+    width: 60px;
+    height: 20px;
+    margin-left: 20px;
+    margin-top: 40px;
 }
 #userinfo #tips {
-    color: #B79E9E;
-    font-size: 12px;
+    width: 400px;
+}
+#userinfo .Btnphone {
+    position: absolute;
+    top: 120px;
+    left: 260px;
+}
+#userinfo .Btnname {
+    position: absolute;
+    top: 178px;
+    left: 260px;
+}#userinfo .Btnaddress {
+    position: absolute;
+    top: 238px;
+    left: 260px;
 }
