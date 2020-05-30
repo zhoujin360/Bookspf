@@ -26,7 +26,7 @@
                     id="username">[[${session.username}]]</a>
                 <a th:href="@{/orders/{user}(user=${session.userToken})}" th:if="${session.userToken != null}"
                     id="my_order">我的订单</a>
-                <a href="/logout" th:if="${session.userToken != null}">退出</a>
+                <a href="/logout" th:if="${session.userToken != null}" id="exit">退出</a>
             </div>
         </div>
         <div id="rotation" class="type_page" style="background: url('img/bg.gif') no-repeat;">
@@ -91,7 +91,7 @@
                             <li v-for="(publishbook,index) in publishbookList" v-if="index<4">
                                 <div id="right_body">
                                     <a href="javascript:;">
-                                        <img src="bookimg/5.png">
+                                        <img src="bookimg/4.png">
                                     </a>
                                 </div>
                                 <div id="right_title">
