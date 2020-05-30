@@ -22,8 +22,10 @@
                 <a href="" id="classif">分类</a>
                 <a href="/login" id="log" th:if="${session.userToken == null}">登录</a>
                 <a href="/register" id="reg" th:if="${session.userToken == null}">注册</a>
-                <a th:href="@{/account/{user}(user=${session.userToken})}" th:if="${session.userToken != null}" id="username">[[${session.username}]]</a>
-                <a th:href="@{/orders/{user}(user=${session.userToken})}" th:if="${session.userToken != null}" id="my_order">我的订单</a>
+                <a th:href="@{/account/{user}(user=${session.userToken})}" th:if="${session.userToken != null}"
+                    id="username">[[${session.username}]]</a>
+                <a th:href="@{/orders/{user}(user=${session.userToken})}" th:if="${session.userToken != null}"
+                    id="my_order">我的订单</a>
                 <a href="/logout" th:if="${session.userToken != null}">退出</a>
             </div>
         </div>
@@ -88,13 +90,8 @@
                         <ul>
                             <li v-for="(publishbook,index) in publishbookList" v-if="index<4">
                                 <div id="right_body">
-<<<<<<< HEAD
                                     <a href="#">
                                         <img src="bookimg/2.png">
-=======
-                                    <a href="javascript:;">
-                                        <img src="bookimg/5.png">
->>>>>>> b81c1b58111337b050a6ce2ec8e9cdc3b5f25ee9
                                     </a>
                                 </div>
                                 <div id="right_title">

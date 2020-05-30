@@ -9,5 +9,5 @@ spring:
     static-path-pattern: /**
   resources:
     #资源文件存放的位置
-    static-locations: classpath:\static,file:\F:\Web\Bookspf-图书售书平台
+    static-locations: classpath:\static,file:\D:\LocalProject
 
