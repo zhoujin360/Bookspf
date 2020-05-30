@@ -2,6 +2,7 @@ package cn.Bookspf.mapper;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
@@ -12,7 +13,10 @@ import cn.Bookspf.model.DO.DBOrder;
 @Repository
 public interface OrderMapper {
 	
-	
+	//插入一个订单
+	@Insert("insert into orders values(#{orderid},#{uid},#{bid},#{isbn},#{bookprice},#{createtime})")
+	public void insertOrder(Long orderid,Integer uid,Integer bid,String isbn,Double bookprice,String createtime);
+
 	//查询所有订单的统计信息
 	@Select("select distinct orderid,uid,createtime,paytime from orders")
 	public ArrayList<DBOrder> getOrders();

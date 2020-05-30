@@ -11,9 +11,7 @@ public class DBOrder {
 	private Integer bid;
 	private String isbn;
 	private Double bookprice;
-	private Integer paid;
 	private String createtime;
-	private String paytime;
 
 
 	public long getId() {
@@ -64,14 +62,6 @@ public class DBOrder {
 		this.bookprice = bookprice;
 	}
 
-	public Integer getPaid() {
-		return paid;
-	}
-
-	public void setPaid(Integer paid) {
-		this.paid = paid;
-	}
-
 	public String getCreatetime() {
 		return createtime;
 	}
@@ -80,13 +70,7 @@ public class DBOrder {
 		this.createtime = createtime;
 	}
 
-	public String getPaytime() {
-		return paytime;
-	}
 
-	public void setPaytime(String paytime) {
-		this.paytime = paytime;
-	}
 
 
 	

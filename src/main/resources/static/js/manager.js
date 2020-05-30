@@ -258,7 +258,7 @@ var addBook = new Vue({
         },
         fileChange(event) {
             this.imgevent = event;
-            this.isUpImg = ture;
+            this.isUpImg = true;
         }
     }
 })

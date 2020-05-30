@@ -10,7 +10,8 @@ public class Stock {
 	private Integer bid;
 	private String isbn;
 	private Integer comeout;
-	private String stocktime;
+	private String cmoetime;
+	private String outtime;
 	public long getId() {
 		return id;
 	}
@@ -42,11 +43,19 @@ public class Stock {
 		this.comeout = comeout;
 	}
 
-	public String getStocktime() {
-		return stocktime;
+	public String getCmoetime() {
+		return cmoetime;
 	}
 
-	public void setStocktime(String stocktime) {
-		this.stocktime = stocktime;
+	public void setCmoetime(String cmoetime) {
+		this.cmoetime = cmoetime;
+	}
+
+	public String getOuttime() {
+		return outtime;
+	}
+
+	public void setOuttime(String outtime) {
+		this.outtime = outtime;
 	}
 }

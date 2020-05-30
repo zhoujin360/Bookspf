@@ -25,7 +25,6 @@ public class Operator {
 			temp.setOrderid(order.get(i).getOrderid());
 			temp.setUid(order.get(i).getUid());
 			temp.setCreatetime(order.get(i).getCreatetime());
-			temp.setPaytime(order.get(i).getPaytime());
 			temp.setTotal(price.get(i));
 			orders.add(temp);
 		}

@@ -2,10 +2,7 @@ package cn.Bookspf.mapper;
 
 import java.util.ArrayList;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import cn.Bookspf.model.DO.DBUser;
@@ -63,8 +60,16 @@ public interface UserMapper {
 	//获取Admin Of Uid
 	@Select("select admin from user where uid=#{uid}")
 	public int getAdmin(int uid);
-	
+
+	//删除用户
 	@Delete("delete from user where uid=#{uid}")
-	public int deleteAdmin(int uid);
-	
+	public int deleteUser(int uid);
+
+	//查询用户余额
+	@Select("select balance from user where uid=#{uid}")
+	public Double getBalance(Integer uid);
+
+	//更新用户余额
+	@Update("update user set balance=#{balance} where uid=#{uid}")
+	public void updateBalance(Integer uid,Double balance);
 }
