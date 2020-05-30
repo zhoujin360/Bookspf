@@ -14,7 +14,7 @@ import cn.Bookspf.model.DO.DBSale;
 public interface SaleMapper {
 
 	//插入销售记录
-	@Insert("insert into sale values(saleid=#{saleid},bid=#{bid},isbn=#{isbn},saletime=#{saletime})")
+	@Insert("insert into sale(saleid,bid,isbn,saletime) values(#{saleid},#{bid},#{isbn},#{saletime})")
 	public void insertSale(Long saleid, Integer bid, String isbn, String  saletime);
 	
 	//查询所有销售记录

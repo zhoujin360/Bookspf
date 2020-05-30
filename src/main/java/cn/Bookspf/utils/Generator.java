@@ -20,7 +20,7 @@ public class Generator {
 
 	//生成当前时间String
 	public static String generateTime(){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		return sdf.format(new Date().getTime());
 	}
 }

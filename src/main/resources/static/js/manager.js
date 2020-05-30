@@ -458,28 +458,28 @@ var getOrderList = new Vue({
         getOrderList(index, str) {
             var that = this;
             if (index == 0) {
-                axios.post("/getOrderList", {
+                axios.post("/getOrderListOfAdmin", {
                     index: 0,
                     str: str
                 }).then(response => {
                     that.orders = response.data.orders;
                 })
             } else if (index == 1) {
-                axios.post("/getOrderList", {
+                axios.post("/getOrderListOfAdmin", {
                     index: 1,
                     str: str
                 }).then(response => {
                     that.orders = response.data.orders;
                 })
             } else if (index == 2) {
-                axios.post("/getOrderList", {
+                axios.post("/getOrderListOfAdmin", {
                     index: 2,
                     str: str
                 }).then(response => {
                     that.orders = response.data.orders;
                 })
             } else if (index == 3) {
-                axios.post("/getOrderList", {
+                axios.post("/getOrderListOfAdmin", {
                     index: 3,
                     str: str
                 }).then(response => {
@@ -530,7 +530,7 @@ var checkOrder = new Vue({
     methods: {
         checkOrder(orderid) {
             var that = this;
-            axios.post("/checkOrder", {
+            axios.post("/checkOrderOfAdmin", {
                 orderid: orderid
             }).then(response => {
                 that.orderid = response.data.ordersinfo[0].orderid;

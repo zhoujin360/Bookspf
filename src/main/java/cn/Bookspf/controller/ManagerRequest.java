@@ -33,7 +33,9 @@ public class ManagerRequest {
 	PurchaseMapper purchaseMapper;
 	
 	@Autowired
-	public ManagerRequest(HttpSession httpSession, UserMapper userMapper, BookMapper bookMapper, SortMapper sortMapper, OrderMapper orderMapper, SaleMapper saleMapper, StockMapper stockMapper,PurchaseMapper purchaseMapper) {
+	public ManagerRequest(HttpSession httpSession, UserMapper userMapper, BookMapper bookMapper,
+						  SortMapper sortMapper, OrderMapper orderMapper, SaleMapper saleMapper,
+						  StockMapper stockMapper,PurchaseMapper purchaseMapper) {
 		this.httpSession=httpSession;
 		this.validator=new Validator(httpSession);
 		this.operator=new Operator();
@@ -147,8 +149,8 @@ public class ManagerRequest {
 	}
 	
 	//获取订单信息列表
-	@PostMapping("/getOrderList")
-	public Response getOrderList(@RequestBody String request) {
+	@PostMapping("/getOrderListOfAdmin")
+	public Response getOrderListOfAdmin(@RequestBody String request) {
 		if(!validator.isLogin()) return new Response(false,"请登录再操作");
 		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
 		OrderResponse orderResponse=new OrderResponse();
@@ -179,8 +181,8 @@ public class ManagerRequest {
 	}
 	
 	//获取订单详情列表
-	@PostMapping("/checkOrder")
-	public Response checkOrder(@RequestBody Order request) {
+	@PostMapping("/checkOrderOfAdmin")
+	public Response checkOrderOfAdmin(@RequestBody Order request) {
 		if(!validator.isLogin()) return new Response(false,"请登录再操作");
 		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
 		OrderResponse orderResponse=new OrderResponse();

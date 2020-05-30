@@ -67,7 +67,7 @@ public class BookRequest {
 
         //出库
         String time=Generator.generateTime();
-        DBStock stock = stockMapper.getComeStock();
+        DBStock stock = stockMapper.getComeStock(bid);
         stockMapper.updateOutStock(stock.getStockid(),time);
         String isbn=stock.getIsbn();
 
@@ -79,6 +79,7 @@ public class BookRequest {
         //生成销售记录
         Long saleid = Generator.generateId();
         if(saleMapper.getSaleOfSaleid(saleid).size()!=0) saleid+=123;
+        System.out.println(bid);
         saleMapper.insertSale(saleid,bid,isbn,time);
 
 
@@ -91,13 +92,14 @@ public class BookRequest {
     public Response addShocar(@RequestBody Book request){
         if(!validator.isLogin()) return new Response(false,"请登录再操作");
         if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
+
         Integer bid=request.getBid();
         if(bookMapper.getBookNumber(bid)==0) return new Response(false,"抱歉,该图书已售罄");
         Integer uid=(Integer) httpSession.getAttribute("userToken");
-
+        uid=9394;
         //生成购物车记录
         Long carid = Generator.generateId();
-        if(shopcarMapper.getShopcarOfcarid(carid).size()!=0) carid+=123;
+        if(shopcarMapper.getShopcarOfCarid(carid).size()!=0) carid+=123;
         shopcarMapper.insertShopcar(carid,uid,bid,1);
 
 

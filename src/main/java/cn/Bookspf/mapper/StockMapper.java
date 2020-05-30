@@ -28,9 +28,9 @@ public interface StockMapper {
     @Select("select stockid,bid,isbn from stock where stockid=#{stockid}")
     public ArrayList<DBStock> getStockinfoOfStockid(long stockid);
 
-    //获取ISBN
-    @Select("select * from stock where comeout=0 limit 0,1")
-    public DBStock getComeStock();
+    //获取
+    @Select("select * from stock where comeout=0 and bid=#{bid} limit 0,1")
+    public DBStock getComeStock(Integer bid);
 
     //修改出库状态
     @Update("update stock set outtime=#{outtime},comeout=1 where stockid=#{stockid}")

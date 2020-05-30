@@ -45,6 +45,10 @@ public interface BookMapper {
 	@Update("update book set number=#{number} where bid=#{bid}")
 	public Integer updateBookNumber(Integer bid,Integer number);
 
+	//查询某书价格
+	@Select("select bookprice from book where bid=#{bid}")
+	public Double getBookprice(Integer bid);
+
 	
 	//查询排行榜
 	@Select("select * from book order by hot desc limit 0,10")

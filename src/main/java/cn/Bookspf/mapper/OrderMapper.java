@@ -14,15 +14,15 @@ import cn.Bookspf.model.DO.DBOrder;
 public interface OrderMapper {
 	
 	//插入一个订单
-	@Insert("insert into orders values(#{orderid},#{uid},#{bid},#{isbn},#{bookprice},#{createtime})")
+	@Insert("insert into orders(orderid,uid,bid,isbn,bookprice,createtime) values(#{orderid},#{uid},#{bid},#{isbn},#{bookprice},#{createtime})")
 	public void insertOrder(Long orderid,Integer uid,Integer bid,String isbn,Double bookprice,String createtime);
 
 	//查询所有订单的统计信息
-	@Select("select distinct orderid,uid,createtime,paytime from orders")
+	@Select("select distinct orderid,uid,createtime from orders")
 	public ArrayList<DBOrder> getOrders();
 
 	//查询某个订单信息
-	@Select("select distinct orderid,uid,createtime,paytime from orders where orderid=#{orderid}")
+	@Select("select distinct orderid,uid,createtime from orders where orderid=#{orderid}")
 	public ArrayList<DBOrder> getOrderOfOrderid(Long orderid);
 
 	//查询某个订单详情
@@ -30,15 +30,12 @@ public interface OrderMapper {
 	public ArrayList<DBOrder> getOrderinfoOfOrderid(Long orderid);
 
 	//查询某个订单信息
-	@Select("select distinct orderid,uid,createtime,paytime from orders where uid=#{uid}")
+	@Select("select distinct orderid,uid,createtime from orders where uid=#{uid}")
 	public ArrayList<DBOrder> getOrderOfUid(Integer uid);
 
 	//查询某个订单信息
-	@Select("select distinct orderid,uid,createtime,paytime from orders where createtime=#{createtime}")
+	@Select("select distinct orderid,uid,createtime from orders where createtime=#{createtime}")
 	public ArrayList<DBOrder> getOrderOfCreatetime(String createtime);
-
-
-
 
 	//查询所有订单的总价
 	@Select("select sum(bookprice) from orders group by orderid")
@@ -56,5 +53,17 @@ public interface OrderMapper {
 	@Select("select sum(bookprice) from orders where createtime=#{createtime} group by orderid")
 	public ArrayList<Integer> getOrderPriceOfCreatetime(String createtime);
 
+
+
+
+	//用户
+	//查询某个订单信息
+	//查询某个订单信息
+	@Select("select distinct orderid,uid,createtime from orders where orderid=#{orderid} and uid=#{uid}")
+	public ArrayList<DBOrder> getOrderOfOrderidAndUid(Long orderid,Integer uid);
+
+	//查询某个订单信息
+	@Select("select distinct orderid,uid,createtime from orders where createtime=#{createtime} and uid=#{uid}")
+	public ArrayList<DBOrder> getOrderOfCreatetimeAndUid(String createtime,Integer uid);
 
 }

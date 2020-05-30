@@ -55,7 +55,7 @@ public interface UserMapper {
 	
 	//获取Password Of Username
 	@Select("select password from user where username=#{username}")
-	public String getPassword(String username);
+	public String getPasswordOfUsername(String username);
 	
 	//获取Admin Of Uid
 	@Select("select admin from user where uid=#{uid}")
@@ -69,7 +69,27 @@ public interface UserMapper {
 	@Select("select balance from user where uid=#{uid}")
 	public Double getBalance(Integer uid);
 
-	//更新用户余额
+	//查询用户密码
+	@Select("select password from user where uid=#{uid}")
+	public String getPasswordOfUid(Integer uid);
+
+	//修改用户余额
 	@Update("update user set balance=#{balance} where uid=#{uid}")
 	public void updateBalance(Integer uid,Double balance);
+
+	//修改用户密码
+	@Update("update user set password=#{password} where uid=#{uid}")
+	public void updatePassword(Integer uid,String password);
+
+	//修改用户手机
+	@Update("update user set phone=#{phone} where uid=#{uid}")
+	public void updatePhone(Integer uid,String phone);
+
+	//修改用户真实名字
+	@Update("update user set realname=#{realname} where uid=#{uid}")
+	public void updateRealname(Integer uid,String realname);
+
+	//修改用户地址
+	@Update("update user set address=#{address} where uid=#{uid}")
+	public void updateAddress(Integer uid,String address);
 }
