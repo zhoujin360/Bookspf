@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>个人信息-Bookspf</title>
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/account.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/account.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
@@ -17,12 +17,11 @@
         <span id="information">详细信息</span>
         <!-- 头像 -->
         <div id="head_sculpture">
-            <div id="characters"><img src="../static/img/regcharacters.png" alt=""></div>
+            <div id="characters"><img src="/img/regcharacters.png"></div>
             <div id="email">
                 <span>邮箱：</span>
                 <span id="user_email">[[${user.email}]]</span>
-                <input type="text" id="userEmail" v-model="email" placeholder="请输入修改的邮箱"
-                    style="display: none; width: 160px">
+                <input type="text" id="userEmail" v-model="email" placeholder="请输入修改的邮箱" style="display: none; width: 160px">
                 <b id="emailBtn" class="updateBtn">修改</b>
             </div>
         </div>
@@ -72,7 +71,7 @@
 
         </div>
     </div>
-    <script src="js/account.js"></script>
+    <script src="/js/account.js"></script>
 </body>
 
 </html>
