@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>书本详情页面-Bookspf</title>
+    <title>图书详情页面-Bookspf</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/book.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -17,12 +17,12 @@
         <div id="book_content">
             <div id="book_img">1</div>
             <div id="book_title">
-                <h1>起风了</h1>
-                <span>作者: 汪峰</span>
+                <h1>[[${book.bookname}]]</h1>
+                <span>作者: [[${book.author}]]</span>
             </div>
             <div id="book_price">
-                <span>价格:100</span>
-                <span id="book_num">数量:100</span>
+                <span>价格:[[${book.bookprice}]]</span>
+                <span id="book_num">数量:[[${book.number}]]</span>
             </div>
             <div id="book_service">
 
@@ -35,8 +35,7 @@
                 <h1>书籍描述</h1>
             </div>
             <div id="body">
-                <p>相濡以沫，比不得妖艳颜色。贤惠良妻成下堂，狐媚娥子踩房梁。惊鸿不曾预想过，从小长大的情谊，竟也是这般凉薄。燕尔之期刚过，夫君就有了纳妾的心思。大宋之制，糟糠之妻不下堂，贫贱之友不可忘。她以为本分过这一生，也便就是了，怨不得，求不得。可是世事不如意，她守着一方宅院，也得不到一寸净土。争宠、陷害、夺爱、谋杀。侍郎家宅之中的腥风血雨，背后又是谁的阴谋？夫妻情谊尽了之后，又是谁朝她伸出了手？我心匪石，不可转也。我心匪席，不可卷也。心门一闭难再开，请君且带真心来。
-                </p>
+                <p>[[${book.description}]]</p>
             </div>
         </div>
     </div>

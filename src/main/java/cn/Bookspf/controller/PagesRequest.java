@@ -2,6 +2,8 @@ package cn.Bookspf.controller;
 
 import javax.servlet.http.HttpSession;
 
+import cn.Bookspf.mapper.BookMapper;
+import cn.Bookspf.model.DO.DBBook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,15 +18,17 @@ import cn.Bookspf.utils.Validator;
 @Controller
 public class PagesRequest {
 	HttpSession httpSession;
-	UserMapper userMapper;
 	Validator validator;
-	
+	UserMapper userMapper;
+	BookMapper bookMapper;
+
 	
 	@Autowired
-	public PagesRequest(HttpSession httpSession,UserMapper userMapper) {
+	public PagesRequest(HttpSession httpSession, UserMapper userMapper, BookMapper bookMapper) {
 		this.httpSession=httpSession;
-		this.userMapper=userMapper;
 		this.validator=new Validator(httpSession);
+		this.userMapper=userMapper;
+		this.bookMapper=bookMapper;
 	}
 	
 	
@@ -32,6 +36,11 @@ public class PagesRequest {
 		int uid = (int) httpSession.getAttribute("userToken");
 		DBUser user=userMapper.getUserOfUid(uid);
 		model.addAttribute("user", user);
+	}
+
+	public void setModelBook(Model model,Integer bid) {
+		DBBook book=bookMapper.getBook(bid);
+		model.addAttribute("book", book);
 	}
 	
 	//主页
@@ -79,17 +88,33 @@ public class PagesRequest {
 	public String account (@PathVariable("id") Integer id,Model model) {
 		if(!validator.isLogin())return "login";
 		if(!validator.isAccount(id)) return "404";
-		DBUser user=userMapper.getUserOfUid(id);
-		model.addAttribute("user", user);
+		setModelUser(model);
 		return validator.isIdentity(userMapper, "account");
 	}
 	
 	//订单页
 	@RequestMapping("/orders/{id}")
-	public String order (@PathVariable("id") Integer id,Model model) {
+	public String orders (@PathVariable("id") Integer id,Model model) {
 		if(!validator.isLogin())return "login";
 		if(!validator.isAccount(id)) return "404";
 		setModelUser(model);
 		return validator.isIdentity(userMapper, "orders");
+	}
+
+	//购物车页
+	@RequestMapping("/shopcar/{id}")
+	public String shopcar (@PathVariable("id") Integer id,Model model) {
+		if(!validator.isLogin())return "login";
+		if(!validator.isAccount(id)) return "404";
+		setModelUser(model);
+		return validator.isIdentity(userMapper, "shopcar");
+	}
+
+	//图书页
+	@RequestMapping("/book/{id}")
+	public String book (@PathVariable("id") Integer id,Model model) {
+		if(validator.isLogin()) setModelUser(model);
+		setModelBook(model,id);
+		return validator.isIdentity(userMapper, "book");
 	}
 }

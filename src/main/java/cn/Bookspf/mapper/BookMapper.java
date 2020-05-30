@@ -17,6 +17,11 @@ public interface BookMapper {
 	@Select("select * from book")
 	public ArrayList<DBBook> getBooks();
 
+	//查询某图书
+	@Select("select * from book where bid=#{bid}")
+	public DBBook getBook(Integer bid);
+
+	//查Bid
 	@Select("select bid from book where bid=#{bid}")
 	public String findBid(Integer bid);
 	

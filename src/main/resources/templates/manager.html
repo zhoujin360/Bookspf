@@ -17,7 +17,7 @@
         <div id="logo">
             <span>图书售书管理系统后台</span>
         </div>
-        <div id="logout"><a href="#" @click="logout">退出</a></div>
+        <div id="logout"><a href="javascript:;" @click="logout">退出</a></div>
     </div>
     <div id="nav">
         <div id="welcome">
@@ -58,7 +58,7 @@
         <div id="bookInfo" class="mainItemHidden">
             <div class="searchBox">
                 <div id="action" onclick="action('addBook')">
-                    <span><a href="#">添加图书</a></span>
+                    <span><a href="javascript:;">添加图书</a></span>
                 </div>
             </div>
             <div class="List">
@@ -82,8 +82,8 @@
                         <span>{{item.number}}</span>
                         <span v-text="item.added==0?'否':'是'"></span>
                         <span class="description">{{item.description}}</span>
-                        <span class="alter"><a href="#" @click="setBid(item.bid)" onclick="action('alterBook')">修改</a></span>
-                        <span class="delete"><a href="#" @click="deleteBook(item.bid)">删除</a></span>
+                        <span class="alter"><a href="javascript:;" @click="setBid(item.bid)" onclick="action('alterBook')">修改</a></span>
+                        <span class="delete"><a href="javascript:;" @click="deleteBook(item.bid)">删除</a></span>
                     </div>
                 </div>
 
@@ -93,7 +93,7 @@
         <div id="sortInfo" class="mainItemHidden">
             <div class="searchBox">
                 <div id="action" onclick="action('addSort')">
-                    <span><a href="#">添加分类</a></span>
+                    <span><a href="javascript:;">添加分类</a></span>
                 </div>
             </div>
             <div class="List">
@@ -105,7 +105,7 @@
                     <div class="listItem" v-for="item in sorts">
                         <span>{{item.sortid}}</span>
                         <span>{{item.sortname}}</span>
-                        <span class="delete"><a href="#" @click="deleteSort(item.sortid)">删除</a></span>
+                        <span class="delete"><a href="javascript:;" @click="deleteSort(item.sortid)">删除</a></span>
                     </div>
                 </div>
 
@@ -115,7 +115,7 @@
         <div id="orderInfo" class="mainItemHidden">
             <div id="orderSearch" class="searchBox">
                 <div id="action" @click="orderSearch">
-                    <span><a href="#">搜索</a></span>
+                    <span><a href="javascript:;">搜索</a></span>
                 </div>
                 <div class="search">
                     <div class="searchTop">
@@ -151,7 +151,7 @@
                         <span class="time">{{item.createtime}}</span>
                         <span class="time">{{item.paytime}}</span>
                         <span>{{item.total}}</span>
-                        <span class="check"><a href="#" @click="externalCheckOrder(item.orderid)"
+                        <span class="check"><a href="javascript:;" @click="externalCheckOrder(item.orderid)"
                                     onclick="action('checkOrder')">查看订单</a></span>
                     </div>
                 </div>
@@ -162,7 +162,7 @@
         <div id="saleInfo" class="mainItemHidden">
             <div id="saleSearch" class="searchBox">
                 <div id="action" @click="saleSearch">
-                    <span><a href="#">搜索</a></span>
+                    <span><a href="javascript:;">搜索</a></span>
                 </div>
                 <div class="search">
                     <div class="searchTop">
@@ -208,10 +208,10 @@
         <div id="purchaseInfo" class="mainItemHidden">
             <div id="purchaseSearch" class="searchBox">
                 <div id="action" onclick="action('addPurchase')">
-                    <span><a href="#">添加记录</a></span>
+                    <span><a href="javascript:;">添加记录</a></span>
                 </div>
                 <div id="action" @click="purchaseSearch">
-                    <span><a href="#">搜索</a></span>
+                    <span><a href="javascript:;">搜索</a></span>
                 </div>
                 <div class="search">
                     <div class="searchTop">
@@ -243,9 +243,9 @@
                         <span>{{item.total}}</span>
                         <span class="time">{{item.purchasetime}}</span>
                         <span>{{item.operator}}</span>
-                        <span class="check"><a href="#" @click="externalCheckPurchase(item.purchaseid)"
+                        <span class="check"><a href="javascript:;" @click="externalCheckPurchase(item.purchaseid)"
                                     onclick="action('checkPurchase')">查看记录</a></span>
-                        <span class="delete"><a href="#" @click="deletePurchase(item.purchaseid)">删除</a></span>
+                        <span class="delete"><a href="javascript:;" @click="deletePurchase(item.purchaseid)">删除</a></span>
                     </div>
                 </div>
 
@@ -255,7 +255,7 @@
         <div id="stockInfo" class="mainItemHidden">
             <div id="stockSearch" class="searchBox">
                 <div id="action" @click="stockSearch">
-                    <span><a href="#">搜索</a></span>
+                    <span><a href="javascript:;">搜索</a></span>
                 </div>
                 <div class="search">
                     <div class="searchTop">
@@ -283,7 +283,7 @@
                         <span>{{item.stockid}}</span>
                         <span>{{item.comeout}}</span>
                         <span class="time">{{item.stocktime}}</span>
-                        <span class="check"><a href="#" @click="externalCheckStock(item.stockid)"
+                        <span class="check"><a href="javascript:;" @click="externalCheckStock(item.stockid)"
                                     onclick="action('checkStock')">查看记录</a></span>
                     </div>
                 </div>
@@ -401,21 +401,6 @@
                     <span v-show="isShow" :class="errmesColor?'errmesGreen':'errmesRed'">{{errmes}}</span>
                 </div>
                 <input id="addSortBtn" class="windowBtn" type="submit" value="确认添加">
-            </form>
-        </div>
-        <div id="alterSort" class="window actionHidden">
-            <div class="tips">修改分类信息</div>
-            <form action="#">
-                <div id="sortid">
-                    <span>分类编号</span>：
-                    <input type="text">
-                </div>
-                <div id="sortname">
-                    <span>分类名</span>：
-                    <input type="text">
-                </div>
-                <div id="errmes">错误信息</div>
-                <input id="submit" type="submit" value="确认修改">
             </form>
         </div>
     </div>
