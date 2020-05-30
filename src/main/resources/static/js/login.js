@@ -1,4 +1,4 @@
-window.addEventListener("load", function () {
+window.addEventListener("load", function() {
     var logForm = document.querySelector("#logForm");
     var password = document.querySelector("#log_password");
     var username = document.querySelector('#log_account');
@@ -31,11 +31,11 @@ window.addEventListener("load", function () {
     //     return checkUsername() && checkPassword();
     // }
 
-    username.onblur = function () {
+    username.onblur = function() {
         checkUsername();
     }
 
-    password.onblur = function () {
+    password.onblur = function() {
         checkPassword();
     }
 
@@ -50,12 +50,12 @@ var login = new Vue({
         msg: ""
     },
     methods: {
-        submit: function () {
+        submit: function() {
             var that = this;
             axios.post("/login", {
                 username: that.username,
                 password: that.password
-            }).then(function (response) {
+            }).then(function(response) {
                 if (response.data.status) {
                     window.location.reload();
                 } else {
