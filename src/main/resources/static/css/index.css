@@ -1,19 +1,20 @@
 /* top栏 */
 
 #top {
-    position: relative;
+    width: 100%;
     height: 60px;
     background-color: #FFFFFF;
     font-size: 14px;
     line-height: 50px;
 }
+#top #nav {
+    position: relative;
+    width: 1200px;
+    height: 60px;
+}
 
 #top #logo {
     display: inline-block;
-}
-
-#top #logo a:hover {
-    border-bottom: 0 solid;
 }
 
 #top a {
@@ -29,7 +30,7 @@
 #top #index {
     position: absolute;
     top: 10px;
-    left: 420px;
+    left: 280px;
     text-align: center;
     margin-left: 200px;
 }
@@ -37,7 +38,7 @@
 #top #classif {
     position: absolute;
     top: 10px;
-    left: 480px;
+    left: 340px;
     text-align: center;
     margin-left: 200px;
 }
@@ -45,7 +46,7 @@
 #top #log {
     position: absolute;
     top: 20px;
-    right: 300px;
+    right: 100px;
     width: 60px;
     height: 30px;
     line-height: 30px;
@@ -63,7 +64,7 @@
 #top #reg {
     position: absolute;
     top: 20px;
-    right: 200px;
+    right: 0;
     width: 60px;
     height: 30px;
     line-height: 30px;
@@ -81,19 +82,19 @@
 #top #username {
     position: absolute;
     top: 10px;
-    right: 330px;
+    right: 160px;
 }  
 
 #top #my_order {
     position: absolute;
     top: 10px;
-    right: 250px;
+    right: 70px;
 }
 
 #top #exit {
     position: absolute;
     top: 10px;
-    right: 200px;
+    right: 0;
 }
 
 
@@ -103,10 +104,11 @@
 
 #rotation {
     position: relative;
-    width: 100%;
+    /* width: 100%; */
+    width: 1200px;
     height: 330px;
     text-align: center;
-    margin-top: 6px;
+    margin-top: 0px;
 }
 
 .cont {
@@ -116,6 +118,7 @@
 }
 
 .cont li {
+    position: relative;
     display: none;
     margin: auto;
     padding: 30px;
@@ -125,6 +128,9 @@
 }
 
 .cont img {
+    position: absolute;
+    top: 70px;
+    left: 30px;
     width: 150px;
     transition: all .5s;
 }
@@ -140,8 +146,8 @@
 #left {
     cursor: pointer;
     position: absolute;
-    top: 180px;
-    left: 330px;
+    top: 140px;
+    left: 300px;
     z-index: 99;
     color: #fff;
     transition: all 0.5s;
@@ -154,8 +160,8 @@
 #right {
     cursor: pointer;
     position: absolute;
-    top: 180px;
-    right: 330px;
+    top: 140px;
+    right: 300px;
     z-index: 99;
     transition: all 0.5s;
 }

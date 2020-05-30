@@ -21,12 +21,13 @@
             <h4>Username(Please enter a Username)</h4>
         </div>
         <form action="" id="loginForm" @submit.prevent="submit">
-            <!-- <span>账号:</span> -->
-            <label id="accountImg"><img src="img/account.png" alt=""></label>
+            <!-- <label id="accountImg"><img src="img/account.png" alt=""></label> -->
             <input type="text" placeholder="   Account" v-model="username" id="log_account"><br>
-            <!-- <span>密码:</span> -->
-            <label id="passwordImg"><img src="img/password.png" alt=""></label>
+            <!-- <label id="passwordImg"><img src="img/password.png" alt=""></label> -->
             <input type="password" placeholder="   Password" v-model="password" id="log_password"><br>
+            <a href="/register" id="toReg">
+                <h4>Registered account?</h4>
+            </a>
             <span v-html="msg" id="err_msg"></span>
             <input type="submit" value="LOGIN" id="sb">
         </form>

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>注册-Bookspf</title>
     <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/register.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
@@ -13,13 +14,23 @@
 
 <body>
     <div id="box">
-
+        <div id="characters"><img src="img/regcharacters.png" alt=""></div>
+        <div id="tips">
+            <h1>WELCOME</h1>
+        </div>
         <form id="regForm" @submit.prevent="submit">
-            <span>用户名:</span><input type="text" v-model="username" id="reg_username"><br>
-            <span> 密码:</span><input type="password" v-model="password" id="reg_password"><br>
-            <span>Email:</span><input type="text" v-model="email" id="email"><br>
+            <!-- <span>用户名:</span> -->
+            <input type="text" placeholder="   Username" v-model="username" id="reg_username"><br>
+            <!-- <span> 密码:</span> -->
+            <input type="password" placeholder="   Password" v-model="password" id="reg_password"><br>
+            <!-- <span>Email:</span> -->
+            <input type="text" placeholder="  Email" v-model="email" id="email"><br>
+            <input type="text" placeholder="  Verification" id="verification">
+            <a href="/login" id="tologin">
+                <h4>Return to the login?</h4>
+            </a>
             <span v-html="msg" id="err_msg"></span>
-            <input type="submit" value="提交">
+            <input type="submit" value="REGISTERED" id="sb">
         </form>
     </div>
     <script src="js/testregister.js"></script>

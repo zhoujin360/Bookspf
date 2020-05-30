@@ -2,11 +2,11 @@ body {
     background-color: #FFFFFF;
 }
 #box {
-    position: absolute;
-    top: 100px;
-    right: 20px;
+    position: relative;
+    margin-left: 80px;
+    margin-top: 70px;
     width: 600px;
-    height: 600px;
+    height: 650px;
 }
 /* 头像模块 */
 #characters {
@@ -32,75 +32,81 @@ body {
     color: #989898;
     font-size: 40px;
 }
-#tips h4 {
-    color: #989898;
-    font-weight: 400;
-}
 /* 表单区域 */
-#loginForm {
-    position: relative;
+#regForm {
+    position: absolute;
     top: 240px;
-    width: 100%;
-    height: 360px;
+    width: 600px;
+    height: 410px;
     text-align: center;
 }
-#log_account {
+#reg_username {
     width: 350px;
     height: 35px;
     margin-top: 20px;
     border-bottom: 3px solid #DCDCDC;
 }
-#log_account:focus {
+#reg_username:focus {
     border-bottom: 3px solid #69B4FE;
 }
-/* #accountImg img {
-    position: absolute;
-    top: 25px;
-    width: 20px;
-} */
-#log_password {
+#reg_password {
     width: 350px;
     height: 35px;
     margin-top: 20px;
     border-bottom: 3px solid #DCDCDC;
 }
-
-#log_password:focus {
+#reg_password:focus {
     border-bottom: 3px solid #69B4FE;
 }
-/* #passwordImg img {
-    position: absolute;
-    top: 80px;
-    width: 15px;
-} */
-/* 去注册模块 */
-#toReg {
+#email {
+    width: 350px;
+    height: 35px;
+    margin-top: 20px;
+    border-bottom: 3px solid #DCDCDC;
+}
+#email:focus {
+    border-bottom: 3px solid #69B4FE;
+}
+#verification {
+    width: 350px;
+    height: 35px;
+    margin-top: 20px;
+    border-bottom: 3px solid #DCDCDC;
+}
+#verification:focus {
+    border-bottom: 3px solid #69B4FE;
+}
+/* 去登录模块 */
+#tologin {
     position: absolute;
     display: inline-block;
-    top: 128px;
-    left: 123px;
+    top: 230px;
+    left: 122px;
 }
-#toReg h4 {
+#tologin h4 {
     color: #D2CAC1;
 }
 /* 错误信息模块 */
 #err_msg {
     position: absolute;
     display: inline-block;
+    top: 225px;
+    left: 244px;
     width: 350px;
     height: 30px;
-    top: 120px;
-    left: 244px;
     line-height: 30px;
     color: #F26552;
+    /* background-color: pink; */
 }
 /* 提交按钮模块 */
 #sb {
+    position: absolute;
     cursor: pointer;
+    top: 280px;
+    left: 120px;
     width: 350px;
     height: 40px;
     color: #F0F6FC;
     border-radius: 20px;
-    margin-top: 70px;
     background-color: #65B3FA;
 }
