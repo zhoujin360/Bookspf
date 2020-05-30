@@ -9,7 +9,6 @@ public class OrderStatistics {
 	private Integer uid;
 	private Integer total;
 	private String createtime;
-	private String paytime;
 	
 	public long getOrderid() {
 		return orderid;
@@ -38,11 +37,4 @@ public class OrderStatistics {
 		this.createtime = createtime;
 	}
 
-	public String getPaytime() {
-		return paytime;
-	}
-
-	public void setPaytime(String paytime) {
-		this.paytime = paytime;
-	}
 }

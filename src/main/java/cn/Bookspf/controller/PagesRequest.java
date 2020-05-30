@@ -111,10 +111,10 @@ public class PagesRequest {
 	}
 
 	//图书页
-	@RequestMapping("/book/{id}")
-	public String book (@PathVariable("id") Integer id,Model model) {
+	@RequestMapping("/book/{bid}")
+	public String book (@PathVariable("bid") Integer bid,Model model) {
 		if(validator.isLogin()) setModelUser(model);
-		setModelBook(model,id);
+		setModelBook(model,bid);
 		return validator.isIdentity(userMapper, "book");
 	}
 }

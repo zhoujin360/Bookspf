@@ -46,7 +46,7 @@ public class SuperManagerRequest {
 	public Response deleteAdmin(@RequestBody User request) {
 		if(!validator.isLogin()) return new Response(false,"请登录再操作");
 		if(validator.isIdentity(userMapper)!=0) return new Response(false,"请登录超级管理员帐号");
-		userMapper.deleteAdmin(request.getUid());
+		userMapper.deleteUser(request.getUid());
 		return new Response(true,"删除成功");
 	}
 	

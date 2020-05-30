@@ -9,7 +9,6 @@ public class Sale {
 	private long saleid;
 	private Integer bid;
 	private String isbn;
-	private String operator;
 	private String saletime;
 	public long getId() {
 		return id;
@@ -34,12 +33,6 @@ public class Sale {
 	}
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
-	}
-	public String getOperator() {
-		return operator;
-	}
-	public void setOperator(String operator) {
-		this.operator = operator;
 	}
 
 	public String getSaletime() {
