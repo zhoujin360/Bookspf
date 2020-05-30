@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>个人信息-Bookspf</title>
-    <link rel="stylesheet" href="../static/css/base.css">
-    <link rel="stylesheet" href="../static/css/account.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/account.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
@@ -20,8 +20,10 @@
             <div id="characters"><img src="../static/img/regcharacters.png" alt=""></div>
             <div id="email">
                 <span>邮箱：</span>
-                <span>[[${user.email}]]</span>
-                <b id="Btn" class="updateBtn">修改</b>
+                <span id="user_email">[[${user.email}]]</span>
+                <input type="text" id="userEmail" v-model="email" placeholder="请输入修改的邮箱"
+                    style="display: none; width: 160px">
+                <b id="emailBtn" class="updateBtn">修改</b>
             </div>
         </div>
         <div id="basicInfo">
@@ -51,22 +53,26 @@
             </div>
             <div>
                 <span>手机号码：</span>
-                <span>[[${user.phone}]]</span>
-                <b id="Btn" class="updateBtn Btnphone">修改</b>
+                <span id="phone">[[${user.phone}]]</span>
+                <input type="text" id="userPhone" v-model="phone" placeholder="请输入修改的号码" style="display: none;">
+                <b id="phoneBtn" class="updateBtn Btnphone">修改</b>
             </div>
             <div>
                 <span>真实姓名：</span>
-                <span>[[${user.realname}]]</span>
-                <b id="Btn" class="updateBtn Btnname">修改</b>
+                <span id="realname">[[${user.realname}]]</span>
+                <input type="text" id="userRealName" v-model="realname" placeholder="请输入修改的姓名" style="display: none;">
+                <b id="realnameBtn" class="updateBtn Btnname">修改</b>
             </div>
             <div>
                 <span>收货地址：</span>
-                <span>[[${user.address}]]</span>
-                <b id="Btn" class="updateBtn Btnaddress">修改</b>
+                <span id="address">[[${user.address}]]</span>
+                <input type="text" id="userAddress" v-model="address" placeholder="请输入修改的地址" style="display: none;">
+                <b id="addressBtn" class="updateBtn Btnaddress">修改</b>
             </div>
 
         </div>
     </div>
+    <script src="js/account.js"></script>
 </body>
 
 </html>
