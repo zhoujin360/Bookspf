@@ -44,9 +44,10 @@
                             <span>{{ item.bookname }}</span>
                             <span>{{ item.bookprice }}</span>
                             <span id="num">
-                                <label id="decrease">-</label>
+
+                                <label id="decrease" @click="changeNum(item.booknumber)">-</label>
                                 <span id="book_num">{{ item.booknumber }}</span>
-                                <label id="add">+</label>
+                                <label id="add" @click="changeNum(item.booknumber)">+</label>
                             </span>
                             <span>&nbsp;&nbsp;</span>
                             <a href="javascript:;" @click="deleteShopcarOfBid(item.bid)" id="del">删除</a>

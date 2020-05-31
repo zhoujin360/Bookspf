@@ -2,7 +2,6 @@ var app = new Vue({
     el: "#box",
     data: {
         shopcarList: [],
-        bid: "",
         total: "",
     },
     mounted() {
@@ -16,23 +15,37 @@ var app = new Vue({
                 }
             )
         },
+        changeNum: function (booknumber) {
+            var that = this;
+            axios.post("/changeNum", {
+                booknumber: booknumber
+            }).then(function (response) {
+                console.log(response);
+                if (response.data.status) {
+                    // alert(1)
+                    app.getShopcarList()
+                }
+            })
+        },
         getShopcarList: function () {
             var that = this;
             axios.get("/getShopcarList").then(
                 function (response) {
-                    console.log(response);
                     that.shopcarList = response.data.shopcarsinfo;
-                    console.log(that.shopcarList);
-                    that.total = response.data.shopcarsinfo.total;
+                    that.total = response.data.shopcarsinfo[0].total;
+                    // console.log(that.total)
                 }
             )
         },
         deleteShopcarOfBid: function (bid) {
             var that = this;
             axios.post("/deleteShopcarOfBid", {
-                bid: that.bid,
+                bid: bid,
             }).then(function (response) {
-                console.log(response);
+                if (response.data.status) {
+                    app.getShopcarList();
+                    // console.log(response);
+                }
             })
         }
     }
