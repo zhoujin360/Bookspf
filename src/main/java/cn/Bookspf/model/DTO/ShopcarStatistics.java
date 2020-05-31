@@ -1,10 +1,19 @@
 package cn.Bookspf.model.DTO;
 
 public class ShopcarStatistics {
+    private Integer bid;
     private String bookname;
     private Double bookprice;
     private Integer booknumber;
     private Double total;
+
+    public Integer getBid() {
+        return bid;
+    }
+
+    public void setBid(Integer bid) {
+        this.bid = bid;
+    }
 
     public String getBookname() {
         return bookname;

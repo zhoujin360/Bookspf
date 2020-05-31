@@ -53,12 +53,22 @@ public class ShopcarRequest {
         Integer uid = (Integer) httpSession.getAttribute("userToken");
         ArrayList<DBShopcar> shopcars= shopcarMapper.getShopcarOfUid(uid);
         if (shopcars.size()==0)return new Response(false,"");
+
+        Double total=0.0;
+        for(int i=0;i<shopcars.size();i++){
+            total+=bookMapper.getBookprice(shopcars.get(i).getBid())*shopcars.get(i).getBooknumber();
+        }
+
         ArrayList<ShopcarStatistics> shopcarsinfo=new ArrayList<ShopcarStatistics>();
         for (int i=0;i<shopcars.size();i++){
             ShopcarStatistics temp = new ShopcarStatistics();
-            DBBook book = bookMapper.getBook(shopcars.get(i).getBid());
+            Integer bid =shopcars.get(i).getBid();
+            DBBook book = bookMapper.getBook(bid);
+            temp.setBid(bid);
             temp.setBookname(book.getBookname());
             temp.setBookprice(book.getBookprice());
+            temp.setBooknumber(shopcars.get(i).getBooknumber());
+            temp.setTotal(total);
             shopcarsinfo.add(temp);
         }
         ShopcarResponse shopcarResponse = new ShopcarResponse();
