@@ -1,3 +1,18 @@
+var app = new Vue({
+    el: "#box",
+    data: {
+
+    },
+    methods: {
+        buy: function () {
+            axios.post("/buyBook").then(
+                function (response) {
+                    console.log(response);
+                }
+            )
+        }
+    }
+})
 var ul = document.querySelector("#cart_list").querySelector("ul");
 var dels = document.querySelectorAll("#del");
 var decrease = document.querySelectorAll("#decrease");
