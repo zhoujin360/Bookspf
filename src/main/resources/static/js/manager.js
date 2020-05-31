@@ -403,7 +403,7 @@ var addSort = new Vue({
     methods: {
         submit: function() {
             var that = this;
-            if (checkSortId(that.sortid)) {
+            if (!checkSortId(that.sortid)) {
                 that.showErrems("分类ID必须为正整数")
             } else if (that.sortname == '') {
                 that.showErrems("分类名不能为空")
@@ -663,16 +663,6 @@ var getPurchaseList = new Vue({
                     that.purchases = response.data.purchases;
                 })
             }
-        },
-        deletePurchase(purchaseid) {
-            var that = this;
-            axios.post("/deletePurchase", {
-                purchaseid: purchaseid
-            }).then(response => {
-                if (response.data.status) {
-                    getPurchaseList.getPurchaseList(0, "");
-                }
-            })
         },
         externalCheckPurchase(purchaseid) {
             checkPurchase.checkPurchase(purchaseid);

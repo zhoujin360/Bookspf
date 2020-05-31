@@ -1,10 +1,7 @@
 package cn.Bookspf.mapper;
 
 import cn.Bookspf.model.DO.DBStock;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -40,4 +37,8 @@ public interface StockMapper {
     //修改出库状态
     @Update("update stock set outtime=#{outtime},comeout=1 where stockid=#{stockid}")
     public void updateOutStock(Long stockid,String outtime);
+
+    //删除记录
+    @Delete("delete from stock where isbn=#{isbn}")
+    public void deleteStock(String isbn);
 }
