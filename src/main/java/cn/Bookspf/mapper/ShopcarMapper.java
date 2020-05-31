@@ -30,6 +30,6 @@ public interface ShopcarMapper {
     public void deleteShopcarOfBid(Integer uid,Integer bid);
 
     //修改购物车书籍数量
-    @Update("update shopcar set booknumber=#{booknumber} where uid=#{uid}")
-    public void updateBooknumber(Integer uid,Integer booknumber);
+    @Update("update shopcar set booknumber=#{booknumber} where uid=#{uid} and bid=#{bid}")
+    public void updateBooknumber(Integer uid,Integer bid,Integer booknumber);
 }
