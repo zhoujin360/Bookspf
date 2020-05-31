@@ -1,3 +1,45 @@
+var app = new Vue({
+    el: "#box",
+    data: {
+        shopcarList: [],
+        bid: "",
+        total: "",
+    },
+    mounted() {
+        this.getShopcarList();
+    },
+    methods: {
+        buy: function () {
+            axios.post("/settlement").then(
+                function (response) {
+                    alert(response.data.mes);
+                }
+            )
+        },
+        getShopcarList: function () {
+            var that = this;
+            axios.get("/getShopcarList").then(
+                function (response) {
+                    console.log(response);
+                    that.shopcarList = response.data.shopcarsinfo;
+                    console.log(that.shopcarList);
+                    that.total = response.data.shopcarsinfo.total;
+                }
+            )
+        },
+        deleteShopcarOfBid: function (bid) {
+            var that = this;
+            axios.post("/deleteShopcarOfBid", {
+                bid: that.bid,
+            }).then(function (response) {
+                console.log(response);
+            })
+        }
+    }
+})
+// 刷新列表
+app.getShopcarList();
+
 var ul = document.querySelector("#cart_list").querySelector("ul");
 var dels = document.querySelectorAll("#del");
 var decrease = document.querySelectorAll("#decrease");
@@ -32,31 +74,3 @@ for (var i = 0; i < add.length; i++) {
     }
 }
 
-var app = new Vue({
-    el: "#box",
-    data: {
-        shopcarList: [],
-    },
-    mounted() {
-        this.getShopcarList();
-    },
-    methods: {
-        buy: function () {
-            axios.post("/settlement").then(
-                function (response) {
-                    alert(response.data.mes);
-                }
-            )
-        },
-        getShopcarList: function () {
-            var that = this;
-            axios.get("/getShopcarList").then(
-                function (response) {
-                    console.log(response);
-                    that.shopcarList = response.data.shopcars;
-                    console.log(that.shopcarList);
-                }
-            )
-        }
-    }
-})
