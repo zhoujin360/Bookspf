@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>图书详情页面-Bookspf</title>
     <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/top.css">
     <link rel="stylesheet" href="/css/book.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -17,16 +18,14 @@
         <div id="top">
             <div id="nav" class="type_page">
                 <div id="logo">
-                    <a href="/"><img src="img/logo.png" style="width: 36px; height: 36px;"></a>
+                    <a href="/"><img src="/img/logo.png" style="width: 36px; height: 36px;"></a>
                 </div>
                 <a href="/" id="index">首页</a>
                 <a href="" id="classif">分类</a>
                 <a href="/login" id="log" th:if="${session.userToken == null}">登录</a>
                 <a href="/register" id="reg" th:if="${session.userToken == null}">注册</a>
-                <a th:href="@{/account/{user}(user=${session.userToken})}" th:if="${session.userToken != null}"
-                    id="username">[[${session.username}]]</a>
-                <a th:href="@{/orders/{user}(user=${session.userToken})}" th:if="${session.userToken != null}"
-                    id="my_order">我的订单</a>
+                <a th:href="@{/account/{user}(user=${session.userToken})}" th:if="${session.userToken != null}" id="username">[[${session.username}]]</a>
+                <a th:href="@{/orders/{user}(user=${session.userToken})}" th:if="${session.userToken != null}" id="my_order">我的订单</a>
                 <a href="/logout" th:if="${session.userToken != null}" id="exit">退出</a>
             </div>
         </div>
@@ -41,7 +40,7 @@
                 <span id="book_num">数量:[[${book.number}]]</span>
             </div>
             <div id="book_service">
-                [[${ book.bid }]]
+
                 <button id="add_shoppingcar" @click="addShopcar()">加入购物车</button>
                 <button id="buy">购买</button>
             </div>
@@ -55,9 +54,33 @@
             </div>
         </div>
     </div>
-    <script>
-        var temp1 = ${ book.bid };
+    <script th:inline="javascript">
+        var app = new Vue({
+            el: "#box",
+            data: {
+                bid: ""
+            },
+            methods: {
+                addShopcar: function() {
+                    var that = this;
+                    that.bid = [
+                        [$ {
+                            book.bid
+                        }]
+                    ];
+                    axios.post("/addShopcar", {
 
+                    }).then(function(response) {
+
+                            console.log(response);
+                        },
+                        function(err) {
+
+                        })
+
+                }
+            }
+        })
     </script>
     <script src="/js/book.js"></script>
 

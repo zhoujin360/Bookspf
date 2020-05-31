@@ -5,6 +5,7 @@ import cn.Bookspf.model.DO.DBBook;
 import cn.Bookspf.model.DO.DBShopcar;
 import cn.Bookspf.model.DO.DBStock;
 import cn.Bookspf.model.DTO.Book;
+import cn.Bookspf.model.DTO.ShopcarStatistics;
 import cn.Bookspf.model.RO.Response;
 import cn.Bookspf.model.RO.ShopcarResponse;
 import cn.Bookspf.utils.Generator;
@@ -49,7 +50,19 @@ public class ShopcarRequest {
         if(!validator.isLogin()) return new Response(false,"请登录再操作");
         if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
         Integer uid = (Integer) httpSession.getAttribute("userToken");
-        return new ShopcarResponse(shopcarMapper.getShopcarOfUid(uid));
+        ArrayList<DBShopcar> shopcars= shopcarMapper.getShopcarOfUid(uid);
+        if (shopcars.size()==0)return new Response(false,"");
+        ArrayList<ShopcarStatistics> shopcarsinfo=new ArrayList<ShopcarStatistics>();
+        for (int i=0;i<shopcars.size();i++){
+            ShopcarStatistics temp = new ShopcarStatistics();
+            DBBook book = bookMapper.getBook(shopcars.get(i).getBid());
+            temp.setBookname(book.getBookname());
+            temp.setBookprice(book.getBookprice());
+            shopcarsinfo.add(temp);
+        }
+        ShopcarResponse shopcarResponse = new ShopcarResponse();
+        shopcarResponse.setShopcarsinfo(shopcarsinfo);
+        return shopcarResponse;
     }
 
 
