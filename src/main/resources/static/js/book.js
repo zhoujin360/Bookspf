@@ -1,13 +1,16 @@
 var app = new Vue({
     el: "#box",
     data: {
+        bid: ""
     },
     methods: {
-        addShopcar: function (bid) {
+        addShopcar: function () {
             var that = this;
-            axios.post("/addShopcar").then(
+            axios.post("/addShopcar", {
+
+            }).then(
                 function (response) {
-                    alert(1)
+
                     console.log(response);
                 }, function (err) { })
         }
