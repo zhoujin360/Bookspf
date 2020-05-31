@@ -5,6 +5,7 @@ import cn.Bookspf.model.DO.DBBook;
 import cn.Bookspf.model.DO.DBShopcar;
 import cn.Bookspf.model.DO.DBStock;
 import cn.Bookspf.model.DTO.Book;
+import cn.Bookspf.model.DTO.Shopcar;
 import cn.Bookspf.model.DTO.ShopcarStatistics;
 import cn.Bookspf.model.RO.Response;
 import cn.Bookspf.model.RO.ShopcarResponse;
@@ -66,6 +67,18 @@ public class ShopcarRequest {
     }
 
 
+    //增加/减少数量
+    @PostMapping("/changeNum")
+    public Response changeNum(@RequestBody Shopcar request){
+        if(!validator.isLogin()) return new Response(false,"请登录再操作");
+        if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
+        Integer uid = (Integer) httpSession.getAttribute("userToken");
+        shopcarMapper.updateBooknumber(uid,request.getBooknumber());
+        return  new Response(true,"修改成功");
+    }
+
+
+
     //结算购物车
     @PostMapping("/settlement")
     @Transactional
@@ -122,11 +135,11 @@ public class ShopcarRequest {
 
 
     @PostMapping("/deleteShopcarOfBid")
-    public Response deleteShopcarOfBid(@RequestBody Book book){
+    public Response deleteShopcarOfBid(@RequestBody Shopcar request){
         if(!validator.isLogin()) return new Response(false,"请登录再操作");
         if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
         Integer uid = (Integer) httpSession.getAttribute("userToken");
-        shopcarMapper.deleteShopcarOfBid(uid,book.getBid());
+        shopcarMapper.deleteShopcarOfBid(uid,request.getBid());
         return new Response(true,"删除成功");
     }
 }

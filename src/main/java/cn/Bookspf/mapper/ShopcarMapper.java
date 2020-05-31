@@ -1,10 +1,7 @@
 package cn.Bookspf.mapper;
 
 import cn.Bookspf.model.DO.DBShopcar;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -31,4 +28,8 @@ public interface ShopcarMapper {
     //删除某用户购物车的某本书
     @Delete("delete from shopcar where uid=#{uid} and bid=#{bid}")
     public void deleteShopcarOfBid(Integer uid,Integer bid);
+
+    //修改购物车书籍数量
+    @Update("update shopcar set booknumber=#{booknumber} where uid=#{uid}")
+    public void updateBooknumber(Integer uid,Integer booknumber);
 }
