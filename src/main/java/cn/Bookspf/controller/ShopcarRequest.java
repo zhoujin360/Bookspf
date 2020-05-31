@@ -54,8 +54,8 @@ public class ShopcarRequest {
 
 
     //结算购物车
-    @Transactional
     @PostMapping("/settlement")
+    @Transactional
     public Response settlement(){
         if(!validator.isLogin()) return new Response(false,"请登录再操作");
         if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");

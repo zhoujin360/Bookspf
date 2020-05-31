@@ -1,5 +1,4 @@
 body {
-    min-width: 1920px;
     background-color: rgb(221, 221, 221);
 }
 
@@ -113,6 +112,7 @@ a {
     position: absolute;
     width: 350px;
     height: calc(100% - 60px);
+    min-height: 650px;
     border-radius: 0 0 30px 0;
     background-color: rgb(61, 70, 77);
 }
@@ -218,10 +218,10 @@ a {
     position: absolute;
     top: 65px;
     left: 365px;
-    /* width: 1160px; */
     width: calc(100% - 380px);
-    /* height: 650px; */
+    min-width: 1150px;
     height: calc(100% - 70px);
+    min-height: 645px;
     border-radius: 10px;
     background-color: rgb(61, 70, 77);
 }
@@ -451,44 +451,32 @@ a {
     white-space: nowrap;
 }
 
-.List div span.check {
-    margin-left: 200px;
-}
-
 .listInfo {
     font-weight: 700;
 }
 
-#orderInfo .List div span:first-child {
-    width: 10em;
-}
-
-#orderInfo .List div span.check {
-    margin-left: 100px;
-}
-
-#sortInfo .List div span {
-    width: 20em;
-}
-
-#saleInfo .List div span {
+#orderInfo .List div span {
     width: 15em;
 }
 
+#sortInfo .List div span {
+    width: 25em;
+}
+
+#saleInfo .List div span {
+    width: 18em;
+}
+
 #purchaseInfo .List div span {
-    width: 8em;
+    width: 10em;
 }
 
 #purchaseInfo .List .time {
     width: 15em;
 }
 
-#purchaseInfo .List .check {
-    margin-left: 100px;
-}
-
 #stockInfo .List div span {
-    width: 10em;
+    width: 15em;
 }
 
 
@@ -521,10 +509,14 @@ a {
     background-color: rgb(108, 212, 47);
 }
 
-#bookInfo .alter,
 #orderInfo .check,
-#purchaseInfo .check,
 #stockInfo .check {
+    position: absolute;
+    right: 120px;
+}
+
+#bookInfo .alter,
+#purchaseInfo .check {
     position: absolute;
     right: 200px;
 }

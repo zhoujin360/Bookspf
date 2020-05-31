@@ -141,7 +141,6 @@
                     <span>订单ID</span>
                     <span>用户ID</span>
                     <span class="time">订单创建时间</span>
-                    <span class="time">订单支付时间</span>
                     <span>总价</span>
                 </div>
                 <div id="orderList">
@@ -149,7 +148,6 @@
                         <span>{{item.orderid}}</span>
                         <span>{{item.uid}}</span>
                         <span class="time">{{item.createtime}}</span>
-                        <span class="time">{{item.paytime}}</span>
                         <span>{{item.total}}</span>
                         <span class="check"><a href="javascript:;" @click="externalCheckOrder(item.orderid)"
                                     onclick="action('checkOrder')">查看订单</a></span>
@@ -189,7 +187,6 @@
                     <span>图书ID</span>
                     <span>ISBN</span>
                     <span>销售时间</span>
-                    <span>操作员</span>
                 </div>
                 <div id="saleList">
                     <div class="listItem" v-for="item in sales">
@@ -197,7 +194,6 @@
                         <span>{{item.bid}}</span>
                         <span>{{item.isbn}}</span>
                         <span>{{item.saletime}}</span>
-                        <span>{{item.operator}}</span>
                     </div>
                 </div>
 
@@ -275,14 +271,16 @@
             <div class="List">
                 <div class="listInfo">
                     <span>库存记录ID</span>
-                    <span>出/入库</span>
-                    <span class="time">记录时间</span>
+                    <span class="time">入库时间</span>
+                    <span class="time">出库时间</span>
+                    <span>出入库状态</span>
                 </div>
                 <div id="stockList">
                     <div class="listItem" v-for="item in stocks">
                         <span>{{item.stockid}}</span>
-                        <span>{{item.comeout}}</span>
-                        <span class="time">{{item.stocktime}}</span>
+                        <span class="time">{{item.cometime}}</span>
+                        <span class="time">{{item.outtime}}</span>
+                        <span v-text="item.comeout==1?'已出库':'已入库'"></span>
                         <span class="check"><a href="javascript:;" @click="externalCheckStock(item.stockid)"
                                     onclick="action('checkStock')">查看记录</a></span>
                     </div>
@@ -417,7 +415,6 @@
                     <span>图书价格：{{item.bookprice}}元</span>
                 </div>
             </div>
-            <span class="paid">是否已经支付：{{paid==1?'是':'否'}}</span>
             <div>
                 <input id="pass" type="submit" value="通过审核">
                 <input id="nopass" type="submit" value="不通过">

@@ -1,6 +1,7 @@
 package cn.Bookspf.mapper;
 
 import cn.Bookspf.model.DO.DBStock;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -12,16 +13,20 @@ import java.util.ArrayList;
 @Repository
 public interface StockMapper {
 
+    //插入入库记录
+    @Insert("insert into stock() values(#{stockid},#{bid},#{isbn},#{cometime},comeout=0)")
+    public void insertComeStock(Long stockid,Integer bid,String isbn,String cometime);
+
     //获取所有库存记录
-    @Select("select distinct stockid,comeout,cometime from stock")
+    @Select("select distinct stockid,comeout,cometime,outtime from stock")
     public ArrayList<DBStock> getStocks();
 
     //获取某个库存记录
-    @Select("select distinct stockid,comeout,cometime from stock where stockid=#{stockid}")
+    @Select("select distinct stockid,comeout,cometime,outtime from stock where stockid=#{stockid}")
     public ArrayList<DBStock> getStockOfStockid(long stockid);
 
     //获取某个库存记录
-    @Select("select distinct stockid,comeout,cometime from stock where stocktime=#{stocktime}")
+    @Select("select distinct stockid,comeout,cometime,outtime from stock where stocktime=#{stocktime}")
     public ArrayList<DBStock> getStockOfStocktime(String stocktime);
 
     //获取某个库存记录
