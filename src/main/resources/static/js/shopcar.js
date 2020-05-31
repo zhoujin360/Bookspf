@@ -1,18 +1,3 @@
-var app = new Vue({
-    el: "#box",
-    data: {
-
-    },
-    methods: {
-        buy: function () {
-            axios.post("/buyBook").then(
-                function (response) {
-                    console.log(response);
-                }
-            )
-        }
-    }
-})
 var ul = document.querySelector("#cart_list").querySelector("ul");
 var dels = document.querySelectorAll("#del");
 var decrease = document.querySelectorAll("#decrease");
@@ -25,17 +10,53 @@ for (var i = 0; i < dels.length; i++) {
 }
 for (var i = 0; i < decrease.length; i++) {
     decrease[i].onclick = function () {
-        this.nextElementSibling.value--;
-        if (this.nextElementSibling.value < 1) {
-            this.nextElementSibling.value = 0;
+        alert(1)
+        var num = parseInt(this.nextElementSibling.innerHTML);
+        num--;
+        this.nextElementSibling.innerHTML = num;
+        console.log(parseInt(this.nextElementSibling.innerHTML));
+        if (num < 1) {
+            this.nextElementSibling.innerHTML = 0;
         }
     }
 }
 for (var i = 0; i < add.length; i++) {
     add[i].onclick = function () {
-        this.previousElementSibling.value++;
-        if (this.previousElementSibling.value >= 100) {
+        var num = parseInt(this.previousElementSibling.innerHTML);
+        num++;
+        this.previousElementSibling.innerHTML = num;
+        console.log(parseInt(this.previousElementSibling.innerHTML));
+        if (num >= 100) {
             alert("请联系客服");
         }
     }
 }
+
+var app = new Vue({
+    el: "#box",
+    data: {
+        shopcarList: [],
+    },
+    mounted() {
+        this.getShopcarList();
+    },
+    methods: {
+        buy: function () {
+            axios.post("/settlement").then(
+                function (response) {
+                    alert(response.data.mes);
+                }
+            )
+        },
+        getShopcarList: function () {
+            var that = this;
+            axios.get("/getShopcarList").then(
+                function (response) {
+                    console.log(response);
+                    that.shopcarList = response.data.shopcars;
+                    console.log(that.shopcarList);
+                }
+            )
+        }
+    }
+})

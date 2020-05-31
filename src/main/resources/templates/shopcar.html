@@ -19,8 +19,10 @@
             </div>
             <a href="/" id="index">首页</a>
             <a href="" id="classif">分类</a>
-            <a th:href="@{/account/{user}(user=${session.userToken})}" th:if="${session.userToken != null}" id="username">[[${session.username}]]</a>
-            <a th:href="@{/orders/{user}(user=${session.userToken})}" th:if="${session.userToken != null}" id="my_order">我的订单</a>
+            <a th:href="@{/account/{user}(user=${session.userToken})}" th:if="${session.userToken != null}"
+                id="username">[[${session.username}]]</a>
+            <a th:href="@{/orders/{user}(user=${session.userToken})}" th:if="${session.userToken != null}"
+                id="my_order">我的订单</a>
             <a href="/logout" th:if="${session.userToken != null}" id="exit">退出</a>
         </div>
     </div>
@@ -37,7 +39,19 @@
                 </div>
                 <div id="cart_list">
                     <ul>
-                        <li>
+                        <li v-for="item in shopcarList">
+                            <span>{{ item.bid }}</span>
+                            <span>{{ item.bid }}</span>
+                            <span id="num">
+                                <label id="decrease">-</label>
+                                <!-- <input type="text" value="1" id="book_num"> -->
+                                <span id="book_num">{{ item.bid }}</span>
+                                <label id="add">+</label>
+                            </span>
+                            <span>{{ item.bid }}</span>
+                            <a href="javascript:;" id="del">删除</a>
+                        </li>
+                        <!-- <li>
                             <span>红楼梦蒙</span>
                             <span>13</span>
                             <span id="num">
@@ -47,18 +61,7 @@
                             </span>
                             <span>13</span>
                             <a href="javascript:;" id="del">删除</a>
-                        </li>
-                        <li>
-                            <span>红楼梦蒙</span>
-                            <span>13</span>
-                            <span id="num">
-                                <label id="decrease">-</label>
-                                <input type="text" value="1" id="book_num">
-                                <label id="add">+</label>
-                            </span>
-                            <span>13</span>
-                            <a href="javascript:;" id="del">删除</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
 
