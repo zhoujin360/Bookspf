@@ -57,6 +57,7 @@ public class ShopcarRequest {
         for (int i=0;i<shopcars.size();i++){
             ShopcarStatistics temp = new ShopcarStatistics();
             DBBook book = bookMapper.getBook(shopcars.get(i).getBid());
+            System.out.print(shopcars.get(i).getBid());
             temp.setBookname(book.getBookname());
             temp.setBookprice(book.getBookprice());
             shopcarsinfo.add(temp);
