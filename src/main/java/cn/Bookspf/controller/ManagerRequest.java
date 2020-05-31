@@ -6,8 +6,10 @@ import cn.Bookspf.mapper.*;
 import cn.Bookspf.model.DO.DBOrder;
 import cn.Bookspf.model.DTO.*;
 import cn.Bookspf.model.RO.*;
+import cn.Bookspf.utils.Generator;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import cn.Bookspf.utils.Operator;
@@ -249,7 +251,9 @@ public class ManagerRequest {
 	}
 
 	//添加进货记录
+	//删除进货记录
 	@PostMapping("/addPurchase")
+	@Transactional
 	public Response addPurchase(@RequestBody Purchase request) {
 		if(!validator.isLogin()) return new Response(false,"请登录再操作");
 		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
@@ -259,12 +263,22 @@ public class ManagerRequest {
 		if(purchaseMapper.findIsbn(request.getIsbn())!=null) return new Response(false,"ISBN重复");
 		Integer number=bookMapper.getBookNumber(request.getBid());
 		if(number==null)return new Response(false,"请先添加对应的图书,再进行操作");
+
+		//修改书本数量
 		bookMapper.updateBookNumber(request.getBid(),number+1);
+
+		//插入进货记录
 		purchaseMapper.insertPurchase(request);
+
+		//插入库存记录
+		Long stockid = Generator.generateId();
+		String time = Generator.generateTime();
+		if(stockMapper.getStockinfoOfStockid(stockid).size()!=0) stockid+=123;
+		stockMapper.insertComeStock(stockid,request.getBid(),request.getIsbn(),time);
+
+
 		return new Response(true,"添加成功");
 	}
-
-	//删除进货记录
 	@PostMapping("/deletePurchase")
 	public Response deletePurchase(@RequestBody Purchase request) {
 		if(!validator.isLogin()) return new Response(false,"请登录再操作");
