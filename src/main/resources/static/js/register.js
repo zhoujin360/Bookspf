@@ -1,4 +1,4 @@
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
     var username = document.querySelector("#reg_username");
     var password = document.querySelector("#reg_password");
     var email = document.querySelector("#email");
@@ -45,15 +45,15 @@ window.addEventListener("load", function() {
     //     return checkEmail() && checkPassword() && checkPhone() && checkUsername();
     // }
 
-    username.onblur = function() {
+    username.onblur = function () {
         checkUsername();
     }
 
-    password.onblur = function() {
+    password.onblur = function () {
         checkPassowrd();
     }
 
-    email.onblur = function() {
+    email.onblur = function () {
         checkEmail();
     }
 })
@@ -67,18 +67,15 @@ var register = new Vue({
         msg: ""
     },
     methods: {
-        submit: function() {
+        submit: function () {
             var that = this;
             axios.post("/register", {
                 username: that.username,
                 password: that.password,
                 email: that.email
-            }).then(function(response) {
-                console.log(response);
-                if (!response.data.status) {
-                    that.msg = response.data.mes + "<br/>";
-
-                }
+            }).then(function (response) {
+                // console.log(response);
+                that.msg = response.data.mes;
             })
         },
 
