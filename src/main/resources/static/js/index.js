@@ -11,24 +11,25 @@ var app = new Vue({
     },
     methods: {
         //获取排行版
-        getRankList: function () {
+        getRankList: function() {
             var that = this;
             axios.get("/getRankList").then(
-                function (response) {
+                function(response) {
                     that.rankList = response.data.books;
-                }, function (err) {
-
-                }
+                },
+                function(err) {}
             )
         },
         //获取出版图书
-        getPublishBook: function () {
+        getPublishBook: function() {
             var that = this;
             axios.get("/getPublishBook").then(
-                function (response) {
+                function(response) {
                     that.publishbook = response.data.books[4];
                     that.publishbookList = response.data.books;
-                }, function (err) { })
+                },
+                function(err) {}
+            )
         }
     }
 })
@@ -42,18 +43,18 @@ var points = document.getElementsByClassName("point");
 var index = 0;
 var timer = null;
 
-var clearActive = function () {
+var clearActive = function() {
     for (var i = 0; i < items.length; i++) {
         items[i].className = 'item';
         points[i].className = 'point';
     }
 }
-var goIndex = function () {
+var goIndex = function() {
     clearActive();
     items[index].className = 'item active';
     points[index].className = 'point active';
 }
-rightBtn.onclick = function () {
+rightBtn.onclick = function() {
     if (index < items.length - 1) {
         index++;
     } else {
@@ -61,7 +62,7 @@ rightBtn.onclick = function () {
     }
     goIndex();
 }
-leftBtn.onclick = function () {
+leftBtn.onclick = function() {
     if (index > 0) {
         index--;
     } else {
@@ -74,16 +75,16 @@ timer = setInterval(() => {
     right.onclick();
 }, 4000)
 
-cont.onmouseover = function () {
+cont.onmouseover = function() {
     clearInterval(timer);
 }
-cont.onmouseout = function () {
+cont.onmouseout = function() {
     timer = setInterval(() => {
         right.onclick();
     }, 4000)
 }
 for (var i = 0; i < points.length; i++) {
-    points[i].addEventListener('click', function () {
+    points[i].addEventListener('click', function() {
         var ponintIndex = this.getAttribute("data-index");
         index = ponintIndex;
         goIndex();
