@@ -15,15 +15,16 @@ var app = new Vue({
                 }
             )
         },
-        changeNum: function (booknumber) {
+        changeNum: function (bid, booknumber) {
             var that = this;
             axios.post("/changeNum", {
-                booknumber: booknumber
+                booknumber: booknumber,
+                bid: bid
             }).then(function (response) {
                 console.log(response);
                 if (response.data.status) {
-                    // alert(1)
-                    app.getShopcarList()
+                    alert(1)
+                    app.getShopcarList();
                 }
             })
         },

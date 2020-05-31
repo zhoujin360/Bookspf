@@ -20,8 +20,10 @@
             </div>
             <a href="/" id="index">首页</a>
             <a href="" id="classif">分类</a>
-            <a th:href="@{/account/{user}(user=${session.userToken})}" th:if="${session.userToken != null}" id="username">[[${session.username}]]</a>
-            <a th:href="@{/orders/{user}(user=${session.userToken})}" th:if="${session.userToken != null}" id="my_order">我的订单</a>
+            <a th:href="@{/account/{user}(user=${session.userToken})}" th:if="${session.userToken != null}"
+                id="username">[[${session.username}]]</a>
+            <a th:href="@{/orders/{user}(user=${session.userToken})}" th:if="${session.userToken != null}"
+                id="my_order">我的订单</a>
             <a href="/logout" th:if="${session.userToken != null}" id="exit">退出</a>
         </div>
     </div>
@@ -42,10 +44,10 @@
                             <span>{{ item.bookname }}</span>
                             <span>{{ item.bookprice }}</span>
                             <span id="num">
-
-                                <label id="decrease" @click="changeNum(item.booknumber)">-</label>
+                                {{ item.booknumber }}
+                                <label id="decrease" @click="changeNum(item.bid,item.booknumber)">-</label>
                                 <span id="book_num">{{ item.booknumber }}</span>
-                                <label id="add" @click="changeNum(item.booknumber)">+</label>
+                                <label id="add" @click="changeNum(item.bid,item.booknumber)">+</label>
                             </span>
                             <span>&nbsp;&nbsp;</span>
                             <a href="javascript:;" @click="deleteShopcarOfBid(item.bid)" id="del">删除</a>
