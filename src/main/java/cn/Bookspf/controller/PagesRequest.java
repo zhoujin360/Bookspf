@@ -115,6 +115,7 @@ public class PagesRequest {
 	public String book (@PathVariable("bid") Integer bid,Model model) {
 		if(validator.isLogin()) setModelUser(model);
 		setModelBook(model,bid);
+		if(httpSession.getAttribute("userToken")==null) return "book";
 		return validator.isIdentity(userMapper, "book");
 	}
 }

@@ -1,5 +1,4 @@
 body {
-    min-width: 1920px;
     background-color: rgb(221, 221, 221);
 }
 
@@ -12,10 +11,14 @@ a {
     width: 200px;
 }
 
+
+/* 退出按钮 */
+
 #logout {
+    position: absolute;
     display: inline-block;
-    margin: auto;
-    margin-left: 1200px;
+    top: 15px;
+    right: 100px;
     width: 2em;
     height: 30px;
     font-size: 14px;
@@ -32,6 +35,9 @@ a {
 #logout a:hover {
     color: rgb(255, 143, 51);
 }
+
+
+/************************************/
 
 #actionBlock {
     position: absolute;
@@ -62,6 +68,7 @@ a {
     position: absolute;
     width: 350px;
     height: calc(100% - 60px);
+    min-height: 650px;
     border-radius: 0 0 30px 0;
     background-color: rgb(61, 70, 77);
 }
@@ -120,6 +127,7 @@ a {
 .itemHidden {
     height: 0;
     transition: all 0.5s;
+    overflow: hidden;
     opacity: 0
 }
 
@@ -149,10 +157,12 @@ a {
     position: absolute;
     top: 65px;
     left: 365px;
-    width: 1160px;
-    height: 650px;
+    width: calc(100% - 380px);
+    min-width: 1150px;
+    height: calc(100% - 70px);
+    min-height: 645px;
     border-radius: 10px;
-    background-color: rgb(41, 45, 54);
+    background-color: rgb(61, 70, 77);
 }
 
 .mainItemShow {
@@ -295,4 +305,9 @@ a {
     height: 28px;
     border-radius: 5px;
     background-color: rgb(247, 64, 64);
+    color: #000;
+}
+
+.delete a:hover {
+    background-color: rgb(248, 41, 41);
 }

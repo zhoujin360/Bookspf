@@ -96,7 +96,6 @@ public class BookRequest {
         Integer bid=request.getBid();
         if(bookMapper.getBookNumber(bid)==0) return new Response(false,"抱歉,该图书已售罄");
         Integer uid=(Integer) httpSession.getAttribute("userToken");
-        uid=9394;
         //生成购物车记录
         Long carid = Generator.generateId();
         if(shopcarMapper.getShopcarOfCarid(carid).size()!=0) carid+=123;

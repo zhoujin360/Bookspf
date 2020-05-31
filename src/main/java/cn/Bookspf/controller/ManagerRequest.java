@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import cn.Bookspf.mapper.*;
 import cn.Bookspf.model.DO.DBOrder;
+import cn.Bookspf.model.DO.DBPurchase;
 import cn.Bookspf.model.DTO.*;
 import cn.Bookspf.model.RO.*;
 import cn.Bookspf.utils.Generator;
@@ -251,7 +252,6 @@ public class ManagerRequest {
 	}
 
 	//添加进货记录
-	//删除进货记录
 	@PostMapping("/addPurchase")
 	@Transactional
 	public Response addPurchase(@RequestBody Purchase request) {
@@ -278,13 +278,6 @@ public class ManagerRequest {
 
 
 		return new Response(true,"添加成功");
-	}
-	@PostMapping("/deletePurchase")
-	public Response deletePurchase(@RequestBody Purchase request) {
-		if(!validator.isLogin()) return new Response(false,"请登录再操作");
-		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
-		purchaseMapper.deletePurchase(request.getPurchaseid());
-		return new Response(true,"删除成功");
 	}
 
 

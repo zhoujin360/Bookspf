@@ -22,8 +22,8 @@ public interface PurchaseMapper {
     public void insertPurchase(Purchase purchase);
 
     //删除记录
-    @Delete("delete from purchase where purchaseid=#{purchaseid}")
-    public void deletePurchase(Long purchaseid);
+    @Delete("delete from purchase where isbn=#{isbn}")
+    public void deletePurchase(String isbn);
 
     //查询进货统计
     @Select("select purchaseid,count(purchaseid) number,sum(purchaseprice) total,purchasetime,operator " +
@@ -43,7 +43,6 @@ public interface PurchaseMapper {
     //查询某个进货信息
     @Select("select purchaseid,bid,isbn,purchaseprice from purchase where purchaseid=#{purchaseid}")
     public ArrayList<DBPurchase> getPurchasesinfo(long purchaseid);
-
 
     //获取Purchaseid Of Purchaseid
     @Select("select purchaseid from purchase where purchaseid=#{purchaseid}")

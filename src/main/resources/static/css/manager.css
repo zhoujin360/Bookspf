@@ -510,22 +510,18 @@ a {
 }
 
 #orderInfo .check,
-#stockInfo .check {
-    position: absolute;
-    right: 120px;
-}
-
-#bookInfo .alter,
-#purchaseInfo .check {
-    position: absolute;
-    right: 200px;
-}
-
+#stockInfo .check,
+#purchaseInfo .check,
 #bookInfo .delete,
 #sortInfo .delete,
 #purchaseInfo .delete {
     position: absolute;
-    right: 100px;
+    right: 120px;
+}
+
+#bookInfo .alter {
+    position: absolute;
+    right: 200px;
 }
 
 

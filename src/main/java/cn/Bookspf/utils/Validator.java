@@ -25,9 +25,7 @@ public class Validator {
 	
 	//验证身份(返回页面)
 	public String isIdentity(UserMapper userMapper,String page) {
-		Integer userToken = (Integer)httpSession.getAttribute("userToken");
-		if(userToken==null) return page;
-		Integer admin = userMapper.getAdmin(userToken);
+		Integer admin = userMapper.getAdmin((Integer)httpSession.getAttribute("userToken"));
 		if(admin==2)return page;
 		else if(admin==1)return "manager";
 		else return "superManager";
