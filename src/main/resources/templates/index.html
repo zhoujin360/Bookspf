@@ -13,39 +13,24 @@
 </head>
 
 <body>
+    <div th:insert="~{common :: top}"></div>
     <div id="box">
-        <div id="top">
-            <div id="nav" class="type_page">
-                <div id="logo">
-                    <a href="/index"><img src="/img/logo.png" style="width: 36px; height: 36px;"></a>
-                </div>
-                <a href="/" id="index">首页</a>
-                <a href="" id="classif">分类</a>
-                <a href="/login" id="log" th:if="${session.userToken == null}">登录</a>
-                <a href="/register" id="reg" th:if="${session.userToken == null}">注册</a>
-                <a th:href="@{/account/{user}(user=${session.userToken})}" th:if="${session.userToken != null}" id="username">[[${session.username}]]</a>
-                <a th:href="@{/orders/{user}(user=${session.userToken})}" th:if="${session.userToken != null}" id="my_order">我的订单</a>
-                <a href="/logout" th:if="${session.userToken != null}" id="exit">退出</a>
-            </div>
-        </div>
         <div id="rotation" class="type_page" style="background: url('img/bg.gif') no-repeat;">
-            <div id="left"><img src="/img/prev.png" width="40px" height="40px"></div>
+            <div id="left" @click="prevImg()"><img src="/img/prev.png" width="40px" height="40px"></div>
             <ul class="cont">
-                <li class="item active" v-for="item in rankList">
+                <li v-for="(item,index) in rankList" v-if="index<7" :key="index" v-show="index===currentIndex" @mouseenter="stop" @mouseleave="go">
                     <a href="javascript:;"> <img :src="'/bookimg/'+item.bid+'.png'"></a>
                 </li>
             </ul>
-            <div id="right"><img src="/img/next.png" width="40px" height="40px"></div>
+            <div id="right" @click="nextImg()"><img src="/img/next.png" width="40px" height="40px"></div>
             <ul class="dot">
-                <li class="point active" data-index="0"></li>
-                <li class="point" data-index="1"></li>
-                <li class="point" data-index="2"></li>
-                <li class="point" data-index="3"></li>
-                <li class="point" data-index="4"></li>
-                <li class="point" data-index="5"></li>
-                <li class="point" data-index="6"></li>
+                <li v-for="(item,index) in rankList" v-if="index<7" @mouseover="change(index)">
+                    <span v-if="index===currentIndex">●</span>
+                    <span v-if="index!==currentIndex">○</span>
+                </li>
             </ul>
         </div>
+
         <div id="publish" class="type_page">
             <div id="publish_title">
                 <h1>出版图书</h1>
@@ -53,7 +38,7 @@
             <div id="publish_body">
                 <div id="recommend_list">
                     <div id="list_left">
-                        <label id="suggestImg"><img src="img/suggest.png" alt=""></label>
+                        <label id="suggestImg"><img src="/img/suggest.png" alt=""></label>
                         <div id="left_title">
                             <a href="javascript:;">
                                 <h4>{{ publishbook.bookname }}</h4>
@@ -107,7 +92,7 @@
 
 
     </div>
-    <script src="js/index.js"></script>
+    <script src="/js/index.js"></script>
 </body>
 
 </html>

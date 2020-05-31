@@ -1,57 +1,61 @@
 var app = new Vue({
-    el: "#box",
-    data: {
-        shopcarList: [],
-        total: "",
-    },
-    mounted() {
-        this.getShopcarList();
-    },
-    methods: {
-        buy: function () {
-            axios.post("/settlement").then(
-                function (response) {
-                    alert(response.data.mes);
-                }
-            )
+        el: "#box",
+        data: {
+            shopcarList: [],
+            total: "",
         },
-        changeNum: function (bid, booknumber) {
-            var that = this;
-            axios.post("/changeNum", {
-                booknumber: booknumber,
-                bid: bid
-            }).then(function (response) {
-                console.log(response);
-                if (response.data.status) {
-                    alert(1)
-                    app.getShopcarList();
-                }
-            })
+        mounted() {
+            this.getShopcarList();
         },
-        getShopcarList: function () {
-            var that = this;
-            axios.get("/getShopcarList").then(
-                function (response) {
-                    that.shopcarList = response.data.shopcarsinfo;
-                    that.total = response.data.shopcarsinfo[0].total;
-                    // console.log(that.total)
+        methods: {
+            buy: function() {
+                axios.post("/settlement").then(
+                    function(response) {
+                        alert(response.data.mes);
+                    }
+                )
+            },
+            changeNum: function(bid, booknumber, index) {
+                var that = this;
+                if (index == 0) {
+                    booknumber -= 1;
+                } else {
+                    booknumber += 1;
                 }
-            )
-        },
-        deleteShopcarOfBid: function (bid) {
-            var that = this;
-            axios.post("/deleteShopcarOfBid", {
-                bid: bid,
-            }).then(function (response) {
-                if (response.data.status) {
-                    app.getShopcarList();
-                    // console.log(response);
-                }
-            })
+                axios.post("/changeNum", {
+                    booknumber: booknumber,
+                    bid: bid
+                }).then(function(response) {
+                    console.log(response);
+                    if (response.data.status) {
+                        app.getShopcarList();
+                    }
+                })
+            },
+            getShopcarList: function() {
+                var that = this;
+                axios.get("/getShopcarList").then(
+                    function(response) {
+                        that.shopcarList = response.data.shopcarsinfo;
+                        that.total = response.data.shopcarsinfo[0].total;
+                        // console.log(that.total)
+                    }
+                )
+            },
+            deleteShopcarOfBid: function(bid) {
+                var that = this;
+                axios.post("/deleteShopcarOfBid", {
+                    bid: bid,
+                }).then(function(response) {
+                    if (response.data.status) {
+                        app.getShopcarList();
+                        // console.log(response);
+                    }
+                })
+            }
         }
-    }
-})
-// 刷新列表
+    })
+    // 刷新列表
 app.getShopcarList();
 
 var ul = document.querySelector("#cart_list").querySelector("ul");
@@ -60,12 +64,12 @@ var decrease = document.querySelectorAll("#decrease");
 var add = document.querySelectorAll("#add");
 var book_num = document.querySelectorAll("#book_num");
 for (var i = 0; i < dels.length; i++) {
-    dels[i].onclick = function () {
+    dels[i].onclick = function() {
         ul.removeChild(this.parentNode);
     }
 }
 for (var i = 0; i < decrease.length; i++) {
-    decrease[i].onclick = function () {
+    decrease[i].onclick = function() {
         alert(1)
         var num = parseInt(this.nextElementSibling.innerHTML);
         num--;
@@ -77,7 +81,7 @@ for (var i = 0; i < decrease.length; i++) {
     }
 }
 for (var i = 0; i < add.length; i++) {
-    add[i].onclick = function () {
+    add[i].onclick = function() {
         var num = parseInt(this.previousElementSibling.innerHTML);
         num++;
         this.previousElementSibling.innerHTML = num;
@@ -87,4 +91,3 @@ for (var i = 0; i < add.length; i++) {
         }
     }
 }
-
