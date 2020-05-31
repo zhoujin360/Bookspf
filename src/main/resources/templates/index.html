@@ -17,7 +17,7 @@
         <div id="top">
             <div id="nav" class="type_page">
                 <div id="logo">
-                    <a href="/index"><img src="img/logo.png" style="width: 36px; height: 36px;"></a>
+                    <a href="/index"><img src="/img/logo.png" style="width: 36px; height: 36px;"></a>
                 </div>
                 <a href="/" id="index">首页</a>
                 <a href="" id="classif">分类</a>
@@ -29,31 +29,13 @@
             </div>
         </div>
         <div id="rotation" class="type_page" style="background: url('img/bg.gif') no-repeat;">
-            <div id="left"><img src="img/prev.png" alt=""></div>
+            <div id="left"><img src="/img/prev.png" width="40px" height="40px"></div>
             <ul class="cont">
-                <li class="item active">
-                    <a href="javascript:;"> <img src="bookimg/1.png"></a>
-                </li>
-                <li class="item">
-                    <a href="javascript:;"><img src="bookimg/2.png"></a>
-                </li>
-                <li class="item">
-                    <a href="javascript:;"><img src="bookimg/3.png"></a>
-                </li>
-                <li class="item">
-                    <a href="javascript:;"><img src="bookimg/4.png"></a>
-                </li>
-                <li class="item">
-                    <a href="javascript:;"><img src="bookimg/5.png"></a>
-                </li>
-                <li class="item">
-                    <a href="javascript:;"><img src="bookimg/9.png"></a>
-                </li>
-                <li class="item">
-                    <a href="javascript:;"><img src="bookimg/10.png"></a>
+                <li class="item active" v-for="item in rankList">
+                    <a href="javascript:;"> <img :src="'/bookimg/'+item.bid+'.png'"></a>
                 </li>
             </ul>
-            <div id="right"><img src="img/next.png"></div>
+            <div id="right"><img src="/img/next.png" width="40px" height="40px"></div>
             <ul class="dot">
                 <li class="point active" data-index="0"></li>
                 <li class="point" data-index="1"></li>
@@ -81,7 +63,7 @@
                         </div>
                         <div id="left_body">
                             <a href="javascript:;">
-                                <img src="bookimg/1.png">
+                                <img :src="'/bookimg/'+publishbook.bid+'.png'">
                             </a>
                         </div>
                     </div>
@@ -90,7 +72,7 @@
                             <li v-for="(publishbook,index) in publishbookList" v-if="index<4">
                                 <div id="right_body">
                                     <a href="javascript:;">
-                                        <img src="bookimg/4.png">
+                                        <img :src="'/bookimg/'+publishbook.bid+'.png'">
                                     </a>
                                 </div>
                                 <div id="right_title">

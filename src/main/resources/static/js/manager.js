@@ -457,35 +457,12 @@ var getOrderList = new Vue({
     methods: {
         getOrderList(index, str) {
             var that = this;
-            if (index == 0) {
-                axios.post("/getOrderListOfAdmin", {
-                    index: 0,
-                    str: str
-                }).then(response => {
-                    that.orders = response.data.orders;
-                })
-            } else if (index == 1) {
-                axios.post("/getOrderListOfAdmin", {
-                    index: 1,
-                    str: str
-                }).then(response => {
-                    that.orders = response.data.orders;
-                })
-            } else if (index == 2) {
-                axios.post("/getOrderListOfAdmin", {
-                    index: 2,
-                    str: str
-                }).then(response => {
-                    that.orders = response.data.orders;
-                })
-            } else if (index == 3) {
-                axios.post("/getOrderListOfAdmin", {
-                    index: 3,
-                    str: str
-                }).then(response => {
-                    that.orders = response.data.orders;
-                })
-            }
+            axios.post("/getOrderListOfAdmin", {
+                index: index,
+                str: str
+            }).then(response => {
+                that.orders = response.data.orders;
+            })
         },
         externalCheckOrder(orderid) {
             checkOrder.checkOrder(orderid);
@@ -563,35 +540,12 @@ var getSaleList = new Vue({
     methods: {
         getSaleList(index, str) {
             var that = this;
-            if (index == 0) {
-                axios.post("/getSaleList", {
-                    index: 0,
-                    str: str
-                }).then(response => {
-                    that.sales = response.data.sales;
-                })
-            } else if (index == 1) {
-                axios.post("/getSaleList", {
-                    index: 1,
-                    str: str
-                }).then(response => {
-                    that.sales = response.data.sales;
-                })
-            } else if (index == 2) {
-                axios.post("/getSaleList", {
-                    index: 2,
-                    str: str
-                }).then(response => {
-                    that.sales = response.data.sales;
-                })
-            } else if (index == 3) {
-                axios.post("/getSaleList", {
-                    index: 3,
-                    str: str
-                }).then(response => {
-                    that.sales = response.data.sales;
-                })
-            }
+            axios.post("/getSaleList", {
+                index: index,
+                str: str
+            }).then(response => {
+                that.sales = response.data.sales;
+            })
         }
     }
 });
@@ -641,28 +595,13 @@ var getPurchaseList = new Vue({
     methods: {
         getPurchaseList(index, str) {
             var that = this;
-            if (index == 0) {
-                axios.post("/getPurchaseList", {
-                    index: 0,
-                    str: str
-                }).then(response => {
-                    that.purchases = response.data.purchases;
-                })
-            } else if (index == 1) {
-                axios.post("/getPurchaseList", {
-                    index: 1,
-                    str: str
-                }).then(response => {
-                    that.purchases = response.data.purchases;
-                })
-            } else if (index == 2) {
-                axios.post("/getPurchaseList", {
-                    index: 2,
-                    str: str
-                }).then(response => {
-                    that.purchases = response.data.purchases;
-                })
-            }
+            axios.post("/getPurchaseList", {
+                index: index,
+                str: str
+            }).then(response => {
+                that.purchases = response.data.purchases;
+            })
+
         },
         externalCheckPurchase(purchaseid) {
             checkPurchase.checkPurchase(purchaseid);
@@ -737,28 +676,12 @@ var getStockList = new Vue({
     methods: {
         getStockList(index, str) {
             var that = this;
-            if (index == 0) {
-                axios.post("/getStockList", {
-                    index: 0,
-                    str: str
-                }).then(response => {
-                    that.stocks = response.data.stocks;
-                })
-            } else if (index == 1) {
-                axios.post("/getStockList", {
-                    index: 1,
-                    str: str
-                }).then(response => {
-                    that.stocks = response.data.stocks;
-                })
-            } else if (index == 2) {
-                axios.post("/getStockList", {
-                    index: 2,
-                    str: str
-                }).then(response => {
-                    that.stocks = response.data.stocks;
-                })
-            }
+            axios.post("/getStockList", {
+                index: index,
+                str: str
+            }).then(response => {
+                that.stocks = response.data.stocks;
+            })
         },
         externalCheckStock(stockid) {
             checkStock.checkStock(stockid);
