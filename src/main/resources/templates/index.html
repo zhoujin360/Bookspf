@@ -14,22 +14,28 @@
 
 <body>
     <div th:insert="~{common :: top}"></div>
+    <div id="shopcar">
+        <a th:href="@{/shopcar/{user}(user=${session.userToken}==null?0:${session.userToken})}">
+            <img src="/img/shopcar.png">
+        </a>
+    </div>
     <div id="box">
-        <div id="rotation" class="type_page" style="background: url('img/bg.gif') no-repeat;">
-            <div id="left" @click="prevImg()"><img src="/img/prev.png" width="40px" height="40px"></div>
-            <ul class="cont">
-                <li v-for="(item,index) in rankList" v-if="index<7" :key="index" v-show="index===currentIndex"
-                    @mouseenter="stop" @mouseleave="go">
-                    <a href="javascript:;"> <img :src="'/bookimg/'+item.bid+'.png'"></a>
-                </li>
-            </ul>
-            <div id="right" @click="nextImg()"><img src="/img/next.png" width="40px" height="40px"></div>
-            <ul class="dot">
-                <li v-for="(item,index) in rankList" v-if="index<7" @mouseover="change(index)">
-                    <span v-if="index===currentIndex">●</span>
-                    <span v-if="index!==currentIndex">○</span>
-                </li>
-            </ul>
+        <div style="width: 100%; background: url('img/bg.gif') no-repeat;">
+            <div id="rotation" class="type_page">
+                <div id="left" @click="prevImg()"><img src="/img/prev.png" width="40px" height="40px"></div>
+                <ul class="cont">
+                    <li v-for="(item,index) in rankList" v-if="index<7" :key="index" v-show="index===currentIndex" @mouseenter="stop" @mouseleave="go">
+                        <a href="javascript:;"> <img :src="'/bookimg/'+item.bid+'.png'"></a>
+                    </li>
+                </ul>
+                <div id="right" @click="nextImg()"><img src="/img/next.png" width="40px" height="40px"></div>
+                <ul class="dot">
+                    <li v-for="(item,index) in rankList" v-if="index<7" @mouseover="change(index)">
+                        <span v-if="index===currentIndex">●</span>
+                        <span v-if="index!==currentIndex">○</span>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <div id="publish" class="type_page">
@@ -41,7 +47,7 @@
                     <div id="list_left">
                         <label id="suggestImg"><img src="/img/suggest.png" alt=""></label>
                         <div id="left_title">
-                            <a href="javascript:;">
+                            <a :href="'/book/'+publishbook.bid">
                                 <h4>{{ publishbook.bookname }}</h4>
                             </a>
                             <h6>作者: {{ publishbook.author }}</h6>
@@ -55,17 +61,17 @@
                     </div>
                     <div id="list_right">
                         <ul>
-                            <li v-for="(publishbook,index) in publishbookList" v-if="index<4">
+                            <li v-for="(item,index) in publishbookList" v-if="index<4">
                                 <div id="right_body">
-                                    <a href="javascript:;">
-                                        <img :src="'/bookimg/'+publishbook.bid+'.png'">
+                                    <a :href="'/book/'+item.bid">
+                                        <img :src="'/bookimg/'+item.bid+'.png'">
                                     </a>
                                 </div>
                                 <div id="right_title">
                                     <a href="javascript:;">
-                                        <h4>{{ publishbook.bookname }}</h4>
+                                        <h4>{{ item.bookname }}</h4>
                                     </a>
-                                    <h6>作者: {{ publishbook.author }}</h6>
+                                    <h6>作者: {{ item.author }}</h6>
                                 </div>
                             </li>
                         </ul>
@@ -80,7 +86,7 @@
                         <ul>
                             <li v-for="(item,index) in rankList">
                                 <span>{{ index+1 }}</span>
-                                <a href="javascript:;">
+                                <a :href="'/book/'+item.bid">
                                     <h4>{{ item.bookname }}</h4>
                                 </a>
                             </li>

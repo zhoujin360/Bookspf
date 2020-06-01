@@ -14,23 +14,8 @@
 </head>
 
 <body>
+    <div th:insert="~{common :: top}"></div>
     <div id="box" class="type_page">
-        <div id="top">
-            <div id="nav" class="type_page">
-                <div id="logo">
-                    <a href="/"><img src="/img/logo.png" style="width: 36px; height: 36px;"></a>
-                </div>
-                <a href="/" id="index">首页</a>
-                <a href="" id="classif">分类</a>
-                <a href="/login" id="log" th:if="${session.userToken == null}">登录</a>
-                <a href="/register" id="reg" th:if="${session.userToken == null}">注册</a>
-                <a th:href="@{/account/{user}(user=${session.userToken})}" th:if="${session.userToken != null}"
-                    id="username">[[${session.username}]]</a>
-                <a th:href="@{/orders/{user}(user=${session.userToken})}" th:if="${session.userToken != null}"
-                    id="my_order">我的订单</a>
-                <a href="/logout" th:if="${session.userToken != null}" id="exit">退出</a>
-            </div>
-        </div>
         <div id="book_content">
             <div id="book_img">1</div>
             <div id="book_title">
@@ -63,7 +48,7 @@
                 bid: ""
             },
             methods: {
-                addShopcar: function () {
+                addShopcar: function() {
                     var that = this;
                     that.bid = [
                         [$ {
@@ -72,11 +57,11 @@
                     ];
                     axios.post("/addShopcar", {
 
-                    }).then(function (response) {
+                    }).then(function(response) {
 
-                        console.log(response);
-                    },
-                        function (err) {
+                            console.log(response);
+                        },
+                        function(err) {
 
                         })
 

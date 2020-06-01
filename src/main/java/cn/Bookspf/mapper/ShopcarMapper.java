@@ -10,6 +10,7 @@ import java.util.ArrayList;
 @Repository
 public interface ShopcarMapper {
 
+    //插入记录
     @Insert("insert into shopcar(carid,uid,bid,booknumber) values(#{carid},#{uid},#{bid},#{booknumber})")
     public void insertShopcar(Long carid,Integer uid,Integer bid,Integer booknumber);
 
