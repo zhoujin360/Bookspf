@@ -1,174 +1,160 @@
-/* 查询条件位置 */
-#search {
+#box {
     position: relative;
-    float: left;
-    width: 850px;
+    top: 80px;
+    left: calc(50% - 500px);
+    padding: 20px 0;
+    width: 1000px;
+    height: 600px;
+    border-radius: 10px;
+}
+
+
+/* 搜索栏 */
+
+#searchBox {
+    margin: auto;
+    padding: 20px;
+    width: 95%;
     height: 100px;
     border-radius: 10px;
-    /* background-color: #EFEDE9; */
-    background-color: #CCCCCC;
-    /* margin: 40px 60px; */
-    margin: 40px  200px;
-}
-#action span a {
-    position: absolute;
-    bottom: 10px;
-    left: 20px;
-    display: inline-block;
-    width: 60px; 
-    height: 26px;
-    text-align: center;
-    color: #FFFFFF;
-    line-height: 26px;
-    border-radius: 6px;
-    background-color: #292D36;
-}
-.searchTop #topid {
-    position: absolute;
-    top: 30px;
-    left: 230px;
-    color: #292D36;
-}
-.searchTop #toptime {
-    position: absolute;
-    top: 30px;
-    left: 490px;
-    color: #292D36;
-}
-.searchBar #searchid {
-    position: absolute;
-    bottom: 10px;
-    left: 200px;
-    width: 150px;
-    height: 26px;
-    border-radius: 4px;
-}
-.searchBar #searchtime {
-    position: absolute;
-    bottom: 10px;
-    left: 450px;
-    width: 200px;
-    height: 26px;
-    border-radius: 4px;
-}
-/* 订单信息 */
-#order_information {
-    float: left;
-    width: 850px;
-   background-color: #FFF;
-   border-radius: 10px;
-    margin: 5px 200px;
-}
-/* 订单标题 */
-#order_title {
-    width: 850px;
-    height: 50px;
-    border-radius: 6px;
-    /* box-shadow: 2px 2px 1px 1px rgba(0,0,0,0.1); */
-    background-color: #FFF;
-}
-#order_title span {
-    display: inline-block;
-    border-top-left-radius: 6px;
-    /* width: 166px;
-    height: 50px; */
-    width: 11.2em;
-    text-align: center;
-    line-height: 50px;
-    color: #212121;
-    font-size: 16px;
-    background-color: #FFF;
+    background-color: #979690;
+    color: #000;
+    font-weight: 700;
 }
 
-/* 订单列表 */
-#order_list li {
-    float: left;
-    width: 850px;
-    height: 40px;
-    border-bottom: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #FFF;
-    margin-top: 3px;
-}
-#order_list li:hover {
-    background-color: #F7F7F7;
-}
-#order_list li span {
+#action {
     display: inline-block;
-    /* width: 164px;
-    height: 50px; */
-    width: 15em;
-    text-align: center;
-    line-height: 50px;
-}
-#order_list #check_order {
-    width: 60px;
-    height: 30px;
-    margin-left: 30px;
-    cursor: pointer;
-    color: white;
-    line-height: 35px;
-    /* border-radius: 6px; */
-    background-color: #8BC34A;
-}
-/* 订单详情 */
-#order_detailed {
-    float: left;
-    width: 850px;
-    background-color: #FFF;
-    border-radius: 10px;
-    margin: 5px 200px;
-}
-#order_detailed #order_title {
-    width: 850px;
-    height: 50px;
-    border-radius: 6px;
-    background-color: #FFF;
-}
-#order_title #return {
-    font-size: 12px;
-    cursor: pointer;
-}
-#order_detailed #order_title span {
-    display: inline-block;
-    /* width: 150px;
-    height: 50px; */
-    width: 10em;
-    border-radius: 10px;
-    text-align: center;
-    line-height: 50px;
-    background-color: #FFF;
-}
-#order_detailed #order_list li {
-    float: left;
-    width: 850px;
-    height: 40px;
-    border-bottom: 1px solid #ccc;
-    margin-top: 3px;
-    font-size: 12px;
-    background-color: #FFF;
-}
-#order_detailed #order_list li span {
-    display: inline-block;
-    /* width: 150px;
-    height: 50px; */
-    width: 13.3em;
-    font-size: 12px;
-    text-align: center;
-    line-height: 50px;
+    width: 20%;
 }
 
-#order_detailed #total {
-    float: right;
+#action a {
     display: inline-block;
-    width: 100px;
+    margin: 30px 38px 0;
+    width: 6em;
     height: 30px;
-    color: #212121;
-    background-color: #EFEDE9;
-    text-align: center;
+    background-color: rgb(131, 238, 70);
+    border-radius: 5px;
+    color: #000;
     line-height: 30px;
-    font-size: 12px;
+    text-align: center;
+    transition: all 0.5s;
+}
+
+#action a:hover {
+    background-color: rgb(104, 189, 55);
+}
+
+.search {
+    display: inline-block;
+    width: 75%;
+}
+
+.searchTop span {
+    display: inline-block;
+    width: 20em;
+    text-align: center;
+}
+
+.searchBar {
     margin-top: 20px;
 }
 
+.searchBar span {
+    display: inline-block;
+    width: 20em;
+    text-align: center;
+}
 
+.searchBar input {
+    height: 25px;
+    border-radius: 5px;
+    text-indent: 1em;
+}
+
+.List {
+    position: absolute;
+    margin: 25px;
+    padding: 20px 0;
+    width: 95%;
+    height: 430px;
+    border-radius: 10px;
+    background-color: #979690;
+    overflow: auto;
+}
+
+.List .listInfo,
+.List .listItem {
+    margin: 15px 0 auto 20px;
+    padding: 5px 10px;
+    width: calc(100% - 65px);
+    height: 40px;
+    border-radius: 10px;
+    background-color: #fff;
+    line-height: 30px;
+}
+
+.List .listInfo {
+    margin-top: 0;
+}
+
+.List .listInfo span,
+.List .listItem span {
+    display: inline-block;
+    margin: 0;
+    width: 18em;
+    text-align: center;
+    Vertical-align: middle;
+}
+
+#return {
+    right: 100px;
+    margin-top: 20px;
+    margin-left: calc(100% - 100px);
+    width: 3em;
+    height: 25px;
+    line-height: 25px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgb(231, 35, 35);
+    color: #000;
+    text-align: center;
+    transition: all 0.5s;
+}
+
+#return:hover {
+    background-color: rgb(202, 26, 26);
+}
+
+#orderDetailed .List {
+    margin-top: 10px;
+    height: 400px;
+}
+
+#orderDetailed .listInfo span,
+#orderDetailed .listItem span {
+    width: 15em;
+}
+
+.listInfo {
+    font-weight: 700;
+}
+
+.List .listItem .check {
+    position: absolute;
+    right: 100px;
+    display: inline-block;
+    width: 5em;
+    height: 25px;
+    line-height: 25px;
+    background-color: rgb(131, 238, 70);
+    border-radius: 5px;
+    transition: all 0.5s;
+}
+
+.List .listItem .check:hover {
+    background-color: rgb(104, 189, 55);
+}
+
+.List .listItem .check:hover a {
+    color: #000;
+}

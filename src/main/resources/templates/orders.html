@@ -14,15 +14,15 @@
 
 <body>
     <div th:insert="~{common :: top}"></div>
-    <div id="box" class="type_page">
-        <div id="search">
+    <div id="box">
+        <div id="searchBox">
             <div id="action" @click="orderSearch">
                 <span><a href="javascript:;">搜索</a></span>
             </div>
             <div class="search">
                 <div class="searchTop">
-                    <span id="topid">通过订单ID搜索</span>
-                    <span id="toptime">通过订单创建时间搜索</span>
+                    <span>通过订单ID搜索</span>
+                    <span>通过订单创建时间搜索</span>
                 </div>
                 <div class="searchBar">
                     <span>
@@ -35,16 +35,15 @@
             </div>
         </div>
         <div id="order">
-            <div id="order_information" v-Show="Show">
-                <div id="order_title">
+            <div id="orders" class="List" v-Show="Show">
+                <div class="listInfo">
                     <span>订单ID</span>
                     <span>订单创建时间</span>
                     <span>订单总价</span>
-                    <span>&nbsp;&nbsp;</span>
                 </div>
-                <div id="order_list">
+                <div id="orderList">
                     <ul>
-                        <li v-for="item in orders">
+                        <li class="listItem" v-for="item in orders">
                             <span>{{item.orderid}}</span>
                             <span>{{item.createtime}}</span>
                             <span>{{item.total}}</span>
@@ -52,30 +51,89 @@
                                     @click="externalCheckOrder(item.orderid);isShow()">查看订单</a></span>
                         </li>
                     </ul>
-                    <!-- <div class="listItem" v-for="item in orders"> -->
                 </div>
             </div>
-            <!--  v-if="flag" -->
-            <div id="order_detailed" v-show="Show">
-                <div id="order_title">
-                    <span id="orderid">订单ID</span>
-                    <span>图书ID</span>
-                    <span>ISBN</span>
-                    <span>图书价格</span>
-                    <span @click="isShow()"><a href="javascript:;" id="return">返回</a></span>
-                </div>
-                <div id="order_list">
-                    <!-- <div v-for="item in ordersinfo"> -->
-                    <ul>
-                        <li v-for="item in ordersinfo">
-                            <span>{{orderid}}</span>
-                            <span>{{item.bid}}</span>
-                            <span>{{item.isbn}}</span>
-                            <span>{{item.bookprice}}元</span>
-                        </li>
-                    </ul>
+            <div id="orderDetailed" v-show="Show">
+                <div id="return" @click="isShow()">返回</div>
+                <div class="List">
+                    <div class="listInfo">
+                        <span>订单ID</span>
+                        <span>图书ID</span>
+                        <span>ISBN</span>
+                        <span>图书价格</span>
+                    </div>
+                    <div id="orderInfo">
+                        <ul>
+                            <li class="listItem" v-for="item in ordersinfo">
+                                <span>{{orderid}}</span>
+                                <span>{{item.bid}}</span>
+                                <span>{{item.isbn}}</span>
+                                <span>{{item.bookprice}}元</span>
+                            </li>
+                            <li class="listItem">
+                                <span>订单ID</span>
+                                <span>图书ID</span>
+                                <span>ISBN</span>
+                                <span>图书价格</span>
+                            </li>
+                            <li class="listItem">
+                                <span>订单ID</span>
+                                <span>图书ID</span>
+                                <span>ISBN</span>
+                                <span>图书价格</span>
+                            </li>
+                            <li class="listItem">
+                                <span>订单ID</span>
+                                <span>图书ID</span>
+                                <span>ISBN</span>
+                                <span>图书价格</span>
+                            </li>
+                            <li class="listItem">
+                                <span>订单ID</span>
+                                <span>图书ID</span>
+                                <span>ISBN</span>
+                                <span>图书价格</span>
+                            </li>
+                            <li class="listItem">
+                                <span>订单ID</span>
+                                <span>图书ID</span>
+                                <span>ISBN</span>
+                                <span>图书价格</span>
+                            </li>
 
-                    <!-- </div> -->
+                            <li class="listItem">
+                                <span>订单ID</span>
+                                <span>图书ID</span>
+                                <span>ISBN</span>
+                                <span>图书价格</span>
+                            </li>
+                            <li class="listItem">
+                                <span>订单ID</span>
+                                <span>图书ID</span>
+                                <span>ISBN</span>
+                                <span>图书价格</span>
+                            </li>
+
+                            <li class="listItem">
+                                <span>订单ID</span>
+                                <span>图书ID</span>
+                                <span>ISBN</span>
+                                <span>图书价格</span>
+                            </li>
+                            <li class="listItem">
+                                <span>订单ID</span>
+                                <span>图书ID</span>
+                                <span>ISBN</span>
+                                <span>图书价格</span>
+                            </li>
+                            <li class="listItem">
+                                <span>订单ID</span>
+                                <span>图书ID</span>
+                                <span>ISBN</span>
+                                <span>图书价格</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

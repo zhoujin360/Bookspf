@@ -13,8 +13,7 @@ var top = new Vue({
 
 //获取订单信息列表
 var getOrderList = new Vue({
-    // el: "#orderList",
-    el: "#order_information",
+    el: "#orders",
     data: {
         orders: [],
         Show: true
@@ -45,23 +44,10 @@ var getOrderList = new Vue({
 function externalGetOrderList(index, str) {
     getOrderList.getOrderList(index, str);
 }
-// var order = new Vue({
-//     el: "#box",
-//     data: {
-//         flag: false,
-//     },
-//     methods: {
-//         showDetailed: function () {
-//             this.flag = true;
-//         }
-//     }
-// })
-/*************************************************/
 
 //搜索订单
 var orderSearch = new Vue({
-    // el: "#orderSearch",
-    el: "#search",
+    el: "#searchBox",
     data: {
         orderid: '',
         createtime: ''
@@ -79,8 +65,7 @@ var orderSearch = new Vue({
 
 //查看订单
 var checkOrder = new Vue({
-    // el: "#checkOrder",
-    el: "#order_detailed",
+    el: "#orderDetailed",
     data: {
         orderid: '',
         paid: '',
