@@ -111,7 +111,7 @@ body {
 
 /* 错误信息模块 */
 
-#err_msg {
+.errmes {
     position: absolute;
     display: inline-block;
     width: 350px;
