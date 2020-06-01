@@ -33,7 +33,9 @@
             <a href="/" id="toIndex">
                 <h4>Go Index></h4>
             </a>
-            <span v-html="msg" id="err_msg"></span>
+            <div class="errmes">
+                <span v-show="isShow" :class="errmesColor?'errmesGreen':'errmesRed'">{{errmes}}</span>
+            </div>
             <input type="submit" value="REGISTERED" id="sb">
         </form>
     </div>

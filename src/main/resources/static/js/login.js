@@ -4,80 +4,44 @@ var top = new Vue({
     methods: {
         logout() {
             axios.post("/logout")
-                .then(function () {
+                .then(function() {
                     window.location.reload();
                 })
         }
     }
 });
 
-window.addEventListener("load", function () {
-    var logForm = document.querySelector("#logForm");
-    var password = document.querySelector("#log_password");
-    var username = document.querySelector('#log_account');
-    var err_msg = document.querySelector("#err_msg");
-    //校验密码
-    function checkPassword() {
-        var reg_password = /^\w{6,20}$/;
-        var flag = reg_password.test(password.value);
-        if (flag) {
-            password.style.border = "";
-            err_msg.innerHTML = "";
-        } else {
-            password.style.borderBottom = "3px solid #F26552";
-            err_msg.innerHTML = "请输入正确的密码<br/>";
-        }
-        return flag;
-    }
-    //校验用户名
-    function checkUsername() {
-        var reg_username = /^\w{3,10}$/
-        var flag = reg_username.test(username.value);
-        if (flag) {
-            username.style.border = "";
-            err_msg.innerHTML = "";
-        } else {
-            username.style.borderBottom = "3px solid #F26552";
-            err_msg.innerHTML = "请输入正确的用户名<br/>";
-        }
-        return flag;
-    }
-    // logForm.onsubmit = function () {
-    //     return checkUsername() && checkPassword();
-    // }
-
-    username.onblur = function () {
-        checkUsername();
-    }
-
-    password.onblur = function () {
-        checkPassword();
-    }
-
-})
-
-
 var login = new Vue({
     el: "#loginForm",
     data: {
         username: "",
         password: "",
-        msg: ""
+        errmes: ""
     },
     methods: {
-        submit: function () {
+        submit: function() {
             var that = this;
-            axios.post("/login", {
-                username: that.username,
-                password: that.password
-            }).then(function (response) {
-                if (response.data.status) {
-                    window.location.reload();
-                } else {
-                    that.msg = response.data.mes;
-                }
-
-            })
+            var usernameReg = /^[A-Za-z0-9]{3,20}$/;
+            var passwordReg = /^[0-9A-Za-z]{6,20}$/;
+            if (!usernameReg.test(that.username) || that.username == '') {
+                that.isShow = true;
+                that.errmes = '用户名格式错误';
+            } else if (!passwordReg.test(that.password) || that.password == '') {
+                that.isShow = true;
+                that.errmes = '密码格式错误';
+            } else {
+                that.isShow = false;
+                axios.post("/login", {
+                    username: that.username,
+                    password: that.password
+                }).then(function(response) {
+                    if (response.data.status) {
+                        window.location.reload();
+                    } else {
+                        that.errmes = response.data.mes;
+                    }
+                })
+            }
         }
     }
 });
