@@ -15,61 +15,76 @@
 <body>
     <div th:insert="~{common :: top}"></div>
     <div id="box" class="type_page">
-        <div id="orderInfo" class="mainItemHidden">
-            <div id="orderSearch" class="searchBox">
-                <div id="action" @click="orderSearch">
-                    <span><a href="javascript:;">搜索</a></span>
+        <div id="search">
+            <div id="action" @click="orderSearch">
+                <span><a href="javascript:;">搜索</a></span>
+            </div>
+            <div class="search">
+                <div class="searchTop">
+                    <span id="topid">通过订单ID搜索</span>
+                    <span id="toptime">通过订单创建时间搜索</span>
                 </div>
-                <div class="search">
-                    <div class="searchTop">
-                        <span>通过订单ID搜索</span>
-                        <span>通过订单创建时间搜索</span>
-                    </div>
-                    <div class="searchBar">
-                        <span>
-                                <input type="text" v-model="orderid">
-                        </span>
-                        <span>
-                                <input type="datetime-local" v-model="createtime">
-                        </span>
-                    </div>
+                <div class="searchBar">
+                    <span>
+                        <input type="text" id="searchid" v-model="orderid">
+                    </span>
+                    <span>
+                        <input type="datetime-local" id="searchtime" v-model="createtime">
+                    </span>
                 </div>
             </div>
-            <div class="List">
-                <div class="listInfo">
+        </div>
+        <div id="order">
+            <div id="order_information" v-Show="Show">
+                <div id="order_title">
                     <span>订单ID</span>
-                    <span class="time">订单创建时间</span>
-                    <span>总价</span>
+                    <span>订单创建时间</span>
+                    <span>订单总价</span>
+                    <span>&nbsp;&nbsp;</span>
                 </div>
-                <div id="orderList">
-                    <div class="listItem" v-for="item in orders">
-                        <span>{{item.orderid}}</span>
-                        <span class="time">{{item.createtime}}</span>
-                        <span>{{item.total}}</span>
-                        <span class="check"><a href="javascript:;" @click="externalCheckOrder(item.orderid)"
-                                    onclick="action('checkOrder')">查看订单</a></span>
-                    </div>
+                <div id="order_list">
+                    <ul>
+                        <li v-for="item in orders">
+                            <span>{{item.orderid}}</span>
+                            <span>{{item.createtime}}</span>
+                            <span>{{item.total}}</span>
+                            <span class="check"><a href="javascript:;"
+                                    @click="externalCheckOrder(item.orderid);isShow()">查看订单</a></span>
+                        </li>
+                    </ul>
+                    <!-- <div class="listItem" v-for="item in orders"> -->
                 </div>
+            </div>
+            <!--  v-if="flag" -->
+            <div id="order_detailed" v-show="Show">
+                <div id="order_title">
+                    <span id="orderid">订单ID：{{orderid}}</span>
+                    <span>ISBN</span>
+                    <span>图书价格</span>
+                    <span>&nbsp;&nbsp;</span>
+                    <span @click="isShow()"><a href="javascript:;" id="return">返回</a></span>
+                </div>
+                <div id="order_list">
+                    <!-- <div v-for="item in ordersinfo"> -->
+                    <ul>
+                        <li v-for="item in ordersinfo">
+                            <span>图书ID：{{item.bid}}</span>
+                            <span>ISBN：{{item.isbn}}</span>
+                            <span>图书价格：{{item.bookprice}}元</span>
+                        </li>
+                    </ul>
 
+                    <!-- </div> -->
+                </div>
             </div>
         </div>
 
-        <div class="orderWindow">
-            <div id="checkOrder" class="window actionHidden">
-                <div class="tips">
-                    <span>订单ID：{{orderid}}</span>
-                </div>
-                <div class="orders">
-                    <div v-for="item in ordersinfo">
-                        <span>图书ID：{{item.bid}}</span>
-                        <span>ISBN：{{item.isbn}}</span>
-                        <span>图书价格：{{item.bookprice}}元</span>
-                    </div>
-                </div>
-            </div>
+    </div>
+    </div>
 
-        </div>
-        <script src="/js/orders.js"></script>
+
+
+    <script src="/js/orders.js"></script>
 </body>
 
 </html>

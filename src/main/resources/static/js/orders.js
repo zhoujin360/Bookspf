@@ -13,9 +13,11 @@ var top = new Vue({
 
 //获取订单信息列表
 var getOrderList = new Vue({
-    el: "#orderList",
+    // el: "#orderList",
+    el: "#order_information",
     data: {
-        orders: []
+        orders: [],
+        Show: true
     },
     mounted: function() {
         this.getOrderList(0, "");
@@ -30,6 +32,10 @@ var getOrderList = new Vue({
                 that.orders = response.data.orders;
             })
         },
+        isShow() {
+            this.Show = false;
+            checkOrder.Show = true;
+        },
         externalCheckOrder(orderid) {
             checkOrder.checkOrder(orderid);
         }
@@ -39,12 +45,23 @@ var getOrderList = new Vue({
 function externalGetOrderList(index, str) {
     getOrderList.getOrderList(index, str);
 }
-
+// var order = new Vue({
+//     el: "#box",
+//     data: {
+//         flag: false,
+//     },
+//     methods: {
+//         showDetailed: function () {
+//             this.flag = true;
+//         }
+//     }
+// })
 /*************************************************/
 
 //搜索订单
 var orderSearch = new Vue({
-    el: "#orderSearch",
+    // el: "#orderSearch",
+    el: "#search",
     data: {
         orderid: '',
         createtime: ''
@@ -62,22 +79,29 @@ var orderSearch = new Vue({
 
 //查看订单
 var checkOrder = new Vue({
-    el: "#checkOrder",
+    // el: "#checkOrder",
+    el: "#order_detailed",
     data: {
         orderid: '',
         paid: '',
-        ordersinfo: []
+        ordersinfo: [],
+        Show: false
     },
     methods: {
         checkOrder(orderid) {
             var that = this;
-            axios.post("/checkOrderOfAdmin", {
+            axios.post("/checkOrder", {
                 orderid: orderid
             }).then(response => {
+                console.log(response);
                 that.orderid = response.data.ordersinfo[0].orderid;
                 that.paid = response.data.ordersinfo[0].paid;
                 that.ordersinfo = response.data.ordersinfo;
             })
+        },
+        isShow() {
+            this.Show = false;
+            getOrderList.Show = true;
         }
     }
 });

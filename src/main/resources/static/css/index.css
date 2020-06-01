@@ -28,7 +28,7 @@
 
 #rotation {
     position: relative;
-    /* width: 100%; */
+    width: 100%;
     width: 1200px;
     height: 330px;
     text-align: center;
@@ -47,6 +47,8 @@
     padding: 30px;
     width: 200px;
     height: 200px;
+    /* width:  400px;
+    height: 330px; */
     cursor: pointer;
 }
 
@@ -61,8 +63,11 @@
 .cont img:hover {
     transform: translateY(-4px);
 }
-
+.itme {
+    display: none;
+}
 .item.active {
+    /* z-index: 50; */
     display: block;
 }
 
