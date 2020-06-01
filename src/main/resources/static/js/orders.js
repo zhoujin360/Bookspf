@@ -4,7 +4,7 @@ var getOrderList = new Vue({
     el: "#order_information",
     data: {
         orders: [],
-        flag: true,
+        Show: true
     },
     mounted: function () {
         // alert(1)
@@ -20,8 +20,9 @@ var getOrderList = new Vue({
                 that.orders = response.data.orders;
             })
         },
-        showDetailed() {
-            this.flag = flase;
+        isShow() {
+            this.Show = false;
+            checkOrder.Show = true;
         },
         externalCheckOrder(orderid) {
             checkOrder.checkOrder(orderid);
@@ -71,7 +72,8 @@ var checkOrder = new Vue({
     data: {
         orderid: '',
         paid: '',
-        ordersinfo: []
+        ordersinfo: [],
+        Show: false
     },
     methods: {
         checkOrder(orderid) {
@@ -84,6 +86,10 @@ var checkOrder = new Vue({
                 that.paid = response.data.ordersinfo[0].paid;
                 that.ordersinfo = response.data.ordersinfo;
             })
+        },
+        isShow() {
+            this.Show = false;
+            getOrderList.Show = true;
         }
     }
 });
