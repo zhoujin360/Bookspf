@@ -4,8 +4,8 @@ body {
 
 #box {
     position: absolute;
-    top: 200px;
-    right: 150px;
+    top: 100px;
+    right: 100px;
     width: 600px;
     height: 600px;
 }

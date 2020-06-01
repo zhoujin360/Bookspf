@@ -58,19 +58,20 @@
             <!--  v-if="flag" -->
             <div id="order_detailed" v-show="Show">
                 <div id="order_title">
-                    <span id="orderid">订单ID：{{orderid}}</span>
+                    <span id="orderid">订单ID</span>
+                    <span>图书ID</span>
                     <span>ISBN</span>
                     <span>图书价格</span>
-                    <span>&nbsp;&nbsp;</span>
                     <span @click="isShow()"><a href="javascript:;" id="return">返回</a></span>
                 </div>
                 <div id="order_list">
                     <!-- <div v-for="item in ordersinfo"> -->
                     <ul>
                         <li v-for="item in ordersinfo">
-                            <span>图书ID：{{item.bid}}</span>
-                            <span>ISBN：{{item.isbn}}</span>
-                            <span>图书价格：{{item.bookprice}}元</span>
+                            <span>{{orderid}}</span>
+                            <span>{{item.bid}}</span>
+                            <span>{{item.isbn}}</span>
+                            <span>{{item.bookprice}}元</span>
                         </li>
                     </ul>
 

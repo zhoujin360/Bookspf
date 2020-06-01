@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body style=" background: url('img/regbg.png') no-repeat 550px 100px; background-size:  1000px;">
     <div id="box">
         <div id="characters"><img src="/img/characters.png" alt=""></div>
         <div id="tips">
@@ -27,10 +27,10 @@
             <!-- <span>Email:</span> -->
             <input type="text" placeholder="  Email" v-model="email" id="email"><br>
             <input type="text" placeholder="  Verification" id="verification">
-            <a href="/login" id="tologin">
+            <a href="/login" id="toIndex">
                 <h4>Return to the login?</h4>
             </a>
-            <a href="/" id="toIndex">
+            <a href="/" id="tologin">
                 <h4>Go Index></h4>
             </a>
             <span v-html="msg" id="err_msg"></span>
