@@ -33,8 +33,6 @@ public class Validator {
 
 	//验证用户
 	public boolean isAccount(int id){
-		System.out.println(id);
-		System.out.println(httpSession.getAttribute("userToken"));
 		if(((int) httpSession.getAttribute("userToken"))!=id) return false;
 		return true;
 	}

@@ -1,9 +1,25 @@
+//登出
+var logout = new Vue({
+    el: "#logout",
+    methods: {
+        logout() {
+            axios.post("/logout")
+                .then(function() {
+                    window.location.reload();
+                })
+        }
+    }
+});
+
 var app = new Vue({
     el: "#box",
     data: {
         publishbook: [],
         publishbookList: [],
-        rankList: []
+        rankList: [],
+        List: [],
+        currentIndex: 0,
+        timer: null
     },
     mounted() {
         this.getPublishBook();
@@ -30,64 +46,38 @@ var app = new Vue({
                 },
                 function(err) {}
             )
+        },
+        created() {
+            //在DOM加载完成后，下个tick中开始轮播
+            this.$nextTick(() => {
+                this.timer = setInterval(() => {
+                    this.nextImg()
+                }, 4000)
+            })
+        },
+        go() {
+            this.timer = setInterval(() => {
+                this.nextImg()
+            }, 4000)
+        },
+        stop() {
+            clearInterval(this.timer)
+            this.timer = null
+        },
+        change(index) {
+            this.currentIndex = index
+        },
+        nextImg() {
+            this.currentIndex++;
+            if (this.currentIndex > 6) {
+                this.currentIndex = 0
+            }
+        },
+        prevImg() {
+            this.currentIndex--;
+            if (this.currentIndex < 0) {
+                this.currentIndex = 6
+            }
         }
     }
 })
-
-// 轮播图模块
-var leftBtn = document.getElementById("left");
-var rightBtn = document.getElementById("right");
-var cont = document.querySelector(".cont");
-var items = document.getElementsByClassName("item");
-var points = document.getElementsByClassName("point");
-var index = 0;
-var timer = null;
-
-var clearActive = function() {
-    for (var i = 0; i < items.length; i++) {
-        items[i].className = 'item';
-        points[i].className = 'point';
-    }
-}
-var goIndex = function() {
-    clearActive();
-    items[index].className = 'item active';
-    points[index].className = 'point active';
-}
-rightBtn.onclick = function() {
-    if (index < items.length - 1) {
-        index++;
-    } else {
-        index = 0;
-    }
-    goIndex();
-}
-leftBtn.onclick = function() {
-    if (index > 0) {
-        index--;
-    } else {
-        index = items.length - 1;
-    }
-    goIndex();
-}
-
-timer = setInterval(() => {
-    right.onclick();
-}, 4000)
-
-cont.onmouseover = function() {
-    clearInterval(timer);
-}
-cont.onmouseout = function() {
-    timer = setInterval(() => {
-        right.onclick();
-    }, 4000)
-}
-for (var i = 0; i < points.length; i++) {
-    points[i].addEventListener('click', function() {
-        var ponintIndex = this.getAttribute("data-index");
-        index = ponintIndex;
-        goIndex();
-    })
-}
-//轮播图结束

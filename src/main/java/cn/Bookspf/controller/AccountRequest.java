@@ -56,30 +56,28 @@ public class AccountRequest {
 
     @PostMapping("/changePhone")
     public Response changePhone(@RequestBody User request){
-        //if(!validator.isLogin()) return new Response(false,"请登录再操作");
-        //if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
+        if(!validator.isLogin()) return new Response(false,"请登录再操作");
+        if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
         Integer uid = (Integer) httpSession.getAttribute("userToken");
-        uid=5354;
+
         userMapper.updatePhone(uid,request.getPhone());
         return new Response(true,"修改成功");
     }
 
     @PostMapping("/changeRealname")
     public Response changeRealname(@RequestBody User request){
-        //if(!validator.isLogin()) return new Response(false,"请登录再操作");
-        //if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
+        if(!validator.isLogin()) return new Response(false,"请登录再操作");
+        if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
         Integer uid = (Integer) httpSession.getAttribute("userToken");
-        uid=5354;
         userMapper.updateRealname(uid,request.getRealname());
         return new Response(true,"修改成功");
     }
 
     @PostMapping("/changeAddress")
     public Response changeAddress(@RequestBody User request){
-        //if(!validator.isLogin()) return new Response(false,"请登录再操作");
-        //if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
+        if(!validator.isLogin()) return new Response(false,"请登录再操作");
+        if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
         Integer uid = (Integer) httpSession.getAttribute("userToken");
-        uid=5354;
         userMapper.updateAddress(uid,request.getAddress());
         return new Response(true,"修改成功");
     }
