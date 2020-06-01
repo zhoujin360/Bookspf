@@ -4,7 +4,7 @@ var top = new Vue({
     methods: {
         logout() {
             axios.post("/logout")
-                .then(function() {
+                .then(function () {
                     window.location.reload();
                 })
         }
@@ -42,19 +42,27 @@ var app = new Vue({
         },
         changePhone() {
             var that = this;
-            axios.post("/changePhone", {
-                phone: that.phone
-            }).then(response => {
-                if (response.data.status) {
-                    window.location.reload();
-                } else {
+            var phoneReg = /^1[358][0-9]{9}$/
+            if (!phoneReg.test(that.phone) || that.phone == '') {
+                that.errmes = "电话格式错误";
+                that.isShow = true;
+            } else {
+                that.isShow = false;
+                axios.post("/changePhone", {
+                    phone: that.phone
+                }).then(response => {
+                    if (response.data.status) {
+                        window.location.reload();
+                    } else {
 
-                }
-            })
+                    }
+                })
+            }
+
         },
         changeRealname() {
             var that = this;
-            var realnameReg = /^[\u4e00-\u9fa5]{2,16}$/;
+            var realnameReg = /^[\u4e00-\u9fa5]{2,8}$/;
             if (!realnameReg.test(that.realname) || that.realname == '') {
                 that.errmes = "真实姓名格式错误";
                 that.isShow = true;
@@ -71,14 +79,21 @@ var app = new Vue({
         },
         changeAddress() {
             var that = this;
-            alert(that.address)
-            axios.post("/changeAddress", {
-                address: that.address
-            }).then(response => {
-                if (response.data.status) {
-                    window.location.reload();
-                }
-            })
+            var addressReg = /^[\u4e00-\u9fa5]{6,28}$/;
+            if (!addressReg.test(that.address) || that.address == '') {
+                that.errmes = "地址格式错误";
+                that.isShow = true;
+            } else {
+                that.isShow = false;
+                axios.post("/changeAddress", {
+                    address: that.address
+                }).then(response => {
+                    if (response.data.status) {
+                        window.location.reload();
+                    }
+                })
+            }
+
         }
     }
 })
