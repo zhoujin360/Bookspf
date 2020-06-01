@@ -1,11 +1,4 @@
-/* 空白预留区域 */
-#blank_space {
-    float: left;
-    width: 200px;
-    height: 300px;
-    background-color: #EFEDE9;
-    margin-top: 100px;
-}
+
 /* 预留查询条件位置 */
 #search {
     float: left;
@@ -82,6 +75,9 @@
     height: 50px;
     background-color: #FFF;
 }
+#order_title #orderid {
+    font-size: 12px;
+}
 #order_detailed #order_title span {
     display: inline-block;
     width: 150px;
@@ -97,15 +93,18 @@
     border-bottom: 1px solid #ccc;
     border-radius: 10px;
     margin-top: 3px;
+    font-size: 12px;
     background-color: #FFF;
 }
 #order_detailed #order_list li span {
     display: inline-block;
     width: 150px;
     height: 50px;
+    font-size: 12px;
     text-align: center;
     line-height: 50px;
 }
+
 #order_detailed #total {
     float: right;
     display: inline-block;
@@ -116,6 +115,7 @@
     border-radius: 4px;
     text-align: center;
     line-height: 30px;
+    font-size: 12px;
     margin-top: 20px;
 }
 

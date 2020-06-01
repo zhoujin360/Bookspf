@@ -1,11 +1,13 @@
 //获取订单信息列表
 var getOrderList = new Vue({
-    el: "#orderList",
+    // el: "#orderList",
+    el: "#order_information",
     data: {
-        orders: []
+        orders: [],
+        flag: true,
     },
-    mounted: function() {
-        alert(1)
+    mounted: function () {
+        // alert(1)
         this.getOrderList(0, "");
     },
     methods: {
@@ -18,6 +20,9 @@ var getOrderList = new Vue({
                 that.orders = response.data.orders;
             })
         },
+        showDetailed() {
+            this.flag = flase;
+        },
         externalCheckOrder(orderid) {
             checkOrder.checkOrder(orderid);
         }
@@ -27,12 +32,23 @@ var getOrderList = new Vue({
 function externalGetOrderList(index, str) {
     getOrderList.getOrderList(index, str);
 }
-
+// var order = new Vue({
+//     el: "#box",
+//     data: {
+//         flag: false,
+//     },
+//     methods: {
+//         showDetailed: function () {
+//             this.flag = true;
+//         }
+//     }
+// })
 /*************************************************/
 
 //搜索订单
 var orderSearch = new Vue({
-    el: "#orderSearch",
+    // el: "#orderSearch",
+    el: "#search",
     data: {
         orderid: '',
         createtime: ''
@@ -50,7 +66,8 @@ var orderSearch = new Vue({
 
 //查看订单
 var checkOrder = new Vue({
-    el: "#checkOrder",
+    // el: "#checkOrder",
+    el: "#order_detailed",
     data: {
         orderid: '',
         paid: '',
@@ -59,9 +76,10 @@ var checkOrder = new Vue({
     methods: {
         checkOrder(orderid) {
             var that = this;
-            axios.post("/checkOrderOfAdmin", {
+            axios.post("/checkOrder", {
                 orderid: orderid
             }).then(response => {
+                console.log(response);
                 that.orderid = response.data.ordersinfo[0].orderid;
                 that.paid = response.data.ordersinfo[0].paid;
                 that.ordersinfo = response.data.ordersinfo;

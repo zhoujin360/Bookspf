@@ -23,15 +23,17 @@
                 <a href="" id="classif">分类</a>
                 <a href="/login" id="log" th:if="${session.userToken == null}">登录</a>
                 <a href="/register" id="reg" th:if="${session.userToken == null}">注册</a>
-                <a th:href="@{/account/{user}(user=${session.userToken})}" th:if="${session.userToken != null}" id="username">[[${session.username}]]</a>
-                <a th:href="@{/orders/{user}(user=${session.userToken})}" th:if="${session.userToken != null}" id="my_order">我的订单</a>
+                <a th:href="@{/account/{user}(user=${session.userToken})}" th:if="${session.userToken != null}"
+                    id="username">[[${session.username}]]</a>
+                <a th:href="@{/orders/{user}(user=${session.userToken})}" th:if="${session.userToken != null}"
+                    id="my_order">我的订单</a>
                 <a href="/logout" th:if="${session.userToken != null}" id="exit">退出</a>
             </div>
         </div>
         <div id="rotation" class="type_page" style="background: url('img/bg.gif') no-repeat;">
             <div id="left"><img src="/img/prev.png" width="40px" height="40px"></div>
             <ul class="cont">
-                <li class="item active" v-for="item in rankList">
+                <li class="item" v-for="item in rankList">
                     <a href="javascript:;"> <img :src="'/bookimg/'+item.bid+'.png'"></a>
                 </li>
             </ul>
