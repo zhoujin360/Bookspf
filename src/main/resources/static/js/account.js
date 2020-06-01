@@ -4,7 +4,7 @@ var top = new Vue({
     methods: {
         logout() {
             axios.post("/logout")
-                .then(function () {
+                .then(function() {
                     window.location.reload();
                 })
         }
@@ -34,6 +34,10 @@ var app = new Vue({
         changePassword() {
             var that = this;
             var passwordReg = /^[0-9A-Za-z]{6,20}$/;
+            if (!passwordReg.test(that.password) || that.password == '') {
+                that.errmes = "密码格式错误";
+                that.isShow = true;
+            }
             axios.posr("/changePassword", {
                 password: password
             }).then(response => {
@@ -53,8 +57,6 @@ var app = new Vue({
                 }).then(response => {
                     if (response.data.status) {
                         window.location.reload();
-                    } else {
-
                     }
                 })
             }
@@ -62,7 +64,7 @@ var app = new Vue({
         },
         changeRealname() {
             var that = this;
-            var realnameReg = /^[\u4e00-\u9fa5]{2,8}$/;
+            var realnameReg = /^[\u4e00-\u9fa5]{2,16}$/;
             if (!realnameReg.test(that.realname) || that.realname == '') {
                 that.errmes = "真实姓名格式错误";
                 that.isShow = true;
