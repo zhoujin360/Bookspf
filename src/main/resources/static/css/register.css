@@ -1,14 +1,18 @@
 body {
     background-color: #FFFFFF;
 }
+
 #box {
-    position: relative;
-    margin-left: 80px;
-    margin-top: 70px;
+    position: absolute;
+    top: 150px;
+    left: 150px;
     width: 600px;
     height: 650px;
 }
+
+
 /* 头像模块 */
+
 #characters {
     position: absolute;
     top: 50px;
@@ -17,10 +21,14 @@ body {
     height: 90px;
     border-radius: 45px;
 }
+
 #characters img {
     width: 88px;
 }
+
+
 /* 提示模块 */
+
 #tips {
     position: absolute;
     top: 160px;
@@ -28,11 +36,15 @@ body {
     height: 80px;
     text-align: center;
 }
+
 #tips h1 {
     color: #989898;
     font-size: 40px;
 }
+
+
 /* 表单区域 */
+
 #regForm {
     position: absolute;
     top: 240px;
@@ -40,63 +52,82 @@ body {
     height: 410px;
     text-align: center;
 }
+
 #reg_username {
     width: 350px;
     height: 35px;
     margin-top: 20px;
     border-bottom: 3px solid #DCDCDC;
 }
+
 #reg_username:focus {
     border-bottom: 3px solid #69B4FE;
 }
+
 #reg_password {
     width: 350px;
     height: 35px;
     margin-top: 20px;
     border-bottom: 3px solid #DCDCDC;
 }
+
 #reg_password:focus {
     border-bottom: 3px solid #69B4FE;
 }
+
 #email {
     width: 350px;
     height: 35px;
     margin-top: 20px;
     border-bottom: 3px solid #DCDCDC;
 }
+
 #email:focus {
     border-bottom: 3px solid #69B4FE;
 }
+
 #verification {
     width: 350px;
     height: 35px;
     margin-top: 20px;
     border-bottom: 3px solid #DCDCDC;
 }
+
 #verification:focus {
     border-bottom: 3px solid #69B4FE;
 }
+
+
 /* 去登录模块 */
+
 #tologin {
     position: absolute;
     display: inline-block;
     top: 230px;
     left: 122px;
 }
+
 #tologin h4 {
     color: #D2CAC1;
 }
+
+
 /* 去主页模块 */
+
 #toIndex {
     position: absolute;
     display: inline-block;
     top: 230px;
     left: 400px;
 }
+
 #toIndex h4 {
     color: #D2CAC1;
 }
+
+
 /* 错误信息模块 */
+
 #err_msg {
     position: absolute;
     display: inline-block;
@@ -108,8 +139,11 @@ body {
     color: #F26552;
     /* background-color: pink; */
 }
+
+
 /* 提交按钮模块 */
-#sb { 
+
+#sb {
     position: absolute;
     cursor: pointer;
     top: 280px;

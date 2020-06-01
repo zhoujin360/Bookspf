@@ -1,14 +1,18 @@
 body {
     background-color: #FFFFFF;
 }
+
 #box {
     position: absolute;
-    top: 100px;
-    right: 20px;
+    top: 200px;
+    right: 150px;
     width: 600px;
     height: 600px;
 }
+
+
 /* 头像模块 */
+
 #characters {
     position: absolute;
     top: 50px;
@@ -17,10 +21,14 @@ body {
     height: 90px;
     border-radius: 45px;
 }
+
 #characters img {
     width: 88px;
 }
+
+
 /* 提示模块 */
+
 #tips {
     position: absolute;
     top: 160px;
@@ -28,15 +36,20 @@ body {
     height: 80px;
     text-align: center;
 }
+
 #tips h1 {
     color: #989898;
     font-size: 40px;
 }
+
 #tips h4 {
     color: #989898;
     font-weight: 400;
 }
+
+
 /* 表单区域 */
+
 #loginForm {
     position: relative;
     top: 240px;
@@ -44,6 +57,7 @@ body {
     height: 360px;
     text-align: center;
 }
+
 #log_account {
     width: 350px;
     height: 35px;
@@ -66,27 +80,37 @@ body {
     border-bottom: 3px solid #69B4FE;
 }
 
+
 /* 去注册模块 */
+
 #toReg {
     position: absolute;
     display: inline-block;
     top: 128px;
     left: 123px;
 }
+
 #toReg h4 {
     color: #D2CAC1;
 }
+
+
 /* 去主页模块 */
+
 #toIndex {
     position: absolute;
     display: inline-block;
     top: 128px;
     left: 410px;
 }
+
 #toIndex h4 {
     color: #D2CAC1;
 }
+
+
 /* 错误信息模块 */
+
 #err_msg {
     position: absolute;
     display: inline-block;
@@ -97,7 +121,10 @@ body {
     line-height: 30px;
     color: #F26552;
 }
+
+
 /* 提交按钮模块 */
+
 #sb {
     cursor: pointer;
     width: 350px;
