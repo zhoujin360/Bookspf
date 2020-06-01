@@ -10,6 +10,7 @@ window.addEventListener("load", function () {
         var flag = reg_username.test(username.value);
         if (flag) { //若校验通过
             username.style.border = "";
+            err_msg.innerHTML = "";
         } else {
             username.style.borderBottom = "3px solid #F26552";
             err_msg.innerHTML = "请输入正确的用户名<br/>";
@@ -22,6 +23,7 @@ window.addEventListener("load", function () {
         var flag = reg_password.test(password.value);
         if (flag) {
             password.style.border = "";
+            err_msg.innerHTML = "";
         } else {
             password.style.borderBottom = "3px solid #F26552";
             err_msg.innerHTML = "请输入正确的密码<br/>";
@@ -34,6 +36,7 @@ window.addEventListener("load", function () {
         var flag = reg_email.test(email.value);
         if (flag) { //若校验通过
             email.style.border = "";
+            err_msg.innerHTML = "";
         } else {
             email.style.borderBottom = "3px solid #F26552";
             err_msg.innerHTML = "请输入正确的邮箱<br/>";

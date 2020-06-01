@@ -29,26 +29,32 @@
                 <span>图书</span>
                 <p :class="isShow==1?'rotate90':'norotate'">﹤</p>
             </div>
-            <div onclick="isMain('bookInfo');externalGetBookList();" :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('bookInfo');externalGetBookList();"
+                :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
                 图书信息管理
             </div>
-            <div onclick="isMain('sortInfo');externalGetSortList();" :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('sortInfo');externalGetSortList();"
+                :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
                 图书分类信息管理
             </div>
-            <div onclick="isMain('orderReview');externalGetOrderList(0,'');" :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('orderReview');externalGetOrderList(0,'');"
+                :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
                 订单审核
             </div>
             <div class="item" @click="rotateT(2)">
                 <span>出入库</span>
                 <p :class="isShow==2?'rotate90':'norotate'">﹤</p>
             </div>
-            <div onclick="isMain('saleInfo');externalGetSaleList(0,'');" :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('saleInfo');externalGetSaleList(0,'');"
+                :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
                 销售记录查看
             </div>
-            <div onclick="isMain('purchaseInfo');externalGetPurchaseList(0, '')" :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('purchaseInfo');externalGetPurchaseList(0, '')"
+                :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
                 进货记录管理
             </div>
-            <div onclick="isMain('stockInfo');externalGetStockList(0,'');" :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('stockInfo');externalGetStockList(0,'');"
+                :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
                 库存记录管理
             </div>
         </div>
@@ -82,7 +88,8 @@
                         <span>{{item.number}}</span>
                         <span v-text="item.added==0?'否':'是'"></span>
                         <span class="description">{{item.description}}</span>
-                        <span class="alter"><a href="javascript:;" @click="setBid(item.bid)" onclick="action('alterBook')">修改</a></span>
+                        <span class="alter"><a href="javascript:;" @click="setBid(item.bid)"
+                                onclick="action('alterBook')">修改</a></span>
                         <span class="delete"><a href="javascript:;" @click="deleteBook(item.bid)">删除</a></span>
                     </div>
                 </div>
@@ -125,14 +132,14 @@
                     </div>
                     <div class="searchBar">
                         <span>
-                                <input type="text" v-model="orderid">
-                            </span>
+                            <input type="text" v-model="orderid">
+                        </span>
                         <span>
-                                <input type="text" v-model="uid">
-                            </span>
+                            <input type="text" v-model="uid">
+                        </span>
                         <span>
-                                <input type="datetime-local" v-model="createtime">
-                            </span>
+                            <input type="datetime-local" v-model="createtime">
+                        </span>
                     </div>
                 </div>
             </div>
@@ -150,7 +157,7 @@
                         <span class="time">{{item.createtime}}</span>
                         <span>{{item.total}}</span>
                         <span class="check"><a href="javascript:;" @click="externalCheckOrder(item.orderid)"
-                                    onclick="action('checkOrder')">查看订单</a></span>
+                                onclick="action('checkOrder')">查看订单</a></span>
                     </div>
                 </div>
 
@@ -170,14 +177,14 @@
                     </div>
                     <div class="searchBar">
                         <span>
-                                <input type="text" v-model="saleid">
-                            </span>
+                            <input type="text" v-model="saleid">
+                        </span>
                         <span>
-                                <input type="text" v-model="isbn">
-                            </span>
+                            <input type="text" v-model="isbn">
+                        </span>
                         <span>
-                                <input type="datetime-local" v-model="saletime">
-                            </span>
+                            <input type="datetime-local" v-model="saletime">
+                        </span>
                     </div>
                 </div>
             </div>
@@ -216,11 +223,11 @@
                     </div>
                     <div class="searchBar">
                         <span>
-                                <input type="text" v-model="purchaseid">
-                            </span>
+                            <input type="text" v-model="purchaseid">
+                        </span>
                         <span>
-                                <input type="datetime-local" v-model="purchasetime">
-                            </span>
+                            <input type="datetime-local" v-model="purchasetime">
+                        </span>
                     </div>
                 </div>
             </div>
@@ -240,7 +247,7 @@
                         <span class="time">{{item.purchasetime}}</span>
                         <span>{{item.operator}}</span>
                         <span class="check"><a href="javascript:;" @click="externalCheckPurchase(item.purchaseid)"
-                                    onclick="action('checkPurchase')">查看记录</a></span>
+                                onclick="action('checkPurchase')">查看记录</a></span>
                     </div>
                 </div>
 
@@ -259,11 +266,11 @@
                     </div>
                     <div class="searchBar">
                         <span>
-                                <input type="text" v-model="stockid">
-                            </span>
+                            <input type="text" v-model="stockid">
+                        </span>
                         <span>
-                                <input type="datetime-local" v-model="stocktime">
-                            </span>
+                            <input type="datetime-local" v-model="stocktime">
+                        </span>
                     </div>
                 </div>
             </div>
@@ -281,7 +288,7 @@
                         <span class="time">{{item.outtime}}</span>
                         <span v-text="item.comeout==1?'已出库':'已入库'"></span>
                         <span class="check"><a href="javascript:;" @click="externalCheckStock(item.stockid)"
-                                    onclick="action('checkStock')">查看记录</a></span>
+                                onclick="action('checkStock')">查看记录</a></span>
                     </div>
                 </div>
 

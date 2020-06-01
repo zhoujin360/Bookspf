@@ -86,12 +86,22 @@ body {
 #tologin h4 {
     color: #D2CAC1;
 }
+/* 去主页模块 */
+#toIndex {
+    position: absolute;
+    display: inline-block;
+    top: 230px;
+    left: 400px;
+}
+#toIndex h4 {
+    color: #D2CAC1;
+}
 /* 错误信息模块 */
 #err_msg {
     position: absolute;
     display: inline-block;
-    top: 225px;
-    left: 244px;
+    top: 246px;
+    left: 124px;
     width: 350px;
     height: 30px;
     line-height: 30px;
@@ -99,7 +109,7 @@ body {
     /* background-color: pink; */
 }
 /* 提交按钮模块 */
-#sb {
+#sb { 
     position: absolute;
     cursor: pointer;
     top: 280px;

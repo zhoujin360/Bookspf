@@ -50,14 +50,11 @@ body {
     margin-top: 20px;
     border-bottom: 3px solid #DCDCDC;
 }
+
 #log_account:focus {
     border-bottom: 3px solid #69B4FE;
 }
-/* #accountImg img {
-    position: absolute;
-    top: 25px;
-    width: 20px;
-} */
+
 #log_password {
     width: 350px;
     height: 35px;
@@ -68,11 +65,7 @@ body {
 #log_password:focus {
     border-bottom: 3px solid #69B4FE;
 }
-/* #passwordImg img {
-    position: absolute;
-    top: 80px;
-    width: 15px;
-} */
+
 /* 去注册模块 */
 #toReg {
     position: absolute;
@@ -83,14 +76,24 @@ body {
 #toReg h4 {
     color: #D2CAC1;
 }
+/* 去主页模块 */
+#toIndex {
+    position: absolute;
+    display: inline-block;
+    top: 128px;
+    left: 410px;
+}
+#toIndex h4 {
+    color: #D2CAC1;
+}
 /* 错误信息模块 */
 #err_msg {
     position: absolute;
     display: inline-block;
     width: 350px;
     height: 30px;
-    top: 120px;
-    left: 244px;
+    top: 150px;
+    left: 130px;
     line-height: 30px;
     color: #F26552;
 }

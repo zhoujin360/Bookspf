@@ -1,4 +1,4 @@
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
     var logForm = document.querySelector("#logForm");
     var password = document.querySelector("#log_password");
     var username = document.querySelector('#log_account');
@@ -9,6 +9,7 @@ window.addEventListener("load", function() {
         var flag = reg_password.test(password.value);
         if (flag) {
             password.style.border = "";
+            err_msg.innerHTML = "";
         } else {
             password.style.borderBottom = "3px solid #F26552";
             err_msg.innerHTML = "请输入正确的密码<br/>";
@@ -21,6 +22,7 @@ window.addEventListener("load", function() {
         var flag = reg_username.test(username.value);
         if (flag) {
             username.style.border = "";
+            err_msg.innerHTML = "";
         } else {
             username.style.borderBottom = "3px solid #F26552";
             err_msg.innerHTML = "请输入正确的用户名<br/>";
@@ -31,11 +33,11 @@ window.addEventListener("load", function() {
     //     return checkUsername() && checkPassword();
     // }
 
-    username.onblur = function() {
+    username.onblur = function () {
         checkUsername();
     }
 
-    password.onblur = function() {
+    password.onblur = function () {
         checkPassword();
     }
 
@@ -50,12 +52,12 @@ var login = new Vue({
         msg: ""
     },
     methods: {
-        submit: function() {
+        submit: function () {
             var that = this;
             axios.post("/login", {
                 username: that.username,
                 password: that.password
-            }).then(function(response) {
+            }).then(function (response) {
                 if (response.data.status) {
                     window.location.reload();
                 } else {
