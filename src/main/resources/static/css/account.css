@@ -1,124 +1,136 @@
 #box {
     position: relative;
-    top: 60px;
-    width: 800px;
-    height: 600px;
-    border-radius: 20px;
+    top: 150px;
+    left: calc(50% - 420px);
+    width: 840px;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 10px;
 }
-/* 修改按钮样式 */
-.updateBtn {
-    cursor: pointer;
+
+.leftBox {
+    position: absolute;
     display: inline-block;
-    width: 50px;
-    height: 26px;
-    line-height: 26px;
-    border-radius: 6px;
-    color: #F5F5F5;
+    padding: 30px;
+    width: 45%;
+    height: 100%;
+    border-radius: 10px 0 0 10px;
+    background: #7474bf;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #7474bf, #348ac7);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #7474bf, #348ac7);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.leftBox span {
+    display: inline-block;
+    margin-top: 30px;
+    width: 100%;
+    color: #000;
+    font-size: 18px;
     text-align: center;
-    margin-left: 20px;
-    background-color: #8BC34A;
 }
-.updateBtn:hover {
-    color: #EC771B;
-}
-/* 详细信息模块 */
-#information {
-    position: absolute;
-    top: 6px;
-    left: 190px;
-    color: #505050;
-}
-/* 头像模块 */
-#head_sculpture {
-    width: 400px;
-    height: 600px;
-    background-color: #F5F5F5;
-    border-bottom-left-radius: 20px;
-    border-top-left-radius: 20px;
-}
-#head_sculpture #characters {
-    position: absolute;
-    top: 110px;
-    left: 110px;
+
+.leftBox div {
+    margin: 50px auto 20px;
     width: 200px;
     height: 200px;
-    border-radius: 100px;
 }
-#characters img {
+
+.leftBox div img {
     width: 200px;
+    height: 200px;
 }
-#head_sculpture #email {
+
+.rightBox {
     position: absolute;
-    bottom: 180px;
-    left: 110px;
-    height: 40px;
-}
-/* 基本信息模块 */
-#basicInfo {
-    position: absolute;
-    top: 0;
-    left: 400px;
-    width: 400px;
-    height: 250px;
-    padding-left: 10px;
-    border-top-right-radius: 20px;
-    background-color: #FFFFFF;
-}
-#basicInfo #basicTitle {
-    width: 380px;
-    height: 60px;
-    font-size: 14px;
-    border-bottom: 1px solid #F0F0F0;
-    line-height: 90px;
-}
-#basicInfo span {
+    left: 45%;
     display: inline-block;
-    width: 60px;
-    height: 20px;
-    margin-left: 20px;
-    margin-top: 26px;
-}
-#basicInfo #recharge {
-    cursor: pointer;
-    margin-left: 100px;
-}
-/* 个人信息模块 */
-#userinfo {
-    position: absolute;
-    top: 250px;
-    left: 400px;
-    width: 400px;
-    height: 350px;
-    background-color: #FFFFFF;
-    border-bottom-right-radius: 20px;
-    padding-left: 10px;
-}
-#userinfo #userinfoTitle {
-    width: 380px;
-    border-bottom: 1px solid #F0F0F0;
+    padding: 30px;
+    width: 55%;
+    height: 100%;
+    color: #000;
     font-size: 14px;
+    border-radius: 0 10px 10px 0;
+    background: #DAE2F8;
 }
-#userinfo span {
+
+.basicInfo {
+    width: 100%;
+    height: 42%;
+}
+
+.basicInfo span,
+.userInfo span {
     display: inline-block;
-    width: 60px;
-    height: 20px;
-    margin-left: 20px;
-    margin-top: 40px;
+    margin: 10px 0;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
 }
-#userinfo #tips {
-    width: 400px;
+
+.basicInfo span:nth-child(odd),
+.userInfo span:nth-child(odd) {
+    width: 8em;
 }
-#userinfo .Btnphone {
-    position: absolute;
-    top: 120px;
-    left: 260px;
+
+.basicInfo span:nth-child(even),
+.userInfo span:nth-child(even) {
+    width: 12em;
 }
-#userinfo .Btnname {
-    position: absolute;
-    top: 178px;
-    left: 260px;
-}#userinfo .Btnaddress {
-    position: absolute;
-    top: 238px;
-    left: 260px;
+
+.userInfo {
+    width: 100%;
+    height: 58%;
+    padding: 10px 0;
+}
+
+.userInfo div .tips {
+    margin: 10px 0 20px;
+    width: 100%;
+    color: rgb(34, 34, 34);
+    font-size: 12px;
+    text-align: left;
+}
+
+.userInfo .address {
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+.Btn {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 5px;
+    background-color: rgb(125, 218, 71);
+    color: rgb(34, 34, 34);
+    transition: all 0.5s;
+}
+
+.Btn:hover {
+    color: #000;
+    background-color: rgb(96, 223, 23);
+}
+
+.userInfo input {
+    width: 12.6em;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.userInfo span.Hidden,
+.userInfo input.Hidden {
+    display: none;
+}
+
+.errmes {
+    height: 30px;
+    color: red;
+    text-align: center;
+}
+
+.userInfo .errmes span {
+    width: 20em;
+    font-size: 12px;
 }
