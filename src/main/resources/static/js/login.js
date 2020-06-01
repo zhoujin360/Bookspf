@@ -1,3 +1,16 @@
+//top
+var top = new Vue({
+    el: "#top",
+    methods: {
+        logout() {
+            axios.post("/logout")
+                .then(function() {
+                    window.location.reload();
+                })
+        }
+    }
+});
+
 window.addEventListener("load", function() {
     var logForm = document.querySelector("#logForm");
     var password = document.querySelector("#log_password");

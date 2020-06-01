@@ -14,17 +14,7 @@
 </head>
 
 <body>
-    <div id="top">
-        <div id="nav" class="type_page">
-            <div id="logo">
-                <a href="/"><img src="/img/logo.png" style="width: 36px; height: 36px;"></a>
-            </div>
-            <a href="/" id="index">首页</a>
-            <a href="" id="classif">分类</a>
-            <a th:href="@{/orders/{user}(user=${session.userToken})}" th:if="${session.userToken != null}" id="my_order">我的订单</a>
-            <a href="/logout" th:if="${session.userToken != null}" id="exit">退出</a>
-        </div>
-    </div>
+    <div th:insert="~{common :: top}"></div>
     <div id="box" class="type_page">
         <span id="information">详细信息</span>
         <!-- 头像 -->

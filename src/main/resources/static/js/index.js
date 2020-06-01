@@ -1,6 +1,6 @@
-//登出
-var logout = new Vue({
-    el: "#logout",
+//top
+var top = new Vue({
+    el: "#top",
     methods: {
         logout() {
             axios.post("/logout")
@@ -17,7 +17,6 @@ var app = new Vue({
         publishbook: [],
         publishbookList: [],
         rankList: [],
-        List: [],
         currentIndex: 0,
         timer: null
     },

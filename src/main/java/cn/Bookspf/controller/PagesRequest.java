@@ -106,6 +106,7 @@ public class PagesRequest {
 	public String shopcar (@PathVariable("id") Integer id,Model model) {
 		if(!validator.isLogin())return "login";
 		if(!validator.isAccount(id)) return "404";
+		if(id==0) return "login";
 		setModelUser(model);
 		return validator.isIdentity(userMapper, "shopcar");
 	}

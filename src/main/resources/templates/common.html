@@ -6,15 +6,29 @@
         <div id="top">
             <div id="nav" class="type_page">
                 <div id="logo">
-                    <a href="/index"><img src="/img/logo.png" style="width: 36px; height: 36px;"></a>
+                    <a href="/index"><img src="/img/logo.png" style="width: 36px; height: 36px;">图书售书平台</a>
                 </div>
-                <a href="/" id="index">首页</a>
-                <a href="javascript:;" id="classif">分类</a>
-                <a href="/login" id="log" th:if="${session.userToken == null}">登录</a>
-                <a href="/register" id="reg" th:if="${session.userToken == null}">注册</a>
-                <a th:href="@{/account/{user}(user=${session.userToken})}" th:if="${session.userToken != null}" id="username">[[${session.username}]]</a>
-                <a th:href="@{/orders/{user}(user=${session.userToken})}" th:if="${session.userToken != null}" id="my_order">我的订单</a>
-                <div id="logout"><a href="javascript:;" @click="logout" th:if="${session.userToken != null}">退出</a></div>
+                <div id="index">
+                    <a href="/">首页</a>
+                </div>
+                <div id="classif">
+                    <a href="javascript:;">分类</a>
+                </div>
+                <div id="log" th:if="${session.userToken == null}">
+                    <a href="/login">登录</a>
+                </div>
+                <div id="reg" th:if="${session.userToken == null}">
+                    <a href="/register">注册</a>
+                </div>
+                <div id="username">
+                    <a th:href="@{/account/{user}(user=${session.userToken})}" th:if="${session.userToken != null}">[[${session.username}]]</a>
+                </div>
+                <div id="my_order" th:if="${session.userToken != null}">
+                    <a th:href="@{/orders/{user}(user=${session.userToken})}">我的订单</a>
+                </div>
+                <div id="logout" @click="logout" th:if="${session.userToken != null}">
+                    <a href="javascript:;">退出</a>
+                </div>
 
             </div>
         </div>
