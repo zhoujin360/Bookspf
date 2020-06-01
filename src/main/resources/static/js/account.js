@@ -1,13 +1,6 @@
 //top
 var top = new Vue({
     el: "#top",
-    data: {
-        loginBtnShow: false,
-        registerBtnShow: false,
-        usernameShow: false,
-        ordersShow: false,
-        shopcarShow: false
-    },
     methods: {
         logout() {
             axios.post("/logout")
