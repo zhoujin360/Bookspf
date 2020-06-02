@@ -64,30 +64,30 @@ body {
 
 #cart_list li {
     float: left;
+    margin-top: 3px;
     width: 800px;
     height: 40px;
     border-radius: 6px;
     margin-bottom: 10px;
     background-color: #F0F0F0;
-    margin-top: 3px;
     transition: all 0.5s;
 }
 
 #cart_list li span {
     display: inline-block;
     width: 164px;
-    height: 50px;
+    height: 40px;
     text-align: center;
-    line-height: 50px;
+    line-height: 40px;
 }
 
 #cart_list li a {
     display: inline-block;
     width: 164px;
-    height: 50px;
+    height: 40px;
     text-align: center;
     padding-left: 2px;
-    line-height: 50px;
+    line-height: 40px;
 }
 
 #cart_list li #num {
@@ -177,11 +177,9 @@ body {
 
 #cart_list .delBtn {
     display: inline-block;
-    /* width: 80px;
-    height: 60px; */
     width: 3.5em;
     height: 2.4em;
-    line-height: 3em;
+    line-height: 2.4em;
     text-align: center;
     border-radius: 6px;
     color: #000;
