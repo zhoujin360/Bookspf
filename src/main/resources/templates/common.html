@@ -14,6 +14,9 @@
                 <div id="classif">
                     <a href="javascript:;">分类</a>
                 </div>
+                <div id="searbar" th:if="${session.userToken != null}">
+                    <input type="text">
+                </div>
                 <div id="log" th:if="${session.userToken == null}">
                     <a href="/login">登录</a>
                 </div>
@@ -21,7 +24,8 @@
                     <a href="/register">注册</a>
                 </div>
                 <div id="username">
-                    <a th:href="@{/account/{user}(user=${session.userToken})}" th:if="${session.userToken != null}">[[${session.username}]]</a>
+                    <a th:href="@{/account/{user}(user=${session.userToken})}"
+                        th:if="${session.userToken != null}">[[${session.username}]]</a>
                 </div>
                 <div id="my_order" th:if="${session.userToken != null}">
                     <a th:href="@{/orders/{user}(user=${session.userToken})}">我的订单</a>
