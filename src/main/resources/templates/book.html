@@ -21,10 +21,11 @@
             <div id="book_title">
                 <h1>[[${book.bookname}]]</h1>
                 <span>作者: [[${book.author}]]</span>
+                <h4>分类名</h4>
             </div>
             <div id="book_price">
                 <span>价格:[[${book.bookprice}]]</span>
-                <span id="book_num">数量:[[${book.number}]]</span>
+                <span id="book_num">库存:[[${book.number}]]</span>
             </div>
             <div id="book_service">
 
@@ -48,7 +49,7 @@
                 bid: ""
             },
             methods: {
-                addShopcar: function() {
+                addShopcar: function () {
                     var that = this;
                     that.bid = [
                         [$ {
@@ -57,11 +58,11 @@
                     ];
                     axios.post("/addShopcar", {
 
-                    }).then(function(response) {
+                    }).then(function (response) {
 
-                            console.log(response);
-                        },
-                        function(err) {
+                        console.log(response);
+                    },
+                        function (err) {
 
                         })
 

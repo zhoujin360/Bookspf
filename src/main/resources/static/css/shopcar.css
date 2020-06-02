@@ -6,17 +6,24 @@ body {
 /* 订单信息 */
 
 #cart_information {
-    width: 800px;
+    width: 900px;
+    height: 430px;
+    /* margin: 25px; */
+    padding: 20px 50px;
+    background-color: #979690;
     margin: 100px auto;
-    margin-bottom: 30px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow: auto;
 }
-
 
 /* 订单标题 */
 
 #cart_title {
-    width: 850px;
+    width: 800px;
     height: 50px;
+    border-radius: 6px;
+    margin-bottom: 20px;
     box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.1);
     background-color: #FFF;
 }
@@ -30,6 +37,7 @@ body {
     line-height: 50px;
     color: #212121;
     background-color: #FFF;
+    border-top-left-radius: 10px;
 }
 
 
@@ -37,11 +45,14 @@ body {
 
 #cart_list li {
     float: left;
-    width: 850px;
+    width: 800px;
     height: 40px;
+    border-radius: 6px;
+    margin-bottom: 10px;
     /* border-bottom: 1px solid #ccc; */
     background-color: #FFFFFF;
     margin-top: 3px;
+    transition: all 0.5s;
 }
 
 #cart_list li:hover {
@@ -61,7 +72,7 @@ body {
     width: 164px;
     height: 50px;
     text-align: center;
-    padding-left: 15px;
+    padding-left: 2px;
     line-height: 50px;
 }
 
@@ -71,6 +82,15 @@ body {
     height: 50px;
     text-align: center;
     line-height: 20px;
+}
+
+#num #decrease {
+    border-radius: 5px;
+}
+
+#num #add {
+    border-radius: 5px;
+
 }
 
 #cart_list li #book_num {
@@ -96,12 +116,12 @@ body {
 
 #cart_operate {
     float: left;
-    width: 850px;
+    width: 900px;
     height: 80px;
     background-color: #F7F7F7;
-    border-radius: 4px;
+    border-radius: 6px;
     margin: 0 auto;
-    margin-left: 200px;
+    margin-left: 150px;
 }
 
 #shoppingCart #total {
@@ -120,6 +140,7 @@ body {
     margin-left: 10px;
     color: #FF2832;
     font-weight: 400;
+
 }
 
 #shoppingCart #buy {
@@ -129,7 +150,31 @@ body {
     font-size: 16px;
     font-weight: 700;
     color: #FFFFFF;
-    background-color: #FF2832;
+    background-color: #F26552;
+    border-radius: 6px;
     text-align: center;
     line-height: 30px;
+    transition: all 0.5s;
+    Vertical-align: middle;
+}
+
+#shoppingCart #buy:hover {
+    background-color: red;
+}
+
+#cart_list .delBtn {
+    display: inline-block;
+    /* width: 80px;
+    height: 60px; */
+    width: 3.5em;
+    height: 2.4em;
+    line-height: 3em;
+    text-align: center;
+    border-radius: 6px;
+    background-color: #F26552;
+    transition: all .5s;
+}
+
+#cart_list .delBtn:hover {
+    background-color: #FF0000;
 }

@@ -27,7 +27,8 @@
             <div id="rotation" class="type_page">
                 <div id="left" @click="prevImg()"><img src="/img/prev.png" width="40px" height="40px"></div>
                 <ul class="cont">
-                    <li v-for="(item,index) in rankList" v-if="index<7" :key="index" v-show="index===currentIndex" @mouseenter="stop" @mouseleave="go">
+                    <li v-for="(item,index) in rankList" v-if="index<7" :key="index" v-show="index===currentIndex"
+                        @mouseenter="stop" @mouseleave="go">
                         <a href="javascript:;"> <img :src="'/bookimg/'+item.bid+'.png'"></a>
                     </li>
                 </ul>
