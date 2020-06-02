@@ -12,7 +12,6 @@ var top = new Vue({
         },
         search() {
             var that = this;
-            alert(that.bid)
             axios.post("/search", {
                 bookname: that.bookname
             }).then(response => {
