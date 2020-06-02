@@ -14,6 +14,9 @@
 
 <body>
     <div th:insert="~{common :: top}"></div>
+    <div class="indexImg">
+        <img src="/img/index.png" width="200px" height="300px">
+    </div>
     <div id="shopcar">
         <a th:href="@{/shopcar/{user}(user=${session.userToken})}" th:if="${session.userToken}!=null">
             <img src="/img/shopcar.png">
@@ -28,7 +31,7 @@
                 <div id="left" @click="prevImg()"><img src="/img/prev.png" width="40px" height="40px"></div>
                 <ul class="cont">
                     <li v-for="(item,index) in rankList" v-if="index<7" :key="index" v-show="index===currentIndex" @mouseenter="stop" @mouseleave="go">
-                        <a href="javascript:;"> <img :src="'/bookimg/'+item.bid+'.png'"></a>
+                        <a :href="'/book/'+item.bid"><img :src="'/bookimg/'+item.bid+'.png'"></a>
                     </li>
                 </ul>
                 <div id="right" @click="nextImg()"><img src="/img/next.png" width="40px" height="40px"></div>
@@ -82,7 +85,7 @@
                 </div>
                 <div id="ranking_list">
                     <div id="rank_title">
-                        <label><img src="img/ranklist.png"></label>
+                        <label><img src="/img/ranklist.png"></label>
                         <h1>排行榜</h1>
                     </div>
                     <div id="rank_body">
@@ -98,10 +101,8 @@
                 </div>
             </div>
         </div>
-
-
-
     </div>
+    <div th:insert="~{common :: footer}"></div>
     <script src="/js/index.js"></script>
 </body>
 

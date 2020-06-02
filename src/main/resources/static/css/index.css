@@ -1,9 +1,21 @@
+/*小女孩*/
+
+.indexImg {
+    position: fixed;
+    width: 200px;
+    height: 300px;
+    bottom: 10px;
+    left: 10px;
+    z-index: -1;
+}
+
+
 /*购物车*/
 
 #shopcar {
     position: fixed;
     bottom: 50px;
-    right: 200px;
+    right: 80px;
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -63,9 +75,11 @@
 .cont img:hover {
     transform: translateY(-4px);
 }
+
 .itme {
     display: none;
 }
+
 .item.active {
     /* z-index: 50; */
     display: block;

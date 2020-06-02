@@ -1,6 +1,15 @@
+.orderImg {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    bottom: 10px;
+    right: 10px;
+    z-index: -1;
+}
+
 #box {
     position: relative;
-    top: 80px;
+    top: 60px;
     left: calc(50% - 500px);
     padding: 20px 0;
     width: 1000px;
@@ -16,8 +25,8 @@
     padding: 20px;
     width: 95%;
     height: 100px;
-    border-radius: 10px;
-    background-color: #979690;
+    border-radius: 5px;
+    background-color: #c2c2c2;
     color: #000;
     font-weight: 700;
 }
@@ -77,8 +86,8 @@
     padding: 20px 0;
     width: 95%;
     height: 430px;
-    border-radius: 10px;
-    background-color: #979690;
+    border-radius: 5px;
+    background-color: #c2c2c2;
     overflow: auto;
 }
 
@@ -141,11 +150,12 @@
 
 .List .listItem .check {
     position: absolute;
+    margin: auto;
     right: 100px;
     display: inline-block;
     width: 5em;
-    height: 25px;
-    line-height: 25px;
+    height: 30px;
+    line-height: 30px;
     background-color: rgb(131, 238, 70);
     border-radius: 5px;
     transition: all 0.5s;

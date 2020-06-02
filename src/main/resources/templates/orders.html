@@ -14,6 +14,9 @@
 
 <body>
     <div th:insert="~{common :: top}"></div>
+    <div class="orderImg">
+        <img src="/img/order.png" width="300px" height="300px">
+    </div>
     <div id="box">
         <div id="searchBox">
             <div id="action" @click="orderSearch">
@@ -70,68 +73,6 @@
                                 <span>{{item.isbn}}</span>
                                 <span>{{item.bookprice}}元</span>
                             </li>
-                            <li class="listItem">
-                                <span>订单ID</span>
-                                <span>图书ID</span>
-                                <span>ISBN</span>
-                                <span>图书价格</span>
-                            </li>
-                            <li class="listItem">
-                                <span>订单ID</span>
-                                <span>图书ID</span>
-                                <span>ISBN</span>
-                                <span>图书价格</span>
-                            </li>
-                            <li class="listItem">
-                                <span>订单ID</span>
-                                <span>图书ID</span>
-                                <span>ISBN</span>
-                                <span>图书价格</span>
-                            </li>
-                            <li class="listItem">
-                                <span>订单ID</span>
-                                <span>图书ID</span>
-                                <span>ISBN</span>
-                                <span>图书价格</span>
-                            </li>
-                            <li class="listItem">
-                                <span>订单ID</span>
-                                <span>图书ID</span>
-                                <span>ISBN</span>
-                                <span>图书价格</span>
-                            </li>
-
-                            <li class="listItem">
-                                <span>订单ID</span>
-                                <span>图书ID</span>
-                                <span>ISBN</span>
-                                <span>图书价格</span>
-                            </li>
-                            <li class="listItem">
-                                <span>订单ID</span>
-                                <span>图书ID</span>
-                                <span>ISBN</span>
-                                <span>图书价格</span>
-                            </li>
-
-                            <li class="listItem">
-                                <span>订单ID</span>
-                                <span>图书ID</span>
-                                <span>ISBN</span>
-                                <span>图书价格</span>
-                            </li>
-                            <li class="listItem">
-                                <span>订单ID</span>
-                                <span>图书ID</span>
-                                <span>ISBN</span>
-                                <span>图书价格</span>
-                            </li>
-                            <li class="listItem">
-                                <span>订单ID</span>
-                                <span>图书ID</span>
-                                <span>ISBN</span>
-                                <span>图书价格</span>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -142,7 +83,7 @@
     </div>
 
 
-
+    <div th:insert="~{common :: footer}"></div>
     <script src="/js/orders.js"></script>
 </body>
 
