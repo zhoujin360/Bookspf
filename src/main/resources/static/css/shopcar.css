@@ -170,12 +170,13 @@ body {
     line-height: 3em;
     text-align: center;
     border-radius: 6px;
-    background-color: #F26552;
+    color: #000;
+    background-color: rgb(231, 35, 35);
     transition: all .5s;
 }
 
 #cart_list .delBtn:hover {
-    background-color: #FF0000;
+    background-color: rgb(202, 26, 26);
 }
 
 #footer {
