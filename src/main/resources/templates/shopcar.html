@@ -22,8 +22,6 @@
                     <span style="border-radius: 6px;">商品信息</span>
                     <span>单价</span>
                     <span>数量</span>
-                    <span>&nbsp;&nbsp;</span>
-                    <!-- <span>&nbsp;&nbsp;</span> -->
                 </div>
                 <div id="cart_list">
                     <ul>
@@ -33,7 +31,7 @@
                             <span id="num">
                                 <label id="decrease" @click="changeNum(item.bid,item.booknumber,0)">-</label>
                                 <span id="book_num">{{ item.booknumber }}</span>
-                            <label id="add" @click="changeNum(item.bid,item.booknumber,1)">+</label>
+                                <label id="add" @click="changeNum(item.bid,item.booknumber,1)">+</label>
                             </span>
                             <span>&nbsp;&nbsp;</span>
                             <a href="javascript:;" @click="deleteShopcarOfBid(item.bid)" id="del" class="delBtn">删除</a>

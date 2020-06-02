@@ -27,6 +27,7 @@
     height: 100px;
     border-radius: 5px;
     background-color: #c2c2c2;
+    background-color: #EAE5C9;
     color: #000;
     font-weight: 700;
 }
@@ -87,7 +88,9 @@
     width: 95%;
     height: 430px;
     border-radius: 5px;
-    background-color: #c2c2c2;
+    /* background-color: #c2c2c2; */
+    background: linear-gradient(to top, #6CC6CB, #EAE5C9);
+
     overflow: auto;
 }
 
