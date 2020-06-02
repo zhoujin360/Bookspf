@@ -117,7 +117,7 @@ body {
 #cart_operate {
     float: left;
     width: 900px;
-    height: 80px;
+    height: 70px;
     background-color: #F7F7F7;
     border-radius: 6px;
     margin: 0 auto;
@@ -131,8 +131,9 @@ body {
     text-align: center;
     line-height: 30px;
     margin-left: 450px;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-right: 60px;
+    Vertical-align: middle;
 }
 
 #total h1 {
@@ -149,13 +150,14 @@ body {
     height: 40px;
     font-size: 16px;
     font-weight: 700;
+    margin-top: 10px;
     color: #FFFFFF;
     background-color: #F26552;
     border-radius: 6px;
     text-align: center;
     line-height: 30px;
     transition: all 0.5s;
-    Vertical-align: middle;
+ 
 }
 
 #shoppingCart #buy:hover {
