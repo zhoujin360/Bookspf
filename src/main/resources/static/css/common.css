@@ -28,7 +28,7 @@
     text-align: center;
     margin-left: 200px;
 }
-
+ 
 #top #classif {
     position: absolute;
     top: 10px;
@@ -36,6 +36,28 @@
     text-align: center;
     margin-left: 200px;
 }
+
+#top #search {
+    position: absolute;
+    top: 20px;
+    left: 700px;
+    width: 200px;
+    height: 30px;
+    border: 1px solid #D2D2D2;
+    border-radius: 20px;
+    transition: all 0.5s;
+}
+#top #search:hover {
+    border: 1px solid #9E9E9E;    
+}
+
+#top #searbar img {
+    position: absolute;
+    top: 25px;
+    left: 870px;
+    width: 20px; 
+}
+
 
 #top #log {
     position: absolute;
