@@ -25,7 +25,7 @@
             <div id="book_title">
                 <h1>[[${book.bookname}]]</h1>
                 <span>作者: [[${book.author}]]</span>
-                <h4>分类名</h4>
+                <h4>分类：[[${book.sortname}]]</h4>
             </div>
             <div id="book_price">
                 <span>价格:[[${book.bookprice}]]</span>
@@ -52,7 +52,7 @@
     <script th:inline="javascript">
     </script>
     <script src="/js/book.js"></script>
-
+    <script src="/js/common.js"></script>
 </body>
 
 </html>

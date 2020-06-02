@@ -5,6 +5,7 @@ public class DBBook {
 	private String bookname;
 	private Integer hot;
 	private Integer sortid;
+	private String sortname;
 	private String author;
 	private String description;
 	private Double bookprice;
@@ -119,7 +120,13 @@ public class DBBook {
 		this.number = number;
 	}
 
+	public String getSortname() {
+		return sortname;
+	}
 
+	public void setSortname(String sortname) {
+		this.sortname = sortname;
+	}
 
 	@Override
 	public String toString() {

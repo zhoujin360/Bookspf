@@ -123,12 +123,15 @@
     background-color: rgb(96, 223, 23);
 }
 
+.basicInfo input,
 .userInfo input {
     width: 12.6em;
     height: 30px;
     border-radius: 5px;
 }
 
+.basicInfo span.Hidden,
+.basicInfo input.Hidden,
 .userInfo span.Hidden,
 .userInfo input.Hidden {
     display: none;

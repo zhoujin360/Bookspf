@@ -12,8 +12,8 @@
                     <a href="/">首页</a>
                 </div>
                 <div id="searbar">
-                    <input type="text" th:if="${session.userToken != null}" placeholder="书名/作者名" id="search">
-                    <img src="/img/search.png" alt="">
+                    <input type="text" @keyup.enter="search()" v-model="bid" placeholder="书名/作者名" id="search">
+                    <img src="/img/search.png">
                 </div>
                 <div id="log" th:if="${session.userToken == null}">
                     <a href="/login">登录</a>
@@ -22,8 +22,7 @@
                     <a href="/register">注册</a>
                 </div>
                 <div id="username">
-                    <a th:href="@{/account/{user}(user=${session.userToken})}"
-                        th:if="${session.userToken != null}">[[${session.username}]]</a>
+                    <a th:href="@{/account/{user}(user=${session.userToken})}" th:if="${session.userToken != null}">[[${session.username}]]</a>
                 </div>
                 <div id="my_order" th:if="${session.userToken != null}">
                     <a th:href="@{/orders/{user}(user=${session.userToken})}">我的订单</a>

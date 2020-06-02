@@ -3,7 +3,9 @@ package cn.Bookspf.controller;
 import javax.servlet.http.HttpSession;
 
 import cn.Bookspf.mapper.BookMapper;
+import cn.Bookspf.mapper.SortMapper;
 import cn.Bookspf.model.DO.DBBook;
+import cn.Bookspf.model.DO.DBSort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,14 +23,15 @@ public class PagesRequest {
 	Validator validator;
 	UserMapper userMapper;
 	BookMapper bookMapper;
-
+	SortMapper sortMapper;
 	
 	@Autowired
-	public PagesRequest(HttpSession httpSession, UserMapper userMapper, BookMapper bookMapper) {
+	public PagesRequest(HttpSession httpSession, UserMapper userMapper, BookMapper bookMapper,SortMapper sortMapper) {
 		this.httpSession=httpSession;
 		this.validator=new Validator(httpSession);
 		this.userMapper=userMapper;
 		this.bookMapper=bookMapper;
+		this.sortMapper=sortMapper;
 	}
 	
 	
@@ -40,6 +43,7 @@ public class PagesRequest {
 
 	public void setModelBook(Model model,Integer bid) {
 		DBBook book=bookMapper.getBook(bid);
+		book.setSortname(sortMapper.getSortname(book.getSortid()));
 		model.addAttribute("book", book);
 	}
 	

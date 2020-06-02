@@ -1,16 +1,3 @@
-//top
-var top = new Vue({
-    el: "#top",
-    methods: {
-        logout() {
-            axios.post("/logout")
-                .then(function() {
-                    window.location.reload();
-                })
-        }
-    }
-});
-
 //获取订单信息列表
 var getOrderList = new Vue({
     el: "#orders",

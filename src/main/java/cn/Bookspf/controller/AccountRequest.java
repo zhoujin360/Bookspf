@@ -48,6 +48,7 @@ public class AccountRequest {
         if(!validator.isLogin()) return new Response(false,"请登录再操作");
         if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
         Integer uid = (Integer) httpSession.getAttribute("userToken");
+        System.out.println(uid);
         String newPassword = request.getPassword();
         if(newPassword.equals(userMapper.getPasswordOfUid(uid))) return new Response(true,"新密码与旧密码一致");
         userMapper.updatePassword(uid,newPassword);

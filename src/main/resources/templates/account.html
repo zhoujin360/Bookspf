@@ -34,8 +34,9 @@
                 </div>
                 <div>
                     <span>用户名</span>：
-                    <span>[[${user.username}]]</span>
-                    <a class="Btn">修改密码</a>
+                    <span :class="passwordShow?'':'Hidden'">[[${user.username}]]</span>
+                    <input type="text" @blur="isShowInput(3);changePassword()" :class="passwordShow?'Hidden':''" v-model="password" placeholder="请输入密码">
+                    <a class="Btn" @click="isShowInput(3)">修改密码</a>
                 </div>
                 <div>
                     <span>余额</span>：
@@ -52,19 +53,19 @@
                 <div>
                     <span>手机号码</span>：
                     <span :class="phoneShow?'':'Hidden'">[[${user.phone}]]</span>
-                    <input type="text" @blur="isShowInput(0);changePhone()" :class="phoneShow?'Hidden':''" v-model="phone" placeholder="请输入修改的号码">
+                    <input type="text" @blur="isShowInput(0);changePhone()" :class="phoneShow?'Hidden':''" v-model="phone" placeholder="请输入号码">
                     <a class="Btn" @click="isShowInput(0)">修改</a>
                 </div>
                 <div>
                     <span>真实姓名</span>：
                     <span :class="realnameShow?'':'Hidden'">[[${user.realname}]]</span>
-                    <input type="text" @blur="isShowInput(1);changeRealname()" :class="realnameShow?'Hidden':''" v-model="realname" placeholder="请输入修改的姓名">
+                    <input type="text" @blur="isShowInput(1);changeRealname()" :class="realnameShow?'Hidden':''" v-model="realname" placeholder="请输入姓名">
                     <a class="Btn" @click="isShowInput(1)">修改</a>
                 </div>
                 <div class="address">
                     <span>收货地址</span>：
                     <span :class="addressShow?'':'Hidden'">[[${user.address}]]</span>
-                    <input type="text" @blur="isShowInput(2);changeAddress()" :class="addressShow?'Hidden':''" v-model="address" placeholder="请输入修改的地址">
+                    <input type="text" @blur="isShowInput(2);changeAddress()" :class="addressShow?'Hidden':''" v-model="address" placeholder="请输入地址">
                     <a class="Btn" @click="isShowInput(2)">修改</a>
                 </div>
                 <div class="errmes">
@@ -74,6 +75,7 @@
         </div>
     </div>
     <script src="/js/account.js"></script>
+    <script src="/js/common.js"></script>
 </body>
 
 </html>

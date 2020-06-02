@@ -18,6 +18,9 @@ public interface SortMapper {
 	//查询所有分类信息
 	@Select("select * from sort")
 	public ArrayList<DBSort> getSorts();
+
+	@Select("select sortname from sort where sortid=#{sortid}")
+	public String getSortname(Integer sortid);
 	
 	@Insert("insert into sort values(#{sortid},#{sortname})")
 	public void addSort(Sort sort);

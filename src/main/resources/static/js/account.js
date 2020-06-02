@@ -1,26 +1,13 @@
-//top
-var top = new Vue({
-    el: "#top",
-    methods: {
-        logout() {
-            axios.post("/logout")
-                .then(function() {
-                    window.location.reload();
-                })
-        }
-    }
-});
-
-
-
 var app = new Vue({
     el: "#box",
     data: {
+        password: "",
         phone: "",
         realname: "",
         address: "",
         errmes: '',
         isShow: false,
+        passwordShow: true,
         phoneShow: true,
         realnameShow: true,
         addressShow: true
@@ -30,6 +17,7 @@ var app = new Vue({
             if (index == 0) this.phoneShow = !this.phoneShow;
             if (index == 1) this.realnameShow = !this.realnameShow;
             if (index == 2) this.addressShow = !this.addressShow;
+            if (index == 3) this.passwordShow = !this.passwordShow;
         },
         changePassword() {
             var that = this;
@@ -37,12 +25,14 @@ var app = new Vue({
             if (!passwordReg.test(that.password) || that.password == '') {
                 that.errmes = "密码格式错误";
                 that.isShow = true;
+            } else {
+                that.isShow = false;
+                axios.post("/changePassword", {
+                    password: that.password
+                }).then(response => {
+                    alert(response.data.mes);
+                })
             }
-            axios.posr("/changePassword", {
-                password: password
-            }).then(response => {
-                alert(response.data.mes);
-            })
         },
         changePhone() {
             var that = this;
