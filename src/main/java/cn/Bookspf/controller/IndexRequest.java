@@ -45,5 +45,12 @@ public class IndexRequest {
 		ArrayList<DBBook> bookList = bookMapper.getPublishBook();
 		return new BookResponse(bookList);
 	}
+
+	@PostMapping("/search")
+	public Response search(@RequestBody Book request){
+		Integer bid = bookMapper.getBid(request.getBookname());
+		if(bid==null) return new Response(false,"对不起,没有找到您需要的图书");
+		return new Response(true,"/book/"+bid);
+	}
 	
 }

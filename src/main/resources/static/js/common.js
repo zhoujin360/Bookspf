@@ -1,7 +1,7 @@
 var top = new Vue({
     el: "#top",
     data: {
-        bid: ''
+        bookname: ''
     },
     methods: {
         logout() {
@@ -14,7 +14,13 @@ var top = new Vue({
             var that = this;
             alert(that.bid)
             axios.post("/search", {
-                bid: that.bid
+                bookname: that.bookname
+            }).then(response => {
+                if (response.data.status) {
+                    window.location.replace(response.data.mes);
+                } else {
+                    alert(response.data.mes);
+                }
             })
         }
     }

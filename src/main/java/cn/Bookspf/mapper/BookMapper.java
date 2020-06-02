@@ -24,7 +24,11 @@ public interface BookMapper {
 	//查Bid
 	@Select("select bid from book where bid=#{bid}")
 	public String findBid(Integer bid);
-	
+
+	//获取bid
+	@Select("select bid from book where bookname=#{bookname}")
+	public Integer getBid(String bookname);
+
 	//插入图书记录
 	@Insert("insert into book values(#{bid},#{bookname},#{hot},#{sortid},#{author},#{description},#{bookprice},#{added},#{number})")
 	public void addBook(Book book);
