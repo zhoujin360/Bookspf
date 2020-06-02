@@ -2,6 +2,24 @@ body {
     backface-visibility: #FFFFFF;
 }
 
+.shopcar1Img {
+    position: fixed;
+    width: 200px;
+    height: 300px;
+    bottom: 10px;
+    left: 10px;
+    z-index: -1;
+}
+
+.shopcar2Img {
+    position: fixed;
+    width: 200px;
+    height: 300px;
+    bottom: 10px;
+    right: 10px;
+    z-index: -1;
+}
+
 
 /* 订单信息 */
 
@@ -27,7 +45,6 @@ body {
     margin-bottom: 20px;
     box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.1);
     background-color: #F7F7F7;
-
 }
 
 #cart_title span {
@@ -52,7 +69,6 @@ body {
     border-radius: 6px;
     margin-bottom: 10px;
     background-color: #F0F0F0;
-
     margin-top: 3px;
     transition: all 0.5s;
 }
@@ -90,8 +106,6 @@ body {
 #num #add {
     border-radius: 5px;
     background-color: #F0F0F0;
-
-
 }
 
 #cart_list li #book_num {
