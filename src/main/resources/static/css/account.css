@@ -1,6 +1,15 @@
+.accountImg {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    bottom: 10px;
+    left: 10px;
+    z-index: -1;
+}
+
 #box {
-    position: relative;
-    top: 150px;
+    position: absolute;
+    top: calc(50% - 220px);
     left: calc(50% - 420px);
     width: 840px;
     height: 500px;
