@@ -23,7 +23,7 @@
     </div>
     <div id="box" class="type_page">
         <div id="book_content">
-            <div id="book_img">1</div>
+            <div id="book_img"><img th:src="@{/img/{book}.png(book=${book.bid})}"></div>
             <div id="book_title">
                 <h1>[[${book.bookname}]]</h1>
                 <span>作者: [[${book.author}]]</span>
@@ -58,7 +58,7 @@
                 bid: ""
             },
             methods: {
-                addShopcar: function () {
+                addShopcar: function() {
                     var that = this;
                     that.bid = [
                         [$ {
@@ -67,11 +67,11 @@
                     ];
                     axios.post("/addShopcar", {
 
-                    }).then(function (response) {
+                    }).then(function(response) {
 
-                        console.log(response);
-                    },
-                        function (err) {
+                            console.log(response);
+                        },
+                        function(err) {
 
                         })
 
