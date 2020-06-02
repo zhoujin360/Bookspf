@@ -8,14 +8,14 @@ body {
 #cart_information {
     width: 900px;
     height: 430px;
-    /* margin: 25px; */
     padding: 20px 50px;
     background-color: #979690;
-    margin: 100px auto;
+    margin: 60px auto;
     border-radius: 10px;
     margin-bottom: 10px;
     overflow: auto;
 }
+
 
 /* 订单标题 */
 
@@ -90,7 +90,6 @@ body {
 
 #num #add {
     border-radius: 5px;
-
 }
 
 #cart_list li #book_num {
@@ -141,7 +140,6 @@ body {
     margin-left: 10px;
     color: #FF2832;
     font-weight: 400;
-
 }
 
 #shoppingCart #buy {
@@ -157,7 +155,6 @@ body {
     text-align: center;
     line-height: 30px;
     transition: all 0.5s;
- 
 }
 
 #shoppingCart #buy:hover {
@@ -179,4 +176,8 @@ body {
 
 #cart_list .delBtn:hover {
     background-color: #FF0000;
+}
+
+#footer {
+    margin-top: 200px;
 }
