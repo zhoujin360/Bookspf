@@ -85,7 +85,7 @@
     background-color: #FFFFFF;
 }
 
-#book_service #add_shoppingcar {
+#book_service .add_shoppingcar {
     float: right;
     width: 100px;
     height: 40px;
@@ -100,11 +100,11 @@
     transition: all 0.5s;
 }
 
-#book_service #add_shoppingcar:hover {
+#book_service .add_shoppingcar:hover {
     background-color: #48B402;
 }
 
-#book_service #buy {
+#book_service .buy {
     float: right;
     width: 100px;
     height: 40px;
@@ -117,7 +117,7 @@
     transition: all 0.5s;
 }
 
-#book_service #buy:hover {
+#book_service .buy:hover {
     background-color: red;
 }
 
