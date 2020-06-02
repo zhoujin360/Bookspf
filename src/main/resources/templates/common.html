@@ -34,11 +34,24 @@
         </div>
     </div>
 
-    <div th:fragment="footer" id="footer" style="margin: 110px 0 50px; text-align: center;">
-        <h2>The End</h2>
-        <div>Copyright © 2020 Apple Inc. All rights reserved</div>
-        <div>Author:&nbsp;&nbsp;陈十三、倪梓源</div>
-        <div>备案号：粤ICP备110277X号</div>
+    <div th:fragment="shopcar">
+        <div id="shopcar">
+            <a th:href="@{/shopcar/{user}(user=${session.userToken})}" th:if="${session.userToken}!=null">
+                <img src="/img/shopcar.png">
+            </a>
+            <a href="javascript:;" th:if="${session.userToken}==null">
+                <img src="/img/shopcar.png">
+            </a>
+        </div>
+    </div>
+
+    <div th:fragment="footer">
+        <div id="footer">
+            <h2>The End</h2>
+            <div>Copyright © 2020 Apple Inc. All rights reserved</div>
+            <div>Author:&nbsp;&nbsp;陈十三、倪梓源</div>
+            <div>备案号：粤ICP备110277X号</div>
+        </div>
     </div>
 
 </body>

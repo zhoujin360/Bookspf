@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>图书销售平台-Bookspf</title>
     <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/top.css">
+    <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/index.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -14,24 +14,17 @@
 
 <body>
     <div th:insert="~{common :: top}"></div>
+    <div th:insert="~{common :: shopcar}"></div>
     <div class="indexImg">
         <img src="/img/index.png" width="200px" height="300px">
     </div>
-    <div id="shopcar">
-        <a th:href="@{/shopcar/{user}(user=${session.userToken})}" th:if="${session.userToken}!=null">
-            <img src="/img/shopcar.png">
-        </a>
-        <a href="javascript:;" th:if="${session.userToken}==null">
-            <img src="/img/shopcar.png">
-        </a>
-    </div>
+
     <div id="box">
         <div style="width: 100%; background: url('img/bg.gif') no-repeat;">
             <div id="rotation" class="type_page">
                 <div id="left" @click="prevImg()"><img src="/img/prev.png" width="40px" height="40px"></div>
                 <ul class="cont">
-                    <li v-for="(item,index) in rankList" v-if="index<7" :key="index" v-show="index===currentIndex"
-                        @mouseenter="stop" @mouseleave="go">
+                    <li v-for="(item,index) in rankList" v-if="index<7" :key="index" v-show="index===currentIndex" @mouseenter="stop" @mouseleave="go">
                         <a :href="'/book/'+item.bid"><img :src="'/bookimg/'+item.bid+'.png'"></a>
                     </li>
                 </ul>

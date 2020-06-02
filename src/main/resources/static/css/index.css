@@ -10,32 +10,6 @@
 }
 
 
-/*购物车*/
-
-#shopcar {
-    position: fixed;
-    bottom: 50px;
-    right: 80px;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-}
-
-#shopcar img {
-    display: block;
-    margin: auto;
-    width: 80px;
-    height: 80px;
-    cursor: pointer;
-    transition: all 0.5s;
-}
-
-#shopcar:hover img {
-    width: 90%;
-    height: 90%;
-}
-
-
 /* 轮播图 */
 
 #rotation {
@@ -324,4 +298,8 @@
 
 #rank_body h4:hover {
     color: #212121;
+}
+
+#footer {
+    margin: 110px 0 50px;
 }
