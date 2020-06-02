@@ -9,8 +9,6 @@ body {
     width: 900px;
     height: 430px;
     padding: 20px 50px;
-
-    background-color: #445C7B;
     background-color: #483D8B;
     background: linear-gradient(to top, #EAE5C9, #6CC6CB);
     margin: 60px auto;
@@ -28,11 +26,6 @@ body {
     border-radius: 6px;
     margin-bottom: 20px;
     box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.1);
-    background-color: #E1F2EC;
-    background-color: #F7F7F7;
-    background-color: #F0ECC0;
-    background-color: #FFEBCD;
-    background-color: #E3E3E3;
     background-color: #F7F7F7;
 
 }
@@ -96,10 +89,6 @@ body {
 
 #num #add {
     border-radius: 5px;
-    background-color: #E1F2EC;
-    background-color: #F0ECC0;
-    background-color: #FFEBCD;
-    background-color: #E3E3E3;
     background-color: #F0F0F0;
 
 
