@@ -89,10 +89,27 @@ body {
     border-bottom: 3px solid #69B4FE;
 }
 
-#verification {
+.verifycode {
+    position: relative;
     width: 350px;
     height: 35px;
     margin-top: 20px;
+    margin-left: 125px;
+    background-color: pink;
+}
+.verifycode div {
+    position: absolute;
+    bottom: 3px;
+    right: 0;
+    width: 100px;
+    height: 35px;
+    background-color: pink;
+}
+
+#verification {
+    width: 350px;
+    height: 35px;
+    /* margin-top: 20px; */
     border-radius: 5px;
     border-bottom: 3px solid #DCDCDC;
 }
@@ -142,6 +159,9 @@ body {
     line-height: 30px;
     color: #F26552;
     /* background-color: pink; */
+}
+.errmes_red {
+    color: red;
 }
 
 

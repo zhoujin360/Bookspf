@@ -23,6 +23,10 @@
         <form id="loginForm" @submit.prevent="submit">
             <input type="text" placeholder="   Account" v-model="username" id="log_account"><br>
             <input type="password" placeholder="   Password" v-model="password" id="log_password"><br>
+            <div class="verifycode">
+                <input type="text" placeholder="  Verification" id="verification">
+                <div></div>
+            </div>
             <a href="/register" id="toReg">
                 <h4>Registered account?</h4>
             </a>
