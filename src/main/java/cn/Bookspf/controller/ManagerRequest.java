@@ -161,23 +161,23 @@ public class ManagerRequest {
 		int index = Obj.getInteger("index");
 		if(index==0){
 			ArrayList<DBOrder> order = orderMapper.getOrders();
-			ArrayList<Integer> price = orderMapper.getOrderPrice();
+			ArrayList<Double> price = orderMapper.getOrderPrice();
 			orderResponse.setOrders(operator.getOrders(order,price));
 		}else if(index==1){
 			long orderid=Obj.getLong("str");
 			ArrayList<DBOrder> order = orderMapper.getOrderOfOrderid(orderid);
-			ArrayList<Integer> price = orderMapper.getOrderPriceOfOrderid(orderid);
+			ArrayList<Double> price = orderMapper.getOrderPriceOfOrderid(orderid);
 			orderResponse.setOrders(operator.getOrders(order,price));
 		}else if(index==2){
 			Integer uid=Obj.getInteger("str");
 			ArrayList<DBOrder> order = orderMapper.getOrderOfUid(uid);
-			ArrayList<Integer> price = orderMapper.getOrderPriceOfUid(uid);
+			ArrayList<Double> price = orderMapper.getOrderPriceOfUid(uid);
 			orderResponse.setOrders(operator.getOrders(order,price));
 		}else if(index==3){
 			String createtime=Obj.getString("str");
 			createtime=createtime.replace("T"," ");
 			ArrayList<DBOrder> order = orderMapper.getOrderOfCreatetime(createtime);
-			ArrayList<Integer> price = orderMapper.getOrderPriceOfCreatetime(createtime);
+			ArrayList<Double> price = orderMapper.getOrderPriceOfCreatetime(createtime);
 			orderResponse.setOrders(operator.getOrders(order,price));
 		}
 		return orderResponse;
@@ -189,7 +189,7 @@ public class ManagerRequest {
 		if(!validator.isLogin()) return new Response(false,"请登录再操作");
 		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
 		OrderResponse orderResponse=new OrderResponse();
-		orderResponse.setOrdersinfo(orderMapper.getOrderinfoOfOrderid(request.getOrderid()));
+		orderResponse.setOrders(orderMapper.getOrderinfoOfOrderid(request.getOrderid()));
 		return orderResponse;
 	}
 
@@ -247,7 +247,7 @@ public class ManagerRequest {
 		if(!validator.isLogin()) return new Response(false,"请登录再操作");
 		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
 		PurchaseResponse purchaseResponse=new PurchaseResponse();
-		purchaseResponse.setPurchasesinfo(purchaseMapper.getPurchasesinfo(request.getPurchaseid()));
+		purchaseResponse.setPurchases(purchaseMapper.getPurchasesinfo(request.getPurchaseid()));
 		return purchaseResponse;
 	}
 

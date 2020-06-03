@@ -39,19 +39,19 @@ public interface OrderMapper {
 
 	//查询所有订单的总价
 	@Select("select sum(bookprice) from orders group by orderid")
-	public ArrayList<Integer> getOrderPrice();
+	public ArrayList<Double> getOrderPrice();
 
 	//查询所有订单的总价
 	@Select("select sum(bookprice) from orders where orderid=#{orderid} group by orderid")
-	public ArrayList<Integer> getOrderPriceOfOrderid(long orderid);
+	public ArrayList<Double> getOrderPriceOfOrderid(Long orderid);
 
 	//查询所有订单的总价
 	@Select("select sum(bookprice) from orders where uid=#{uid} group by orderid")
-	public ArrayList<Integer> getOrderPriceOfUid(Integer uid);
+	public ArrayList<Double> getOrderPriceOfUid(Integer uid);
 
 	//查询所有订单的总价
 	@Select("select sum(bookprice) from orders where createtime=#{createtime} group by orderid")
-	public ArrayList<Integer> getOrderPriceOfCreatetime(String createtime);
+	public ArrayList<Double> getOrderPriceOfCreatetime(String createtime);
 
 
 

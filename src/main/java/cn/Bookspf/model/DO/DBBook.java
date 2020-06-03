@@ -128,11 +128,5 @@ public class DBBook {
 		this.sortname = sortname;
 	}
 
-	@Override
-	public String toString() {
-		return "DBBook [bid=" + bid + ", bookname=" + bookname + ", hot=" + hot + ", sortid=" + sortid + ", author="
-				+ author + ", description=" + description + ", bookprice=" + bookprice + ", added=" + added
-				+ ", number=" + number + "]";
-	}
 	
 }

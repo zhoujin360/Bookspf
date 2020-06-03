@@ -4,9 +4,7 @@ import cn.Bookspf.mapper.*;
 import cn.Bookspf.model.DO.DBBook;
 import cn.Bookspf.model.DO.DBShopcar;
 import cn.Bookspf.model.DO.DBStock;
-import cn.Bookspf.model.DTO.Book;
 import cn.Bookspf.model.DTO.Shopcar;
-import cn.Bookspf.model.DTO.ShopcarStatistics;
 import cn.Bookspf.model.RO.Response;
 import cn.Bookspf.model.RO.ShopcarResponse;
 import cn.Bookspf.utils.Generator;
@@ -59,21 +57,13 @@ public class ShopcarRequest {
             total+=bookMapper.getBookprice(shopcars.get(i).getBid())*shopcars.get(i).getBooknumber();
         }
 
-        ArrayList<ShopcarStatistics> shopcarsinfo=new ArrayList<ShopcarStatistics>();
         for (int i=0;i<shopcars.size();i++){
-            ShopcarStatistics temp = new ShopcarStatistics();
-            Integer bid =shopcars.get(i).getBid();
-            DBBook book = bookMapper.getBook(bid);
-            temp.setBid(bid);
-            temp.setBookname(book.getBookname());
-            temp.setBookprice(book.getBookprice());
-            temp.setBooknumber(shopcars.get(i).getBooknumber());
-            temp.setTotal(total);
-            shopcarsinfo.add(temp);
+            DBBook book = bookMapper.getBook(shopcars.get(i).getBid());
+            shopcars.get(i).setBookname(book.getBookname());
+            shopcars.get(i).setBookprice(book.getBookprice());
+            shopcars.get(i).setTotal(total);
         }
-        ShopcarResponse shopcarResponse = new ShopcarResponse();
-        shopcarResponse.setShopcarsinfo(shopcarsinfo);
-        return shopcarResponse;
+        return new ShopcarResponse(shopcars);
     }
 
 

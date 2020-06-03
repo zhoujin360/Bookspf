@@ -66,9 +66,10 @@ var checkOrder = new Vue({
                 orderid: orderid
             }).then(response => {
                 console.log(response);
-                that.orderid = response.data.ordersinfo[0].orderid;
-                that.paid = response.data.ordersinfo[0].paid;
-                that.ordersinfo = response.data.ordersinfo;
+                that.orderid = response.data.orders[0].orderid;
+                that.paid = response.data.orders[0].paid;
+                that.ordersinfo = response.data.orders;
+                console.log(that.ordersinfo);
             })
         },
         isShow() {

@@ -45,20 +45,20 @@ public class OrdersRequest {
         int index = Obj.getInteger("index");
         if(index==0){
             ArrayList<DBOrder> order = orderMapper.getOrderOfUid(uid);
-            ArrayList<Integer> price = orderMapper.getOrderPriceOfUid(uid);
+            ArrayList<Double> price = orderMapper.getOrderPriceOfUid(uid);
             orderResponse.setOrders(operator.getOrders(order,price));
         }else if(index==1){
             long orderid=Obj.getLong("str");
             ArrayList<DBOrder> order = orderMapper.getOrderOfOrderidAndUid(orderid,uid);
             if (order==null) return new Response(false,"请输入正确订单号");
-            ArrayList<Integer> price = orderMapper.getOrderPriceOfOrderid(orderid);
+            ArrayList<Double> price = orderMapper.getOrderPriceOfOrderid(orderid);
             orderResponse.setOrders(operator.getOrders(order,price));
         }else if(index==2){
             String createtime=Obj.getString("str");
             createtime=createtime.replace("T"," ");
             ArrayList<DBOrder> order = orderMapper.getOrderOfCreatetimeAndUid(createtime,uid);
             if (order==null) return new Response(false,"没有该时间订单记录");
-            ArrayList<Integer> price = orderMapper.getOrderPriceOfCreatetime(createtime);
+            ArrayList<Double> price = orderMapper.getOrderPriceOfCreatetime(createtime);
             orderResponse.setOrders(operator.getOrders(order,price));
         }
         return orderResponse;
@@ -70,7 +70,7 @@ public class OrdersRequest {
         if(!validator.isLogin()) return new Response(false,"请登录再操作");
         if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
         OrderResponse orderResponse=new OrderResponse();
-        orderResponse.setOrdersinfo(orderMapper.getOrderinfoOfOrderid(request.getOrderid()));
+        orderResponse.setOrders(orderMapper.getOrderinfoOfOrderid(request.getOrderid()));
         return orderResponse;
     }
 }
