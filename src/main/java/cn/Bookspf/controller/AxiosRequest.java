@@ -78,9 +78,9 @@ public class AxiosRequest {
 		String password = request.getPassword();
 		password = DigestUtils.md5DigestAsHex(password.getBytes());
 		DBUser user=userMapper.getUserOfUsername(username);
-		String userPassword = user.getPassword();
 		if(user==null) return new Response(false,"用户名错误");
 //		if(!password.equals(user.getPassword())) return new Response(false,"密码错误");
+		String userPassword = user.getPassword();
 		if(!password.equals(userPassword)) return new Response(false,"密码错误");
 		httpSession.setAttribute("userToken", user.getUid());
 		httpSession.setAttribute("username", user.getUsername());

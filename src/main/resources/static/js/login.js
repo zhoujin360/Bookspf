@@ -23,12 +23,12 @@ var login = new Vue({
                     username: that.username,
                     password: that.password
                 }).then(function (response) {
+                    console.log(response);
                     if (response.data.status) {
                         window.location.reload();
                     } else {
-
                         that.errmes = response.data.mes;
-                        console.log(that.errmes);
+                        that.isShow = true;
                     }
                 })
             }

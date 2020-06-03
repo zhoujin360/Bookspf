@@ -29,8 +29,14 @@ var register = new Vue({
                     password: that.password,
                     email: that.email
                 }).then(function (response) {
-                    // console.log(response);
-                    that.msg = response.data.mes;
+                    console.log(response);
+                    if (!response.data.status) {
+                        that.isShow = true;
+                        that.errmes = response.data.mes;
+                    } else {
+
+                    }
+
                 })
             }
         },
