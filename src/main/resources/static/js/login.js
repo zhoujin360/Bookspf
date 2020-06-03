@@ -7,7 +7,7 @@ var login = new Vue({
         isShow: false
     },
     methods: {
-        submit: function() {
+        submit: function () {
             var that = this;
             var usernameReg = /^[A-Za-z0-9]{3,20}$/;
             var passwordReg = /^[0-9A-Za-z]{6,20}$/;
@@ -22,11 +22,13 @@ var login = new Vue({
                 axios.post("/login", {
                     username: that.username,
                     password: that.password
-                }).then(function(response) {
+                }).then(function (response) {
                     if (response.data.status) {
                         window.location.reload();
                     } else {
+
                         that.errmes = response.data.mes;
+                        console.log(that.errmes);
                     }
                 })
             }
