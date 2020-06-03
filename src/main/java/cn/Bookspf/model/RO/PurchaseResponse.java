@@ -3,27 +3,18 @@ package cn.Bookspf.model.RO;
 import java.util.ArrayList;
 
 import cn.Bookspf.model.DO.DBPurchase;
-import cn.Bookspf.model.DTO.PurchaseStatistics;
 
 public class PurchaseResponse extends Response{
-	private ArrayList<PurchaseStatistics> purchases;
-	private ArrayList<DBPurchase> purchasesinfo;
+	private ArrayList<DBPurchase> purchases;
 
 	public PurchaseResponse() {}
 
-	public ArrayList<PurchaseStatistics> getPurchases() {
+	public ArrayList<DBPurchase> getPurchases() {
 		return purchases;
 	}
 
-	public void setPurchases(ArrayList<PurchaseStatistics> purchases) {
+	public void setPurchases(ArrayList<DBPurchase> purchases) {
 		this.purchases = purchases;
 	}
 
-	public ArrayList<DBPurchase> getPurchasesinfo() {
-		return purchasesinfo;
-	}
-
-	public void setPurchasesinfo(ArrayList<DBPurchase> purchasesinfo) {
-		this.purchasesinfo = purchasesinfo;
-	}
 }

@@ -2,14 +2,12 @@ package cn.Bookspf.mapper;
 
 import cn.Bookspf.model.DO.DBPurchase;
 import cn.Bookspf.model.DTO.Purchase;
-import cn.Bookspf.model.DTO.PurchaseStatistics;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 
 @Mapper
@@ -28,17 +26,17 @@ public interface PurchaseMapper {
     //查询进货统计
     @Select("select purchaseid,count(purchaseid) number,sum(purchaseprice) total,purchasetime,operator " +
             "from purchase group by purchaseid,purchasetime,operator")
-    public ArrayList<PurchaseStatistics> getPurchases();
+    public ArrayList<DBPurchase> getPurchases();
 
     //查询某个进货统计
     @Select("select purchaseid,count(purchaseid) number,sum(purchaseprice) total,purchasetime,operator " +
             "from purchase where purchaseid=#{purchaseid} group by purchaseid,purchasetime,operator")
-    public ArrayList<PurchaseStatistics> getPurchaseOfPurchaseid(long purchaseid);
+    public ArrayList<DBPurchase> getPurchaseOfPurchaseid(long purchaseid);
 
     //查询某个进货统计
     @Select("select purchaseid,count(purchaseid) number,sum(purchaseprice) total,purchasetime,operator " +
             "from purchase where purchasetime=#{purchasetime} group by purchaseid,purchasetime,operator")
-    public ArrayList<PurchaseStatistics> getPurchaseOfPurchasetime(String purchasetime);
+    public ArrayList<DBPurchase> getPurchaseOfPurchasetime(String purchasetime);
 
     //查询某个进货信息
     @Select("select purchaseid,bid,isbn,purchaseprice from purchase where purchaseid=#{purchaseid}")

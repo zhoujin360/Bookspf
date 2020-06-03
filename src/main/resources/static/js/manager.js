@@ -5,7 +5,7 @@ var rotate90 = new Vue({
         isShow: 0
     },
     methods: {
-        rotateT: function (index) {
+        rotateT: function(index) {
             if (this.isShow == index) this.isShow = 0;
             else this.isShow = index;
         }
@@ -20,7 +20,7 @@ var logout = new Vue({
     methods: {
         logout() {
             axios.post("/logout")
-                .then(function () {
+                .then(function() {
                     window.location.reload();
                 })
         }
@@ -199,7 +199,7 @@ var addBook = new Vue({
         isShow: false
     },
     methods: {
-        submit: function () {
+        submit: function() {
             var that = this;
 
             if (!checkBid(that.bid)) {
@@ -285,7 +285,7 @@ var alterBook = new Vue({
         isShow: false
     },
     methods: {
-        submit: function () {
+        submit: function() {
             var that = this;
 
             if (that.bookname.length < 1) {
@@ -401,7 +401,7 @@ var addSort = new Vue({
         isShow: false
     },
     methods: {
-        submit: function () {
+        submit: function() {
             var that = this;
             if (!checkSortId(that.sortid)) {
                 that.showErrems("分类ID必须为正整数")
@@ -510,9 +510,9 @@ var checkOrder = new Vue({
             axios.post("/checkOrderOfAdmin", {
                 orderid: orderid
             }).then(response => {
-                that.orderid = response.data.ordersinfo[0].orderid;
-                that.paid = response.data.ordersinfo[0].paid;
-                that.ordersinfo = response.data.ordersinfo;
+                that.orderid = response.data.orders[0].orderid;
+                that.paid = response.data.orders[0].paid;
+                that.ordersinfo = response.data.orders;
             })
         }
     }
@@ -646,8 +646,8 @@ var checkPurchase = new Vue({
             axios.post("/checkPurchase", {
                 purchaseid: purchaseid
             }).then(response => {
-                that.purchaseid = response.data.purchasesinfo[0].purchaseid;
-                that.purchasesinfo = response.data.purchasesinfo;
+                that.purchaseid = response.data.purchases[0].purchaseid;
+                that.purchasesinfo = response.data.purchases;
             })
         }
     }
@@ -759,7 +759,7 @@ var addPurchase = new Vue({
         isShow: false
     },
     methods: {
-        submit: function () {
+        submit: function() {
             var that = this;
             if (!checkNum(that.purchaseid)) {
                 that.showErrems("进货ID必须为13位正整数");

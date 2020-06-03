@@ -18,8 +18,7 @@ var app = new Vue({
             axios.get("/getRankList").then(
                 function(response) {
                     that.rankList = response.data.books;
-                },
-                function(err) {}
+                }
             )
         },
         //获取出版图书
@@ -29,8 +28,7 @@ var app = new Vue({
                 function(response) {
                     that.publishbook = response.data.books[4];
                     that.publishbookList = response.data.books;
-                },
-                function(err) {}
+                }
             )
         },
         created() {

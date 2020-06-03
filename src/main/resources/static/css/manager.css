@@ -310,7 +310,13 @@ a {
     width: 12em;
 }
 
-#checkOrder,
+#checkOrder {
+    left: calc(50% - 275px);
+    top: calc(50% - 160px);
+    width: 550px;
+    height: 310px;
+}
+
 #checkPurchase,
 #checkStock {
     left: calc(50% - 275px);

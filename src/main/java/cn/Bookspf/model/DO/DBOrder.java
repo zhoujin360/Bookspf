@@ -11,6 +11,7 @@ public class DBOrder {
 	private Integer bid;
 	private String isbn;
 	private Double bookprice;
+	private Double total;
 	private String createtime;
 
 
@@ -70,8 +71,11 @@ public class DBOrder {
 		this.createtime = createtime;
 	}
 
+	public Double getTotal() {
+		return total;
+	}
 
-
-
-	
+	public void setTotal(Double total) {
+		this.total = total;
+	}
 }

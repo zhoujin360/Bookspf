@@ -3,14 +3,8 @@ package cn.Bookspf.utils;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
 
-import cn.Bookspf.mapper.OrderMapper;
 import cn.Bookspf.model.DO.DBOrder;
-import cn.Bookspf.model.DTO.OrderStatistics;
-import cn.Bookspf.model.DTO.PurchaseStatistics;
-import cn.Bookspf.model.RO.Response;
 import org.springframework.web.multipart.MultipartFile;
 
 public class Operator {
@@ -48,17 +42,11 @@ public class Operator {
 
 
 	//查询订单的统计信息
-	public ArrayList<OrderStatistics> getOrders(ArrayList<DBOrder> order,ArrayList<Integer> price){
-		ArrayList<OrderStatistics> orders= new ArrayList<OrderStatistics>();
+	public ArrayList<DBOrder> getOrders(ArrayList<DBOrder> order,ArrayList<Double> price){
 		for(int i=0;i<order.size();i++) {
-			OrderStatistics temp=new OrderStatistics();
-			temp.setOrderid(order.get(i).getOrderid());
-			temp.setUid(order.get(i).getUid());
-			temp.setCreatetime(order.get(i).getCreatetime());
-			temp.setTotal(price.get(i));
-			orders.add(temp);
+			order.get(i).setTotal(price.get(i));
 		}
-		return orders;
+		return order;
 	}
 
 

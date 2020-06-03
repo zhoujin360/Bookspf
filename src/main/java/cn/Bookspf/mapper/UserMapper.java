@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import cn.Bookspf.model.DO.DBUser;
 import cn.Bookspf.model.DTO.User;
-import cn.Bookspf.model.DTO.UserNoPassword;
 
 @Mapper
 @Repository
@@ -26,8 +25,8 @@ public interface UserMapper {
 	public DBUser getUserOfEmail(String email);
 	
 	//获取UserNoPass Of Uid
-	@Select("select * from user where admin=#{admin}")
-	public ArrayList<UserNoPassword> getUserNoPasswordOfAdmin(Integer admin);
+	@Select("select uid,username,password,admin,email,balance,realname,phone,address from user where admin=#{admin}")
+	public ArrayList<DBUser> getUserNoPasswordOfAdmin(Integer admin);
 	
 	//插入用户
 	@Insert("insert into user(uid,username,password,email,admin) values(#{uid},#{username},#{password},#{email},#{admin})")
