@@ -82,13 +82,42 @@ body {
     border-bottom: 3px solid #69B4FE;
 }
 
+.verifycode {
+    position: relative;
+    width: 350px;
+    height: 35px;
+    margin-top: 20px;
+    margin-left: 125px;
+    background-color: pink;
+}
+
+.verifycode div {
+    position: absolute;
+    bottom: 3px;
+    right: 0;
+    width: 100px;
+    height: 35px;
+    background-color: pink;
+}
+
+#verification {
+    width: 350px;
+    height: 35px;
+    /* margin-top: 20px; */
+    border-radius: 5px;
+    border-bottom: 3px solid #DCDCDC;
+}
+
+#verification:focus {
+    border-bottom: 3px solid #69B4FE;
+}
 
 /* 去注册模块 */
 
 #toReg {
     position: absolute;
     display: inline-block;
-    top: 128px;
+    top: 172px;
     left: 123px;
 }
 
@@ -102,7 +131,7 @@ body {
 #toIndex {
     position: absolute;
     display: inline-block;
-    top: 128px;
+    top: 172px;
     left: 410px;
 }
 
@@ -118,7 +147,7 @@ body {
     display: inline-block;
     width: 350px;
     height: 30px;
-    top: 150px;
+    top: 196px;
     left: 130px;
     line-height: 30px;
     color: #F26552;

@@ -19,23 +19,24 @@
             <h1>WELCOME</h1>
         </div>
         <form id="regForm" @submit.prevent="submit">
-            <!-- <span>用户名:</span> -->
             <input type="text" placeholder="   Username" v-model="username" id="reg_username"><br>
-            <!-- <span> 密码:</span> -->
             <input type="password" placeholder="   Password" v-model="password" id="reg_password"><br>
-            <!-- <span>Email:</span> -->
             <input type="text" placeholder="  Email" v-model="email" id="email"><br>
-            <input type="text" placeholder="  Verification" id="verification">
+            <div class="verifycode">
+                <input type="text" placeholder="  Verification" id="verification">
+                <div></div>
+            </div>
             <a href="/login" id="toIndex">
                 <h4>Return to the login?</h4>
             </a>
             <a href="/" id="tologin">
                 <h4>Go Index></h4>
             </a>
+            <!-- :class="errmesColor?'errmesGreen':'errmesRed'" -->
             <div class="errmes">
-                <span v-show="isShow" :class="errmesColor?'errmesGreen':'errmesRed'">{{errmes}}</span>
+                <span v-show="isShow" class="errmes_red">{{errmes}}</span>
             </div>
-            <input type="submit" value="REGISTERED" id="sb">
+            <input type="submit" value="REGISTERED" id="sb" @click="submit">
         </form>
     </div>
     <script src="/js/register.js"></script>
