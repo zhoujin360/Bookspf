@@ -12,6 +12,15 @@ var app = new Vue({
         realnameShow: true,
         addressShow: true
     },
+    directives: {
+        focus: {
+            update: function(el, { value }) {
+                if (value) {
+                    el.focus();
+                }
+            }
+        }
+    },
     methods: {
         isShowInput(index) {
             if (index == 0) this.phoneShow = !this.phoneShow;
@@ -46,7 +55,7 @@ var app = new Vue({
                     phone: that.phone
                 }).then(response => {
                     if (response.data.status) {
-                        window.location.reload();
+                        that.phone = response.data.mes;
                     }
                 })
             }
@@ -64,7 +73,7 @@ var app = new Vue({
                     realname: that.realname
                 }).then(response => {
                     if (response.data.status) {
-                        window.location.reload();
+                        that.realname = response.data.mes;
                     }
                 })
             }
@@ -81,7 +90,7 @@ var app = new Vue({
                     address: that.address
                 }).then(response => {
                     if (response.data.status) {
-                        window.location.reload();
+                        that.realname = response.data.mes;
                     }
                 })
             }

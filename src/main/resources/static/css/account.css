@@ -133,13 +133,6 @@
     vertical-align: middle;
 }
 
-.basicInfo span.Hidden,
-.basicInfo input.Hidden,
-.userInfo span.Hidden,
-.userInfo input.Hidden {
-    display: none;
-}
-
 .errmes {
     height: 30px;
     color: red;

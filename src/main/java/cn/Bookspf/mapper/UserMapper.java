@@ -1,5 +1,6 @@
 package cn.Bookspf.mapper;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.*;
@@ -91,4 +92,16 @@ public interface UserMapper {
 	//修改用户地址
 	@Update("update user set address=#{address} where uid=#{uid}")
 	public void updateAddress(Integer uid,String address);
+
+	//查手机
+	@Select("select phone from user where uid=#{uid}")
+	public String getPhone(Integer uid);
+
+	//查真实名字
+	@Select("select realname from user where uid=#{uid}")
+	public String getRealname(Integer uid);
+
+	//查地址
+	@Select("select address from user where uid=#{uid}")
+	public String getAddress(Integer uid);
 }
