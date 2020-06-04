@@ -38,7 +38,7 @@
         <div id="managerInfo" class="mainItemHidden">
             <div class="actionFather">
                 <div id="action">
-                    <span><a href="#" onclick="action('addAdmin')" @click="getManagerList">添加管理员</a></span>
+                    <span><a href="javascript:;" onclick="action('addAdmin')" @click="getManagerList">添加管理员</a></span>
                 </div>
             </div>
             <div id="managerList">
@@ -48,6 +48,8 @@
                         <span>用户名：{{item.username}}</span>
                         <span>邮箱：{{item.email}}</span>
                         <span>真实姓名：{{item.realname}}</span>
+                        <span class="alter"><a href="javascript:;" @click="setUid(item.bid)"
+                            onclick="action('alterBook')">修改</a></span>
                         <span class="delete" @click="deleteAdmin(item.uid)"><a href="#">删除</a></span>
                     </div>
                 </div>
@@ -83,6 +85,35 @@
             <input id="addAdminBtn" type="submit" value="确认添加">
         </form>
     </div>
+    <div id="alterAdmin" class="actionHidden">
+        <div class="tips">添加管理员信息</div>
+        <form @submit.prevent="submit">
+            <div id="uid">
+                <span>UID：</span><span>123</span>
+            </div>
+            <div id="username">
+                <span>用户名：</span>
+                <input type="text" v-model="username">
+            </div>
+            <div id="password">
+                <span>密码：</span>
+                <input type="password" v-model="password">
+            </div>
+            <div id="email">
+                <span>邮箱：</span>
+                <input type="text" v-model="email">
+            </div>
+            <div id="realname">
+                <span>真实姓名：</span>
+                <input type="text" v-model="realname">
+            </div>
+            <div class="errmes">
+                <span v-show="isShow" :class="errmesColor?'errmesGreen':'errmesRed'">{{errmes}}</span>
+            </div>
+            <input id="addAdminBtn" type="submit" value="确认添加">
+        </form>
+    </div>
+
 
 
     <script src="js/superManager.js"></script>

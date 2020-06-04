@@ -6,6 +6,7 @@ import cn.Bookspf.model.RO.Response;
 import cn.Bookspf.utils.Operator;
 import cn.Bookspf.utils.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,7 +48,7 @@ public class AccountRequest {
         if(!validator.isLogin()) return new Response(false,"请登录再操作");
         if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
         Integer uid = (Integer) httpSession.getAttribute("userToken");
-        String newPassword = request.getPassword();
+        String newPassword = DigestUtils.md5DigestAsHex(request.getPassword().getBytes());
         if(newPassword.equals(userMapper.getPasswordOfUid(uid))) return new Response(true,"新密码与旧密码一致");
         userMapper.updatePassword(uid,newPassword);
         return new Response(true,"修改成功");
