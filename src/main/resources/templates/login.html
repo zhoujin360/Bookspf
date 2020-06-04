@@ -17,26 +17,26 @@
             <img src="/img/regcharacters.png">
         </div>
         <div id="tips">
-            <h1>WELCOME</h1>
-            <h4>Username(Please enter a Username)</h4>
+            <h1>图书售书管理系统</h1>
+            <h4>欢 迎 您</h4>
         </div>
         <form id="loginForm" @submit.prevent="submit">
-            <input type="text" placeholder="   Account" v-model="username" id="log_account"><br>
-            <input type="password" placeholder="   Password" v-model="password" id="log_password"><br>
+            <input type="text" placeholder="   账号" v-model="username" id="log_account"><br>
+            <input type="password" placeholder="   密码" v-model="password" id="log_password"><br>
             <div class="verifycode">
-                <input type="text" v-model="captcha" placeholder="  Verification" id="verification">
+                <input type="text" v-model="captcha" placeholder="  验证码" id="verification">
                 <div @click="changeCode"><img :src="'data:image/png;base64,'+code"></div>
             </div>
             <a href="/register" id="toReg">
-                <h4>Registered account?</h4>
+                <h4>前往注册账号?</h4>
             </a>
             <a href="/" id="toIndex">
-                <h4>Go index></h4>
+                <h4>前往主页></h4>
             </a>
             <div class="errmes">
                 <span v-show="isShow">{{errmes}}</span>
             </div>
-            <input type="submit" value="LOGIN" id="sb">
+            <input type="submit" value="登录" id="sb">
         </form>
     </div>
     <script src="/js/login.js"></script>

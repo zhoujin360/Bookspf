@@ -158,20 +158,33 @@ var getBookList = new Vue({
                 })
         },
         deleteBook(bid) {
-            var that = this;
-            axios.post("/deleteBook", {
-                bid: bid
-            }).then(response => {
-                if (response.data.status) {
-                    getBookList.getBookList();
-                }
-            })
+            // var that = this;
+            // axios.post("/deleteBook", {
+            //     bid: bid
+            // }).then(response => {
+            //     if (response.data.status) {
+            //         getBookList.getBookList();
+            //     }
+            // })
+            if (confirmDel()) {
+                var that = this;
+                axios.post("/deleteBook", {
+                    bid: bid
+                }).then(response => {
+                    if (response.data.status) {
+                        getBookList.getBookList();
+                    }
+                })
+            } else { }
+
         },
         setBid(bid) {
             alterBook.setBid(bid);
         }
     }
 });
+
+
 
 function externalGetBookList() {
     getBookList.getBookList();
@@ -372,17 +385,37 @@ var getSortList = new Vue({
                 })
         },
         deleteSort(sortid) {
-            var that = this;
-            axios.post("/deleteSort", {
-                sortid: sortid
-            }).then(response => {
-                if (response.data.status) {
-                    getSortList.getSortList();
-                }
-            })
+            // var that = this;
+            // axios.post("/deleteSort", {
+            //     sortid: sortid
+            // }).then(response => {
+            //     if (response.data.status) {
+            //         getSortList.getSortList();
+            //     }
+            // })
+            if (confirmDel()) {
+                alert(1)
+                var that = this;
+                axios.post("/deleteSort", {
+                    sortid: sortid
+                }).then(response => {
+                    if (response.data.status) {
+                        getSortList.getSortList();
+                    }
+                })
+            } else { }
         }
     }
 });
+
+function confirmDel() {
+    var info = prompt("请输入确认二字进行删除", "");
+    if (info === "确认") {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 function externalGetSortList() {
     getSortList.getSortList();

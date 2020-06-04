@@ -16,21 +16,21 @@
     <div id="box">
         <div id="characters"><img src="/img/characters.png" alt=""></div>
         <div id="tips">
-            <h1>WELCOME</h1>
+            <h1>图书售书管理系统</h1>
         </div>
         <form id="regForm" @submit.prevent="submit">
-            <input type="text" placeholder="   Username" v-model="username" id="reg_username"><br>
-            <input type="password" placeholder="   Password" v-model="password" id="reg_password"><br>
-            <input type="text" placeholder="  Email" v-model="email" id="email"><br>
+            <input type="text" placeholder="   用户名" v-model="username" id="reg_username"><br>
+            <input type="password" placeholder="   密码" v-model="password" id="reg_password"><br>
+            <input type="text" placeholder="  电子邮箱" v-model="email" id="email"><br>
             <div class="verifycode">
-                <input type="text" v-model="captcha" placeholder="  Verification" id="verification">
+                <input type="text" v-model="captcha" placeholder="  验证码" id="verification">
                 <div @click="changeCode"><img :src="'data:image/png;base64,'+code"></div>
             </div>
             <a href="/login" id="toIndex">
-                <h4>Return to the login?</h4>
+                <h4>前往登录页面?</h4>
             </a>
             <a href="/" id="tologin">
-                <h4>Go Index></h4>
+                <h4>前往主页></h4>
             </a>
             <!-- :class="errmesColor?'errmesGreen':'errmesRed'" -->
             <div class="errmes">

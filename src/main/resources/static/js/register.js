@@ -38,10 +38,6 @@ var register = new Vue({
                     email: that.email,
                     captcha: that.captcha
                 }).then(function (response) {
-                    // if (!response.data.status) {
-                    //     that.isShow = true;
-                    //     that.errmes = response.data.mes;
-                    // }
                     if (!response.data.status) {
                         that.isShow = true;
                         that.errmes = response.data.mes;
