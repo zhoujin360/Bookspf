@@ -5,7 +5,7 @@ var rotate90 = new Vue({
         isShow: 0
     },
     methods: {
-        rotateT: function (index) {
+        rotateT: function(index) {
             if (this.isShow == index) this.isShow = 0;
             else this.isShow = index;
         }
@@ -20,7 +20,7 @@ var logout = new Vue({
     methods: {
         logout() {
             axios.post("/logout")
-                .then(function () {
+                .then(function() {
                     window.location.reload();
                 })
         }
@@ -199,7 +199,7 @@ var addBook = new Vue({
         isShow: false
     },
     methods: {
-        submit: function () {
+        submit: function() {
             var that = this;
 
             if (!checkBid(that.bid)) {
@@ -285,7 +285,7 @@ var alterBook = new Vue({
         isShow: false
     },
     methods: {
-        submit: function () {
+        submit: function() {
             var that = this;
 
             if (that.bookname.length < 1) {
@@ -401,7 +401,7 @@ var addSort = new Vue({
         isShow: false
     },
     methods: {
-        submit: function () {
+        submit: function() {
             var that = this;
             if (!checkSortId(that.sortid)) {
                 that.showErrems("分类ID必须为正整数")
@@ -546,6 +546,9 @@ var getSaleList = new Vue({
             }).then(response => {
                 that.sales = response.data.sales;
             })
+        },
+        externalCheckSale(saleid) {
+            checkSale.checkSale(saleid);
         }
     }
 });
@@ -575,6 +578,31 @@ var saleSearch = new Vue({
 });
 
 /*************************************************/
+
+
+//查看库存详情
+var checkSale = new Vue({
+    el: "#checkSale",
+    data: {
+        saleid: '',
+        salesinfo: []
+    },
+    methods: {
+        checkSale(saleid) {
+            var that = this;
+            axios.post("/checkSale", {
+                saleid: saleid
+            }).then(response => {
+                that.saleid = response.data.sales[0].saleid;
+                that.salesinfo = response.data.sales;
+            })
+        }
+    }
+});
+
+/*************************************************/
+
+
 
 
 
@@ -759,7 +787,7 @@ var addPurchase = new Vue({
         isShow: false
     },
     methods: {
-        submit: function () {
+        submit: function() {
             var that = this;
             if (!checkNum(that.purchaseid)) {
                 that.showErrems("进货ID必须为13位正整数");

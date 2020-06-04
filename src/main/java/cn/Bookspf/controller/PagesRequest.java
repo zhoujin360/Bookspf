@@ -5,9 +5,6 @@ import javax.servlet.http.HttpSession;
 import cn.Bookspf.mapper.BookMapper;
 import cn.Bookspf.mapper.SortMapper;
 import cn.Bookspf.model.DO.DBBook;
-import cn.Bookspf.model.DO.DBSort;
-import cn.Bookspf.model.RO.CaptchaResponse;
-import cn.Bookspf.utils.Generator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.Bookspf.mapper.UserMapper;
 import cn.Bookspf.model.DO.DBUser;
-import cn.Bookspf.model.RO.UserResponse;
 import cn.Bookspf.utils.Validator;
 
-import java.io.IOException;
 
 @Controller
 public class PagesRequest {

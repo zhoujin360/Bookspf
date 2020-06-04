@@ -50,5 +50,6 @@ public interface PurchaseMapper {
     @Select("select isbn from purchase where isbn=#{isbn}")
     public String findIsbn (String isbn);
 
-
+    @Select("select bid from purchase where purchaseid=#{purchaseid}")
+    public ArrayList<Integer> getBidsOfPurchase(Long purchaseid);
 }

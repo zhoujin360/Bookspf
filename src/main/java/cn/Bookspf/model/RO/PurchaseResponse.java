@@ -9,6 +9,10 @@ public class PurchaseResponse extends Response{
 
 	public PurchaseResponse() {}
 
+	public PurchaseResponse(ArrayList<DBPurchase> purchases) {
+		this.purchases = purchases;
+	}
+
 	public ArrayList<DBPurchase> getPurchases() {
 		return purchases;
 	}

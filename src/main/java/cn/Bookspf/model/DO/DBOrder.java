@@ -9,6 +9,7 @@ public class DBOrder {
 	private long orderid;
 	private Integer uid;
 	private Integer bid;
+	private String bookname;
 	private String isbn;
 	private Double bookprice;
 	private Double total;
@@ -69,6 +70,14 @@ public class DBOrder {
 
 	public void setCreatetime(String createtime) {
 		this.createtime = createtime;
+	}
+
+	public String getBookname() {
+		return bookname;
+	}
+
+	public void setBookname(String bookname) {
+		this.bookname = bookname;
 	}
 
 	public Double getTotal() {

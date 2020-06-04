@@ -8,6 +8,7 @@ public class DBSale {
 	private long id;
 	private long saleid;
 	private Integer bid;
+	private String bookname;
 	private String isbn;
 	private String saletime;
 	public long getId() {
@@ -35,6 +36,13 @@ public class DBSale {
 		this.isbn = isbn;
 	}
 
+	public String getBookname() {
+		return bookname;
+	}
+
+	public void setBookname(String bookname) {
+		this.bookname = bookname;
+	}
 
 	public String getSaletime() {
 		return saletime;

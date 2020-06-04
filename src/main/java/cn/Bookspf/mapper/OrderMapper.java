@@ -53,7 +53,9 @@ public interface OrderMapper {
 	@Select("select sum(bookprice) from orders where createtime=#{createtime} group by orderid")
 	public ArrayList<Double> getOrderPriceOfCreatetime(String createtime);
 
-
+	//查询bid
+	@Select("select bid from orders where orderid=#{orderid}")
+	public ArrayList<Integer> getBidsOfOrderid(Long orderid);
 
 
 	//用户

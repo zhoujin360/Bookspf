@@ -1,7 +1,6 @@
 package cn.Bookspf.controller;
 
 import cn.Bookspf.mapper.UserMapper;
-import cn.Bookspf.model.DTO.Book;
 import cn.Bookspf.model.DTO.User;
 import cn.Bookspf.model.RO.Response;
 import cn.Bookspf.utils.Operator;

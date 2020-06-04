@@ -8,6 +8,7 @@ public class DBPurchase {
 	private long id;
 	private long purchaseid;
 	private Integer bid;
+	private String bookname;
 	private String isbn;
 	private Integer number;
 	private Double purchaseprice;
@@ -77,5 +78,13 @@ public class DBPurchase {
 
 	public void setTotal(Double total) {
 		this.total = total;
+	}
+
+	public String getBookname() {
+		return bookname;
+	}
+
+	public void setBookname(String bookname) {
+		this.bookname = bookname;
 	}
 }
