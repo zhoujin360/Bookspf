@@ -14,7 +14,7 @@ var app = new Vue({
     },
     directives: {
         focus: {
-            update: function(el, { value }) {
+            update: function (el, { value }) {
                 if (value) {
                     el.focus();
                 }
@@ -32,15 +32,20 @@ var app = new Vue({
             var that = this;
             var passwordReg = /^[0-9A-Za-z]{6,20}$/;
             if (!passwordReg.test(that.password) || that.password == '') {
-                that.errmes = "密码格式错误";
+                that.errmes = "密码必须为6-20位字母或数字组合";
                 that.isShow = true;
             } else {
                 that.isShow = false;
-                axios.post("/changePassword", {
-                    password: that.password
-                }).then(response => {
-                    alert(response.data.mes);
-                })
+                if (confirmDel()) {
+                    axios.post("/changePassword", {
+                        password: that.password
+                    }).then(response => {
+                        alert(response.data.mes);
+                    })
+                } else {
+                    alert("修改错误");
+                }
+
             }
         },
         changePhone() {
@@ -98,3 +103,11 @@ var app = new Vue({
         }
     }
 })
+function confirmDel() {
+    var info = prompt("请再次输入密码", "");
+    if (info === app.password) {
+        return true;
+    } else {
+        return false;
+    }
+}

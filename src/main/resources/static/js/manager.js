@@ -5,7 +5,7 @@ var rotate90 = new Vue({
         isShow: 0
     },
     methods: {
-        rotateT: function(index) {
+        rotateT: function (index) {
             if (this.isShow == index) this.isShow = 0;
             else this.isShow = index;
         }
@@ -20,7 +20,7 @@ var logout = new Vue({
     methods: {
         logout() {
             axios.post("/logout")
-                .then(function() {
+                .then(function () {
                     window.location.reload();
                 })
         }
@@ -167,14 +167,6 @@ var getBookList = new Vue({
                 })
         },
         deleteBook(bid) {
-            // var that = this;
-            // axios.post("/deleteBook", {
-            //     bid: bid
-            // }).then(response => {
-            //     if (response.data.status) {
-            //         getBookList.getBookList();
-            //     }
-            // })
             if (confirmDel()) {
                 var that = this;
                 axios.post("/deleteBook", {
@@ -184,7 +176,7 @@ var getBookList = new Vue({
                         getBookList.getBookList();
                     }
                 })
-            } else {}
+            } else { }
 
         },
         setBid(bid) {
@@ -221,7 +213,7 @@ var addBook = new Vue({
         isShow: false
     },
     methods: {
-        submit: function() {
+        submit: function () {
             var that = this;
 
             if (!checkBid(that.bid)) {
@@ -307,7 +299,7 @@ var alterBook = new Vue({
         isShow: false
     },
     methods: {
-        submit: function() {
+        submit: function () {
             var that = this;
 
             if (that.bookname.length < 1) {
@@ -394,16 +386,7 @@ var getSortList = new Vue({
                 })
         },
         deleteSort(sortid) {
-            // var that = this;
-            // axios.post("/deleteSort", {
-            //     sortid: sortid
-            // }).then(response => {
-            //     if (response.data.status) {
-            //         getSortList.getSortList();
-            //     }
-            // })
             if (confirmDel()) {
-                alert(1)
                 var that = this;
                 axios.post("/deleteSort", {
                     sortid: sortid
@@ -412,7 +395,7 @@ var getSortList = new Vue({
                         getSortList.getSortList();
                     }
                 })
-            } else {}
+            } else { }
         }
     }
 });
@@ -436,7 +419,7 @@ var addSort = new Vue({
         isShow: false
     },
     methods: {
-        submit: function() {
+        submit: function () {
             var that = this;
             if (!checkSortId(that.sortid)) {
                 that.showErrems("分类ID必须为正整数")
@@ -822,7 +805,7 @@ var addPurchase = new Vue({
         isShow: false
     },
     methods: {
-        submit: function() {
+        submit: function () {
             var that = this;
             if (!checkNum(that.purchaseid)) {
                 that.showErrems("进货ID必须为13位正整数");
