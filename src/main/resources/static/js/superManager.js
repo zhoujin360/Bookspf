@@ -5,7 +5,7 @@ var rotate90 = new Vue({
         isShow: false
     },
     methods: {
-        rotateT: function() {
+        rotateT: function () {
             this.isShow = !this.isShow;
         }
     }
@@ -46,7 +46,7 @@ var logout = new Vue({
     methods: {
         logout() {
             axios.post("/logout")
-                .then(function() {
+                .then(function () {
                     window.location.reload();
                 })
         }
@@ -74,20 +74,32 @@ var getManagerList = new Vue({
             alterAdmin.uid = uid;
         },
         deleteAdmin(uid) {
-            var that = this;
-            axios.post("/deleteAdmin", {
-                uid: uid
-            }).then(response => {
-                if (response.data.status) {
-                    getManagerList.getManagerList();
-                }
-            })
+            if (confirmDel()) {
+                var that = this;
+                axios.post("/deleteAdmin", {
+                    uid: uid
+                }).then(response => {
+                    if (response.data.status) {
+                        getManagerList.getManagerList();
+                    }
+                })
+            }
         }
     }
 });
 
 function externalGetManagerList() {
     getManagerList.getManagerList();
+}
+
+// 删除确认
+function confirmDel() {
+    var info = prompt("请输入'确认'进行删除", "");
+    if (info === "确认") {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 /**************************************/
@@ -137,7 +149,7 @@ var addAdmin = new Vue({
         isShow: false
     },
     methods: {
-        submit: function() {
+        submit: function () {
             var that = this;
             if (that.uid == '' || that.uid.length < 4 || that.uid.length > 8 || isNaN(that.uid)) {
                 that.showErrmes("UID必须为4-8位纯数字");
