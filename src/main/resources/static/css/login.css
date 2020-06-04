@@ -63,6 +63,7 @@ body {
     height: 35px;
     margin-top: 20px;
     border-radius: 5px;
+    border: 1px solid #DCDCDC;
     border-bottom: 3px solid #DCDCDC;
 }
 
@@ -75,6 +76,7 @@ body {
     height: 35px;
     margin-top: 20px;
     border-radius: 5px;
+    border: 1px solid #DCDCDC;
     border-bottom: 3px solid #DCDCDC;
 }
 
@@ -88,16 +90,20 @@ body {
     height: 35px;
     margin-top: 20px;
     margin-left: 125px;
-    background-color: pink;
 }
 
 .verifycode div {
     position: absolute;
-    bottom: 3px;
     right: 0;
-    width: 100px;
-    height: 35px;
+    bottom: 3px;
     background-color: pink;
+}
+
+.verifycode div img {
+    display: inline-block;
+    width: 100px;
+    height: 31px;
+    border-radius: 5px;
 }
 
 #verification {
@@ -105,12 +111,14 @@ body {
     height: 35px;
     /* margin-top: 20px; */
     border-radius: 5px;
+    border: 1px solid #DCDCDC;
     border-bottom: 3px solid #DCDCDC;
 }
 
 #verification:focus {
     border-bottom: 3px solid #69B4FE;
 }
+
 
 /* 去注册模块 */
 

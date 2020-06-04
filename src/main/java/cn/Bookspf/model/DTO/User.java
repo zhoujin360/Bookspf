@@ -10,6 +10,7 @@ public class User {
 	private String realname;
 	private String phone;
 	private String address;
+	private String captcha;
 	
 	public Integer getUid() {
 		return uid;
@@ -66,5 +67,11 @@ public class User {
 		this.address = address;
 	}
 
-    
+	public String getCaptcha() {
+		return captcha;
+	}
+
+	public void setCaptcha(String captcha) {
+		this.captcha = captcha;
+	}
 }

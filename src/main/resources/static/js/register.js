@@ -8,7 +8,7 @@ var register = new Vue({
         isShow: false
     },
     methods: {
-        submit: function () {
+        submit: function() {
             var that = this;
             var usernameReg = /^[A-Za-z0-9]{3,20}$/;
             var passwordReg = /^[0-9A-Za-z]{6,20}$/;
@@ -28,8 +28,8 @@ var register = new Vue({
                     username: that.username,
                     password: that.password,
                     email: that.email
-                }).then(function (response) {
-                    // console.log(response);
+                }).then(function(response) {
+                    that.isShow = true;
                     that.msg = response.data.mes;
                 })
             }

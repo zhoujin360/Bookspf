@@ -6,7 +6,9 @@ package cn.Bookspf.controller;
 import javax.servlet.http.HttpSession;
 import javax.validation.Validation;
 
+import cn.Bookspf.model.RO.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,14 +27,10 @@ import cn.Bookspf.model.DO.DBUser;
 import cn.Bookspf.model.DTO.Book;
 import cn.Bookspf.model.DTO.Sort;
 import cn.Bookspf.model.DTO.User;
-import cn.Bookspf.model.RO.BookResponse;
-import cn.Bookspf.model.RO.OrderResponse;
-import cn.Bookspf.model.RO.Response;
-import cn.Bookspf.model.RO.SaleResponse;
-import cn.Bookspf.model.RO.SortResponse;
-import cn.Bookspf.model.RO.UserResponse;
 import cn.Bookspf.utils.Generator;
 import cn.Bookspf.utils.Validator;
+
+import java.io.IOException;
 
 @RestController
 public class AxiosRequest {
@@ -57,6 +55,8 @@ public class AxiosRequest {
 	
 	@PostMapping("/register")
 	public Response register (@RequestBody User request) {
+		String captcha= (String) httpSession.getAttribute("captcha");
+		if(!captcha.equals(request.getCaptcha())) return new Response(false,"验证码错误");
 		String status =validator.isSame(userMapper, request);
 		if(!"成功".equals(status)) return new Response(false,status);
 		Integer uid = Generator.generateUid();
@@ -69,6 +69,8 @@ public class AxiosRequest {
 	
 	@PostMapping("/login")
 	public Response login (@RequestBody User request) {
+		String captcha= (String) httpSession.getAttribute("captcha");
+		if (!captcha.equalsIgnoreCase(request.getCaptcha())) return new Response(false,"验证码错误");
 		String username = request.getUsername();
 		String password = request.getPassword();
 		DBUser user=userMapper.getUserOfUsername(username);
@@ -79,7 +81,17 @@ public class AxiosRequest {
 		httpSession.setMaxInactiveInterval(60*60);
 		return new Response(true,"登陆成功");
 	}
-	
+
+	@PostMapping("/changeCode")
+	public String changeCode(){
+		try {
+			CaptchaResponse captcha =  captcha = Generator.generateCaptchaImg();
+			httpSession.setAttribute("captcha",captcha.getCaptcha());
+			return captcha.getImgJSON();
+		} catch (IOException e) {}
+		return null;
+	}
+
 	@PostMapping("/logout")
 	public void logout () {
 		httpSession.removeAttribute("userToken");
