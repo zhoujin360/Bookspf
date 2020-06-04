@@ -77,6 +77,7 @@
     height: 30px;
     line-height: 30px;
     text-align: center;
+    vertical-align: middle;
 }
 
 .basicInfo span:nth-child(odd),
@@ -103,9 +104,10 @@
     text-align: left;
 }
 
-.userInfo .address {
-    vertical-align: middle;
+.userInfo .address span {
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
 }
 
 .Btn {
@@ -128,6 +130,7 @@
     width: 12.6em;
     height: 30px;
     border-radius: 5px;
+    vertical-align: middle;
 }
 
 .basicInfo span.Hidden,
