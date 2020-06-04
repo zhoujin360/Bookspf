@@ -70,6 +70,9 @@ var getManagerList = new Vue({
                     that.managers = response.data.users;
                 })
         },
+        setUid(uid) {
+            alterAdmin.uid = uid;
+        },
         deleteAdmin(uid) {
             if (confirmDel()) {
                 var that = this;
@@ -103,10 +106,36 @@ function confirmDel() {
 
 //提交添加管理员
 
-var usernameReg = /^[A-Za-z0-9]{3,20}$/;
-var passwordReg = /^[0-9A-Za-z]{6,20}$/;
-var emailReg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
-var realnameReg = /^[\u4e00-\u9fa5]{2,16}$/;
+function checkUsername(username) {
+    let usernameReg = /^[A-Za-z0-9]{3,20}$/;
+    if (username == '' || !usernameReg.test(username)) {
+        return true;
+    }
+}
+
+function checkPassword(password) {
+    let passwordReg = /^[0-9A-Za-z]{6,20}$/;
+    if (password == '' || !passwordReg.test(password)) {
+        return true;
+    }
+}
+
+function checkEmail(email) {
+    let emailReg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+    if (email == '' || !emailReg.test(email)) {
+        return true;
+    }
+}
+
+function checkRealname(realname) {
+    let realnameReg = /^[\u4e00-\u9fa5]{2,16}$/;
+    if (realname == '' || !realnameReg.test(realname)) {
+        return true;
+    }
+}
+
+
+
 var addAdmin = new Vue({
     el: "#addAdmin",
     data: {
@@ -123,25 +152,15 @@ var addAdmin = new Vue({
         submit: function () {
             var that = this;
             if (that.uid == '' || that.uid.length < 4 || that.uid.length > 8 || isNaN(that.uid)) {
-                that.errmes = "UID必须为4-8位纯数字";
-                that.errmesColor = false;
-                that.isShow = true;
-            } else if (that.username == '' || !usernameReg.test(that.username)) {
-                that.errmes = "用户名必须为3-20位数字或字母组合";
-                that.errmesColor = false;
-                that.isShow = true;
-            } else if (that.password == '' || !passwordReg.test(that.password)) {
-                that.errmes = "密码必须为6-20位字母或数字组合";
-                that.errmesColor = false;
-                that.isShow = true;
-            } else if (that.email == '' || !emailReg.test(that.email)) {
-                that.errmes = "邮箱格式错误";
-                that.errmesColor = false;
-                that.isShow = true;
-            } else if (that.realname == '' || !realnameReg.test(that.realname)) {
-                that.errmes = "真实姓名格式错误";
-                that.errmesColor = false;
-                that.isShow = true;
+                that.showErrmes("UID必须为4-8位纯数字");
+            } else if (checkUsername(that.username)) {
+                that.showErrmes("用户名必须为3-20位数字或字母组合");
+            } else if (checkPassword(that.password)) {
+                that.showErrmes("密码必须为6-20位字母或数字组合");
+            } else if (checkEmail(that.email)) {
+                that.showErrmes("邮箱格式错误");
+            } else if (checkRealname(that.realname)) {
+                that.showErrmes("真实姓名格式错误");
             } else {
                 that.isShow = false;
                 axios.post("/addAdmin", {
@@ -168,8 +187,70 @@ var addAdmin = new Vue({
                     }
                 })
             }
+        },
+        showErrmes(str) {
+            this.errmes = str;
+            this.errmesColor = false;
+            this.isShow = true;
         }
     }
 })
 
 /**************************************/
+
+var alterAdmin = new Vue({
+    el: "#alterAdmin",
+    data: {
+        uid: '',
+        username: '',
+        password: '',
+        email: '',
+        realname: '',
+        errmes: '',
+        errmesColor: false,
+        isShow: false
+    },
+    methods: {
+        submit: function() {
+            var that = this;
+            if (checkUsername(that.username)) {
+                that.showErrmes("用户名必须为3-20位数字或字母组合");
+            } else if (checkPassword(that.password)) {
+                that.showErrmes("密码必须为6-20位字母或数字组合");
+            } else if (checkEmail(that.email)) {
+                that.showErrmes("邮箱格式错误");
+            } else if (checkRealname(that.realname)) {
+                that.showErrmes("真实姓名格式错误");
+            } else {
+                that.isShow = false;
+                axios.post("/alterAdmin", {
+                    uid: that.uid,
+                    username: that.username,
+                    password: that.password,
+                    email: that.email,
+                    realname: that.realname
+                }).then(response => {
+                    if (response.data.status) {
+                        that.username = '';
+                        that.password = '';
+                        that.email = '';
+                        that.realname = '';
+                        that.isShow = true;
+                        that.errmesColor = true;
+                        that.errmes = response.data.mes;
+                        getManagerList.getManagerList();
+                    } else {
+                        that.isShow = true;
+                        that.errmesColor = false;
+                        that.errmes = response.data.mes;
+                    }
+                })
+            }
+        },
+        showErrmes(str) {
+            this.errmes = str;
+            this.errmesColor = false;
+            this.isShow = true;
+        }
+    }
+})

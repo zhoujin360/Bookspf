@@ -23,7 +23,7 @@
             <span>详细信息</span>
             <!-- 头像 -->
             <div id="characters"><img src="/img/avatar.png"></div>
-            <span>[[${user.email}]]</span>
+            <span>[[${user.username}]]</span>
         </div>
         <div class="rightBox">
             <div class="basicInfo">
@@ -33,8 +33,8 @@
                     <span>[[${user.uid}]]</span>
                 </div>
                 <div>
-                    <span>用户名</span>：
-                    <span v-show="passwordShow">[[${user.username}]]</span>
+                    <span>邮箱</span>：
+                    <span v-show="passwordShow">[[${user.email}]]</span>
                     <input type="text" @blur="isShowInput(3);changePassword()" v-show="!passwordShow" v-model="password"
                         v-focus="!passwordShow" placeholder="请输入密码">
                     <a class="Btn" @click="isShowInput(3)">修改密码</a>

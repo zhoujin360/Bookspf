@@ -74,4 +74,6 @@ public class User {
 	public void setCaptcha(String captcha) {
 		this.captcha = captcha;
 	}
+
+
 }
