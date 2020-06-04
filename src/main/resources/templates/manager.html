@@ -29,32 +29,26 @@
                 <span>图书</span>
                 <p :class="isShow==1?'rotate90':'norotate'">﹤</p>
             </div>
-            <div onclick="isMain('bookInfo');externalGetBookList();"
-                :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('bookInfo');externalGetBookList();" :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
                 图书信息管理
             </div>
-            <div onclick="isMain('sortInfo');externalGetSortList();"
-                :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('sortInfo');externalGetSortList();" :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
                 图书分类信息管理
             </div>
-            <div onclick="isMain('orderReview');externalGetOrderList(0,'');"
-                :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('orderReview');externalGetOrderList(0,'');" :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
                 订单审核
             </div>
             <div class="item" @click="rotateT(2)">
                 <span>出入库</span>
                 <p :class="isShow==2?'rotate90':'norotate'">﹤</p>
             </div>
-            <div onclick="isMain('saleInfo');externalGetSaleList(0,'');"
-                :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('saleInfo');externalGetSaleList(0,'');" :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
                 销售记录查看
             </div>
-            <div onclick="isMain('purchaseInfo');externalGetPurchaseList(0, '')"
-                :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('purchaseInfo');externalGetPurchaseList(0, '')" :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
                 进货记录管理
             </div>
-            <div onclick="isMain('stockInfo');externalGetStockList(0,'');"
-                :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('stockInfo');externalGetStockList(0,'');" :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
                 库存记录管理
             </div>
         </div>
@@ -191,16 +185,14 @@
             <div class="List">
                 <div class="listInfo">
                     <span>销售ID</span>
-                    <span>图书ID</span>
-                    <span>ISBN</span>
                     <span>销售时间</span>
                 </div>
                 <div id="saleList">
                     <div class="listItem" v-for="item in sales">
                         <span>{{item.saleid}}</span>
-                        <span>{{item.bid}}</span>
-                        <span>{{item.isbn}}</span>
                         <span>{{item.saletime}}</span>
+                        <span class="check"><a href="javascript:;" @click="externalCheckSale(item.saleid)"
+                            onclick="action('checkSale')">查看记录</a></span>
                     </div>
                 </div>
 
@@ -417,6 +409,7 @@
             <div class="orders">
                 <div v-for="item in ordersinfo">
                     <span>图书ID：{{item.bid}}</span>
+                    <span>图书名称：{{item.bookname}}</span>
                     <span>ISBN：{{item.isbn}}</span>
                     <span>图书价格：{{item.bookprice}}元</span>
                 </div>
@@ -429,6 +422,21 @@
 
     </div>
 
+    <div class="saleWindow">
+        <div id="checkSale" class="window actionHidden">
+            <div class="tips">
+                <span>销售ID：{{saleid}}</span>
+            </div>
+            <div class="sales">
+                <div v-for="item in salesinfo">
+                    <span>图书ID：{{item.bid}}</span>
+                    <span>图书名称：{{item.bookname}}</span>
+                    <span>ISBN：{{item.isbn}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="purchaseWindow">
         <div id="checkPurchase" class="window actionHidden">
             <div class="tips">
@@ -437,6 +445,7 @@
             <div class="purchases">
                 <div v-for="item in purchasesinfo">
                     <span>图书ID：{{item.bid}}</span>
+                    <span>图书名称：{{item.bookname}}</span>
                     <span>ISBN：{{item.isbn}}</span>
                     <span>图书价格：{{item.purchaseprice}}元</span>
                 </div>
@@ -479,6 +488,7 @@
             <div class="stocks">
                 <div v-for="item in stocksinfo">
                     <span>图书ID：{{item.bid}}</span>
+                    <span>图书名称：{{item.bookname}}</span>
                     <span>ISBN：{{item.isbn}}</span>
                 </div>
             </div>

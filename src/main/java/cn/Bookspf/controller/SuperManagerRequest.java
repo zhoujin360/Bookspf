@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import cn.Bookspf.mapper.UserMapper;
-import cn.Bookspf.model.DO.DBUser;
 import cn.Bookspf.model.DTO.User;
 import cn.Bookspf.model.RO.Response;
 import cn.Bookspf.model.RO.UserResponse;

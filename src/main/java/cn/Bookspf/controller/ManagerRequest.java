@@ -5,6 +5,8 @@ import javax.servlet.http.HttpSession;
 import cn.Bookspf.mapper.*;
 import cn.Bookspf.model.DO.DBOrder;
 import cn.Bookspf.model.DO.DBPurchase;
+import cn.Bookspf.model.DO.DBSale;
+import cn.Bookspf.model.DO.DBStock;
 import cn.Bookspf.model.DTO.*;
 import cn.Bookspf.model.RO.*;
 import cn.Bookspf.utils.Generator;
@@ -17,8 +19,6 @@ import cn.Bookspf.utils.Operator;
 import cn.Bookspf.utils.Validator;
 import org.springframework.web.multipart.MultipartFile;
 
-
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -138,6 +138,8 @@ public class ManagerRequest {
 	public Response addSort(@RequestBody Sort request) {
 		if(!validator.isLogin()) return new Response(false,"请登录再操作");
 		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
+		if(sortMapper.findSortid(request.getSortid())!=null) return new Response(false,"分类ID重复");
+		if(sortMapper.findSortname(request.getSortname())!=null) return new Response(false,"分类名字重复");
 		sortMapper.addSort(request);
 		return new Response(true,"添加成功");
 	}
@@ -188,12 +190,15 @@ public class ManagerRequest {
 	public Response checkOrderOfAdmin(@RequestBody Order request) {
 		if(!validator.isLogin()) return new Response(false,"请登录再操作");
 		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
-		OrderResponse orderResponse=new OrderResponse();
-		orderResponse.setOrders(orderMapper.getOrderinfoOfOrderid(request.getOrderid()));
-		return orderResponse;
+		Long orderid=request.getOrderid();
+		ArrayList<DBOrder> orders = orderMapper.getOrderinfoOfOrderid(orderid);
+		ArrayList<Integer> bids =  orderMapper.getBidsOfOrderid(orderid);
+		for(int i=0;i<orders.size();i++){
+			String bookname=bookMapper.getBookname(bids.get(i));
+			orders.get(i).setBookname(bookname);
+		}
+		return new OrderResponse(orders);
 	}
-
-
 
 	
 	//获取销售信息列表
@@ -201,24 +206,47 @@ public class ManagerRequest {
 	public Response getSaleList(@RequestBody String request) {
 		if(!validator.isLogin()) return new Response(false,"请登录再操作");
 		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
-		SaleResponse saleResponse=new SaleResponse();
 		JSONObject Obj=JSONObject.parseObject(request);
 		int index = Obj.getInteger("index");
+		ArrayList<DBSale> sales=null;
 		if(index==0){
-			saleResponse.setSales(saleMapper.getSales());
+			sales=saleMapper.getSalesinfo();
 		}else if(index==1){
 			long saleid=Obj.getLong("str");
-			saleResponse.setSales(saleMapper.getSaleOfSaleid(saleid));
+			sales=saleMapper.getSalesinfoOfSaleid(saleid);
 		}else if(index==2){
 			String isbn=Obj.getString("str");
-			saleResponse.setSales(saleMapper.getSaleOfISBN(isbn));
+			sales=saleMapper.getSalesinfoOfISBN(isbn);
 		}else if(index==3){
 			String saletime=Obj.getString("str");
 			saletime=saletime.replace("T"," ");
-			saleResponse.setSales(saleMapper.getSaleOfSaletime(saletime));
+			sales=saleMapper.getSalesinfoOfSaletime(saletime);
 		}
-		return saleResponse;
+		for (int i=0;i<sales.size();i++){
+			String bookname = bookMapper.getBookname(sales.get(i).getBid());
+			sales.get(i).setBookname(bookname);
+		}
+		return new SaleResponse(sales);
 	}
+
+	//获取销售详情列表
+	@PostMapping("/checkSale")
+	public Response checkSale(@RequestBody Sale request) {
+		if(!validator.isLogin()) return new Response(false,"请登录再操作");
+		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
+		Long saleid = request.getSaleid();
+		ArrayList<DBSale> sales = saleMapper.getSaleOfSaleid(saleid);
+		for (int i=0;i<sales.size();i++){
+			String bookname = bookMapper.getBookname(sales.get(i).getBid());
+			sales.get(i).setBookname(bookname);
+		}
+		return new SaleResponse(sales);
+	}
+
+
+
+
+
 
 	//获取进货信息列表
 	@PostMapping("/getPurchaseList")
@@ -246,9 +274,14 @@ public class ManagerRequest {
 	public Response checkPurchase(@RequestBody Purchase request) {
 		if(!validator.isLogin()) return new Response(false,"请登录再操作");
 		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
-		PurchaseResponse purchaseResponse=new PurchaseResponse();
-		purchaseResponse.setPurchases(purchaseMapper.getPurchasesinfo(request.getPurchaseid()));
-		return purchaseResponse;
+		Long purchaseid = request.getPurchaseid();
+		ArrayList<DBPurchase> purchases = purchaseMapper.getPurchasesinfo(purchaseid);
+		ArrayList<Integer> bids = purchaseMapper.getBidsOfPurchase(purchaseid);
+		for(int i=0;i<purchases.size();i++){
+			String bookname=bookMapper.getBookname(bids.get(i));
+			purchases.get(i).setBookname(bookname);
+		}
+		return new PurchaseResponse(purchases);
 	}
 
 	//添加进货记录
@@ -308,8 +341,13 @@ public class ManagerRequest {
 	public Response checkStock(@RequestBody Stock request) {
 		if(!validator.isLogin()) return new Response(false,"请登录再操作");
 		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
-		StockResponse stockResponse=new StockResponse();
-		stockResponse.setStocks(stockMapper.getStockinfoOfStockid(request.getStockid()));
-		return stockResponse;
+		Long stockid = request.getStockid();
+		ArrayList<DBStock> stocks = stockMapper.getStockinfoOfStockid(stockid);
+		ArrayList<Integer> bids = stockMapper.getBidsOfStockid(stockid);
+		for(int i=0;i<stocks.size();i++){
+			String bookname=bookMapper.getBookname(bids.get(i));
+			stocks.get(i).setBookname(bookname);
+		}
+		return new StockResponse(stocks);
 	}
 }

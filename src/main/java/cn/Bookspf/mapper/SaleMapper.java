@@ -23,14 +23,23 @@ public interface SaleMapper {
 
 	//查询某个销售记录
 	@Select("select * from sale where saleid=#{saleid}")
-	public ArrayList<DBSale> getSaleOfSaleid(long saleid);
+	public ArrayList<DBSale> getSaleOfSaleid(Long saleid);
 
 	//查询某个销售记录
-	@Select("select * from sale where isbn=#{isbn}")
-	public ArrayList<DBSale> getSaleOfISBN(String isbn);
+	@Select("select distinct saleid,saletime from sale")
+	public ArrayList<DBSale> getSalesinfo();
 
 	//查询某个销售记录
-	@Select("select * from sale where saletime=#{saletime}")
-	public ArrayList<DBSale> getSaleOfSaletime(String saletime);
-	
+	@Select("select distinct saleid,saletime from sale where saleid=#{saleid}")
+	public ArrayList<DBSale> getSalesinfoOfSaleid(Long saleid);
+
+	//查询某个销售记录
+	@Select("select distinct saleid,saletime from sale where isbn=#{isbn}")
+	public ArrayList<DBSale> getSalesinfoOfISBN(String isbn);
+
+	//查询某个销售记录
+	@Select("select distinct saleid,saletime from sale where saletime=#{saletime}")
+	public ArrayList<DBSale> getSalesinfoOfSaletime(String saletime);
+
+
 }

@@ -8,6 +8,7 @@ public class DBStock {
 	private long id;
 	private long stockid;
 	private Integer bid;
+	private String bookname;
 	private String isbn;
 	private Integer comeout;
 	private String cometime;
@@ -57,5 +58,13 @@ public class DBStock {
 
 	public void setOuttime(String outtime) {
 		this.outtime = outtime;
+	}
+
+	public String getBookname() {
+		return bookname;
+	}
+
+	public void setBookname(String bookname) {
+		this.bookname = bookname;
 	}
 }

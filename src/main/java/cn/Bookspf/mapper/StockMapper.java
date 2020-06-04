@@ -14,6 +14,10 @@ public interface StockMapper {
     @Insert("insert into stock() values(#{stockid},#{bid},#{isbn},#{cometime},comeout=0)")
     public void insertComeStock(Long stockid,Integer bid,String isbn,String cometime);
 
+    //获取Bids
+    @Select("select bid from stock where stockid=#{stockid}")
+    public ArrayList<Integer> getBidsOfStockid(Long stockid);
+
     //获取所有库存记录
     @Select("select distinct stockid,comeout,cometime,outtime from stock")
     public ArrayList<DBStock> getStocks();

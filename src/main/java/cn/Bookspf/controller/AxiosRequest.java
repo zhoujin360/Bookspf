@@ -1,32 +1,16 @@
 package cn.Bookspf.controller;
 
-
-
-
 import org.springframework.util.DigestUtils;
 import javax.servlet.http.HttpSession;
-import javax.validation.Validation;
 
 import cn.Bookspf.model.RO.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
-import cn.Bookspf.mapper.BookMapper;
-import cn.Bookspf.mapper.OrderMapper;
-import cn.Bookspf.mapper.SaleMapper;
-import cn.Bookspf.mapper.SortMapper;
 import cn.Bookspf.mapper.UserMapper;
 import cn.Bookspf.model.DO.DBUser;
-import cn.Bookspf.model.DTO.Book;
-import cn.Bookspf.model.DTO.Sort;
 import cn.Bookspf.model.DTO.User;
 import cn.Bookspf.utils.Generator;
 import cn.Bookspf.utils.Validator;
@@ -38,20 +22,14 @@ public class AxiosRequest {
 	HttpSession httpSession;
 	Validator validator;
 	UserMapper userMapper;
-	BookMapper bookMapper;
-	SortMapper sortMapper;
-	OrderMapper orderMapper;
-	SaleMapper saleMapper;
+
 	
 	@Autowired
-	public AxiosRequest(HttpSession httpSession,UserMapper userMapper,BookMapper bookMapper,SortMapper sortMapper,OrderMapper orderMapper,SaleMapper saleMapper) {
+	public AxiosRequest(HttpSession httpSession,UserMapper userMapper) {
 		this.httpSession=httpSession;
 		this.validator=new Validator(httpSession);
 		this.userMapper=userMapper;
-		this.bookMapper=bookMapper;
-		this.sortMapper=sortMapper;
-		this.orderMapper=orderMapper;
-		this.saleMapper=saleMapper;
+
 	}
 	
 	@PostMapping("/register")
@@ -79,7 +57,6 @@ public class AxiosRequest {
 		password = DigestUtils.md5DigestAsHex(password.getBytes());
 		DBUser user=userMapper.getUserOfUsername(username);
 		if(user==null) return new Response(false,"用户名错误");
-//		if(!password.equals(user.getPassword())) return new Response(false,"密码错误");
 		String userPassword = user.getPassword();
 		if(!password.equals(userPassword)) return new Response(false,"密码错误");
 		httpSession.setAttribute("userToken", user.getUid());

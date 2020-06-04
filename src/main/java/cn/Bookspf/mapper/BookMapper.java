@@ -53,7 +53,10 @@ public interface BookMapper {
 	@Select("select bookprice from book where bid=#{bid}")
 	public Double getBookprice(Integer bid);
 
-	
+	//查询书籍名称
+	@Select("select bookname from book where bid=#{bid}")
+	public  String getBookname(Integer bid);
+
 	//查询排行榜
 	@Select("select * from book order by hot desc limit 0,10")
 	public ArrayList<DBBook> getRankList(); 

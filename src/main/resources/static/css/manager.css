@@ -325,9 +325,17 @@ a {
     height: 350px;
 }
 
+#checkOrder .tips span:first-child,
+#checkPurchase .tips span:first-child,
+#checkStock .tips span:first-child,
+#checkSale .tips span:first-child {
+    width: 20em;
+}
+
 #checkOrder .orders div,
 #checkPurchase .purchases div,
-#checkStock .stocks div {
+#checkStock .stocks div,
+#checkSale .sales div {
     margin: 0 auto 10px;
     width: 95%;
     height: 25px;
@@ -338,6 +346,7 @@ a {
 
 .orders,
 .purchases,
+.sales,
 #bookPurchase,
 .stocks {
     height: 150px;
@@ -375,9 +384,17 @@ a {
 
 #checkOrder span,
 #checkPurchase span,
+#checkSale span,
 #checkStock span {
-    width: 13em;
+    width: 11em;
     line-height: 25px;
+}
+
+#checkOrder span:first-child,
+#checkPurchase span:first-child,
+#checkSale span:first-child,
+#checkStock span:first-child {
+    width: 6em;
 }
 
 #addPurchase {
@@ -470,7 +487,7 @@ a {
 }
 
 #saleInfo .List div span {
-    width: 18em;
+    width: 25em;
 }
 
 #purchaseInfo .List div span {
@@ -517,6 +534,7 @@ a {
 
 #orderInfo .check,
 #stockInfo .check,
+#saleInfo .check,
 #purchaseInfo .check,
 #bookInfo .delete,
 #sortInfo .delete,
