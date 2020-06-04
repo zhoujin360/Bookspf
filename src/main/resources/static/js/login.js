@@ -31,13 +31,13 @@ var login = new Vue({
                     username: that.username,
                     password: that.password,
                     captcha: that.captcha
-                }).then(function(response) {
+                }).then(function (response) {
                     if (response.data.status) {
                         window.location.reload();
                     } else {
                         that.isShow = true;
                         that.errmes = response.data.mes;
-                        that.isShow = true;
+
                     }
                 })
             }

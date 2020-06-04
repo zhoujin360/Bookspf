@@ -57,14 +57,12 @@ public class AxiosRequest {
 	@PostMapping("/register")
 	public Response register (@RequestBody User request) {
 		String captcha= (String) httpSession.getAttribute("captcha");
-		if(!captcha.equals(request.getCaptcha())) return new Response(false,"验证码错误");
+		if (!captcha.equalsIgnoreCase(request.getCaptcha())) return new Response(false,"验证码错误");
 		String status =validator.isSame(userMapper, request);
 		if(!"成功".equals(status)) return new Response(false,status);
 		Integer uid = Generator.generateUid();
-		if(userMapper.findUid(uid)!=null) uid+=1;
-		
+		if(userMapper.findUid(uid)!=null) uid+=1;	
 		String password = request.getPassword();
-
 		request.setUid(uid);
 		request.setAdmin(2);
 		request.setPassword(DigestUtils.md5DigestAsHex(password.getBytes()));

@@ -23,8 +23,8 @@
             <input type="password" placeholder="   Password" v-model="password" id="reg_password"><br>
             <input type="text" placeholder="  Email" v-model="email" id="email"><br>
             <div class="verifycode">
-                <input type="text" placeholder="  Verification" id="verification">
-                <div></div>
+                <input type="text" v-model="captcha" placeholder="  Verification" id="verification">
+                <div @click="changeCode"><img :src="'data:image/png;base64,'+code"></div>
             </div>
             <a href="/login" id="toIndex">
                 <h4>Return to the login?</h4>

@@ -4,11 +4,16 @@ var register = new Vue({
         username: "",
         password: "",
         email: "",
+        captcha: "",
+        code: "",
         errmes: "",
-        isShow: false
+        isShow: false,
+    },
+    mounted() {
+        this.changeCode();
     },
     methods: {
-        submit: function() {
+        submit: function () {
             var that = this;
             var usernameReg = /^[A-Za-z0-9]{3,20}$/;
             var passwordReg = /^[0-9A-Za-z]{6,20}$/;
@@ -22,20 +27,38 @@ var register = new Vue({
             } else if (that.email == '' || !emailReg.test(that.email)) {
                 that.isShow = true;
                 that.errmes = '邮箱格式错误';
+            } else if (that.code == '') {
+                that.isShow = true;
+                that.errmes = '验证码不能为空';
             } else {
                 that.isShow = false;
                 axios.post("/register", {
                     username: that.username,
                     password: that.password,
-                    email: that.email
+                    email: that.email,
+                    captcha: that.captcha
                 }).then(function (response) {
+                    // if (!response.data.status) {
+                    //     that.isShow = true;
+                    //     that.errmes = response.data.mes;
+                    // }
                     if (!response.data.status) {
                         that.isShow = true;
                         that.errmes = response.data.mes;
+                    } else {
+                        console.log(response.data)
+                        window.location.replace("/login");
                     }
                 })
             }
         },
+        changeCode() {
+            var that = this;
+            axios.post("/changeCode")
+                .then(response => {
+                    that.code = response.data;
+                })
+        }
 
     }
 });
