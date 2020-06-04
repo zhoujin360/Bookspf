@@ -48,8 +48,8 @@
                         <span>用户名：{{item.username}}</span>
                         <span>邮箱：{{item.email}}</span>
                         <span>真实姓名：{{item.realname}}</span>
-                        <span class="alter"><a href="javascript:;" @click="setUid(item.bid)"
-                            onclick="action('alterBook')">修改</a></span>
+                        <span class="alter"><a href="javascript:;" @click="setUid(item.uid)"
+                            onclick="action('alterAdmin')">修改</a></span>
                         <span class="delete" @click="deleteAdmin(item.uid)"><a href="#">删除</a></span>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
             <div class="errmes">
                 <span v-show="isShow" :class="errmesColor?'errmesGreen':'errmesRed'">{{errmes}}</span>
             </div>
-            <input id="addAdminBtn" type="submit" value="确认添加">
+            <input class="addAdminBtn" type="submit" value="确认添加">
         </form>
     </div>
     <div id="alterAdmin" class="actionHidden">
@@ -110,7 +110,7 @@
             <div class="errmes">
                 <span v-show="isShow" :class="errmesColor?'errmesGreen':'errmesRed'">{{errmes}}</span>
             </div>
-            <input id="addAdminBtn" type="submit" value="确认添加">
+            <input class="alterAdminBtn" type="submit" value="确认修改">
         </form>
     </div>
 

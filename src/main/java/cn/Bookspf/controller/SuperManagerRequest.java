@@ -1,6 +1,7 @@
 package cn.Bookspf.controller;
 
-import org.springframework.util.DigestUtils;  
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.DigestUtils;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,27 @@ public class SuperManagerRequest {
 		request.setPassword(DigestUtils.md5DigestAsHex(password.getBytes()));
 		request.setAdmin(1);
 		userMapper.insertManager(request);
+		return new Response(true,"添加成功");
+	}
+
+
+	@PostMapping("/alterAdmin")
+	@Transactional
+	public Response alterAdmin(@RequestBody User request) {
+		if(!validator.isLogin()) return new Response(false,"请登录再操作");
+		if(validator.isIdentity(userMapper)!=0) return new Response(false,"请登录超级管理员帐号");
+		Integer uid = request.getUid();
+		String username = request.getUsername();
+		String email = request.getEmail();
+		String password = DigestUtils.md5DigestAsHex(request.getPassword().getBytes());
+		if(userMapper.findUsername(username)!=null) return new Response(false,"用户名已存在");
+		if(userMapper.findEmail(email)!=null) return new Response(false,"邮箱已存在");
+
+		userMapper.updateUsername(uid,username);
+		userMapper.updatePassword(uid,password);
+		userMapper.updateEmail(uid,email);
+		userMapper.updateRealname(uid,request.getRealname());
+
 		return new Response(true,"添加成功");
 	}
 }

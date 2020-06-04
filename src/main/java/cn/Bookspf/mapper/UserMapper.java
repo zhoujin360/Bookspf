@@ -77,9 +77,17 @@ public interface UserMapper {
 	@Update("update user set balance=#{balance} where uid=#{uid}")
 	public void updateBalance(Integer uid,Double balance);
 
+	//修改用户名字
+	@Update("update user set username=#{username} where uid=#{uid}")
+	public void updateUsername(Integer uid,String username);
+
 	//修改用户密码
 	@Update("update user set password=#{password} where uid=#{uid}")
 	public void updatePassword(Integer uid,String password);
+
+	//修改用户密码
+	@Update("update user set email=#{email} where uid=#{uid}")
+	public void updateEmail(Integer uid,String email);
 
 	//修改用户手机
 	@Update("update user set phone=#{phone} where uid=#{uid}")
@@ -104,4 +112,5 @@ public interface UserMapper {
 	//查地址
 	@Select("select address from user where uid=#{uid}")
 	public String getAddress(Integer uid);
+
 }
