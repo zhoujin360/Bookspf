@@ -139,6 +139,15 @@ function checkAdded(added) {
 }
 
 
+//删除确认
+function confirmDel() {
+    var info = prompt("请输入'确认'进行删除", "");
+    if (info === "确认") {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 /*************************************************/
 
@@ -175,7 +184,7 @@ var getBookList = new Vue({
                         getBookList.getBookList();
                     }
                 })
-            } else { }
+            } else {}
 
         },
         setBid(bid) {
@@ -403,19 +412,12 @@ var getSortList = new Vue({
                         getSortList.getSortList();
                     }
                 })
-            } else { }
+            } else {}
         }
     }
 });
 
-function confirmDel() {
-    var info = prompt("请输入确认二字进行删除", "");
-    if (info === "确认") {
-        return true;
-    } else {
-        return false;
-    }
-}
+
 
 function externalGetSortList() {
     getSortList.getSortList();
