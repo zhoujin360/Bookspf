@@ -51,6 +51,7 @@ public class AxiosRequest {
 	@PostMapping("/login")
 	public Response login (@RequestBody User request) {
 		String captcha= (String) httpSession.getAttribute("captcha");
+		if(captcha==null) return new Response(false,"验证码过期");
 		if (!captcha.equalsIgnoreCase(request.getCaptcha())) return new Response(false,"验证码错误");
 		String username = request.getUsername();
 		String password = request.getPassword();
