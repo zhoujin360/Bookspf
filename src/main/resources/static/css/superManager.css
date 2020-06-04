@@ -253,11 +253,11 @@ a {
 }
 
 #managerList {
-    margin: auto;
-    margin-top: 20px;
+    position: absolute;
+    margin: 20px 35px;
     padding: 20px 0;
-    width: 1130px;
-    height: 500px;
+    width: calc(100% - 65px);
+    height: calc(100% - 150px);
     border-radius: 10px;
     background-color: #ccc;
     overflow: auto;
@@ -269,7 +269,7 @@ a {
 
 #managerList .managerListItem div {
     padding: 5px 10px;
-    width: 1030px;
+    width: calc(100% - 65px);
     height: 40px;
     border-radius: 10px;
     background-color: #fff;
@@ -294,8 +294,10 @@ a {
 }
 
 #managerList .managerListItem div span.delete {
-    margin-left: 20px;
+    display: inline-block;
+    position: absolute;
     width: 3em;
+    right: 200px;
 }
 
 .delete a {
