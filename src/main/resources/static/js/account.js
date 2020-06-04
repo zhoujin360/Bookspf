@@ -2,7 +2,9 @@ var app = new Vue({
     el: "#box",
     data: {
         password: "",
+        balance: "",
         phone: "",
+        userPhone: "",
         realname: "",
         address: "",
         errmes: '',
@@ -10,7 +12,8 @@ var app = new Vue({
         passwordShow: true,
         phoneShow: true,
         realnameShow: true,
-        addressShow: true
+        addressShow: true,
+        balanceShow: true
     },
     directives: {
         focus: {
@@ -27,6 +30,24 @@ var app = new Vue({
             if (index == 1) this.realnameShow = !this.realnameShow;
             if (index == 2) this.addressShow = !this.addressShow;
             if (index == 3) this.passwordShow = !this.passwordShow;
+            if (index == 4) this.balanceShow = !this.balanceShow;
+        },
+        changeBalance() {
+            var that = this;
+            var balanceReg = /^[0-9]{1,5}$/;
+            if (!balanceReg.test(that.balance) || that.balance == '') {
+                that.errmes = "充值数输入错误";
+                that.isShow = true;
+            } else {
+                that.isShow = false;
+                axios.post("/changeBalance", {
+                    balance: that.balance
+                }).then(response => {
+                    console.log(response.data.mes);
+                    that.balance = response.data.mes;
+                    console.log(that.balance);
+                })
+            }
         },
         changePassword() {
             var that = this;
@@ -60,7 +81,7 @@ var app = new Vue({
                     phone: that.phone
                 }).then(response => {
                     if (response.data.status) {
-                        that.phone = response.data.mes;
+                        that.userPhone = response.data.mes;
                     }
                 })
             }
@@ -102,9 +123,18 @@ var app = new Vue({
 
         }
     }
-})
+}
+)
 function confirmDel() {
     var info = prompt("请再次输入密码", "");
+    if (info === app.password) {
+        return true;
+    } else {
+        return false;
+    }
+}
+function confirmRecharge() {
+    var info = prompt("请输入'确认'", "");
     if (info === app.password) {
         return true;
     } else {

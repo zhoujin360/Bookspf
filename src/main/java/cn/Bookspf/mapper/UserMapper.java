@@ -76,7 +76,8 @@ public interface UserMapper {
 	//修改用户余额
 	@Update("update user set balance=#{balance} where uid=#{uid}")
 	public void updateBalance(Integer uid,Double balance);
-
+	
+	
 	//修改用户密码
 	@Update("update user set password=#{password} where uid=#{uid}")
 	public void updatePassword(Integer uid,String password);

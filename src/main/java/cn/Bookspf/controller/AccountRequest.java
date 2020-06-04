@@ -43,6 +43,17 @@ public class AccountRequest {
         return new Response(true,"上传成功");
     }
 
+    @PostMapping("/changeBalance")
+    public Response changeBalance(@RequestBody User request){
+        if(!validator.isLogin()) return new Response(false,"请登录再操作");
+        if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
+        Integer uid = (Integer) httpSession.getAttribute("userToken");
+        Double userBalance = userMapper.getBalance(uid);
+        userBalance = request.getBalance()+userBalance;
+        userMapper.updateBalance(uid,userBalance);
+        return new Response(true,String.valueOf(userMapper.getBalance(uid)));
+    }
+    
     @PostMapping("/changePassword")
     public Response changePassword(@RequestBody User request){
         if(!validator.isLogin()) return new Response(false,"请登录再操作");
@@ -69,7 +80,7 @@ public class AccountRequest {
         if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
         Integer uid = (Integer) httpSession.getAttribute("userToken");
         userMapper.updateRealname(uid,request.getRealname());
-        return new Response(true,"修改成功");
+        return new Response(true,userMapper.getRealname(uid));
     }
 
     @PostMapping("/changeAddress")
@@ -78,6 +89,6 @@ public class AccountRequest {
         if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
         Integer uid = (Integer) httpSession.getAttribute("userToken");
         userMapper.updateAddress(uid,request.getAddress());
-        return new Response(true,"修改成功");
+        return new Response(true,userMapper.getAddress(uid));
     }
 }
