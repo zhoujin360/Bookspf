@@ -12,7 +12,7 @@ var login = new Vue({
         this.changeCode();
     },
     methods: {
-        submit: function() {
+        submit: function () {
             var that = this;
             var usernameReg = /^[A-Za-z0-9]{3,20}$/;
             var passwordReg = /^[0-9A-Za-z]{6,20}$/;
@@ -37,6 +37,7 @@ var login = new Vue({
                     } else {
                         that.isShow = true;
                         that.errmes = response.data.mes;
+                        that.isShow = true;
                     }
                 })
             }

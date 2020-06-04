@@ -1,5 +1,6 @@
 package cn.Bookspf.controller;
 
+import org.springframework.util.DigestUtils;  
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +56,9 @@ public class SuperManagerRequest {
 		if(!validator.isLogin()) return new Response(false,"请登录再操作");
 		if(validator.isIdentity(userMapper)!=0) return new Response(false,"请登录超级管理员帐号");
 		String status =validator.isSame(userMapper, request);
+		String password = request.getPassword();
 		if(!"成功".equals(status)) return new Response(false,status);
+		request.setPassword(DigestUtils.md5DigestAsHex(password.getBytes()));
 		request.setAdmin(1);
 		userMapper.insertManager(request);
 		return new Response(true,"添加成功");

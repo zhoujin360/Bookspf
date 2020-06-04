@@ -28,9 +28,11 @@ var register = new Vue({
                     username: that.username,
                     password: that.password,
                     email: that.email
-                }).then(function(response) {
-                    that.isShow = true;
-                    that.msg = response.data.mes;
+                }).then(function (response) {
+                    if (!response.data.status) {
+                        that.isShow = true;
+                        that.errmes = response.data.mes;
+                    }
                 })
             }
         },

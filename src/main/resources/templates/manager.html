@@ -29,26 +29,32 @@
                 <span>图书</span>
                 <p :class="isShow==1?'rotate90':'norotate'">﹤</p>
             </div>
-            <div onclick="isMain('bookInfo');externalGetBookList();" :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('bookInfo');externalGetBookList();"
+                :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
                 图书信息管理
             </div>
-            <div onclick="isMain('sortInfo');externalGetSortList();" :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('sortInfo');externalGetSortList();"
+                :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
                 图书分类信息管理
             </div>
-            <div onclick="isMain('orderReview');externalGetOrderList(0,'');" :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('orderReview');externalGetOrderList(0,'');"
+                :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
                 订单审核
             </div>
             <div class="item" @click="rotateT(2)">
                 <span>出入库</span>
                 <p :class="isShow==2?'rotate90':'norotate'">﹤</p>
             </div>
-            <div onclick="isMain('saleInfo');externalGetSaleList(0,'');" :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('saleInfo');externalGetSaleList(0,'');"
+                :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
                 销售记录查看
             </div>
-            <div onclick="isMain('purchaseInfo');externalGetPurchaseList(0, '')" :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('purchaseInfo');externalGetPurchaseList(0, '')"
+                :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
                 进货记录管理
             </div>
-            <div onclick="isMain('stockInfo');externalGetStockList(0,'');" :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
+            <div onclick="isMain('stockInfo');externalGetStockList(0,'');"
+                :class="isShow==2?'itemShow childItem':'itemHidden childItem'">
                 库存记录管理
             </div>
         </div>

@@ -3,6 +3,7 @@ package cn.Bookspf.controller;
 
 
 
+import org.springframework.util.DigestUtils;
 import javax.servlet.http.HttpSession;
 import javax.validation.Validation;
 
@@ -61,8 +62,12 @@ public class AxiosRequest {
 		if(!"成功".equals(status)) return new Response(false,status);
 		Integer uid = Generator.generateUid();
 		if(userMapper.findUid(uid)!=null) uid+=1;
+		
+		String password = request.getPassword();
+
 		request.setUid(uid);
 		request.setAdmin(2);
+		request.setPassword(DigestUtils.md5DigestAsHex(password.getBytes()));
 		userMapper.insertUser(request);
 		return new Response(true,"注册成功");
 	} 
@@ -73,9 +78,12 @@ public class AxiosRequest {
 		if (!captcha.equalsIgnoreCase(request.getCaptcha())) return new Response(false,"验证码错误");
 		String username = request.getUsername();
 		String password = request.getPassword();
+		password = DigestUtils.md5DigestAsHex(password.getBytes());
 		DBUser user=userMapper.getUserOfUsername(username);
 		if(user==null) return new Response(false,"用户名错误");
-		if(!password.equals(user.getPassword())) return new Response(false,"密码错误");
+//		if(!password.equals(user.getPassword())) return new Response(false,"密码错误");
+		String userPassword = user.getPassword();
+		if(!password.equals(userPassword)) return new Response(false,"密码错误");
 		httpSession.setAttribute("userToken", user.getUid());
 		httpSession.setAttribute("username", user.getUsername());
 		httpSession.setMaxInactiveInterval(60*60);
