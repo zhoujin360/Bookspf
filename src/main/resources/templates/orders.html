@@ -62,6 +62,7 @@
                     <div class="listInfo">
                         <span>订单ID</span>
                         <span>图书ID</span>
+                        <span>图书名称</span>
                         <span>ISBN</span>
                         <span>图书价格</span>
                     </div>
@@ -70,6 +71,7 @@
                             <li class="listItem" v-for="item in ordersinfo">
                                 <span>{{orderid}}</span>
                                 <span>{{item.bid}}</span>
+                                <span>{{item.bookname}}</span>
                                 <span>{{item.isbn}}</span>
                                 <span>{{item.bookprice}}元</span>
                             </li>

@@ -70,7 +70,9 @@ public class AccountRequest {
         if(!validator.isLogin()) return new Response(false,"请登录再操作");
         if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
         Integer uid = (Integer) httpSession.getAttribute("userToken");
-        userMapper.updatePhone(uid,request.getPhone());
+        String phone = request.getPhone();
+        if(userMapper.getPhone(uid).equals(phone)) return new Response(false,"新旧手机号一致");
+        userMapper.updatePhone(uid,phone);
         return new Response(true,userMapper.getPhone(uid));
     }
 
@@ -79,7 +81,9 @@ public class AccountRequest {
         if(!validator.isLogin()) return new Response(false,"请登录再操作");
         if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
         Integer uid = (Integer) httpSession.getAttribute("userToken");
-        userMapper.updateRealname(uid,request.getRealname());
+        String realname = request.getRealname();
+        if(userMapper.getRealname(uid).equals(realname)) return new Response(false,"新旧姓名一致");
+        userMapper.updateRealname(uid,realname);
         return new Response(true,userMapper.getRealname(uid));
     }
 
@@ -88,7 +92,9 @@ public class AccountRequest {
         if(!validator.isLogin()) return new Response(false,"请登录再操作");
         if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
         Integer uid = (Integer) httpSession.getAttribute("userToken");
-        userMapper.updateAddress(uid,request.getAddress());
+        String address = request.getAddress();
+        if(userMapper.getAddress(uid).equals(address)) return new Response(false,"新旧地址一致");
+        userMapper.updateAddress(uid,address);
         return new Response(true,userMapper.getAddress(uid));
     }
 }

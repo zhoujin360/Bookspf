@@ -194,7 +194,7 @@ public class ManagerRequest {
 		ArrayList<DBOrder> orders = orderMapper.getOrderinfoOfOrderid(orderid);
 		ArrayList<Integer> bids =  orderMapper.getBidsOfOrderid(orderid);
 		for(int i=0;i<orders.size();i++){
-			String bookname=bookMapper.getBookname(bids.get(i));
+			String bookname=bookMapper.getBooknameOfAdmin(bids.get(i));
 			orders.get(i).setBookname(bookname);
 		}
 		return new OrderResponse(orders);
@@ -223,7 +223,7 @@ public class ManagerRequest {
 			sales=saleMapper.getSalesinfoOfSaletime(saletime);
 		}
 		for (int i=0;i<sales.size();i++){
-			String bookname = bookMapper.getBookname(sales.get(i).getBid());
+			String bookname = bookMapper.getBooknameOfAdmin(sales.get(i).getBid());
 			sales.get(i).setBookname(bookname);
 		}
 		return new SaleResponse(sales);
@@ -237,7 +237,7 @@ public class ManagerRequest {
 		Long saleid = request.getSaleid();
 		ArrayList<DBSale> sales = saleMapper.getSaleOfSaleid(saleid);
 		for (int i=0;i<sales.size();i++){
-			String bookname = bookMapper.getBookname(sales.get(i).getBid());
+			String bookname = bookMapper.getBooknameOfAdmin(sales.get(i).getBid());
 			sales.get(i).setBookname(bookname);
 		}
 		return new SaleResponse(sales);
@@ -278,7 +278,7 @@ public class ManagerRequest {
 		ArrayList<DBPurchase> purchases = purchaseMapper.getPurchasesinfo(purchaseid);
 		ArrayList<Integer> bids = purchaseMapper.getBidsOfPurchase(purchaseid);
 		for(int i=0;i<purchases.size();i++){
-			String bookname=bookMapper.getBookname(bids.get(i));
+			String bookname=bookMapper.getBooknameOfAdmin(bids.get(i));
 			purchases.get(i).setBookname(bookname);
 		}
 		return new PurchaseResponse(purchases);
@@ -294,11 +294,11 @@ public class ManagerRequest {
 		request.setPurchasetime(request.getPurchasetime().replace("T"," "));
 		if(purchaseMapper.findPurchaseid(request.getPurchaseid()).size()!=0) return new Response(false,"进货ID重复");
 		if(purchaseMapper.findIsbn(request.getIsbn())!=null) return new Response(false,"ISBN重复");
-		Integer number=bookMapper.getBookNumber(request.getBid());
+		Integer number=bookMapper.getBookNumberOfAdmin(request.getBid());
 		if(number==null)return new Response(false,"请先添加对应的图书,再进行操作");
 
 		//修改书本数量
-		bookMapper.updateBookNumber(request.getBid(),number+1);
+		bookMapper.updateBookNumberOfAdmin(request.getBid(),number+1);
 
 		//插入进货记录
 		purchaseMapper.insertPurchase(request);
@@ -345,7 +345,7 @@ public class ManagerRequest {
 		ArrayList<DBStock> stocks = stockMapper.getStockinfoOfStockid(stockid);
 		ArrayList<Integer> bids = stockMapper.getBidsOfStockid(stockid);
 		for(int i=0;i<stocks.size();i++){
-			String bookname=bookMapper.getBookname(bids.get(i));
+			String bookname=bookMapper.getBooknameOfAdmin(bids.get(i));
 			stocks.get(i).setBookname(bookname);
 		}
 		return new StockResponse(stocks);

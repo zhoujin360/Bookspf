@@ -1,5 +1,6 @@
 package cn.Bookspf.controller;
 
+import cn.Bookspf.mapper.BookMapper;
 import cn.Bookspf.mapper.OrderMapper;
 import cn.Bookspf.mapper.UserMapper;
 import cn.Bookspf.model.DO.DBOrder;
@@ -23,14 +24,16 @@ public class OrdersRequest {
     Validator validator;
     Operator operator;
     UserMapper userMapper;
+    BookMapper bookMapper;
     OrderMapper orderMapper;
 
     @Autowired
-    public OrdersRequest(HttpSession httpSession, UserMapper userMapper,OrderMapper orderMapper){
+    public OrdersRequest(HttpSession httpSession, UserMapper userMapper, BookMapper bookMapper, OrderMapper orderMapper){
         this.httpSession=httpSession;
         this.validator=new Validator(httpSession);
         this.operator=new Operator();
         this.userMapper=userMapper;
+        this.bookMapper=bookMapper;
         this.orderMapper=orderMapper;
     }
 
@@ -69,9 +72,14 @@ public class OrdersRequest {
     public Response checkOrder(@RequestBody Order request) {
         if(!validator.isLogin()) return new Response(false,"请登录再操作");
         if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
-        OrderResponse orderResponse=new OrderResponse();
-        orderResponse.setOrders(orderMapper.getOrderinfoOfOrderid(request.getOrderid()));
-        return orderResponse;
+        Long orderid=request.getOrderid();
+        ArrayList<DBOrder> orders = orderMapper.getOrderinfoOfOrderid(orderid);
+        ArrayList<Integer> bids =  orderMapper.getBidsOfOrderid(orderid);
+        for(int i=0;i<orders.size();i++){
+            String bookname=bookMapper.getBookname(bids.get(i));
+            orders.get(i).setBookname(bookname);
+        }
+        return new OrderResponse(orders);
     }
 }
 

@@ -3,10 +3,13 @@ var app = new Vue({
     data: {
         password: "",
         balance: "",
+        userBalance: "",
         phone: "",
         userPhone: "",
         realname: "",
+        userRealname: "",
         address: "",
+        userAddress: "",
         errmes: '',
         isShow: false,
         passwordShow: true,
@@ -17,7 +20,7 @@ var app = new Vue({
     },
     directives: {
         focus: {
-            update: function (el, { value }) {
+            update: function(el, { value }) {
                 if (value) {
                     el.focus();
                 }
@@ -40,13 +43,17 @@ var app = new Vue({
                 that.isShow = true;
             } else {
                 that.isShow = false;
-                axios.post("/changeBalance", {
-                    balance: that.balance
-                }).then(response => {
-                    console.log(response.data.mes);
-                    that.balance = response.data.mes;
-                    console.log(that.balance);
-                })
+                if (confirmRechange(that.balance)) {
+                    axios.post("/changeBalance", {
+                        balance: that.balance
+                    }).then(response => {
+                        if (response.data.status) {
+                            that.userBalance = response.data.mes;
+                        } else {
+                            alert(response.data.mes);
+                        }
+                    })
+                }
             }
         },
         changePassword() {
@@ -57,14 +64,14 @@ var app = new Vue({
                 that.isShow = true;
             } else {
                 that.isShow = false;
-                if (confirmDel()) {
+                if (confirmRePwd(that.password)) {
                     axios.post("/changePassword", {
                         password: that.password
                     }).then(response => {
                         alert(response.data.mes);
                     })
                 } else {
-                    alert("修改错误");
+                    alert("修改失败");
                 }
 
             }
@@ -77,13 +84,17 @@ var app = new Vue({
                 that.isShow = true;
             } else {
                 that.isShow = false;
-                axios.post("/changePhone", {
-                    phone: that.phone
-                }).then(response => {
-                    if (response.data.status) {
-                        that.userPhone = response.data.mes;
-                    }
-                })
+                if (confirmRechange(that.phone)) {
+                    axios.post("/changePhone", {
+                        phone: that.phone
+                    }).then(response => {
+                        if (response.data.status) {
+                            that.userPhone = response.data.mes;
+                        } else {
+                            alert(response.data.mes);
+                        }
+                    })
+                }
             }
 
         },
@@ -94,14 +105,18 @@ var app = new Vue({
                 that.errmes = "真实姓名格式错误";
                 that.isShow = true;
             } else {
-                that.isShow = false
-                axios.post("/changeRealname", {
-                    realname: that.realname
-                }).then(response => {
-                    if (response.data.status) {
-                        that.realname = response.data.mes;
-                    }
-                })
+                that.isShow = false;
+                if (confirmRechange(that.realname)) {
+                    axios.post("/changeRealname", {
+                        realname: that.realname
+                    }).then(response => {
+                        if (response.data.status) {
+                            that.userRealname = response.data.mes;
+                        } else {
+                            alert(response.data.mes);
+                        }
+                    })
+                }
             }
         },
         changeAddress() {
@@ -116,26 +131,29 @@ var app = new Vue({
                     address: that.address
                 }).then(response => {
                     if (response.data.status) {
-                        that.realname = response.data.mes;
+                        that.userAddress = response.data.mes;
+                    } else {
+                        alert(response.data.mes);
                     }
                 })
             }
 
         }
     }
-}
-)
-function confirmDel() {
+})
+
+function confirmRePwd(password) {
     var info = prompt("请再次输入密码", "");
-    if (info === app.password) {
+    if (info === password) {
         return true;
     } else {
         return false;
     }
 }
-function confirmRecharge() {
-    var info = prompt("请输入'确认'", "");
-    if (info === app.password) {
+
+function confirmRechange(str) {
+    var info = prompt("修改值:" + str + ",请输入'确认'进行修改", "");
+    if (info === "确认") {
         return true;
     } else {
         return false;

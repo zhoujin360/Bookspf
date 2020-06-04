@@ -63,6 +63,10 @@ public class BookRequest {
         //减少书籍数量
         bookMapper.updateBookNumber(bid,book.getNumber()-1);
 
+        //增加热度
+        Integer hot =  bookMapper.getHot(bid);
+        bookMapper.updateHot(bid,hot+1);
+
         //出库
         String time=Generator.generateTime();
         DBStock stock = stockMapper.getComeStock(bid);

@@ -90,7 +90,6 @@
     border-radius: 5px;
     /* background-color: #c2c2c2; */
     background: linear-gradient(to top, #6CC6CB, #EAE5C9);
-
     overflow: auto;
 }
 
@@ -144,6 +143,11 @@
 
 #orderDetailed .listInfo span,
 #orderDetailed .listItem span {
+    width: 12em;
+}
+
+#orderDetailed .listInfo span:nth-child(4),
+#orderDetailed .listItem span:nth-child(4) {
     width: 15em;
 }
 

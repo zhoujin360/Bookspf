@@ -118,6 +118,11 @@ public class PagesRequest {
 	public String book (@PathVariable("bid") Integer bid,Model model) {
 		if(validator.isLogin()) setModelUser(model);
 		setModelBook(model,bid);
+
+		//增加热度
+		Integer hot =  bookMapper.getHot(bid);
+		bookMapper.updateHot(bid,hot+1);
+
 		if(httpSession.getAttribute("userToken")==null) return "book";
 		return validator.isIdentity(userMapper, "book");
 	}
