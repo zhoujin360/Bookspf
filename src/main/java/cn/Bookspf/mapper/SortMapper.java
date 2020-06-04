@@ -19,6 +19,12 @@ public interface SortMapper {
 	@Select("select * from sort")
 	public ArrayList<DBSort> getSorts();
 
+	@Select("select sortid from sort where sortid=#{sortid} ")
+	public String findSortid(Integer sortid);
+
+	@Select("select sortname from sort where sortname=#{sortname} ")
+	public String findSortname(String sortname);
+
 	@Select("select sortname from sort where sortid=#{sortid}")
 	public String getSortname(Integer sortid);
 	

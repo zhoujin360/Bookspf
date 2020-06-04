@@ -138,6 +138,8 @@ public class ManagerRequest {
 	public Response addSort(@RequestBody Sort request) {
 		if(!validator.isLogin()) return new Response(false,"请登录再操作");
 		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
+		if(sortMapper.findSortid(request.getSortid())!=null) return new Response(false,"分类ID重复");
+		if(sortMapper.findSortname(request.getSortname())!=null) return new Response(false,"分类名字重复");
 		sortMapper.addSort(request);
 		return new Response(true,"添加成功");
 	}
@@ -189,7 +191,7 @@ public class ManagerRequest {
 		if(!validator.isLogin()) return new Response(false,"请登录再操作");
 		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
 		Long orderid=request.getOrderid();
-		ArrayList<DBOrder> orders=orderMapper.getOrderinfoOfOrderid(orderid);
+		ArrayList<DBOrder> orders = orderMapper.getOrderinfoOfOrderid(orderid);
 		ArrayList<Integer> bids =  orderMapper.getBidsOfOrderid(orderid);
 		for(int i=0;i<orders.size();i++){
 			String bookname=bookMapper.getBookname(bids.get(i));
