@@ -36,15 +36,21 @@
                     <div>
                         <span>邮箱</span>：
                         <span v-show="passwordShow">[[${user.email}]]</span>
-                        <input type="password" v-show="!passwordShow && !rePasswordShow" v-model="password" v-focus="!passwordShow && !rePasswordShow" @keyup.enter="isShowInput(4)" @blur="lostFocus" placeholder="请输入密码">
-                        <input type="password" v-show="!passwordShow && rePasswordShow" v-model="rePassword" v-focus="!passwordShow && rePasswordShow" @keyup.enter="isShowInput(3);isShowInput(4);changePassword()" @blur="lostFocus" placeholder="请再次输入密码">
+                        <input type="password" v-show="!passwordShow && !rePasswordShow" v-model="password"
+                            v-focus="!passwordShow && !rePasswordShow" @keyup.enter="isShowInput(4)" @blur="lostFocus"
+                            placeholder="请输入密码">
+                        <input type="password" v-show="!passwordShow && rePasswordShow" v-model="rePassword"
+                            v-focus="!passwordShow && rePasswordShow"
+                            @keyup.enter="isShowInput(3);isShowInput(4);changePassword()" @blur="lostFocus"
+                            placeholder="请再次输入密码">
                         <a class="Btn" @click="isShowInput(3)">修改密码</a>
                     </div>
                     <div>
                         <span>余额</span>：
                         <span v-show="balanceShow && userBalance == ''">[[${user.balance}]]</span>
                         <span v-show="balanceShow && userBalance != ''">{{ userBalance }}</span>
-                        <input type="text" @blur="isShowInput(5);changeBalance()" v-show="!balanceShow" v-model="balance" v-focus="!balanceShow" placeholder="请输入充值数">
+                        <input type="text" @blur="isShowInput(5);changeBalance()" v-show="!balanceShow"
+                            v-model="balance" v-focus="!balanceShow" placeholder="请输入充值数">
                         <a class="Btn" @click="isShowInput(5)">充值</a>
                     </div>
                 </div>
@@ -58,21 +64,24 @@
                         <span>手机号码</span>：
                         <span v-show="phoneShow && userPhone == ''">[[${user.phone}]]</span>
                         <span v-show="phoneShow && userPhone != ''">{{ userPhone }}</span>
-                        <input type="text" @blur="isShowInput(0);changePhone()" v-show="!phoneShow" v-model="phone" v-focus="!phoneShow" placeholder="请输入号码">
+                        <input type="text" @blur="isShowInput(0);changePhone()" v-show="!phoneShow" v-model="phone"
+                            v-focus="!phoneShow" placeholder="请输入号码">
                         <a class="Btn" @click="isShowInput(0)">修改</a>
                     </div>
                     <div>
                         <span>真实姓名</span>：
                         <span v-show="realnameShow && userRealname == ''">[[${user.realname}]]</span>
                         <span v-show="realnameShow && userRealname != ''">{{ userRealname }}</span>
-                        <input type="text" @blur="isShowInput(1);changeRealname()" v-show="!realnameShow" v-model="realname" v-focus="!realnameShow" placeholder="请输入姓名">
+                        <input type="text" @blur="isShowInput(1);changeRealname()" v-show="!realnameShow"
+                            v-model="realname" v-focus="!realnameShow" placeholder="请输入姓名">
                         <a class="Btn" @click="isShowInput(1)">修改</a>
                     </div>
                     <div class="address">
                         <span>收货地址</span>：
                         <span v-show="addressShow && userAddress == ''">[[${user.address}]]</span>
                         <span v-show="addressShow && userAddress != ''">{{ userAddress }}</span>
-                        <input type="text" @blur="isShowInput(2);changeAddress()" v-show="!addressShow" v-model="address" v-focus="!addressShow" placeholder="请输入地址">
+                        <input type="text" @blur="isShowInput(2);changeAddress()" v-show="!addressShow"
+                            v-model="address" v-focus="!addressShow" placeholder="请输入地址">
                         <a class="Btn" @click="isShowInput(2)">修改</a>
                     </div>
                     <div class="errmes">
