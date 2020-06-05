@@ -87,7 +87,7 @@ public interface BookMapper {
 	public void updateHot(Integer bid,Integer hot);
 
 	//查询排行榜
-	@Select("select * from book order where added=1 by hot desc limit 0,10 ")
+	@Select("select * from book  where added=1 order by hot desc limit 0,10 ")
 	public ArrayList<DBBook> getRankList(); 
 	
 	//获取发布的图书
