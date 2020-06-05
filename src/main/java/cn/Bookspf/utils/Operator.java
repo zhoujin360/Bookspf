@@ -14,7 +14,6 @@ public class Operator {
 
 
 
-
 	//上传图书图片
 	public boolean uploadBookimg(MultipartFile file,Integer bid) throws IOException {
 		String oldFileName=file.getOriginalFilename();
