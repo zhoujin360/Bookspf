@@ -12,17 +12,20 @@ var app = new Vue({
         address: "",
         userAddress: "",
         errmes: '',
+        emsg: '',
         isShow: false,
+        changePwdisShow: false,
         passwordShow: true,
         rePasswordShow: false,
         phoneShow: true,
+        errmesColor: false,
         realnameShow: true,
         addressShow: true,
         balanceShow: true
     },
     directives: {
         focus: {
-            update: function(el, { value }) {
+            update: function (el, { value }) {
                 if (value) {
                     el.focus();
                 }
@@ -34,9 +37,8 @@ var app = new Vue({
             if (index == 0) this.phoneShow = !this.phoneShow;
             if (index == 1) this.realnameShow = !this.realnameShow;
             if (index == 2) this.addressShow = !this.addressShow;
-            if (index == 3) this.passwordShow = !this.passwordShow;
-            if (index == 4) this.rePasswordShow = !this.rePasswordShow;
-            if (index == 5) this.balanceShow = !this.balanceShow;
+            if (index == 3) this.changePwdisShow = !this.changePwdisShow;
+            if (index == 4) this.balanceShow = !this.balanceShow;
         },
         changeBalance() {
             var that = this;
@@ -64,22 +66,34 @@ var app = new Vue({
             var passwordReg = /^[0-9A-Za-z]{6,20}$/;
             if (that.password === that.rePassword) {
                 if (!passwordReg.test(that.password) || that.password == '') {
-                    that.errmes = "密码必须为6-20位字母或数字组合";
+                    that.emsg = "密码必须为6-20位字母或数字组合";
+                    that.errmesColor = false;
                     that.isShow = true;
                 } else {
                     that.isShow = false;
+
                     axios.post("/changePassword", {
                         password: that.password
                     }).then(response => {
-                        that.password = "";
-                        that.rePassword = "";
-                        alert(response.data.mes);
+                        // that.password = "";
+                        // that.rePassword = "";
+                        // alert(response.data.mes);
+                        if (response.data.status) {
+                            that.errmesColor = true;
+                        } else {
+                            that.errmesColor = false;
+                        }
+                        that.emsg = response.data.mes;
+                        that.isShow = true;
                     })
                 }
             } else {
                 that.password = "";
                 that.rePassword = "";
-                alert("两次输入密码不一致");
+                // alert("两次输入密码不一致");
+                that.errmesColor = false;
+                that.emsg = "两次输入密码不一致";
+                that.isShow = true;
             }
         },
         lostFocus() {

@@ -1,3 +1,78 @@
+/* 遮罩层 */
+.actionBlock {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* 弹出窗口 */
+.window {
+    position: absolute;
+    left: calc(50% - 180px);
+    top: calc(50% - 200px);
+    width: 400px;
+    height: 300px;
+    border-radius: 10px;
+    background-color: rgb(61, 70, 77);
+    color: #ccc;
+    z-index: 2;
+    text-align: center;
+}
+
+.window .tips {
+    margin: 30px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.window div {
+    margin: 10px;
+}
+
+.window input {
+    width: 180px;
+    height: 25px;
+    border-radius: 5px;
+}
+
+.window span {
+    display: inline-block;
+    width: 10em;
+}
+
+.window .windowBtn {
+    width: 12em;
+    height: 30px;
+    margin-top: 10px;
+    text-indent: 0;
+    transition: all 0.5s;
+}
+
+.window .windowBtn:hover {
+    background-color: rgb(152, 241, 100);
+}
+/* 错误信息 */
+
+.window .errmes {
+    height: 20px;
+    margin-top: 30px;
+}
+
+.window .errmes span {
+    width: 20em;
+    font-size: 12px;
+}
+
+.errmesRed {
+    color: red;
+}
+
+.errmesGreen {
+    color: rgb(152, 241, 100);
+}
+
 .accountImg {
     position: fixed;
     width: 300px;
