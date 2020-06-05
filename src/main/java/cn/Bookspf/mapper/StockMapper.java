@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public interface StockMapper {
 
     //插入入库记录
-    @Insert("insert into stock() values(#{stockid},#{bid},#{isbn},#{cometime},comeout=0)")
+    @Insert("insert into stock(stockid,bid,isbn,cometime,comeout) values(#{stockid},#{bid},#{isbn},#{cometime},0)")
     public void insertComeStock(Long stockid,Integer bid,String isbn,String cometime);
 
     //获取Bids

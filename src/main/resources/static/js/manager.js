@@ -5,7 +5,7 @@ var rotate90 = new Vue({
         isShow: 0
     },
     methods: {
-        rotateT: function (index) {
+        rotateT: function(index) {
             if (this.isShow == index) this.isShow = 0;
             else this.isShow = index;
         }
@@ -20,7 +20,7 @@ var logout = new Vue({
     methods: {
         logout() {
             axios.post("/logout")
-                .then(function () {
+                .then(function() {
                     window.location.reload();
                 })
         }
@@ -176,7 +176,7 @@ var getBookList = new Vue({
                         getBookList.getBookList();
                     }
                 })
-            } else { }
+            } else {}
 
         },
         setBid(bid) {
@@ -213,7 +213,7 @@ var addBook = new Vue({
         isShow: false
     },
     methods: {
-        submit: function () {
+        submit: function() {
             var that = this;
 
             if (!checkBid(that.bid)) {
@@ -299,7 +299,7 @@ var alterBook = new Vue({
         isShow: false
     },
     methods: {
-        submit: function () {
+        submit: function() {
             var that = this;
 
             if (that.bookname.length < 1) {
@@ -355,7 +355,7 @@ var alterBook = new Vue({
         },
         fileChange(event) {
             this.imgevent = event;
-            this.isUpImg = ture;
+            this.isUpImg = true;
         },
         setBid(bid) {
             this.bid = bid;
@@ -395,7 +395,7 @@ var getSortList = new Vue({
                         getSortList.getSortList();
                     }
                 })
-            } else { }
+            } else {}
         }
     }
 });
@@ -419,7 +419,7 @@ var addSort = new Vue({
         isShow: false
     },
     methods: {
-        submit: function () {
+        submit: function() {
             var that = this;
             if (!checkSortId(that.sortid)) {
                 that.showErrems("分类ID必须为正整数")
@@ -504,8 +504,8 @@ var orderSearch = new Vue({
     },
     methods: {
         orderSearch() {
-            if (this.orderid != '') externalGetOrderList(1, this.orderid);
-            else if (this.uid != '') externalGetOrderList(2, this.uid);
+            if (this.orderid != '') externalGetOrderList(1, this.orderid.trim());
+            else if (this.uid != '') externalGetOrderList(2, this.uid.trim());
             else if (this.createtime != '') externalGetOrderList(3, this.createtime);
             else externalGetOrderList(0, "");
         }
@@ -587,8 +587,8 @@ var saleSearch = new Vue({
     },
     methods: {
         saleSearch() {
-            if (this.saleid != '') externalGetSaleList(1, this.saleid);
-            else if (this.isbn != '') externalGetSaleList(2, this.isbn);
+            if (this.saleid != '') externalGetSaleList(1, this.saleid.trim());
+            else if (this.isbn != '') externalGetSaleList(2, this.isbn.trim());
             else if (this.saletime != '') externalGetSaleList(3, this.saletime);
             else externalGetSaleList(0, "");
         }
@@ -670,7 +670,7 @@ var purchaseSearch = new Vue({
     },
     methods: {
         purchaseSearch() {
-            if (this.purchaseid != '') externalGetPurchaseList(1, this.purchaseid);
+            if (this.purchaseid != '') externalGetPurchaseList(1, this.purchaseid.trim());
             else if (this.purchasetime != '') externalGetPurchaseList(2, this.purchasetime);
             else externalGetPurchaseList(0, "");
         }
@@ -750,7 +750,7 @@ var stockSearch = new Vue({
     },
     methods: {
         stockSearch() {
-            if (this.stockid != '') externalGetStockList(1, this.stockid);
+            if (this.stockid != '') externalGetStockList(1, this.stockid.trim());
             else if (this.stocktime != '') externalGetStockList(2, this.stocktime);
             else externalGetStockList(0, "");
         }
@@ -805,7 +805,7 @@ var addPurchase = new Vue({
         isShow: false
     },
     methods: {
-        submit: function () {
+        submit: function() {
             var that = this;
             if (!checkNum(that.purchaseid)) {
                 that.showErrems("进货ID必须为13位正整数");
