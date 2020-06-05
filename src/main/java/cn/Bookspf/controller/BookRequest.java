@@ -2,6 +2,7 @@ package cn.Bookspf.controller;
 
 import cn.Bookspf.mapper.*;
 import cn.Bookspf.model.DO.DBBook;
+import cn.Bookspf.model.DO.DBShopcar;
 import cn.Bookspf.model.DO.DBStock;
 import cn.Bookspf.model.DTO.Book;
 import cn.Bookspf.model.RO.Response;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 
 @RestController
@@ -81,7 +83,6 @@ public class BookRequest {
         //生成销售记录
         Long saleid = Generator.generateId();
         if(saleMapper.getSaleOfSaleid(saleid).size()!=0) saleid+=123;
-        System.out.println(bid);
         saleMapper.insertSale(saleid,bid,isbn,time);
 
 
@@ -98,10 +99,21 @@ public class BookRequest {
         Integer bid=request.getBid();
         if(bookMapper.getBookNumber(bid)==0) return new Response(false,"抱歉,该图书已售罄");
         Integer uid=(Integer) httpSession.getAttribute("userToken");
-        //生成购物车记录
-        Long carid = Generator.generateId();
-        if(shopcarMapper.getShopcarOfCarid(carid).size()!=0) carid+=123;
-        shopcarMapper.insertShopcar(carid,uid,bid,1);
+
+        Long carid = shopcarMapper.getShopcaridOfUid(uid);
+        if(carid==null) {
+            //生成购物车记录
+            carid = Generator.generateId();
+            if(shopcarMapper.getShopcarOfCarid(carid).size()!=0) carid+=123;
+            shopcarMapper.insertShopcar(carid,uid,bid,1);
+        }else{
+            if(shopcarMapper.findBid(carid,bid)==null){
+                shopcarMapper.insertShopcar(carid,uid,bid,1);
+            }else{
+                Integer booknumber = shopcarMapper.getBooknumber(carid,bid);
+                shopcarMapper.updateShopcar(carid,bid,booknumber+1);
+            }
+        }
 
 
         return new Response(true,"添加成功");

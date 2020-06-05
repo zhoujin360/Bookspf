@@ -129,7 +129,6 @@ public class ShopcarRequest {
 
         shopcarMapper.deleteAllShopcar(uid);
 
-        System.out.println(total);
         return new Response(true,"购买成功,书本将会加急送到您手中");
     }
 
