@@ -37,9 +37,9 @@
                     <span v-show="passwordShow">[[${user.email}]]</span>
                     <input type="password" @blur="isShowInput(3);changePassword()"
                         v-show="!passwordShow && rePassword == ''" v-model="password"
-                        v-focus="!passwordShow && rePassword == ''" placeholder="请输入密码">
+                        v-focus="!passwordShow && rePassword = ''" placeholder="请输入密码">
                     <input type="password" v-model="rePassword" v-show="!passwordShow && rePassword != ''"
-                        v-focus="!passwordShow && rePassword != ''" placeholder="请再次输入密码">
+                        placeholder="请再次输入密码">
                     <a class="Btn" @click="isShowInput(3)">修改密码</a>
                 </div>
                 <div>
