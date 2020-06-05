@@ -34,8 +34,10 @@
             <div id="book_service">
                 <button class="add_shoppingcar" onclick="noLogin()" th:if="${session.userToken == null}">加入购物车</button>
                 <button class="buy" onclick="noLogin()" th:if="${session.userToken == null}">购买</button>
-                <button class="add_shoppingcar" th:onclick="changeBid([[${book.bid}]])" @click="addShopcar()" th:if="${session.userToken != null}">加入购物车</button>
-                <button class="buy" th:onclick="changeBid([[${book.bid}]])" @click="buy()" th:if="${session.userToken != null}">购买</button>
+                <button class="add_shoppingcar" th:onclick="changeBid([[${book.bid}]])" @click="addShopcar()"
+                    th:if="${session.userToken != null}">加入购物车</button>
+                <button class="buy" th:onclick="changeInfo([[${book.bid}]],[[${book.bookprice}]])" @click="buy()"
+                    th:if="${session.userToken != null}">购买</button>
             </div>
         </div>
         <div id="book_evaluate">

@@ -2,6 +2,7 @@ var app = new Vue({
     el: "#box",
     data: {
         password: "",
+        rePassword: "",
         balance: "",
         userBalance: "",
         phone: "",
@@ -20,7 +21,7 @@ var app = new Vue({
     },
     directives: {
         focus: {
-            update: function(el, { value }) {
+            update: function (el, { value }) {
                 if (value) {
                     el.focus();
                 }
@@ -64,15 +65,13 @@ var app = new Vue({
                 that.isShow = true;
             } else {
                 that.isShow = false;
-                if (confirmRePwd(that.password)) {
-                    axios.post("/changePassword", {
-                        password: that.password
-                    }).then(response => {
-                        alert(response.data.mes);
-                    })
-                } else {
-                    alert("修改失败");
-                }
+
+                axios.post("/changePassword", {
+                    password: that.password
+                }).then(response => {
+                    alert(response.data.mes);
+                })
+
 
             }
         },
@@ -127,15 +126,17 @@ var app = new Vue({
                 that.isShow = true;
             } else {
                 that.isShow = false;
-                axios.post("/changeAddress", {
-                    address: that.address
-                }).then(response => {
-                    if (response.data.status) {
-                        that.userAddress = response.data.mes;
-                    } else {
-                        alert(response.data.mes);
-                    }
-                })
+                if (confirmRechange(that.address)) {
+                    axios.post("/changeAddress", {
+                        address: that.address
+                    }).then(response => {
+                        if (response.data.status) {
+                            that.userAddress = response.data.mes;
+                        } else {
+                            alert(response.data.mes);
+                        }
+                    })
+                }
             }
 
         }

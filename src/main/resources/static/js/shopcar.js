@@ -8,15 +8,21 @@ var app = new Vue({
         this.getShopcarList();
     },
     methods: {
-        buy: function() {
-            axios.post("/settlement").then(
-                function(response) {
-                    alert(response.data.mes);
-                    app.getShopcarList();
+        buy: function () {
+            if (this.shopcarList != null) {
+                if (confirmBuy()) {
+                    axios.post("/settlement").then(
+                        function (response) {
+                            alert(response.data.mes);
+                            app.getShopcarList();
+                        }
+                    )
+                } else {
+                    alert("购买失败");
                 }
-            )
+            }
         },
-        changeNum: function(bid, booknumber, index) {
+        changeNum: function (bid, booknumber, index) {
             var that = this;
             if (index == 0) {
                 if (booknumber > 0) {
@@ -28,16 +34,16 @@ var app = new Vue({
             axios.post("/changeNum", {
                 booknumber: booknumber,
                 bid: bid
-            }).then(function(response) {
+            }).then(function (response) {
                 if (response.data.status) {
                     app.getShopcarList();
                 }
             })
         },
-        getShopcarList: function() {
+        getShopcarList: function () {
             var that = this;
             axios.get("/getShopcarList").then(
-                function(response) {
+                function (response) {
                     that.shopcarList = response.data.shopcars;
                     if (that.shopcarList != null) {
                         that.total = response.data.shopcars[0].total;
@@ -45,11 +51,11 @@ var app = new Vue({
                 }
             )
         },
-        deleteShopcarOfBid: function(bid) {
+        deleteShopcarOfBid: function (bid) {
             var that = this;
             axios.post("/deleteShopcarOfBid", {
                 bid: bid,
-            }).then(function(response) {
+            }).then(function (response) {
                 if (response.data.status) {
                     app.getShopcarList();
                 }
@@ -57,3 +63,11 @@ var app = new Vue({
         }
     }
 })
+function confirmBuy() {
+    var info = prompt("总价:" + app.total + ",请输入'购买'确认");
+    if (info == '购买') {
+        return true;
+    } else {
+        return false;
+    }
+}
