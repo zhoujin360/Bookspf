@@ -49,7 +49,8 @@ public class AccountRequest {
         if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
         Integer uid = (Integer) httpSession.getAttribute("userToken");
         String newPassword = DigestUtils.md5DigestAsHex(request.getPassword().getBytes());
-        if(newPassword.equals(userMapper.getPasswordOfUid(uid))) return new Response(true,"新密码与旧密码一致");
+        System.out.print(newPassword);
+        if(newPassword.equals(userMapper.getPasswordOfUid(uid))) return new Response(false,"新密码与旧密码一致");
         userMapper.updatePassword(uid,newPassword);
         return new Response(true,"修改成功");
     }

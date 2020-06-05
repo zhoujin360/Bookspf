@@ -19,6 +19,21 @@
         <img src="/img/account.png" width="300px" height="300px">
     </div>
     <div id="bigBox">
+        <div v-show="changePwdisShow" class="window" style="z-index: 2">
+            <h4 class="tips">修改密码</h4>
+            <input type="password" style="display: none;">
+            <div> <span>输入修改密码</span>：<input type="password" v-model="password">
+            </div>
+            <div>
+                <span>再次输入密码</span>：<input type="password" v-model="rePassword">
+            </div>
+            <div class="errmes">
+                <span v-show="isShow" :class="errmesColor?'errmesGreen':'errmesRed'">{{emsg}}</span>
+            </div>
+            <input type="button" value="确认修改" class="windowBtn" @click="changePassword()">
+        </div>
+        <div v-show="changePwdisShow" class="actionBlock" @click="isShowInput(3)">
+        </div>
         <div id="box">
             <div class="leftBox">
                 <span>详细信息</span>
@@ -36,22 +51,23 @@
                     <div>
                         <span>邮箱</span>：
                         <span v-show="passwordShow">[[${user.email}]]</span>
-                        <input type="password" v-show="!passwordShow && !rePasswordShow" v-model="password"
+                        <!-- <input type="password" v-show="!passwordShow && !rePasswordShow" v-model="password"
                             v-focus="!passwordShow && !rePasswordShow" @keyup.enter="isShowInput(4)" @blur="lostFocus"
                             placeholder="请输入密码">
                         <input type="password" v-show="!passwordShow && rePasswordShow" v-model="rePassword"
                             v-focus="!passwordShow && rePasswordShow"
                             @keyup.enter="isShowInput(3);isShowInput(4);changePassword()" @blur="lostFocus"
-                            placeholder="请再次输入密码">
+                            placeholder="请再次输入密码"> -->
+
                         <a class="Btn" @click="isShowInput(3)">修改密码</a>
                     </div>
                     <div>
                         <span>余额</span>：
                         <span v-show="balanceShow && userBalance == ''">[[${user.balance}]]</span>
                         <span v-show="balanceShow && userBalance != ''">{{ userBalance }}</span>
-                        <input type="text" @blur="isShowInput(5);changeBalance()" v-show="!balanceShow"
+                        <input type="text" @blur="isShowInput(4);changeBalance()" v-show="!balanceShow"
                             v-model="balance" v-focus="!balanceShow" placeholder="请输入充值数">
-                        <a class="Btn" @click="isShowInput(5)">充值</a>
+                        <a class="Btn" @click="isShowInput(4)">充值</a>
                     </div>
                 </div>
 
