@@ -309,9 +309,9 @@ public class ManagerRequest {
 		String time = Generator.generateTime();
 		if(stockMapper.getStockinfoOfStockid(stockid).size()!=0) stockid+=123;
 		stockMapper.insertComeStock(stockid,request.getBid(),request.getIsbn(),time);
-
-
+	
 		return new Response(true,"添加成功");
+		
 	}
 
 
