@@ -15,8 +15,6 @@ var app = new Vue({
         emsg: '',
         isShow: false,
         changePwdisShow: false,
-        passwordShow: true,
-        rePasswordShow: false,
         phoneShow: true,
         errmesColor: false,
         realnameShow: true,
@@ -25,7 +23,7 @@ var app = new Vue({
     },
     directives: {
         focus: {
-            update: function (el, { value }) {
+            update: function(el, { value }) {
                 if (value) {
                     el.focus();
                 }
@@ -71,7 +69,6 @@ var app = new Vue({
                     that.isShow = true;
                 } else {
                     that.isShow = false;
-
                     axios.post("/changePassword", {
                         password: that.password
                     }).then(response => {
