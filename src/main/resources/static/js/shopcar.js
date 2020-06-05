@@ -16,34 +16,28 @@ var app = new Vue({
                 }
             )
         },
-        changeNum: function (bid, booknumber, index) {
+        changeNum: function(bid, booknumber, index) {
             var that = this;
             if (index == 0) {
                 if (booknumber > 0) {
                     booknumber -= 1;
                 } else {
-                    booknumber = 0;
+                    that.deleteShopcarOfBid(bid);
                 }
-            } else {
-                if (booknumber < 100) {
-                    booknumber += 1;
-                } else {
-                    alert("请联系客服");
-                }
-            }
+            } else booknumber += 1;
             axios.post("/changeNum", {
                 booknumber: booknumber,
                 bid: bid
-            }).then(function (response) {
+            }).then(function(response) {
                 if (response.data.status) {
                     app.getShopcarList();
                 }
             })
         },
-        getShopcarList: function () {
+        getShopcarList: function() {
             var that = this;
             axios.get("/getShopcarList").then(
-                function (response) {
+                function(response) {
                     that.shopcarList = response.data.shopcars;
                     if (that.shopcarList != null) {
                         that.total = response.data.shopcars[0].total;
@@ -51,11 +45,11 @@ var app = new Vue({
                 }
             )
         },
-        deleteShopcarOfBid: function (bid) {
+        deleteShopcarOfBid: function(bid) {
             var that = this;
             axios.post("/deleteShopcarOfBid", {
                 bid: bid,
-            }).then(function (response) {
+            }).then(function(response) {
                 if (response.data.status) {
                     app.getShopcarList();
                 }
