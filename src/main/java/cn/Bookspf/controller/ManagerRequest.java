@@ -158,6 +158,7 @@ public class ManagerRequest {
 	public Response getOrderListOfAdmin(@RequestBody String request) {
 		if(!validator.isLogin()) return new Response(false,"请登录再操作");
 		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
+		System.out.print(1);
 		OrderResponse orderResponse=new OrderResponse();
 		JSONObject Obj=JSONObject.parseObject(request);
 		int index = Obj.getInteger("index");
