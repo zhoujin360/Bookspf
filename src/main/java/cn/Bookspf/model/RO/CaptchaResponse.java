@@ -1,7 +1,5 @@
 package cn.Bookspf.model.RO;
 
-import java.awt.image.BufferedImage;
-
 public class CaptchaResponse {
     private String captcha;
     private String imgJSON;

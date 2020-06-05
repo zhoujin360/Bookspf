@@ -31,17 +31,6 @@ public class AccountRequest {
         this.userMapper=userMapper;
     }
 
-    @PostMapping("/uploadAvatar")
-    public Response uploadAvatar(@RequestParam("file") MultipartFile file){
-        if(!validator.isLogin()) return new Response(false,"请登录再操作");
-        if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
-        if(file==null) return new Response(false,"上传头像失败");
-        try{
-            Integer uid = (Integer) httpSession.getAttribute("userToken");
-            if(!operator.uploadAvatar(file,uid))return new Response(false,"上传头像失败");
-        }catch (IOException e){ return new Response(false,"上传头像失败");}
-        return new Response(true,"上传成功");
-    }
 
     @PostMapping("/changeBalance")
     public Response changeBalance(@RequestBody User request){
@@ -71,7 +60,10 @@ public class AccountRequest {
         if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
         Integer uid = (Integer) httpSession.getAttribute("userToken");
         String phone = request.getPhone();
-        if(userMapper.getPhone(uid).equals(phone)) return new Response(false,"新旧手机号一致");
+        String oldPhone = userMapper.getPhone(uid);
+        if(oldPhone!=null){
+            if(oldPhone.equals(phone)) return new Response(false,"新旧手机号一致");
+        }
         userMapper.updatePhone(uid,phone);
         return new Response(true,userMapper.getPhone(uid));
     }
@@ -82,7 +74,10 @@ public class AccountRequest {
         if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
         Integer uid = (Integer) httpSession.getAttribute("userToken");
         String realname = request.getRealname();
-        if(userMapper.getRealname(uid).equals(realname)) return new Response(false,"新旧姓名一致");
+        String oldRealname = userMapper.getRealname(uid);
+        if(oldRealname!=null){
+            if(oldRealname.equals(realname)) return new Response(false,"新旧姓名一致");
+        }
         userMapper.updateRealname(uid,realname);
         return new Response(true,userMapper.getRealname(uid));
     }
@@ -93,7 +88,10 @@ public class AccountRequest {
         if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
         Integer uid = (Integer) httpSession.getAttribute("userToken");
         String address = request.getAddress();
-        if(userMapper.getAddress(uid).equals(address)) return new Response(false,"新旧地址一致");
+        String oldAddress = userMapper.getAddress(uid);
+        if(oldAddress!=null){
+            if(oldAddress.equals(address)) return new Response(false,"新旧地址一致");
+        }
         userMapper.updateAddress(uid,address);
         return new Response(true,userMapper.getAddress(uid));
     }

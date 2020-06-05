@@ -12,15 +12,7 @@ public class Operator {
 	public Operator() {}
 	
 
-	//上传头像
-	public boolean uploadAvatar(MultipartFile file,Integer uid) throws IOException{
-		String oldFileName=file.getOriginalFilename();
-		String fileType=oldFileName.substring(oldFileName.indexOf("."));
-		String newFilename=uid+fileType;
-		new File("F:/Web/Bookspf-图书售书平台/avatar/").mkdirs();
-		file.transferTo(new File("F:/Web/Bookspf-图书售书平台/avatar/"+newFilename));
-		return true;
-	}
+
 
 
 	//上传图书图片
