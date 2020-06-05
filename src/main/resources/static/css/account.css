@@ -112,12 +112,15 @@
 
 .Btn {
     display: inline-block;
-    padding: 3px 8px;
+    padding: 0 8px;
+    height: 30px;
     border-radius: 5px;
     background-color: rgb(125, 218, 71);
     color: rgb(34, 34, 34);
+    line-height: 30px;
     transition: all 0.5s;
     cursor: pointer;
+    vertical-align: middle;
 }
 
 .Btn:hover {

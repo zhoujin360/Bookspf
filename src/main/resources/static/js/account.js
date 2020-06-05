@@ -1,5 +1,5 @@
 var app = new Vue({
-    el: "#box",
+    el: "#bigBox",
     data: {
         password: "",
         rePassword: "",
@@ -14,6 +14,7 @@ var app = new Vue({
         errmes: '',
         isShow: false,
         passwordShow: true,
+        rePasswordShow: false,
         phoneShow: true,
         realnameShow: true,
         addressShow: true,
@@ -21,7 +22,7 @@ var app = new Vue({
     },
     directives: {
         focus: {
-            update: function (el, { value }) {
+            update: function(el, { value }) {
                 if (value) {
                     el.focus();
                 }
@@ -34,7 +35,8 @@ var app = new Vue({
             if (index == 1) this.realnameShow = !this.realnameShow;
             if (index == 2) this.addressShow = !this.addressShow;
             if (index == 3) this.passwordShow = !this.passwordShow;
-            if (index == 4) this.balanceShow = !this.balanceShow;
+            if (index == 4) this.rePasswordShow = !this.rePasswordShow;
+            if (index == 5) this.balanceShow = !this.balanceShow;
         },
         changeBalance() {
             var that = this;
@@ -60,20 +62,31 @@ var app = new Vue({
         changePassword() {
             var that = this;
             var passwordReg = /^[0-9A-Za-z]{6,20}$/;
-            if (!passwordReg.test(that.password) || that.password == '') {
-                that.errmes = "密码必须为6-20位字母或数字组合";
-                that.isShow = true;
+            if (that.password === that.rePassword) {
+                if (!passwordReg.test(that.password) || that.password == '') {
+                    that.errmes = "密码必须为6-20位字母或数字组合";
+                    that.isShow = true;
+                } else {
+                    that.isShow = false;
+                    axios.post("/changePassword", {
+                        password: that.password
+                    }).then(response => {
+                        that.password = "";
+                        that.rePassword = "";
+                        alert(response.data.mes);
+                    })
+                }
             } else {
-                that.isShow = false;
-
-                axios.post("/changePassword", {
-                    password: that.password
-                }).then(response => {
-                    alert(response.data.mes);
-                })
-
-
+                that.password = "";
+                that.rePassword = "";
+                alert("两次输入密码不一致");
             }
+        },
+        lostFocus() {
+            this.password = "";
+            this.rePassword = "";
+            this.passwordShow = true;
+            this.rePasswordShow = false;
         },
         changePhone() {
             var that = this;
@@ -143,14 +156,6 @@ var app = new Vue({
     }
 })
 
-function confirmRePwd(password) {
-    var info = prompt("请再次输入密码", "");
-    if (info === password) {
-        return true;
-    } else {
-        return false;
-    }
-}
 
 function confirmRechange(str) {
     var info = prompt("修改值:" + str + ",请输入'确认'进行修改", "");
