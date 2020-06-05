@@ -19,7 +19,7 @@ var app = new Vue({
         changeNum: function(bid, booknumber, index) {
             var that = this;
             if (index == 0) {
-                if (booknumber > 0) {
+                if (booknumber > 1) {
                     booknumber -= 1;
                 } else {
                     that.deleteShopcarOfBid(bid);
