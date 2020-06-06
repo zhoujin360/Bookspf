@@ -2,10 +2,10 @@ spring:
   datasource:
     username: bookspf
     password: bookspf
-    url: jdbc:mysql://localhost:3360/Bookspf?useSSl=false&serverTimezone=UTC
+    url: jdbc:mysql://120.79.164.22:3360/Bookspf?useSSl=false&serverTimezone=UTC
   mvc:
     #资源文件的访问路径，例如：http://127.0.0.1:8080/bookimg/1.jpg
     static-path-pattern: /**
   resources:
     #资源文件存放的位置
-    static-locations: classpath:\static,\bookspf\
+    static-locations: classpath:\static,file:/bookspf

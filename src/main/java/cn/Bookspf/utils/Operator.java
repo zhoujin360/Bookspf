@@ -10,8 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 public class Operator {
 	
 	public Operator() {}
-	
-
 
 
 	//上传图书图片
@@ -22,6 +20,8 @@ public class Operator {
 		String newFilename=bid+fileType;
 		new File("F:/Web/Bookspf-图书售书平台/bookimg/").mkdirs();
 		file.transferTo(new File("F:/Web/Bookspf-图书售书平台/bookimg/"+newFilename));
+		//new File("/bookspf/bookimg/").mkdirs();
+		//file.transferTo(new File("/bookspf/bookimg/"+newFilename));
 		return true;
 	}
 
@@ -29,6 +29,7 @@ public class Operator {
 	public void deleteBookimg(Integer bid) throws IOException {
 		String filename=bid+".png";
 		new File("F:/Web/Bookspf-图书售书平台/bookimg/"+filename).delete();
+		//new File("/bookspf/bookimg/"+filename).delete();
 	}
 
 
