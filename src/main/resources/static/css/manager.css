@@ -454,6 +454,10 @@ a {
     margin: 0;
     width: 6em;
     text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
     Vertical-align: middle;
 }
 

@@ -7,6 +7,9 @@ function changeInfo(bid, price) {
     app.price = price;
 }
 
+function changeBid(bid) {
+    app.bid = bid;
+}
 
 var app = new Vue({
     el: "#box",
@@ -29,7 +32,6 @@ var app = new Vue({
                 axios.post("/buyBook", {
                     bid: that.bid
                 }).then(function (response) {
-
                     alert(response.data.mes);
                 })
             } else {
@@ -40,7 +42,6 @@ var app = new Vue({
 })
 function confirmBuy() {
     var info = prompt("书本价格:" + app.price + ",请输入'购买'确认");
-    alert(prompt)
     if (info == '购买') {
         return true;
     } else {

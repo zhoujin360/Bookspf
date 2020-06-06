@@ -153,6 +153,9 @@
     margin-top: 20px;
     background-color: #fff;
     font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
 }
 
 #book_evaluate #description p {

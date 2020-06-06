@@ -97,6 +97,7 @@ public class BookRequest {
         if(validator.isIdentity(userMapper)!=2) return new Response(false,"请登录普通用户帐号");
 
         Integer bid=request.getBid();
+       
         if(bookMapper.getBookNumber(bid)==0) return new Response(false,"抱歉,该图书已售罄");
         Integer uid=(Integer) httpSession.getAttribute("userToken");
 
