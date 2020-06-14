@@ -314,6 +314,8 @@ a {
     position: absolute;
     width: 3em;
     right: 150px;
+    height: 30px;
+    text-align: center;
 }
 
 #managerList .managerListItem div span.alter {
@@ -323,9 +325,8 @@ a {
 .delete a,
 .alter a {
     display: inline-block;
-    margin: 1px;
     width: 3em;
-    height: 28px;
+    height: 30px;
     border-radius: 5px;
     background-color: rgb(247, 64, 64);
     color: #000;
