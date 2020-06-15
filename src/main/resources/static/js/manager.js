@@ -5,7 +5,7 @@ var rotate90 = new Vue({
         isShow: 0
     },
     methods: {
-        rotateT: function (index) {
+        rotateT: function(index) {
             if (this.isShow == index) this.isShow = 0;
             else this.isShow = index;
         }
@@ -20,7 +20,7 @@ var logout = new Vue({
     methods: {
         logout() {
             axios.post("/logout")
-                .then(function () {
+                .then(function() {
                     window.location.reload();
                 })
         }
@@ -176,7 +176,7 @@ var getBookList = new Vue({
                         getBookList.getBookList();
                     }
                 })
-            } else { }
+            } else {}
 
         },
         setBid(bid) {
@@ -213,7 +213,7 @@ var addBook = new Vue({
         isShow: false
     },
     methods: {
-        submit: function () {
+        submit: function() {
             var that = this;
 
             if (!checkBid(that.bid)) {
@@ -299,7 +299,7 @@ var alterBook = new Vue({
         isShow: false
     },
     methods: {
-        submit: function () {
+        submit: function() {
             var that = this;
 
             if (that.bookname.length < 1) {
@@ -395,7 +395,10 @@ var getSortList = new Vue({
                         getSortList.getSortList();
                     }
                 })
-            } else { }
+            } else {}
+        },
+        setSortid(sortid) {
+            alterSort.sortid = sortid;
         }
     }
 });
@@ -419,7 +422,7 @@ var addSort = new Vue({
         isShow: false
     },
     methods: {
-        submit: function () {
+        submit: function() {
             var that = this;
             if (!checkSortId(that.sortid)) {
                 that.showErrems("分类ID必须为正整数")
@@ -439,9 +442,7 @@ var addSort = new Vue({
                         that.errmes = response.data.mes;
                         getSortList.getSortList();
                     } else {
-                        that.isShow = true;
-                        that.errmesColor = false;
-                        that.errmes = response.data.mes;
+                        that.showErrems(response.data.mes);
                     }
                 })
             }
@@ -456,7 +457,50 @@ var addSort = new Vue({
 
 /*************************************************/
 
+/*************************************************/
 
+//修改分类信息
+var alterSort = new Vue({
+    el: "#alterSort",
+    data: {
+        sortid: '',
+        sortname: '',
+        errmes: '',
+        errmesColor: false,
+        isShow: false
+    },
+    methods: {
+        submit: function() {
+            var that = this;
+            if (that.sortname == '') {
+                that.showErrems("分类名不能为空")
+            } else {
+                that.isShow = false;
+                axios.post("/alterSort", {
+                    sortid: that.sortid,
+                    sortname: that.sortname
+                }).then(response => {
+                    if (response.data.status) {
+                        that.sortname = '';
+                        that.isShow = true;
+                        that.errmesColor = true;
+                        that.errmes = response.data.mes;
+                        getSortList.getSortList();
+                    } else {
+                        that.showErrems(response.data.mes);
+                    }
+                })
+            }
+        },
+        showErrems(mes) {
+            this.errmes = mes;
+            this.errmesColor = false;
+            this.isShow = true;
+        }
+    }
+});
+
+/*************************************************/
 
 
 
@@ -805,7 +849,7 @@ var addPurchase = new Vue({
         isShow: false
     },
     methods: {
-        submit: function () {
+        submit: function() {
             var that = this;
             if (!checkNum(that.purchaseid)) {
                 that.showErrems("进货ID必须为13位正整数");

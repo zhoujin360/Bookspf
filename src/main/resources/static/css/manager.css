@@ -514,7 +514,7 @@ a {
 .check a {
     display: inline-block;
     width: 5em;
-    height: 28px;
+    height: 30px;
     border-radius: 5px;
     font-weight: 700;
     color: #000;
@@ -547,7 +547,14 @@ a {
     right: 120px;
 }
 
-#bookInfo .alter {
+#sortInfo .List div span.delete,
+#sortInfo .List div span.alter {
+    margin: 0;
+    width: 6em;
+}
+
+#bookInfo .alter,
+#sortInfo .alter {
     position: absolute;
     right: 200px;
 }
@@ -614,6 +621,11 @@ a {
 .window .alterBookbid {
     display: inline-block;
     width: 250px;
+}
+
+.window .alterSortid {
+    display: inline-block;
+    width: 160px;
 }
 
 .a-upload {

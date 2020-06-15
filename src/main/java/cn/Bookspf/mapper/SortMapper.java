@@ -2,10 +2,7 @@ package cn.Bookspf.mapper;
 
 import java.util.ArrayList;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import cn.Bookspf.model.DO.DBSort;
@@ -30,6 +27,9 @@ public interface SortMapper {
 	
 	@Insert("insert into sort values(#{sortid},#{sortname})")
 	public void addSort(Sort sort);
+
+	@Update("update sort set sortname=#{sortname} where sortid=#{sortid}")
+	public void alterSort(Sort sort);
 	
 	@Delete("delete from sort where sortid=#{sortid}")
 	public void deleteSort(Integer sortid);
