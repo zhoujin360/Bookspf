@@ -143,6 +143,16 @@ public class ManagerRequest {
 		sortMapper.addSort(request);
 		return new Response(true,"添加成功");
 	}
+
+	//修改分类
+	@PostMapping("/alterSort")
+	public Response alterSort(@RequestBody Sort request) {
+		if(!validator.isLogin()) return new Response(false,"请登录再操作");
+		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
+		if(sortMapper.findSortname(request.getSortname())!=null) return new Response(false,"分类名字重复");
+		sortMapper.alterSort(request);
+		return new Response(true,"修改成功");
+	}
 	
 	//删除分类
 	@PostMapping("/deleteSort")
