@@ -210,8 +210,12 @@
 }
 
 .Btn:hover {
-    color: #000;
-    background-color: rgb(96, 223, 23);
+    /* color: #000;
+    background-color: rgb(96, 223, 23); */
+    background: #48B402;
+    color: #111;
+    box-shadow: 0 0 10px #48B402;
+    border-radius: 6px;
 }
 
 .basicInfo input,

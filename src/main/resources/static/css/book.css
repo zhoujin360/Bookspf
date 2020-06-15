@@ -101,7 +101,9 @@
 }
 
 #book_service .add_shoppingcar:hover {
-    background-color: #48B402;
+    background: #48B402;
+    color: #111;
+    border-radius: 6px;
 }
 
 #book_service .buy {
@@ -118,7 +120,11 @@
 }
 
 #book_service .buy:hover {
-    background-color: red;
+    /* background-color: red; */
+    background: rgb(231, 35, 35);
+    color: #111;
+    /* box-shadow: 0 0 10px red; */
+    border-radius: 6px;
 }
 
 

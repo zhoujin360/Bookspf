@@ -26,7 +26,6 @@ body {
     width: 88px;
 }
 
-
 /* 提示模块 */
 
 #tips {
@@ -85,6 +84,7 @@ body {
 }
 
 .verifycode {
+    cursor: pointer;
     position: relative;
     width: 350px;
     height: 35px;
@@ -132,6 +132,9 @@ body {
     color: #D2CAC1;
 }
 
+#toReg h4:hover {
+    color: #212121;
+}
 
 /* 去主页模块 */
 
@@ -146,6 +149,9 @@ body {
     color: #D2CAC1;
 }
 
+#toIndex h4:hover {
+    color: #212121;
+}
 
 /* 错误信息模块 */
 
@@ -165,10 +171,16 @@ body {
 
 #sb {
     cursor: pointer;
-    width: 350px;
+    /* width: 350px; */
+    width: 330px;
     height: 40px;
     color: #F0F6FC;
     border-radius: 20px;
     margin-top: 70px;
     background-color: #65B3FA;
+    transition: all 1s;
+}
+
+#sb:hover {
+    width: 350px;
 }
