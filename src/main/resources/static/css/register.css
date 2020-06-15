@@ -27,6 +27,7 @@ body {
 }
 
 
+
 /* 提示模块 */
 
 #tips {
@@ -94,6 +95,7 @@ body {
 }
 
 .verifycode {
+    cursor: pointer;
     position: relative;
     width: 350px;
     height: 35px;
@@ -144,6 +146,9 @@ body {
     color: #D2CAC1;
 }
 
+#tologin h4:hover {
+    color: #212121;
+}
 
 /* 去主页模块 */
 
@@ -158,6 +163,9 @@ body {
     color: #D2CAC1;
 }
 
+#toIndex h4:hover {
+    color: #212121;
+}
 
 /* 错误信息模块 */
 
@@ -180,13 +188,16 @@ body {
 /* 提交按钮模块 */
 
 #sb {
-    position: absolute;
     cursor: pointer;
-    top: 280px;
-    left: 120px;
-    width: 350px;
+    width: 330px;
     height: 40px;
     color: #F0F6FC;
+    margin: 70px 10px;
     border-radius: 20px;
     background-color: #FF5202;
+    transition: all 1s;
+}
+
+#sb:hover {
+    width: 350px;
 }

@@ -28,14 +28,24 @@
     text-align: center;
     margin-left: 200px;
 }
- 
-/* #top #classif {
+
+/* 新加入 */
+#index::before {
+    content: "";
     position: absolute;
-    top: 10px;
-    left: 340px;
-    text-align: center;
-    margin-left: 200px;
-} */
+    top: 0;
+    left: 0;
+    height: 0%;
+    width: 100%;
+    background-color: rgb(255, 99, 99);
+    border-radius: 0 0 50% 50%; 
+    transition: 0.5s;
+    z-index: -1;
+}
+
+#index:hover::before {
+    height: 20%;
+}
 
 #top #search {
     position: absolute;
@@ -47,7 +57,9 @@
     border-radius: 20px;
     transition: all 0.5s;
 }
+
 #top #search:hover {
+    width: 205px;
     border: 1px solid #9E9E9E;    
 }
 
@@ -57,7 +69,6 @@
     left: 770px;
     width: 20px; 
 }
-
 
 #top #log {
     position: absolute;
@@ -116,7 +127,6 @@
     top: 10px;
     right: 0px;
 }
-
 
 /*购物车*/
 
