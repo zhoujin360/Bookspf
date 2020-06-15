@@ -386,7 +386,7 @@ a {
 #checkPurchase span,
 #checkSale span,
 #checkStock span {
-    width: 11em;
+    width: 12em;
     line-height: 25px;
 }
 
@@ -394,7 +394,12 @@ a {
 #checkPurchase span:first-child,
 #checkSale span:first-child,
 #checkStock span:first-child {
-    width: 6em;
+    width: 5em;
+    margin-left: 10px;
+}
+
+#checkPurchase span:last-child {
+    width: 11em;
 }
 
 #addPurchase {
