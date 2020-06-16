@@ -36,7 +36,7 @@
                 图书分类信息管理
             </div>
             <div onclick="isMain('orderReview');externalGetOrderList(0,'');" :class="isShow==1?'itemShow childItem':'itemHidden childItem'">
-                订单审核
+                订单查看
             </div>
             <div class="item" @click="rotateT(2)">
                 <span>出入库</span>
@@ -430,10 +430,6 @@
                     <span>ISBN：{{item.isbn}}</span>
                     <span>图书价格：{{item.bookprice}}元</span>
                 </div>
-            </div>
-            <div>
-                <input id="pass" type="submit" value="通过审核">
-                <input id="nopass" type="submit" value="不通过">
             </div>
         </div>
 

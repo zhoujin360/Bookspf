@@ -398,6 +398,7 @@ a {
     margin-left: 10px;
 }
 
+#checkOrder span:last-child,
 #checkPurchase span:last-child {
     width: 11em;
 }
