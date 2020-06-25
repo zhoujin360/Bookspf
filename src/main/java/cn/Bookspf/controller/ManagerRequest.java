@@ -3,10 +3,7 @@ package cn.Bookspf.controller;
 import javax.servlet.http.HttpSession;
 
 import cn.Bookspf.mapper.*;
-import cn.Bookspf.model.DO.DBOrder;
-import cn.Bookspf.model.DO.DBPurchase;
-import cn.Bookspf.model.DO.DBSale;
-import cn.Bookspf.model.DO.DBStock;
+import cn.Bookspf.model.DO.*;
 import cn.Bookspf.model.DTO.*;
 import cn.Bookspf.model.RO.*;
 import cn.Bookspf.utils.Generator;
@@ -89,9 +86,10 @@ public class ManagerRequest {
 		return new Response(true,"添加成功");
 	}
 
-	//添加图书
+	//修改图书
 	@PostMapping("/alterBook")
-	public Response alterBook(@RequestParam("file") MultipartFile file,
+	public Response alterBook(@RequestParam("isUpImg") Boolean isUpImg,
+							@RequestParam("file") MultipartFile file,
 							@RequestParam("bid") Integer bid,
 							@RequestParam("bookname") String bookname,
 							@RequestParam("sortid") Integer sortid,
@@ -101,11 +99,14 @@ public class ManagerRequest {
 							@RequestParam("added") Integer added) {
 		if(!validator.isLogin()) return new Response(false,"请登录再操作");
 		if(validator.isIdentity(userMapper)!=1) return new Response(false,"请登录图书管理员帐号");
-		if(file==null) return new Response(false,"上传图片失败");
-		try{
-			if(!operator.uploadBookimg(file,bid))return new Response(false,"上传图片失败");
-		}catch (IOException e){ return new Response(false,"上传图片失败");}
-		Book request =new Book(bid,bookname,0,sortid,author,description,bookprice, added,0);
+		if(isUpImg){
+			if(file==null) return new Response(false,"上传图片失败");
+			try{
+				if(!operator.uploadBookimg(file,bid))return new Response(false,"上传图片失败");
+			}catch (IOException e){ return new Response(false,"上传图片失败");}
+		}
+		DBBook book = bookMapper.getBook(bid);
+		Book request =new Book(bid,bookname,book.getHot(),sortid,author,description,bookprice, added,book.getNumber());
 		bookMapper.alterBook(request);
 		return new Response(true,"修改成功");
 	}

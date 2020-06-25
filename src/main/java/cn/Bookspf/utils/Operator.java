@@ -18,18 +18,18 @@ public class Operator {
 		String fileType=oldFileName.substring(oldFileName.indexOf("."));
 		if(!".png".equals(fileType)) return false;
 		String newFilename=bid+fileType;
-		new File("F:/Web/Bookspf-图书售书平台/bookimg/").mkdirs();
-		file.transferTo(new File("F:/Web/Bookspf-图书售书平台/bookimg/"+newFilename));
-		//new File("/bookspf/bookimg/").mkdirs();
-		//file.transferTo(new File("/bookspf/bookimg/"+newFilename));
+		//new File("F:/Web/Bookspf-图书售书平台/bookimg/").mkdirs();
+		//file.transferTo(new File("F:/Web/Bookspf-图书售书平台/bookimg/"+newFilename));
+		new File("/bookspf/bookimg/").mkdirs();
+		file.transferTo(new File("/bookspf/bookimg/"+newFilename));
 		return true;
 	}
 
 	//删除图书图片
 	public void deleteBookimg(Integer bid) throws IOException {
 		String filename=bid+".png";
-		new File("F:/Web/Bookspf-图书售书平台/bookimg/"+filename).delete();
-		//new File("/bookspf/bookimg/"+filename).delete();
+		//new File("F:/Web/Bookspf-图书售书平台/bookimg/"+filename).delete();
+		new File("/bookspf/bookimg/"+filename).delete();
 	}
 
 

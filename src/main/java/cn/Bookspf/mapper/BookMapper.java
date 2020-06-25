@@ -19,11 +19,13 @@ public interface BookMapper {
 	public ArrayList<DBBook> getBooks();
 
 	//插入图书记录
-	@Insert("insert into book values(#{bid},#{bookname},#{hot},#{sortid},#{author},#{description},#{bookprice},#{added},#{number})")
+	@Insert("insert into book values(#{bid},#{bookname},#{hot},#{sortid},#{author}," +
+			"#{description},#{bookprice},#{added},#{number})")
 	public void addBook(Book book);
 
-	//插入图书记录
-	@Update("update book set bookname=#{bookname}, sortid=#{sortid}, author=#{author}, description=#{description}, bookprice=#{bookprice}, added=#{added} where bid=#{bid}")
+	//更新图书记录
+	@Update("update book set bookname=#{bookname}, sortid=#{sortid}, author=#{author}," +
+			"description=#{description}, bookprice=#{bookprice}, added=#{added} where bid=#{bid}")
 	public void alterBook(Book book);
 
 	//删除图书

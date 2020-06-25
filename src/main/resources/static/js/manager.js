@@ -179,8 +179,8 @@ var getBookList = new Vue({
             } else {}
 
         },
-        setBid(bid) {
-            alterBook.setBid(bid);
+        setBook(book) {
+            alterBook.setBook(book);
         }
     }
 });
@@ -208,6 +208,7 @@ var addBook = new Vue({
         bookimg: '',
         imgevent: '',
         errmes: '',
+        imgName: '',
         isUpImg: false,
         errmesColor: false,
         isShow: false
@@ -272,7 +273,9 @@ var addBook = new Vue({
         },
         fileChange(event) {
             this.imgevent = event;
+            this.imgName = event.target.files[0].name;
             this.isUpImg = true;
+
         }
     }
 })
@@ -294,6 +297,7 @@ var alterBook = new Vue({
         bookimg: '',
         imgevent: '',
         errmes: '',
+        imgName: '',
         isUpImg: false,
         errmesColor: false,
         isShow: false
@@ -319,6 +323,7 @@ var alterBook = new Vue({
                 this.bookimg = this.imgevent.target.files[0];
                 let config = { headers: { "Content-Type": "multipart/form-data" } };
                 let param = new FormData();
+                param.append("isUpImg", that.isUpImg);
                 param.append("file", that.bookimg);
                 param.append("bid", that.bid);
                 param.append("bookname", that.bookname);
@@ -355,10 +360,20 @@ var alterBook = new Vue({
         },
         fileChange(event) {
             this.imgevent = event;
+            this.imgName = event.target.files[0].name;
             this.isUpImg = true;
         },
-        setBid(bid) {
-            this.bid = bid;
+        setBook(book) {
+            this.bid = book.bid;
+            this.bookname = book.bookname;
+            this.sortid = book.sortid;
+            this.author = book.author;
+            this.description = book.description;
+            this.bookprice = book.bookprice;
+            this.added = book.added;
+            this.bookimg = '';
+            this.imgName = '';
+            this.isUpImg = false;
         }
     }
 })
@@ -397,8 +412,8 @@ var getSortList = new Vue({
                 })
             } else {}
         },
-        setSortid(sortid) {
-            alterSort.sortid = sortid;
+        setSort(sort) {
+            alterSort.setSort(sort);
         }
     }
 });
@@ -496,6 +511,10 @@ var alterSort = new Vue({
             this.errmes = mes;
             this.errmesColor = false;
             this.isShow = true;
+        },
+        setSort(sort) {
+            this.sortid = sort.sortid;
+            this.sortname = sort.sortname;
         }
     }
 });

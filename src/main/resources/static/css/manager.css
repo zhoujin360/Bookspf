@@ -622,6 +622,17 @@ a {
     height: 25px;
     line-height: 25px;
     text-align: center;
+    Vertical-align: middle;
+}
+
+.window .bookimg span:nth-child(3) {
+    margin-left: 5px;
+    width: 150px;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .window .alterBookbid {

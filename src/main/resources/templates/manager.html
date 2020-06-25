@@ -82,7 +82,7 @@
                         <span>{{item.number}}</span>
                         <span v-text="item.added==0?'否':'是'"></span>
                         <span class="description">{{item.description}}</span>
-                        <span class="alter"><a href="javascript:;" @click="setBid(item.bid)"
+                        <span class="alter"><a href="javascript:;" @click="setBook(item)"
                                 onclick="action('alterBook')">修改</a></span>
                         <span class="delete"><a href="javascript:;" @click="deleteBook(item.bid)">删除</a></span>
                     </div>
@@ -106,7 +106,7 @@
                     <div class="listItem" v-for="item in sorts">
                         <span>{{item.sortid}}</span>
                         <span>{{item.sortname}}</span>
-                        <span class="alter"><a href="javascript:;" onclick="action('alterSort')" @click="setSortid(item.sortid)">修改</a></span>
+                        <span class="alter"><a href="javascript:;" onclick="action('alterSort')" @click="setSort(item)">修改</a></span>
                         <span class="delete"><a href="javascript:;" @click="deleteSort(item.sortid)">删除</a></span>
                     </div>
                 </div>
@@ -330,6 +330,7 @@
                     <a href="javascript:;" class="a-upload">
                         <input type="file" accept="image/png" @change="fileChange($event)"> 上传图书图片
                     </a>
+                    <span v-show="isUpImg" style="color: rgb(0, 255, 85);">已选择图片：{{imgName}}</span>
                 </div>
                 <div class="errmes">
                     <span v-show="isShow" :class="errmesColor?'errmesGreen':'errmesRed'">{{errmes}}</span>
@@ -373,6 +374,7 @@
                     <a href="javascript:;" class="a-upload">
                         <input type="file" accept="image/png" @change="fileChange($event)"> 上传图书图片
                     </a>
+                    <span v-show="isUpImg" style="color: rgb(0, 255, 85);">已选择图片：{{imgName}}</span>
                 </div>
                 <div class="errmes">
                     <span v-show="isShow" :class="errmesColor?'errmesGreen':'errmesRed'">{{errmes}}</span>
